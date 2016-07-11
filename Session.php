@@ -17,6 +17,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'facebookexternalhit' => 'facebookextern',
 		'googlebot' => 'google',
 		'ia_archiver' => 'alexa',
+		'ltx71' => 'ltx71',
 		'magpie-crawler' => 'brandwatch',
 		'mediapartners-google' => 'google-adsense',
 		'mj12bot' => 'mj12',
@@ -75,6 +76,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'Google AdSense',
 			'link' => 'https://support.google.com/webmasters/answer/182072'
 		),
+		'ltx71' => [
+			'title' => 'LTX71',
+			'link' => 'http://ltx71.com/'
+		],
 		'mj12' => array(
 			'title' => 'Majestic-12',
 			'link' => 'http://majestic12.co.uk/bot.php',
