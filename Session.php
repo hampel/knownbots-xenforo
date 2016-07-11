@@ -14,6 +14,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'archive.org_bot' => 'archive.org',
 		'baiduspider' => 'baidu',
 		'bingbot' => 'bing',
+		'binglocalsearch' => 'bing',
 		'facebookexternalhit' => 'facebookextern',
 		'googlebot' => 'google',
 		'ia_archiver' => 'alexa',
