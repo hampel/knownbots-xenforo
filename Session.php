@@ -40,7 +40,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'sitesucker' => 'sitesucker',
 		'smtbot' => 'smtbot',
 		'sogou web spider' => 'sogou',
-		'statuscake/virusScanner' => 'statuscake',
+		'statuscake/virusscanner' => 'statuscake',
 		'vegi bot' => 'vegibot',
 		'wotbox' => 'wotbox',
 		'yahoo! slurp' => 'yahoo',
