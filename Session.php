@@ -182,4 +182,9 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'link' => 'http://help.yandex.com/search/?id=1112030'
 		],
 	];
+
+	public function getRobotMap()
+	{
+		return $this->_robotMap;
+	}
 }
