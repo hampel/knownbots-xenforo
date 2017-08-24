@@ -14,35 +14,61 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 	 * @var array
 	 */
 	protected $_knownRobots = [
+		'adbeat' => 'adbeat',
 		'ahrefsbot' => 'ahrefs',
+		'aiohttp' => 'aiohttp',
 		'archive.org_bot' => 'archive.org',
+		'apache-httpclient' => 'apache-httpclient',
+		'applebot' => 'applebot',
 		'baiduspider' => 'baidu',
 		'bingbot' => 'bing',
 		'binglocalsearch' => 'bing',
+		'brokenlinkcheck' => 'brokenlinkcheck',
 		'crawler4j' => 'crawler4j',
+		'cukbot' => 'cukbot',
+		'dataprovider' => 'dataprovider',
+		'dispatch' => 'dispatch',
+		'domainappender' => 'domainappender',
 		'facebookexternalhit' => 'facebookextern',
+		'garlikcrawler' => 'garlikcrawler',
+		'go-http-client' => 'go-http-client',
 		'googlebot' => 'google',
 		'ia_archiver' => 'alexa',
+		'indeedbot' => 'indeedbot',
+		'knowknot' => 'knowknot',
 		'linguee' => 'linguee',
+		'linkdexbot' => 'linkdexbot',
 		'linkpadbot' => 'linkpadbot',
 		'ltx71' => 'ltx71',
 		'magpie-crawler' => 'brandwatch',
+		'mail.ru' => 'mail.ru',
 		'mediapartners-google' => 'google-adsense',
+		'megaindex' => 'megaindex',
+		'mfibot' => 'mfibot',
 		'mixrankbot' => 'mixrankbot',
 		'mj12bot' => 'mj12',
 		'msnbot' => 'msnbot',
 		'nlnz_iaharvester' => 'nlnz',
 		'outclicksbot' => 'outclicksbot',
+		'panscient' => 'panscient',
+		'pcore-http' => 'pcore-http',
 		'proximic' => 'proximic',
+		'python-requests' => 'python-requests',
 		'scoutjet' => 'scoutjet',
+		'scrapy' => 'scrapy',
 		'semrushbot' => 'semrushbot',
 		'seokicks-robot' => 'seokicks-robot',
 		'sitesucker' => 'sitesucker',
 		'smtbot' => 'smtbot',
 		'sogou web spider' => 'sogou',
+		'spbot' => 'spbot',
+		'sqlmap' => 'sqlmap',
 		'statuscake/virusscanner' => 'statuscake',
+		'symfony2 browserkit' => 'symfony2 browserkit',
 		'vegi bot' => 'vegibot',
+		'wonderbot' => 'wonderbot',
 		'wotbox' => 'wotbox',
+		'xenu link sleuth' => 'xenu link sleuth',
 		'yahoo! slurp' => 'yahoo',
 		'yandex' => 'yandex',
 
@@ -57,13 +83,29 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 	 * @var array
 	 */
 	protected $_robotMap = [
+		'adbeat' => [
+			'title' => 'Adbeat',
+			'link' => 'http://adbeat.com/policy',
+		],
 		'ahrefs' => [
 			'title' => 'Ahrefs',
 			'link' => 'https://ahrefs.com/robot',
 		],
+		'aiohttp' => [
+			'title' => 'aiohttp',
+			'link' => 'https://github.com/aio-libs/aiohttp',
+		],
 		'alexa' => [
 			'title' => 'Alexa',
 			'link' => 'http://www.alexa.com/help/webmasters',
+		],
+		'apache-httpclient' => [
+			'title' => 'Apache-HttpClient',
+			'link' => 'https://hc.apache.org/',
+		],
+		'applebot' => [
+			'title' => 'Applebot',
+			'link' => 'http://www.apple.com/go/applebot',
 		],
 		'archive.org' => [
 			'title' => 'Internet Archive',
@@ -81,13 +123,41 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'Brandwatch',
 			'link' => 'http://www.brandwatch.com/how-it-works/gathering-data/'
 		],
+		'brokenlinkcheck' => [
+			'title' => 'BrokenLinkCheck.com',
+			'link' => 'http://brokenlinkcheck.com/'
+		],
 		'crawler4j' => [
 			'title' => 'crawler4j',
 			'link' => 'http://code.google.com/p/crawler4j/'
 		],
+		'cukbot' => [
+			'title' => 'CukBot',
+			'link' => 'https://www.companiesintheuk.co.uk/bot.html'
+		],
+		'dataprovider' => [
+			'title' => 'Dataprovider',
+			'link' => 'https://www.dataprovider.com/'
+		],
+		'dispatch' => [
+			'title' => 'dispatch',
+			'link' => ''
+		],
+		'domainappender' => [
+			'title' => 'DomainAppender',
+			'link' => 'http://www.profound.net/domainappender'
+		],
 		'facebookextern' => [
 			'title' => 'Facebook',
 			'link' => 'http://www.facebook.com/externalhit_uatext.php'
+		],
+		'garlikcrawler' => [
+			'title' => 'GarlikCrawler',
+			'link' => 'http://garlik.com/'
+		],
+		'go-http-client' => [
+			'title' => 'Go-http-client',
+			'link' => 'https://golang.org/pkg/net/http/'
 		],
 		'google' => [
 			'title' => 'Google',
@@ -97,9 +167,21 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'Google AdSense',
 			'link' => 'https://support.google.com/webmasters/answer/182072'
 		],
+		'indeedbot' => [
+			'title' => 'IndeedBot',
+			'link' => 'http://indeedbot.com/'
+		],
+		'knowknot' => [
+			'title' => 'Knowknot',
+			'link' => 'http://knowknot.com/faq.htm'
+		],
 		'linguee' => [
 			'title' => 'Linguee Bot',
 			'link' => 'http://www.linguee.com/bot'
+		],
+		'linkdexbot' => [
+			'title' => 'linkdexbot',
+			'link' => 'http://www.linkdex.com/bots/'
 		],
 		'linkpadbot' => [
 			'title' => 'LinkpadBot',
@@ -108,6 +190,18 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'ltx71' => [
 			'title' => 'LTX71',
 			'link' => 'http://ltx71.com/'
+		],
+		'mail.ru' => [
+			'title' => 'Mail.RU',
+			'link' => 'http://go.mail.ru/help/robots',
+		],
+		'megaindex' => [
+			'title' => 'MegaIndex',
+			'link' => 'http://megaindex.com/crawler',
+		],
+		'mfibot' => [
+			'title' => 'mfibot',
+			'link' => 'http://www.mfisoft.ru/analyst/',
 		],
 		'mixrankbot' => [
 			'title' => 'MixrankBot',
@@ -129,6 +223,14 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'OutclicksBot',
 			'link' => 'https://www.outclicks.net/agent/fkn6dy'
 		],
+		'panscient' => [
+			'title' => 'panscient.com',
+			'link' => 'http://panscient.com/'
+		],
+		'pcore-http' => [
+			'title' => 'Pcore-HTTP',
+			'link' => ''
+		],
 		'proximic' => [
 			'title' => 'Proximic',
 			'link' => 'http://www.proximic.com/info/spider.php'
@@ -136,6 +238,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'scoutjet' => [
 			'title' => 'Blekko',
 			'link' => 'http://www.scoutjet.com/',
+		],
+		'scrapy' => [
+			'title' => 'Scrapy',
+			'link' => 'http://scrapy.org',
 		],
 		'semrushbot' => [
 			'title' => 'SemrushBot',
@@ -147,7 +253,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		],
 		'sitesucker' => [
 			'title' => 'SiteSucker for OS X',
-			'link' => '',
+			'link' => 'http://ricks-apps.com/osx/sitesucker/',
 		],
 		'sogou' => [
 			'title' => 'Sogou',
@@ -157,9 +263,21 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'SMTBot',
 			'link' => 'https://www.similartech.com/smtbot'
 		],
+		'spbot' => [
+			'title' => 'SMTBot',
+			'link' => 'http://OpenLinkProfiler.org/bot'
+		],
+		'sqlmap' => [
+			'title' => 'sqlmap',
+			'link' => 'http://sqlmap.org'
+		],
 		'statuscake' => [
 			'title' => 'StatusCake VirusScanner',
 			'link' => 'https://statuscake.com/automaton/virus.txt'
+		],
+		'symfony2 browserkit' => [
+			'title' => 'Symfony2 BrowserKit',
+			'link' => 'https://symfony.com/doc/current/components/browser_kit.html'
 		],
 		'unknown' => [
 			'title' => 'Unknown',
@@ -169,9 +287,17 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'Vegi bot',
 			'link' => 'mailto:abuse-report@terrykyleseoagency.com'
 		],
+		'wonderbot' => [
+			'title' => 'wonderbot',
+			'link' => 'https://wonder-bot.com/'
+		],
 		'wotbox' => [
 			'title' => 'Wotbox',
 			'link' => 'http://www.wotbox.com/bot/'
+		],
+		'xenu link sleuth' => [
+			'title' => 'Xenu Link Sleuth',
+			'link' => 'http://home.snafu.de/tilman/xenulink.html'
 		],
 		'yahoo' => [
 			'title' => 'Yahoo',
