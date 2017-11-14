@@ -22,8 +22,11 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'applebot' => 'applebot',
 		'baiduspider' => 'baidu',
 		'bingbot' => 'bing',
+		'bingpreview' => 'bing',
 		'binglocalsearch' => 'bing',
 		'brokenlinkcheck' => 'brokenlinkcheck',
+		'companybook-crawler' => 'companybook',
+		'contacts-crawler' => 'scrapinghub',
 		'crawler4j' => 'crawler4j',
 		'cukbot' => 'cukbot',
 		'dataprovider' => 'dataprovider',
@@ -45,6 +48,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'mediapartners-google' => 'google-adsense',
 		'megaindex' => 'megaindex',
 		'mfibot' => 'mfibot',
+		'microsoft office protocol discovery' => 'microsoft-office',
 		'mixrankbot' => 'mixrankbot',
 		'mj12bot' => 'mj12',
 		'msnbot' => 'msnbot',
@@ -54,6 +58,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'pcore-http' => 'pcore-http',
 		'proximic' => 'proximic',
 		'python-requests' => 'python-requests',
+		'quick-crawler' => 'scrapinghub',
 		'scoutjet' => 'scoutjet',
 		'scrapy' => 'scrapy',
 		'semrushbot' => 'semrushbot',
@@ -126,6 +131,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'brokenlinkcheck' => [
 			'title' => 'BrokenLinkCheck.com',
 			'link' => 'http://brokenlinkcheck.com/'
+		],
+		'companybook' => [
+			'title' => 'Companybook',
+			'link' => 'https://www.companybooknetworking.com/'
 		],
 		'crawler4j' => [
 			'title' => 'crawler4j',
@@ -203,6 +212,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'mfibot',
 			'link' => 'http://www.mfisoft.ru/analyst/',
 		],
+		'microsoft-office' => [
+			'title' => 'Microsoft Office Protocol Discovery',
+			'link' => 'http://support.microsoft.com/kb/838028',
+		],
 		'mixrankbot' => [
 			'title' => 'MixrankBot',
 			'link' => 'mailto:crawler@mixrank.com',
@@ -238,6 +251,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'scoutjet' => [
 			'title' => 'Blekko',
 			'link' => 'http://www.scoutjet.com/',
+		],
+		'scrapinghub' => [
+			'title' => 'Scrapinghub',
+			'link' => 'https://scrapinghub.com/',
 		],
 		'scrapy' => [
 			'title' => 'Scrapy',
