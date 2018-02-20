@@ -29,6 +29,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'contacts-crawler' => 'scrapinghub',
 		'crawler4j' => 'crawler4j',
 		'cukbot' => 'cukbot',
+		'dalvik' => 'dalvik',
 		'dataprovider' => 'dataprovider',
 		'dispatch' => 'dispatch',
 		'domainappender' => 'domainappender',
@@ -56,6 +57,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'outclicksbot' => 'outclicksbot',
 		'panscient' => 'panscient',
 		'pcore-http' => 'pcore-http',
+		'php' => 'php',
 		'proximic' => 'proximic',
 		'python-requests' => 'python-requests',
 		'quick-crawler' => 'scrapinghub',
@@ -143,6 +145,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'cukbot' => [
 			'title' => 'CukBot',
 			'link' => 'https://www.companiesintheuk.co.uk/bot.html'
+		],
+		'dalvik' => [
+			'title' => 'Dalvik',
+			'link' => 'https://source.android.com/devices/tech/dalvik/'
 		],
 		'dataprovider' => [
 			'title' => 'Dataprovider',
@@ -242,6 +248,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		],
 		'pcore-http' => [
 			'title' => 'Pcore-HTTP',
+			'link' => ''
+		],
+		'php' => [
+			'title' => 'PHP',
 			'link' => ''
 		],
 		'proximic' => [
