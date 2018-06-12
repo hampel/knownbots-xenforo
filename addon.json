@@ -1,0 +1,22 @@
+{
+    "legacy_addon_id": "KnownBots",
+    "title": "Known Bots",
+    "description": "Adds additional definitions for bot detection in sessions",
+    "version_id": 2000,
+    "version_string": "2.0.0",
+    "dev": "Simon Hampel",
+    "dev_url": "https://bitbucket.org/hampel/",
+    "faq_url": "",
+    "support_url": "https://bitbucket.org/hampel/knownbots-xenforo/issues",
+    "extra_urls": {
+        "Git Repository": "https://bitbucket.org/hampel/knownbots-xenforo",
+        "Twitter": "https://twitter.com/SimonHampel"
+    },
+    "require": {
+        "php": [
+            "5.4.0",
+            "PHP 5.4+"
+        ]
+    },
+    "icon": "fa-binoculars"
+}
