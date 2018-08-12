@@ -2,7 +2,7 @@
     "legacy_addon_id": "KnownBots",
     "title": "Known Bots",
     "description": "Adds additional definitions for bot detection in sessions",
-    "version_id": 2000,
+    "version_id": 2000070,
     "version_string": "2.0.0",
     "dev": "Simon Hampel",
     "dev_url": "https://bitbucket.org/hampel/",

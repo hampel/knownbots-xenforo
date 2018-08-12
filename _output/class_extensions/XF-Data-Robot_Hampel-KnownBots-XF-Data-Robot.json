@@ -1,6 +1,6 @@
 {
     "from_class": "XF\\Data\\Robot",
-    "to_class": "KnownBots\\XF\\Data\\Robot",
+    "to_class": "Hampel\\KnownBots\\XF\\Data\\Robot",
     "execute_order": 10,
     "active": true
 }
