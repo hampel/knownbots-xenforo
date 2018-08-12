@@ -1,4 +1,4 @@
-<?php namespace KnownBots\XF\Data;
+<?php namespace Hampel\KnownBots\XF\Data;
 
 class Robot extends XFCP_Robot
 {
