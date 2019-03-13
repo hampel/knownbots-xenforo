@@ -25,6 +25,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'bingbot' => 'bing',
 		'bingpreview' => 'bing',
 		'binglocalsearch' => 'bing',
+		'brandverity' => 'brandverity',
 		'brokenlinkcheck' => 'brokenlinkcheck',
 		'companybook-crawler' => 'companybook',
 		'contacts-crawler' => 'scrapinghub',
@@ -139,6 +140,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'bing' => [
 			'title' => 'Bing',
 			'link' => 'http://www.bing.com/bingbot.htm'
+		],
+		'brandverity' => [
+			'title' => 'BrandVerity',
+			'link' => 'http://www.brandverity.com/why-is-brandverity-visiting-me'
 		],
 		'brandwatch' => [
 			'title' => 'Brandwatch',
