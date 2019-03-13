@@ -14,6 +14,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 	 * @var array
 	 */
 	protected $_knownRobots = [
+		'7siters' => '7siters',
 		'adbeat' => 'adbeat',
 		'ahrefsbot' => 'ahrefs',
 		'aiohttp' => 'aiohttp',
@@ -33,12 +34,15 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'dataprovider' => 'dataprovider',
 		'dispatch' => 'dispatch',
 		'domainappender' => 'domainappender',
+		'e.ventures' => 'eventures',
 		'facebookexternalhit' => 'facebookextern',
 		'garlikcrawler' => 'garlikcrawler',
 		'go-http-client' => 'go-http-client',
 		'googlebot' => 'google',
+		'httrack' => 'httrack',
 		'ia_archiver' => 'alexa',
 		'indeedbot' => 'indeedbot',
+		'just-crawling' => 'just-crawling',
 		'knowknot' => 'knowknot',
 		'linguee' => 'linguee',
 		'linkdexbot' => 'linkdexbot',
@@ -58,9 +62,11 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'panscient' => 'panscient',
 		'pcore-http' => 'pcore-http',
 		'php' => 'php',
+		'pinterestbot' => 'pinterest',
 		'proximic' => 'proximic',
 		'python-requests' => 'python-requests',
 		'quick-crawler' => 'scrapinghub',
+		're-re studio' => 're-re studio',
 		'scoutjet' => 'scoutjet',
 		'scrapy' => 'scrapy',
 		'semrushbot' => 'semrushbot',
@@ -71,8 +77,12 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'spbot' => 'spbot',
 		'sqlmap' => 'sqlmap',
 		'statuscake/virusscanner' => 'statuscake',
-		'symfony2 browserkit' => 'symfony2 browserkit',
+		'symfony browserkit' => 'symfony browserkit',
+		'symfony2 browserkit' => 'symfony browserkit',
+		'um-ln' => 'ubermetrics-technologies',
+		'v-bot' => 'voyager',
 		'vegi bot' => 'vegibot',
+		'wget' => 'wget',
 		'wonderbot' => 'wonderbot',
 		'wotbox' => 'wotbox',
 		'xenu link sleuth' => 'xenu link sleuth',
@@ -90,6 +100,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 	 * @var array
 	 */
 	protected $_robotMap = [
+		'7siters' => [
+			'title' => '7Siters',
+			'link' => 'https://7ooo.ru/siters/',
+		],
 		'adbeat' => [
 			'title' => 'Adbeat',
 			'link' => 'http://adbeat.com/policy',
@@ -162,6 +176,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'DomainAppender',
 			'link' => 'http://www.profound.net/domainappender'
 		],
+		'eventures' => [
+			'title' => 'e.ventures Investment Crawler',
+			'link' => 'https://www.eventures.vc/'
+		],
 		'facebookextern' => [
 			'title' => 'Facebook',
 			'link' => 'http://www.facebook.com/externalhit_uatext.php'
@@ -182,9 +200,17 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'Google AdSense',
 			'link' => 'https://support.google.com/webmasters/answer/182072'
 		],
+		'httrack' => [
+			'title' => 'HTTrack',
+			'link' => 'http://www.httrack.com/'
+		],
 		'indeedbot' => [
 			'title' => 'IndeedBot',
 			'link' => 'http://indeedbot.com/'
+		],
+		'just-crawling' => [
+			'title' => 'Just-Crawling',
+			'link' => ''
 		],
 		'knowknot' => [
 			'title' => 'Knowknot',
@@ -254,9 +280,17 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'PHP',
 			'link' => ''
 		],
+		'pinterest' => [
+			'title' => 'Pinterestbot',
+			'link' => 'http://www.pinterest.com/bot.html'
+		],
 		'proximic' => [
 			'title' => 'Proximic',
 			'link' => 'http://www.proximic.com/info/spider.php'
+		],
+		're-re studio' => [
+			'title' => 'Re-re Studio',
+			'link' => 'http://re-re.ru/'
 		],
 		'scoutjet' => [
 			'title' => 'Blekko',
@@ -302,9 +336,13 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'StatusCake VirusScanner',
 			'link' => 'https://statuscake.com/automaton/virus.txt'
 		],
-		'symfony2 browserkit' => [
-			'title' => 'Symfony2 BrowserKit',
+		'symfony browserkit' => [
+			'title' => 'Symfony BrowserKit',
 			'link' => 'https://symfony.com/doc/current/components/browser_kit.html'
+		],
+		'ubermetrics-technologies' => [
+			'title' => 'Ubermetrics',
+			'link' => 'https://www.ubermetrics-technologies.com/'
 		],
 		'unknown' => [
 			'title' => 'Unknown',
@@ -313,6 +351,14 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'vegibot' => [
 			'title' => 'Vegi bot',
 			'link' => 'mailto:abuse-report@terrykyleseoagency.com'
+		],
+		'voyager' => [
+			'title' => 'Voyager Bot',
+			'link' => 'mailto:bot@voyagerx.com'
+		],
+		'wget' => [
+			'title' => 'Linux Wget',
+			'link' => 'https://www.gnu.org/software/wget/'
 		],
 		'wonderbot' => [
 			'title' => 'wonderbot',
