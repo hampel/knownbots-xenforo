@@ -19,6 +19,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'ahrefsbot' => 'ahrefs',
 		'aiohttp' => 'aiohttp',
 		'archive.org_bot' => 'archive.org',
+		'archivebot' => 'archiveteam',
 		'apache-httpclient' => 'apache-httpclient',
 		'applebot' => 'applebot',
 		'baiduspider' => 'baidu',
@@ -132,6 +133,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'archive.org' => [
 			'title' => 'Internet Archive',
 			'link' => 'http://www.archive.org/details/archive.org_bot'
+		],
+		'archiveteam' => [
+			'title' => 'Archive Team',
+			'link' => 'https://www.archiveteam.org/index.php?title=ArchiveBot'
 		],
 		'baidu' => [
 			'title' => 'Baidu',
