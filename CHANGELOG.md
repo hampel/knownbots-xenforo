@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.1.0 (2019-09-30)
+-------------------
+
+* new bots added
+* added tool to admin area to show list of bots
+
 2.0.0a (2018-08-12)
 -------------------
 
