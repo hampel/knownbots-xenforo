@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2.2.0 (2019-09-30)
+-------------------
+
+* merge new bot array with core array rather than clobbering it
+
 2.1.0 (2019-09-30)
 -------------------
 
