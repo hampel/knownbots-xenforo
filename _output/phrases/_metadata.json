@@ -1,0 +1,14 @@
+{
+    "admin_navigation.hampelKnownBotsList.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "11e31d91976cf01cab07b0adbf7e61df"
+    },
+    "knownbots_list.txt": {
+        "global_cache": false,
+        "version_id": 2000070,
+        "version_string": "2.0.0",
+        "hash": "f74c5de0e2efea63bfbc3ca382dee2ba"
+    }
+}
