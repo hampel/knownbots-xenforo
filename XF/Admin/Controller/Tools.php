@@ -6,6 +6,8 @@ class Tools extends XFCP_Tools
 	{
 		$knownBots = $this->app()->data('XF:Robot')->getRobotList();
 
+		ksort($knownBots);
+
 		$viewParams = compact('knownBots');
 		return $this->view('XF:Tools\KnownBots', 'knownbots_list', $viewParams);
 	}

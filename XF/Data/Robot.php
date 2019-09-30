@@ -6,16 +6,13 @@ class Robot extends XFCP_Robot
 	{
 		// TODO: use array merge
 
-		return [
+		$newBots = [
 			'adbeat' => 'adbeat',
 			'ahrefsbot' => 'ahrefs',
 			'aiohttp' => 'aiohttp',
-			'archive.org_bot' => 'archive.org',
 			'archivebot' => 'archiveteam',
 			'apache-httpclient' => 'apache-httpclient',
 			'applebot' => 'applebot',
-			'baiduspider' => 'baidu',
-			'bingbot' => 'bing',
 			'bingpreview' => 'bing',
 			'binglocalsearch' => 'bing',
 			'brokenlinkcheck' => 'brokenlinkcheck',
@@ -27,41 +24,31 @@ class Robot extends XFCP_Robot
 			'dataprovider' => 'dataprovider',
 			'dispatch' => 'dispatch',
 			'domainappender' => 'domainappender',
-			'facebookexternalhit' => 'facebookextern',
 			'garlikcrawler' => 'garlikcrawler',
 			'go-http-client' => 'go-http-client',
-			'googlebot' => 'google',
-			'ia_archiver' => 'alexa',
 			'indeedbot' => 'indeedbot',
 			'knowknot' => 'knowknot',
 			'linguee' => 'linguee',
 			'linkdexbot' => 'linkdexbot',
 			'linkpadbot' => 'linkpadbot',
 			'ltx71' => 'ltx71',
-			'magpie-crawler' => 'brandwatch',
 			'mail.ru' => 'mail.ru',
-			'mediapartners-google' => 'google-adsense',
 			'megaindex' => 'megaindex',
 			'mfibot' => 'mfibot',
 			'microsoft office protocol discovery' => 'microsoft-office',
 			'mixrankbot' => 'mixrankbot',
-			'mj12bot' => 'mj12',
-			'msnbot' => 'msnbot',
 			'nlnz_iaharvester' => 'nlnz',
 			'outclicksbot' => 'outclicksbot',
 			'panscient' => 'panscient',
 			'pcore-http' => 'pcore-http',
 			'php' => 'php',
-			'proximic' => 'proximic',
 			'python-requests' => 'python-requests',
 			'quick-crawler' => 'scrapinghub',
-			'scoutjet' => 'scoutjet',
 			'scrapy' => 'scrapy',
 			'semrushbot' => 'semrushbot',
 			'seokicks-robot' => 'seokicks-robot',
 			'sitesucker' => 'sitesucker',
 			'smtbot' => 'smtbot',
-			'sogou web spider' => 'sogou',
 			'spbot' => 'spbot',
 			'sqlmap' => 'sqlmap',
 			'statuscake/virusscanner' => 'statuscake',
@@ -70,19 +57,14 @@ class Robot extends XFCP_Robot
 			'wonderbot' => 'wonderbot',
 			'wotbox' => 'wotbox',
 			'xenu link sleuth' => 'xenu link sleuth',
-			'yahoo! slurp' => 'yahoo',
-			'yandex' => 'yandex',
-
-
-			/*'crawler',
-			'php/',
-			'zend_http_client',*/
 		];
+
+		return array_merge(parent::getRobotUserAgents(), $newBots);
 	}
 
 	public function getRobotList()
 	{
-		return [
+		$newBots = [
 			'adbeat' => [
 				'title' => 'Adbeat',
 				'link' => 'http://adbeat.com/policy',
@@ -95,10 +77,6 @@ class Robot extends XFCP_Robot
 				'title' => 'aiohttp',
 				'link' => 'https://github.com/aio-libs/aiohttp',
 			],
-			'alexa' => [
-				'title' => 'Alexa',
-				'link' => 'http://www.alexa.com/help/webmasters',
-			],
 			'apache-httpclient' => [
 				'title' => 'Apache-HttpClient',
 				'link' => 'https://hc.apache.org/',
@@ -107,25 +85,9 @@ class Robot extends XFCP_Robot
 				'title' => 'Applebot',
 				'link' => 'http://www.apple.com/go/applebot',
 			],
-			'archive.org' => [
-				'title' => 'Internet Archive',
-				'link' => 'http://www.archive.org/details/archive.org_bot'
-			],
 			'archiveteam' => [
 				'title' => 'Archive Team',
 				'link' => 'https://www.archiveteam.org/index.php?title=ArchiveBot'
-			],
-			'baidu' => [
-				'title' => 'Baidu',
-				'link' => 'http://www.baidu.com/search/spider.htm'
-			],
-			'bing' => [
-				'title' => 'Bing',
-				'link' => 'http://www.bing.com/bingbot.htm'
-			],
-			'brandwatch' => [
-				'title' => 'Brandwatch',
-				'link' => 'http://www.brandwatch.com/how-it-works/gathering-data/'
 			],
 			'brokenlinkcheck' => [
 				'title' => 'BrokenLinkCheck.com',
@@ -159,10 +121,6 @@ class Robot extends XFCP_Robot
 				'title' => 'DomainAppender',
 				'link' => 'http://www.profound.net/domainappender'
 			],
-			'facebookextern' => [
-				'title' => 'Facebook',
-				'link' => 'http://www.facebook.com/externalhit_uatext.php'
-			],
 			'garlikcrawler' => [
 				'title' => 'GarlikCrawler',
 				'link' => 'http://garlik.com/'
@@ -170,14 +128,6 @@ class Robot extends XFCP_Robot
 			'go-http-client' => [
 				'title' => 'Go-http-client',
 				'link' => 'https://golang.org/pkg/net/http/'
-			],
-			'google' => [
-				'title' => 'Google',
-				'link' => 'https://support.google.com/webmasters/answer/182072'
-			],
-			'google-adsense' => [
-				'title' => 'Google AdSense',
-				'link' => 'https://support.google.com/webmasters/answer/182072'
 			],
 			'indeedbot' => [
 				'title' => 'IndeedBot',
@@ -223,14 +173,6 @@ class Robot extends XFCP_Robot
 				'title' => 'MixrankBot',
 				'link' => 'mailto:crawler@mixrank.com',
 			],
-			'mj12' => [
-				'title' => 'Majestic-12',
-				'link' => 'http://majestic12.co.uk/bot.php',
-			],
-			'msnbot' => [
-				'title' => 'MSN',
-				'link' => 'http://search.msn.com/msnbot.htm'
-			],
 			'nlnz' => [
 				'title' => 'NLNZ_IAHarvester2017',
 				'link' => 'https://natlib.govt.nz/publishers-and-authors/web-harvesting/domain-harvest'
@@ -250,14 +192,6 @@ class Robot extends XFCP_Robot
 			'php' => [
 				'title' => 'PHP',
 				'link' => ''
-			],
-			'proximic' => [
-				'title' => 'Proximic',
-				'link' => 'http://www.proximic.com/info/spider.php'
-			],
-			'scoutjet' => [
-				'title' => 'Blekko',
-				'link' => 'http://www.scoutjet.com/',
 			],
 			'scrapinghub' => [
 				'title' => 'Scrapinghub',
@@ -279,10 +213,6 @@ class Robot extends XFCP_Robot
 				'title' => 'SiteSucker for OS X',
 				'link' => 'http://ricks-apps.com/osx/sitesucker/',
 			],
-			'sogou' => [
-				'title' => 'Sogou',
-				'link' => 'http://www.sogou.com/docs/help/webmasters.htm#07'
-			],
 			'smtbot' => [
 				'title' => 'SMTBot',
 				'link' => 'https://www.similartech.com/smtbot'
@@ -303,10 +233,6 @@ class Robot extends XFCP_Robot
 				'title' => 'Symfony2 BrowserKit',
 				'link' => 'https://symfony.com/doc/current/components/browser_kit.html'
 			],
-			'unknown' => [
-				'title' => 'Unknown',
-				'link' => ''
-			],
 			'vegibot' => [
 				'title' => 'Vegi bot',
 				'link' => 'mailto:abuse-report@terrykyleseoagency.com'
@@ -323,15 +249,8 @@ class Robot extends XFCP_Robot
 				'title' => 'Xenu Link Sleuth',
 				'link' => 'http://home.snafu.de/tilman/xenulink.html'
 			],
-			'yahoo' => [
-				'title' => 'Yahoo',
-				'link' => 'http://help.yahoo.com/help/us/ysearch/slurp'
-			],
-			'yandex' => [
-				'title' => 'Yandex',
-				'link' => 'http://help.yandex.com/search/?id=1112030'
-			],
 		];
 
+		return array_merge(parent::getRobotList(), $newBots);
 	}
 }
