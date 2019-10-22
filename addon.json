@@ -16,7 +16,11 @@
         "php": [
             "5.4.0",
             "PHP 5.4+"
+        ],
+        "XF": [
+            "2000070",
+            "XenForo 2.0.0+"
         ]
     },
-    "icon": "fa-binoculars"
+    "icon": "fa-robot"
 }
