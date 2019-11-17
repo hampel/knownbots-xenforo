@@ -18,3 +18,5 @@ When you look at Current Visitors, you'll see additional robots identified - als
  
 There is also a "Show list of Known Bots" menu in the admin area Tools section which shows the bots we have defined and
 links to more information about them (where available)
+
+A count of robots online is added to the Members online and Online statistics widgets
