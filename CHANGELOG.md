@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.3.0 (2019-11-18)
+-------------------
+
+* added curl as a robot
+* show robots online in Members online and Online statistics widgets 
+
 2.2.0 (2019-09-30)
 -------------------
 
