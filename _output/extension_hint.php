@@ -12,3 +12,8 @@ namespace Hampel\KnownBots\XF\Data
 {
 	class XFCP_Robot extends \XF\Data\Robot {}
 }
+
+namespace Hampel\KnownBots\XF\Repository
+{
+	class XFCP_SessionActivity extends \XF\Repository\SessionActivity {}
+}

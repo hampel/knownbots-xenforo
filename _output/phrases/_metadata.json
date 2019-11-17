@@ -10,5 +10,11 @@
         "version_id": 2000070,
         "version_string": "2.0.0",
         "hash": "f74c5de0e2efea63bfbc3ca382dee2ba"
+    },
+    "knownbots_online_now_x_robots.txt": {
+        "global_cache": false,
+        "version_id": 2020070,
+        "version_string": "2.2.0",
+        "hash": "d519c8f4ee78ade3eed4a68c37043d63"
     }
 }
