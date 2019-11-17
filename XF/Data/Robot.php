@@ -4,8 +4,6 @@ class Robot extends XFCP_Robot
 {
 	public function getRobotUserAgents()
 	{
-		// TODO: use array merge
-
 		$newBots = [
 			'adbeat' => 'adbeat',
 			'ahrefsbot' => 'ahrefs',
@@ -20,6 +18,7 @@ class Robot extends XFCP_Robot
 			'contacts-crawler' => 'scrapinghub',
 			'crawler4j' => 'crawler4j',
 			'cukbot' => 'cukbot',
+			'curl' => 'curl',
 			'dalvik' => 'dalvik',
 			'dataprovider' => 'dataprovider',
 			'dispatch' => 'dispatch',
@@ -104,6 +103,10 @@ class Robot extends XFCP_Robot
 			'cukbot' => [
 				'title' => 'CukBot',
 				'link' => 'https://www.companiesintheuk.co.uk/bot.html'
+			],
+			'curl' => [
+				'title' => 'curl',
+				'link' => 'https://curl.haxx.se/'
 			],
 			'dalvik' => [
 				'title' => 'Dalvik',
