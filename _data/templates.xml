@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="knownbots_list" version_id="2020070" version_string="2.2.0"><![CDATA[<xf:title>{{ phrase('knownbots_list') }}</xf:title>
+
+<xf:if is="$knownBots">
+	<div class="block-container">
+		<ul>
+			<xf:foreach loop="$knownBots" value="$bot">
+				<li><a href="{{ $bot.link }}" target="_blank">{{ $bot.title }}</a></li>
+			</xf:foreach>
+		</ul>
+	</div>
+</xf:if>]]></template>
+</templates>
