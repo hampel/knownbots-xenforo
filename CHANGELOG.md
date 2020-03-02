@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2.5.0 (2020-03-02)
+-------------------
+
+* added an option to disable the display of robot statistics in the sidebar widgets 
+
 2.4.0 (2020-03-02)
 -------------------
 
