@@ -16,6 +16,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 	protected $_knownRobots = [
 		'7siters' => '7siters',
 		'adbeat' => 'adbeat',
+		'adscanner' => 'adscanner',
 		'ahrefsbot' => 'ahrefs',
 		'aiohttp' => 'aiohttp',
 		'archive.org_bot' => 'archive.org',
@@ -32,11 +33,14 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'contacts-crawler' => 'scrapinghub',
 		'crawler4j' => 'crawler4j',
 		'cukbot' => 'cukbot',
+		'curl' => 'curl',
 		'dalvik' => 'dalvik',
 		'dataprovider' => 'dataprovider',
 		'dispatch' => 'dispatch',
 		'domainappender' => 'domainappender',
+		'duckduckbot' => 'duckduckbot',
 		'e.ventures' => 'eventures',
+		'exabot' => 'exabot',
 		'facebookexternalhit' => 'facebookextern',
 		'garlikcrawler' => 'garlikcrawler',
 		'go-http-client' => 'go-http-client',
@@ -71,6 +75,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		're-re studio' => 're-re studio',
 		'scoutjet' => 'scoutjet',
 		'scrapy' => 'scrapy',
+		'semanticscholarbot' => 'semanticscholarbot',
 		'semrushbot' => 'semrushbot',
 		'seokicks-robot' => 'seokicks-robot',
 		'sitesucker' => 'sitesucker',
@@ -81,6 +86,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'statuscake/virusscanner' => 'statuscake',
 		'symfony browserkit' => 'symfony browserkit',
 		'symfony2 browserkit' => 'symfony browserkit',
+		'tracemyfile' => 'tracemyfile',
 		'um-ln' => 'ubermetrics-technologies',
 		'v-bot' => 'voyager',
 		'vegi bot' => 'vegibot',
@@ -109,6 +115,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'adbeat' => [
 			'title' => 'Adbeat',
 			'link' => 'http://adbeat.com/policy',
+		],
+		'adscanner' => [
+			'title' => 'AdScanner',
+			'link' => 'http://seocompany.store'
 		],
 		'ahrefs' => [
 			'title' => 'Ahrefs',
@@ -170,6 +180,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'CukBot',
 			'link' => 'https://www.companiesintheuk.co.uk/bot.html'
 		],
+		'curl' => [
+			'title' => 'curl',
+			'link' => 'https://curl.haxx.se/'
+		],
 		'dalvik' => [
 			'title' => 'Dalvik',
 			'link' => 'https://source.android.com/devices/tech/dalvik/'
@@ -189,6 +203,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'eventures' => [
 			'title' => 'e.ventures Investment Crawler',
 			'link' => 'https://www.eventures.vc/'
+		],
+		'exabot' => [
+			'title' => 'Exabot',
+			'link' => 'http://www.exabot.com/go/robot'
 		],
 		'facebookextern' => [
 			'title' => 'Facebook',
@@ -314,6 +332,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'Scrapy',
 			'link' => 'http://scrapy.org',
 		],
+		'semanticscholarbot' => [
+			'title' => 'SemanticScholarBot',
+			'link' => 'https://www.semanticscholar.org/crawler',
+		],
 		'semrushbot' => [
 			'title' => 'SemrushBot',
 			'link' => 'http://www.semrush.com/bot.html',
@@ -349,6 +371,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'symfony browserkit' => [
 			'title' => 'Symfony BrowserKit',
 			'link' => 'https://symfony.com/doc/current/components/browser_kit.html'
+		],
+		'tracemyfile' => [
+			'title' => 'TraceMyFile',
+			'link' => 'https://www.tracemyfile.com/'
 		],
 		'ubermetrics-technologies' => [
 			'title' => 'Ubermetrics',
