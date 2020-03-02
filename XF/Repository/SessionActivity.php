@@ -1,9 +1,16 @@
 <?php namespace Hampel\KnownBots\XF\Repository;
 
+use Hampel\KnownBots\Option\ShowBotStats;
+
 class SessionActivity extends XFCP_SessionActivity
 {
 	public function getOnlineCounts($onlineCutOff = null)
 	{
+		if (!ShowBotStats::isEnabled())
+		{
+			return parent::getOnlineCounts($onlineCutOff);
+		}
+
 		if ($onlineCutOff === null)
 		{
 			$onlineCutOff = \XF::$time - $this->options()->onlineStatusTimeout * 60;

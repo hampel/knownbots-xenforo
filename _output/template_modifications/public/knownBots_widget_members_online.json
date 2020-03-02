@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "{{ phrase('online_now_x_members_y_guests_z',{\n\t\t\t\t'total': number($online.counts.total),\n\t\t\t\t'members': number($online.counts.members),\n\t\t\t\t'guests': number($online.counts.guests)})\n\t\t\t}}",
-    "replace": "{{ phrase('online_now_x_members_y_guests_z',{\n\t\t\t\t'total': number($online.counts.total),\n\t\t\t\t'members': number($online.counts.members),\n\t\t\t\t'guests': number($online.counts.guests)})\n\t\t\t}}<br />\n{{ phrase('knownbots_online_now_x_robots', {'robots': number($online.counts.robots)})}}"
+    "replace": "{{ phrase('online_now_x_members_y_guests_z',{\n\t\t\t\t'total': number($online.counts.total),\n\t\t\t\t'members': number($online.counts.members),\n\t\t\t\t'guests': number($online.counts.guests)})\n\t\t\t}}<br />\n<xf:if is=\"$xf.options.knownbotsShowBotStats\">\n\t{{ phrase('knownbots_online_now_x_robots', {'robots': number($online.counts.robots)})}}\n</xf:if>\t"
 }
