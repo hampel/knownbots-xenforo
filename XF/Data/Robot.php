@@ -5,7 +5,9 @@ class Robot extends XFCP_Robot
 	public function getRobotUserAgents()
 	{
 		$newBots = [
+			'7siters' => '7siters',
 			'adbeat' => 'adbeat',
+			'adscanner' => 'adscanner',
 			'ahrefsbot' => 'ahrefs',
 			'aiohttp' => 'aiohttp',
 			'archivebot' => 'archiveteam',
@@ -13,6 +15,7 @@ class Robot extends XFCP_Robot
 			'applebot' => 'applebot',
 			'bingpreview' => 'bing',
 			'binglocalsearch' => 'bing',
+			'brandverity' => 'brandverity',
 			'brokenlinkcheck' => 'brokenlinkcheck',
 			'companybook-crawler' => 'companybook',
 			'contacts-crawler' => 'scrapinghub',
@@ -23,9 +26,14 @@ class Robot extends XFCP_Robot
 			'dataprovider' => 'dataprovider',
 			'dispatch' => 'dispatch',
 			'domainappender' => 'domainappender',
+			'duckduckbot' => 'duckduckbot',
+			'e.ventures' => 'eventures',
+			'exabot' => 'exabot',
 			'garlikcrawler' => 'garlikcrawler',
 			'go-http-client' => 'go-http-client',
+			'httrack' => 'httrack',
 			'indeedbot' => 'indeedbot',
+			'just-crawling' => 'just-crawling',
 			'knowknot' => 'knowknot',
 			'linguee' => 'linguee',
 			'linkdexbot' => 'linkdexbot',
@@ -41,9 +49,12 @@ class Robot extends XFCP_Robot
 			'panscient' => 'panscient',
 			'pcore-http' => 'pcore-http',
 			'php' => 'php',
+			'pinterestbot' => 'pinterest',
 			'python-requests' => 'python-requests',
 			'quick-crawler' => 'scrapinghub',
+			're-re studio' => 're-re studio',
 			'scrapy' => 'scrapy',
+			'semanticscholarbot' => 'semanticscholarbot',
 			'semrushbot' => 'semrushbot',
 			'seokicks-robot' => 'seokicks-robot',
 			'sitesucker' => 'sitesucker',
@@ -51,8 +62,13 @@ class Robot extends XFCP_Robot
 			'spbot' => 'spbot',
 			'sqlmap' => 'sqlmap',
 			'statuscake/virusscanner' => 'statuscake',
-			'symfony2 browserkit' => 'symfony2 browserkit',
+			'symfony browserkit' => 'symfony browserkit',
+			'symfony2 browserkit' => 'symfony browserkit',
+			'tracemyfile' => 'tracemyfile',
+			'um-ln' => 'ubermetrics-technologies',
+			'v-bot' => 'voyager',
 			'vegi bot' => 'vegibot',
+			'wget' => 'wget',
 			'wonderbot' => 'wonderbot',
 			'wotbox' => 'wotbox',
 			'xenu link sleuth' => 'xenu link sleuth',
@@ -64,9 +80,17 @@ class Robot extends XFCP_Robot
 	public function getRobotList()
 	{
 		$newBots = [
+			'7siters' => [
+				'title' => '7Siters',
+				'link' => 'https://7ooo.ru/siters/',
+			],
 			'adbeat' => [
 				'title' => 'Adbeat',
 				'link' => 'http://adbeat.com/policy',
+			],
+			'adscanner' => [
+				'title' => 'AdScanner',
+				'link' => 'http://seocompany.store'
 			],
 			'ahrefs' => [
 				'title' => 'Ahrefs',
@@ -87,6 +111,10 @@ class Robot extends XFCP_Robot
 			'archiveteam' => [
 				'title' => 'Archive Team',
 				'link' => 'https://www.archiveteam.org/index.php?title=ArchiveBot'
+			],
+			'brandverity' => [
+				'title' => 'BrandVerity',
+				'link' => 'http://www.brandverity.com/why-is-brandverity-visiting-me'
 			],
 			'brokenlinkcheck' => [
 				'title' => 'BrokenLinkCheck.com',
@@ -124,6 +152,18 @@ class Robot extends XFCP_Robot
 				'title' => 'DomainAppender',
 				'link' => 'http://www.profound.net/domainappender'
 			],
+			'duckduckbot' => [
+				'title' => 'DuckDuckBot',
+				'link' => 'http://duckduckgo.com/duckduckbot.html'
+			],
+			'eventures' => [
+				'title' => 'e.ventures Investment Crawler',
+				'link' => 'https://www.eventures.vc/'
+			],
+			'exabot' => [
+				'title' => 'Exabot',
+				'link' => 'http://www.exabot.com/go/robot'
+			],
 			'garlikcrawler' => [
 				'title' => 'GarlikCrawler',
 				'link' => 'http://garlik.com/'
@@ -132,9 +172,17 @@ class Robot extends XFCP_Robot
 				'title' => 'Go-http-client',
 				'link' => 'https://golang.org/pkg/net/http/'
 			],
+			'httrack' => [
+				'title' => 'HTTrack',
+				'link' => 'http://www.httrack.com/'
+			],
 			'indeedbot' => [
 				'title' => 'IndeedBot',
 				'link' => 'http://indeedbot.com/'
+			],
+			'just-crawling' => [
+				'title' => 'Just-Crawling',
+				'link' => ''
 			],
 			'knowknot' => [
 				'title' => 'Knowknot',
@@ -196,6 +244,14 @@ class Robot extends XFCP_Robot
 				'title' => 'PHP',
 				'link' => ''
 			],
+			'pinterest' => [
+				'title' => 'Pinterestbot',
+				'link' => 'http://www.pinterest.com/bot.html'
+			],
+			're-re studio' => [
+				'title' => 'Re-re Studio',
+				'link' => 'http://re-re.ru/'
+			],
 			'scrapinghub' => [
 				'title' => 'Scrapinghub',
 				'link' => 'https://scrapinghub.com/',
@@ -203,6 +259,10 @@ class Robot extends XFCP_Robot
 			'scrapy' => [
 				'title' => 'Scrapy',
 				'link' => 'http://scrapy.org',
+			],
+			'semanticscholarbot' => [
+				'title' => 'SemanticScholarBot',
+				'link' => 'https://www.semanticscholar.org/crawler',
 			],
 			'semrushbot' => [
 				'title' => 'SemrushBot',
@@ -232,13 +292,29 @@ class Robot extends XFCP_Robot
 				'title' => 'StatusCake VirusScanner',
 				'link' => 'https://statuscake.com/automaton/virus.txt'
 			],
-			'symfony2 browserkit' => [
-				'title' => 'Symfony2 BrowserKit',
+			'symfony browserkit' => [
+				'title' => 'Symfony BrowserKit',
 				'link' => 'https://symfony.com/doc/current/components/browser_kit.html'
+			],
+			'tracemyfile' => [
+				'title' => 'TraceMyFile',
+				'link' => 'https://www.tracemyfile.com/'
+			],
+			'ubermetrics-technologies' => [
+				'title' => 'Ubermetrics',
+				'link' => 'https://www.ubermetrics-technologies.com/'
 			],
 			'vegibot' => [
 				'title' => 'Vegi bot',
 				'link' => 'mailto:abuse-report@terrykyleseoagency.com'
+			],
+			'voyager' => [
+				'title' => 'Voyager Bot',
+				'link' => 'mailto:bot@voyagerx.com'
+			],
+			'wget' => [
+				'title' => 'Linux Wget',
+				'link' => 'https://www.gnu.org/software/wget/'
 			],
 			'wonderbot' => [
 				'title' => 'wonderbot',
