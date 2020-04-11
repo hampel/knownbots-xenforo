@@ -72,7 +72,7 @@ class Robot extends XFCP_Robot
 			'wonderbot' => 'wonderbot',
 			'wotbox' => 'wotbox',
 			'xenu link sleuth' => 'xenu link sleuth',
-			'telegrambot (like twitterbot)' => 'telegrambot',
+			'telegrambot' => 'telegrambot',
 		];
 
 		return array_merge(parent::getRobotUserAgents(), $newBots);
@@ -329,7 +329,7 @@ class Robot extends XFCP_Robot
 				'title' => 'Xenu Link Sleuth',
 				'link' => 'http://home.snafu.de/tilman/xenulink.html'
 			],
-			'telegrambot (like twitterbot)' => [
+			'telegrambot' => [
 				'title' => 'TelegramBot (like TwitterBot)',
 				'link' => 'https://telegram.org/blog/link-preview'
 			],
