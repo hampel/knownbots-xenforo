@@ -11,6 +11,7 @@ class Robot extends XFCP_Robot
 			'ahrefsbot' => 'ahrefs',
 			'aiohttp' => 'aiohttp',
 			'archivebot' => 'archiveteam',
+			'aspiegelbot' => 'aspiegelbot',
 			'apache-httpclient' => 'apache-httpclient',
 			'applebot' => 'applebot',
 			'bingpreview' => 'bing',
@@ -33,6 +34,7 @@ class Robot extends XFCP_Robot
 			'go-http-client' => 'go-http-client',
 			'httrack' => 'httrack',
 			'indeedbot' => 'indeedbot',
+			'internetnz' => 'internetnz',
 			'just-crawling' => 'just-crawling',
 			'knowknot' => 'knowknot',
 			'linguee' => 'linguee',
@@ -43,6 +45,7 @@ class Robot extends XFCP_Robot
 			'megaindex' => 'megaindex',
 			'mfibot' => 'mfibot',
 			'microsoft office protocol discovery' => 'microsoft-office',
+			'microsoft office' => 'microsoft-office',
 			'mixrankbot' => 'mixrankbot',
 			'nlnz_iaharvester' => 'nlnz',
 			'outclicksbot' => 'outclicksbot',
@@ -69,9 +72,11 @@ class Robot extends XFCP_Robot
 			'v-bot' => 'voyager',
 			'vegi bot' => 'vegibot',
 			'wget' => 'wget',
+			'winhttp' => 'winhttp',
 			'wonderbot' => 'wonderbot',
 			'wotbox' => 'wotbox',
 			'xenu link sleuth' => 'xenu link sleuth',
+			'telegrambot' => 'telegrambot',
 		];
 
 		return array_merge(parent::getRobotUserAgents(), $newBots);
@@ -111,6 +116,10 @@ class Robot extends XFCP_Robot
 			'archiveteam' => [
 				'title' => 'Archive Team',
 				'link' => 'https://www.archiveteam.org/index.php?title=ArchiveBot'
+			],
+			'aspiegelbot' => [
+				'title' => 'AspiegelBot',
+				'link' => 'https://aspiegel.com/about'
 			],
 			'brandverity' => [
 				'title' => 'BrandVerity',
@@ -179,6 +188,10 @@ class Robot extends XFCP_Robot
 			'indeedbot' => [
 				'title' => 'IndeedBot',
 				'link' => 'http://indeedbot.com/'
+			],
+			'internetnz' => [
+				'title' => 'InternetNZ Webscan',
+				'link' => 'https://zonescan.nzrs.net.nz'
 			],
 			'just-crawling' => [
 				'title' => 'Just-Crawling',
@@ -316,6 +329,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Linux Wget',
 				'link' => 'https://www.gnu.org/software/wget/'
 			],
+			'winhttp' => [
+				'title' => 'Microsoft WinHttp',
+				'link' => 'https://docs.microsoft.com/en-us/windows/win32/winhttp/about-winhttp'
+			],
 			'wonderbot' => [
 				'title' => 'wonderbot',
 				'link' => 'https://wonder-bot.com/'
@@ -327,6 +344,10 @@ class Robot extends XFCP_Robot
 			'xenu link sleuth' => [
 				'title' => 'Xenu Link Sleuth',
 				'link' => 'http://home.snafu.de/tilman/xenulink.html'
+			],
+			'telegrambot' => [
+				'title' => 'TelegramBot (like TwitterBot)',
+				'link' => 'https://telegram.org/blog/link-preview'
 			],
 		];
 
