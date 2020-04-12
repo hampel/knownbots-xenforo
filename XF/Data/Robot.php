@@ -11,6 +11,7 @@ class Robot extends XFCP_Robot
 			'ahrefsbot' => 'ahrefs',
 			'aiohttp' => 'aiohttp',
 			'archivebot' => 'archiveteam',
+			'aspiegelbot' => 'aspiegelbot',
 			'apache-httpclient' => 'apache-httpclient',
 			'applebot' => 'applebot',
 			'bingpreview' => 'bing',
@@ -115,6 +116,10 @@ class Robot extends XFCP_Robot
 			'archiveteam' => [
 				'title' => 'Archive Team',
 				'link' => 'https://www.archiveteam.org/index.php?title=ArchiveBot'
+			],
+			'aspiegelbot' => [
+				'title' => 'AspiegelBot',
+				'link' => 'https://aspiegel.com/about'
 			],
 			'brandverity' => [
 				'title' => 'BrandVerity',
