@@ -7,76 +7,121 @@ class Robot extends XFCP_Robot
 		$newBots = [
 			'7siters' => '7siters',
 			'adbeat' => 'adbeat',
+			'adsbot-google-mobile' => 'adsbot-google-mobile',
 			'adscanner' => 'adscanner',
 			'ahrefsbot' => 'ahrefs',
 			'aiohttp' => 'aiohttp',
+			'archive.org_bot' => 'archive.org',
 			'archivebot' => 'archiveteam',
 			'aspiegelbot' => 'aspiegelbot',
 			'apache-httpclient' => 'apache-httpclient',
 			'applebot' => 'applebot',
+			'awariosmartbot' => 'awariosmartbot',
 			'bingpreview' => 'bing',
 			'binglocalsearch' => 'bing',
+			'blexbot' => 'blexbot',
+			'bomborabot' => 'bomborabot',
 			'brandverity' => 'brandverity',
 			'brokenlinkcheck' => 'brokenlinkcheck',
+			'buck' => 'buck',
+			'bytespider' => 'bytespider',
+			'cliqzbot' => 'cliqzbot',
+			'coccocbot' => 'coccocbot',
+			'cocolyzebot' => 'cocolyzebot',
 			'companybook-crawler' => 'companybook',
 			'contacts-crawler' => 'scrapinghub',
+			'contxbot' => 'contxbot',
 			'crawler4j' => 'crawler4j',
 			'cukbot' => 'cukbot',
 			'curl' => 'curl',
 			'dalvik' => 'dalvik',
 			'dataprovider' => 'dataprovider',
+			'demandbasepublisheranalyzer' => 'demandbasepublisheranalyzer',
+			'discordbot' => 'discordbot',
 			'dispatch' => 'dispatch',
 			'domainappender' => 'domainappender',
+			'domainstatsbot' => 'domainstatsbot',
+			'dotbot' => 'dotbot',
 			'duckduckbot' => 'duckduckbot',
 			'e.ventures' => 'eventures',
 			'exabot' => 'exabot',
+			'ezooms' => 'ezooms',
 			'garlikcrawler' => 'garlikcrawler',
+			'getintent crawler' => 'getintent',
 			'go-http-client' => 'go-http-client',
+			'grapeshotcrawler' => 'grapeshotcrawler',
 			'httrack' => 'httrack',
+			'ias-ir' => 'admantx',
+			'ias-or' => 'admantx',
+			'ias-va' => 'admantx',
 			'indeedbot' => 'indeedbot',
 			'internetnz' => 'internetnz',
 			'just-crawling' => 'just-crawling',
 			'knowknot' => 'knowknot',
+			'leikibot' => 'leikibot',
 			'linguee' => 'linguee',
 			'linkdexbot' => 'linkdexbot',
+			'linkfluence' => 'linkfluence',
 			'linkpadbot' => 'linkpadbot',
 			'ltx71' => 'ltx71',
 			'mail.ru' => 'mail.ru',
+			'mbcrawler' => 'mbcrawler',
+			'mediatoolkitbot' => 'mediatoolkitbot',
 			'megaindex' => 'megaindex',
 			'mfibot' => 'mfibot',
 			'microsoft office protocol discovery' => 'microsoft-office',
 			'microsoft office' => 'microsoft-office',
 			'mixrankbot' => 'mixrankbot',
+			'mojeekbot' => 'mojeekbot',
+			'monsidobot' => 'monsidobot',
+			'nekstbot' => 'nekstbot',
 			'nlnz_iaharvester' => 'nlnz',
+			'omgili' => 'omgili',
 			'outclicksbot' => 'outclicksbot',
 			'panscient' => 'panscient',
 			'pcore-http' => 'pcore-http',
 			'php' => 'php',
 			'pinterestbot' => 'pinterest',
 			'python-requests' => 'python-requests',
+			'quantcastbot' => 'quantcastbot',
 			'quick-crawler' => 'scrapinghub',
 			're-re studio' => 're-re studio',
+			'relemindbot' => 'relemindbot',
 			'scrapy' => 'scrapy',
+			'seekport crawler' => 'seekport',
+			'seewithkids' => 'seewithkids',
 			'semanticscholarbot' => 'semanticscholarbot',
 			'semrushbot' => 'semrushbot',
 			'seokicks-robot' => 'seokicks-robot',
+			'serendeputybot' => 'serendeputybot',
+			'seznambot' => 'seznambot',
 			'sitesucker' => 'sitesucker',
 			'smtbot' => 'smtbot',
 			'spbot' => 'spbot',
+			'special_archiver' => 'special_archiver',
 			'sqlmap' => 'sqlmap',
+			'startmebot' => 'startmebot',
 			'statuscake/virusscanner' => 'statuscake',
 			'symfony browserkit' => 'symfony browserkit',
 			'symfony2 browserkit' => 'symfony browserkit',
 			'tracemyfile' => 'tracemyfile',
+			'trendictionbot' => 'trendictionbot',
+			'triplecheckerrobot' => 'triplecheckerrobot',
+			'tweetmemebot' => 'tweetmemebot',
+			'twitterbot' => 'twitterbot',
+			'ttd-content' => 'ttd-content',
+			'uipbot' => 'uipbot',
 			'um-ln' => 'ubermetrics-technologies',
 			'v-bot' => 'voyager',
 			'vegi bot' => 'vegibot',
+			'voluumdsp-content-bot' => 'voluumdsp',
 			'wget' => 'wget',
 			'winhttp' => 'winhttp',
 			'wonderbot' => 'wonderbot',
 			'wotbox' => 'wotbox',
 			'xenu link sleuth' => 'xenu link sleuth',
 			'telegrambot' => 'telegrambot',
+			'zoominfobot' => 'zoominfobot',
 		];
 
 		return array_merge(parent::getRobotUserAgents(), $newBots);
@@ -92,6 +137,10 @@ class Robot extends XFCP_Robot
 			'adbeat' => [
 				'title' => 'Adbeat',
 				'link' => 'http://adbeat.com/policy',
+			],
+			'adsbot-google-mobile' => [
+				'title' => 'AdsBot-Google-Mobile',
+				'link' => 'http://www.google.com/mobile/adsbot.html',
 			],
 			'adscanner' => [
 				'title' => 'AdScanner',
@@ -113,6 +162,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Applebot',
 				'link' => 'http://www.apple.com/go/applebot',
 			],
+			'archive.org' => [
+				'title' => 'Archive-It',
+				'link' => 'http://archive-it.org/files/site-owners.html'
+			],
 			'archiveteam' => [
 				'title' => 'Archive Team',
 				'link' => 'https://www.archiveteam.org/index.php?title=ArchiveBot'
@@ -120,6 +173,18 @@ class Robot extends XFCP_Robot
 			'aspiegelbot' => [
 				'title' => 'AspiegelBot',
 				'link' => 'https://aspiegel.com/about'
+			],
+			'awariosmartbot' => [
+				'title' => 'AwarioSmartBot',
+				'link' => 'https://awario.com/bots.html'
+			],
+			'blexbot' => [
+				'title' => 'BLEXBot Crawler',
+				'link' => 'http://webmeup-crawler.com/'
+			],
+			'bomborabot' => [
+				'title' => 'BomboraBot',
+				'link' => 'http://www.bombora.com/bot'
 			],
 			'brandverity' => [
 				'title' => 'BrandVerity',
@@ -129,9 +194,33 @@ class Robot extends XFCP_Robot
 				'title' => 'BrokenLinkCheck.com',
 				'link' => 'http://brokenlinkcheck.com/'
 			],
+			'buck' => [
+				'title' => 'Buck',
+				'link' => 'https://app.hypefactors.com/media-monitoring/about.html'
+			],
+			'bytespider' => [
+				'title' => 'Bytespider',
+				'link' => 'https://zhanzhang.toutiao.com/'
+			],
+			'cliqzbot' => [
+				'title' => 'Cliqzbot',
+				'link' => 'http://cliqz.com/company/cliqzbot'
+			],
+			'coccocbot' => [
+				'title' => 'Coc Coc Bot',
+				'link' => 'http://help.coccoc.com/searchengine'
+			],
+			'cocolyzebot' => [
+				'title' => 'Cocolyzebot',
+				'link' => ' https://cocolyze.com/bot'
+			],
 			'companybook' => [
 				'title' => 'Companybook',
 				'link' => 'https://www.companybooknetworking.com/'
+			],
+			'contxbot' => [
+				'title' => 'Amazon contxbot',
+				'link' => 'https://affiliate-program.amazon.com/help/node/topic/GT98G5PPRERNVZ2C'
 			],
 			'crawler4j' => [
 				'title' => 'crawler4j',
@@ -153,6 +242,18 @@ class Robot extends XFCP_Robot
 				'title' => 'Dataprovider',
 				'link' => 'https://www.dataprovider.com/'
 			],
+			'demandbasepublisheranalyzer' => [
+				'title' => 'DemandbasePublisherAnalyzer',
+				'link' => 'http://www.demandbase.com'
+			],
+			'discordbot' => [
+				'title' => 'Discordbot',
+				'link' => 'https://discordapp.com'
+			],
+			'dotbot' => [
+				'title' => 'DotBot',
+				'link' => 'http://www.opensiteexplorer.org/dotbot'
+			],
 			'dispatch' => [
 				'title' => 'dispatch',
 				'link' => ''
@@ -160,6 +261,10 @@ class Robot extends XFCP_Robot
 			'domainappender' => [
 				'title' => 'DomainAppender',
 				'link' => 'http://www.profound.net/domainappender'
+			],
+			'domainstatsbot' => [
+				'title' => 'DomainStatsBot',
+				'link' => 'https://domainstats.com/pages/our-bot'
 			],
 			'duckduckbot' => [
 				'title' => 'DuckDuckBot',
@@ -173,9 +278,21 @@ class Robot extends XFCP_Robot
 				'title' => 'Exabot',
 				'link' => 'http://www.exabot.com/go/robot'
 			],
+			'ezooms' => [
+				'title' => 'Ezooms',
+				'link' => 'mailto:ezooms.bot@gmail.com'
+			],
 			'garlikcrawler' => [
 				'title' => 'GarlikCrawler',
 				'link' => 'http://garlik.com/'
+			],
+			'getintent' => [
+				'title' => 'GetIntent Crawler',
+				'link' => 'http://getintent.com/bot.html'
+			],
+			'grapeshotcrawler' => [
+				'title' => 'GrapeshotCrawler',
+				'link' => 'http://www.grapeshot.co.uk/crawler.php'
 			],
 			'go-http-client' => [
 				'title' => 'Go-http-client',
@@ -184,6 +301,10 @@ class Robot extends XFCP_Robot
 			'httrack' => [
 				'title' => 'HTTrack',
 				'link' => 'http://www.httrack.com/'
+			],
+			'admantx' => [
+				'title' => 'ADmantX Service Fetcher',
+				'link' => 'https://www.admantx.com/service-fetcher.html'
 			],
 			'indeedbot' => [
 				'title' => 'IndeedBot',
@@ -201,6 +322,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Knowknot',
 				'link' => 'http://knowknot.com/faq.htm'
 			],
+			'leikibot' => [
+				'title' => 'Leikibot',
+				'link' => 'http://www.leiki.com'
+			],
 			'linguee' => [
 				'title' => 'Linguee Bot',
 				'link' => 'http://www.linguee.com/bot'
@@ -208,6 +333,10 @@ class Robot extends XFCP_Robot
 			'linkdexbot' => [
 				'title' => 'linkdexbot',
 				'link' => 'http://www.linkdex.com/bots/'
+			],
+			'linkfluence' => [
+				'title' => 'Linkfluence',
+				'link' => 'http://linkfluence.com/'
 			],
 			'linkpadbot' => [
 				'title' => 'LinkpadBot',
@@ -220,6 +349,14 @@ class Robot extends XFCP_Robot
 			'mail.ru' => [
 				'title' => 'Mail.RU',
 				'link' => 'http://go.mail.ru/help/robots',
+			],
+			'mbcrawler' => [
+				'title' => 'MBCrawler',
+				'link' => 'https://monitorbacklinks.com/robot',
+			],
+			'mediatoolkitbot' => [
+				'title' => 'Mediatoolkitbot',
+				'link' => 'mailto:complaints@mediatoolkit.com',
 			],
 			'megaindex' => [
 				'title' => 'MegaIndex',
@@ -237,9 +374,25 @@ class Robot extends XFCP_Robot
 				'title' => 'MixrankBot',
 				'link' => 'mailto:crawler@mixrank.com',
 			],
+			'mojeekbot' => [
+				'title' => 'MojeekBot',
+				'link' => 'https://www.mojeek.com/bot.html',
+			],
+			'monsidobot' => [
+				'title' => 'Monsidobot',
+				'link' => 'http://monsido.com/bot.html',
+			],
+			'nekstbot' => [
+				'title' => 'Nekstbot',
+				'link' => 'http://nekst.ipipan.waw.pl/nekstbot/'
+			],
 			'nlnz' => [
 				'title' => 'NLNZ_IAHarvester2017',
 				'link' => 'https://natlib.govt.nz/publishers-and-authors/web-harvesting/domain-harvest'
+			],
+			'omgili' => [
+				'title' => 'omgili',
+				'link' => 'http://omgili.com'
 			],
 			'outclicksbot' => [
 				'title' => 'OutclicksBot',
@@ -261,9 +414,17 @@ class Robot extends XFCP_Robot
 				'title' => 'Pinterestbot',
 				'link' => 'http://www.pinterest.com/bot.html'
 			],
+			'quantcastbot' => [
+				'title' => 'Quantcastbot',
+				'link' => 'http://www.quantcast.com/bot'
+			],
 			're-re studio' => [
 				'title' => 'Re-re Studio',
 				'link' => 'http://re-re.ru/'
+			],
+			'relemindbot' => [
+				'title' => 'relemindbot',
+				'link' => 'https://relemind.com/impressum/'
 			],
 			'scrapinghub' => [
 				'title' => 'Scrapinghub',
@@ -272,6 +433,14 @@ class Robot extends XFCP_Robot
 			'scrapy' => [
 				'title' => 'Scrapy',
 				'link' => 'http://scrapy.org',
+			],
+			'seekport' => [
+				'title' => 'Seekport Crawler',
+				'link' => 'http://seekport.com/',
+			],
+			'seewithkids' => [
+				'title' => 'SeeWithKids.com Crawler',
+				'link' => 'http://seewithkids.com/bot',
 			],
 			'semanticscholarbot' => [
 				'title' => 'SemanticScholarBot',
@@ -285,6 +454,14 @@ class Robot extends XFCP_Robot
 				'title' => 'SEOkicks-Robot',
 				'link' => 'http://www.seokicks.de/robot.html',
 			],
+			'serendeputybot' => [
+				'title' => 'SerendeputyBot',
+				'link' => 'http://serendeputy.com/about/serendeputy-bot',
+			],
+			'seznambot' => [
+				'title' => 'SeznamBot',
+				'link' => 'http://napoveda.seznam.cz/en/seznambot-intro/',
+			],
 			'sitesucker' => [
 				'title' => 'SiteSucker for OS X',
 				'link' => 'http://ricks-apps.com/osx/sitesucker/',
@@ -297,9 +474,17 @@ class Robot extends XFCP_Robot
 				'title' => 'SMTBot',
 				'link' => 'http://OpenLinkProfiler.org/bot'
 			],
+			'special_archiver' => [
+				'title' => 'Archive.org bot',
+				'link' => 'http://www.archive.org/details/archive.org_bot'
+			],
 			'sqlmap' => [
 				'title' => 'sqlmap',
 				'link' => 'http://sqlmap.org'
+			],
+			'startmebot' => [
+				'title' => 'startmebot',
+				'link' => 'https://start.me/bot'
 			],
 			'statuscake' => [
 				'title' => 'StatusCake VirusScanner',
@@ -313,13 +498,41 @@ class Robot extends XFCP_Robot
 				'title' => 'TraceMyFile',
 				'link' => 'https://www.tracemyfile.com/'
 			],
+			'trendictionbot' => [
+				'title' => 'TrendictionBot',
+				'link' => 'http://www.trendiction.de/bot'
+			],
+			'triplecheckerrobot' => [
+				'title' => 'TripleCheckerRobot',
+				'link' => 'https://www.triplechecker.com/'
+			],
+			'ttd-content' => [
+				'title' => 'theTradeDesk Content Scraper',
+				'link' => 'https://www.thetradedesk.com/general/ttd-content'
+			],
+			'tweetmemebot' => [
+				'title' => 'TweetmemeBot',
+				'link' => 'http://datasift.com/bot.html'
+			],
+			'twitterbot' => [
+				'title' => 'Twitterbot',
+				'link' => ''
+			],
 			'ubermetrics-technologies' => [
 				'title' => 'Ubermetrics',
 				'link' => 'https://www.ubermetrics-technologies.com/'
 			],
+			'uipbot' => [
+				'title' => 'Semasio uipbot',
+				'link' => 'mailto:uipbot@semasio.net'
+			],
 			'vegibot' => [
 				'title' => 'Vegi bot',
 				'link' => 'mailto:abuse-report@terrykyleseoagency.com'
+			],
+			'voluumdsp' => [
+				'title' => 'VoluumDSP Content Bot',
+				'link' => 'mailto:dsp-dev@codewise.com'
 			],
 			'voyager' => [
 				'title' => 'Voyager Bot',
@@ -348,6 +561,10 @@ class Robot extends XFCP_Robot
 			'telegrambot' => [
 				'title' => 'TelegramBot (like TwitterBot)',
 				'link' => 'https://telegram.org/blog/link-preview'
+			],
+			'zoominfobot' => [
+				'title' => 'ZoominfoBot',
+				'link' => 'mailto:zoominfobot@zoominfo.com'
 			],
 		];
 
