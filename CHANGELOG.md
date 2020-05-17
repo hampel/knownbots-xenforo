@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+2.7.0 (2020-05-17)
+-------------------
+
+* lots of new bots
+* renamed a few ids and phrase strings
+* new tool to detect bots in user agent strings
+
 2.6.0 (2020-04-12)
 -------------------
 
