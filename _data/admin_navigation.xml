@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <admin_navigation>
-  <admin_navigation_entry navigation_id="hampelKnownBotsList" parent_navigation_id="checksAndTests" display_order="999" link="tools/known-bots" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="hampelKnownBots" parent_navigation_id="tools" display_order="390" debug_only="0" development_only="0" hide_no_children="1"/>
+  <admin_navigation_entry navigation_id="hampelKnownBotsDetect" parent_navigation_id="hampelKnownBots" display_order="999" link="tools/hampel-knownbots-detect" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="hampelKnownBotsList" parent_navigation_id="hampelKnownBots" display_order="999" link="tools/hampel-knownbots-list" debug_only="0" development_only="0" hide_no_children="0"/>
 </admin_navigation>

@@ -12,7 +12,7 @@
 				'guests': number($online.counts.guests)})
 			}}<br />
 <xf:if is="$xf.options.knownbotsShowBotStats">
-	{{ phrase('knownbots_online_now_x_robots', {'robots': number($online.counts.robots)})}}
+	{{ phrase('hampel_knownbots_online_now_x_robots', {'robots': number($online.counts.robots)})}}
 </xf:if>	]]></replace>
   </modification>
   <modification type="public" template="widget_online_statistics" modification_key="knownbots_widget_online_statistics" description="Add robots to online statistics" execution_order="10" enabled="1" action="str_replace">
