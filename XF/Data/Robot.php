@@ -8,6 +8,7 @@ class Robot extends XFCP_Robot
 			'7siters' => '7siters',
 			'adbeat' => 'adbeat',
 			'adsbot-google-mobile' => 'adsbot-google-mobile',
+			'adsbot-google' => 'adsbot-google', // this should come after adsbot-google-mobile
 			'adscanner' => 'adscanner',
 			'ahrefsbot' => 'ahrefs',
 			'aiohttp' => 'aiohttp',
@@ -43,12 +44,16 @@ class Robot extends XFCP_Robot
 			'domainstatsbot' => 'domainstatsbot',
 			'dotbot' => 'dotbot',
 			'duckduckbot' => 'duckduckbot',
+			'duplexweb-google' => 'duplexweb-google',
 			'e.ventures' => 'eventures',
 			'exabot' => 'exabot',
 			'ezooms' => 'ezooms',
+			'feedfetcher-google' => 'feedfetcher-google',
 			'garlikcrawler' => 'garlikcrawler',
 			'getintent crawler' => 'getintent',
 			'go-http-client' => 'go-http-client',
+			'google-read-aloud' => 'google-read-aloud',
+			'google favicon' => 'google-favicon',
 			'grapeshotcrawler' => 'grapeshotcrawler',
 			'httrack' => 'httrack',
 			'ias-ir' => 'admantx',
@@ -110,8 +115,9 @@ class Robot extends XFCP_Robot
 			'tweetmemebot' => 'tweetmemebot',
 			'twitterbot' => 'twitterbot',
 			'ttd-content' => 'ttd-content',
-			'uipbot' => 'uipbot',
 			'um-ln' => 'ubermetrics-technologies',
+			'uipbot' => 'uipbot',
+			'uptimerobot' => 'uptimerobot',
 			'v-bot' => 'voyager',
 			'vegi bot' => 'vegibot',
 			'voluumdsp-content-bot' => 'voluumdsp',
@@ -141,6 +147,10 @@ class Robot extends XFCP_Robot
 			'adsbot-google-mobile' => [
 				'title' => 'AdsBot-Google-Mobile',
 				'link' => 'http://www.google.com/mobile/adsbot.html',
+			],
+			'adsbot-google' => [
+				'title' => 'AdsBot-Google',
+				'link' => 'http://www.google.com/adsbot.html',
 			],
 			'adscanner' => [
 				'title' => 'AdScanner',
@@ -270,6 +280,10 @@ class Robot extends XFCP_Robot
 				'title' => 'DuckDuckBot',
 				'link' => 'http://duckduckgo.com/duckduckbot.html'
 			],
+			'duplexweb-google' => [
+				'title' => 'Duplex on the Web',
+				'link' => 'https://support.google.com/webmasters/answer/9467408'
+			],
 			'eventures' => [
 				'title' => 'e.ventures Investment Crawler',
 				'link' => 'https://www.eventures.vc/'
@@ -281,6 +295,10 @@ class Robot extends XFCP_Robot
 			'ezooms' => [
 				'title' => 'Ezooms',
 				'link' => 'mailto:ezooms.bot@gmail.com'
+			],
+			'feedfetcher-google' => [
+				'title' => 'Google Feedfetcher',
+				'link' => 'http://www.google.com/feedfetcher.html'
 			],
 			'garlikcrawler' => [
 				'title' => 'GarlikCrawler',
@@ -297,6 +315,14 @@ class Robot extends XFCP_Robot
 			'go-http-client' => [
 				'title' => 'Go-http-client',
 				'link' => 'https://golang.org/pkg/net/http/'
+			],
+			'google-favicon' => [
+				'title' => 'Google Favicon',
+				'link' => 'https://support.google.com/webmasters/answer/1061943'
+			],
+			'google-read-aloud' => [
+				'title' => 'Google Real Aloud',
+				'link' => 'https://support.google.com/webmasters/answer/1061943'
 			],
 			'httrack' => [
 				'title' => 'HTTrack',
@@ -525,6 +551,10 @@ class Robot extends XFCP_Robot
 			'uipbot' => [
 				'title' => 'Semasio uipbot',
 				'link' => 'mailto:uipbot@semasio.net'
+			],
+			'uptimerobot' => [
+				'title' => 'UptimeRobot',
+				'link' => 'http://www.uptimerobot.com/'
 			],
 			'vegibot' => [
 				'title' => 'Vegi bot',
