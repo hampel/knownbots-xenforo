@@ -1,7 +1,12 @@
 {
-    "admin/knownbots_list.html": {
-        "version_id": 2020070,
-        "version_string": "2.2.0",
-        "hash": "67e9ca76f778a7270d88828803cd4c8b"
+    "admin/hampel_knownbots_detect.html": {
+        "version_id": 2060070,
+        "version_string": "2.6.0",
+        "hash": "d41c89a7e3d8f79500ec5defc9c1d12a"
+    },
+    "admin/hampel_knownbots_list.html": {
+        "version_id": 2060070,
+        "version_string": "2.6.0",
+        "hash": "33ce6d55ec2bc615fcc1b0fa2678a3cb"
     }
 }

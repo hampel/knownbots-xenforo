@@ -1,0 +1,1 @@
+Test if this user agent string will be detected as a bot

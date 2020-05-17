@@ -1,5 +1,11 @@
 {
+    "hampelKnownBots.json": {
+        "hash": "00b60a803c336ab16ee152e16787fd67"
+    },
+    "hampelKnownBotsDetect.json": {
+        "hash": "5afdbb825691893112c1e8491cc5d93e"
+    },
     "hampelKnownBotsList.json": {
-        "hash": "077a347878e92a4c20b9847c99f83676"
+        "hash": "237a4a9475e8c27cd6145de0286205ce"
     }
 }

@@ -1,21 +1,75 @@
 {
+    "admin_navigation.hampelKnownBots.txt": {
+        "global_cache": false,
+        "version_id": 2060070,
+        "version_string": "2.6.0",
+        "hash": "a5d5bff2727747ad95992e3c83e69c35"
+    },
+    "admin_navigation.hampelKnownBotsDetect.txt": {
+        "global_cache": false,
+        "version_id": 2060070,
+        "version_string": "2.6.0",
+        "hash": "a7fee2892f568643fcd93ddf387ba6bf"
+    },
     "admin_navigation.hampelKnownBotsList.txt": {
         "global_cache": false,
         "version_id": 2000070,
         "version_string": "2.0.0",
         "hash": "11e31d91976cf01cab07b0adbf7e61df"
     },
-    "knownbots_list.txt": {
+    "hampel_knownbots_detect.txt": {
         "global_cache": false,
-        "version_id": 2000070,
-        "version_string": "2.0.0",
+        "version_id": 2060070,
+        "version_string": "2.6.0",
+        "hash": "0e370cdb75dc1ea3a1afc49c33e9dcc2"
+    },
+    "hampel_knownbots_detected.txt": {
+        "global_cache": false,
+        "version_id": 2060070,
+        "version_string": "2.6.0",
+        "hash": "2f4f69c77b0f65b51ab8889c29f8ac66"
+    },
+    "hampel_knownbots_detection_test.txt": {
+        "global_cache": false,
+        "version_id": 2060070,
+        "version_string": "2.6.0",
+        "hash": "a7fee2892f568643fcd93ddf387ba6bf"
+    },
+    "hampel_knownbots_is_this_a_bot.txt": {
+        "global_cache": false,
+        "version_id": 2060070,
+        "version_string": "2.6.0",
+        "hash": "e6e3b9cea05d1457e28cd35076f7364c"
+    },
+    "hampel_knownbots_list.txt": {
+        "global_cache": false,
+        "version_id": 2060070,
+        "version_string": "2.6.0",
         "hash": "f74c5de0e2efea63bfbc3ca382dee2ba"
     },
-    "knownbots_online_now_x_robots.txt": {
+    "hampel_knownbots_none_detected.txt": {
         "global_cache": false,
-        "version_id": 2020070,
-        "version_string": "2.2.0",
+        "version_id": 2060070,
+        "version_string": "2.6.0",
+        "hash": "70a072c38107ff8eb7856e9c04ceb363"
+    },
+    "hampel_knownbots_online_now_x_robots.txt": {
+        "global_cache": false,
+        "version_id": 2060070,
+        "version_string": "2.6.0",
         "hash": "d519c8f4ee78ade3eed4a68c37043d63"
+    },
+    "hampel_knownbots_useragent.txt": {
+        "global_cache": false,
+        "version_id": 2060070,
+        "version_string": "2.6.0",
+        "hash": "dfb790522fdea3859af206d32916fe77"
+    },
+    "hampel_knownbots_useragent_explain.txt": {
+        "global_cache": false,
+        "version_id": 2060070,
+        "version_string": "2.6.0",
+        "hash": "56f5e3c0ba4b9f62aa41317c5346e371"
     },
     "option.knownbotsShowBotStats.txt": {
         "global_cache": false,
