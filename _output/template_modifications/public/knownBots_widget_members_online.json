@@ -3,7 +3,7 @@
     "description": "Change online users phrase to include robots",
     "execution_order": 10,
     "enabled": true,
-    "action": "str_replace",
-    "find": "{{ phrase('online_now_x_members_y_guests_z',{\n\t\t\t\t'total': number($online.counts.total),\n\t\t\t\t'members': number($online.counts.members),\n\t\t\t\t'guests': number($online.counts.guests)})\n\t\t\t}}",
-    "replace": "{{ phrase('online_now_x_members_y_guests_z',{\n\t\t\t\t'total': number($online.counts.total),\n\t\t\t\t'members': number($online.counts.members),\n\t\t\t\t'guests': number($online.counts.guests)})\n\t\t\t}}<br />\n<xf:if is=\"$xf.options.knownbotsShowBotStats\">\n\t{{ phrase('hampel_knownbots_online_now_x_robots', {'robots': number($online.counts.robots)})}}\n</xf:if>\t"
+    "action": "preg_replace",
+    "find": "#(<span class=\"block-footer-counter\">.*)(</span>)#simU",
+    "replace": "$1\n\t\t\t<xf:if is=\"$xf.options.knownbotsShowBotStats\">\n\t\t\t\t<br />{{ phrase('hampel_knownbots_online_now_x_robots', {'robots': number($online.counts.robots)})}}\n\t\t\t</xf:if>\n\t\t\t$2"
 }

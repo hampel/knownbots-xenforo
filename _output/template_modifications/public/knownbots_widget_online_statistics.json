@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "\t\t\t<dl class=\"pairs pairs--justified\">\n\t\t\t\t<dt>{{ phrase('total_visitors') }}</dt>\n\t\t\t\t<dd>{$counts.total|number}</dd>\n\t\t\t</dl>",
-    "replace": "\t\t\t<dl class=\"pairs pairs--justified\">\n\t\t\t\t<dt>{{ phrase('total_visitors') }}</dt>\n\t\t\t\t<dd>{$counts.total|number}</dd>\n\t\t\t</dl>\n\t\t\t<xf:if is=\"$xf.options.knownbotsShowBotStats\">\n\t\t\t\t<dl class=\"pairs pairs--justified\">\n\t\t\t\t\t<dt>{{ phrase('robots') }}</dt>\n\t\t\t\t\t<dd>{$counts.robots|number}</dd>\n\t\t\t\t</dl>\n\t\t\t</xf:if>"
+    "replace": "$0\n\t\t\t<xf:if is=\"$xf.options.knownbotsShowBotStats\">\n\t\t\t\t<dl class=\"pairs pairs--justified\">\n\t\t\t\t\t<dt>{{ phrase('robots') }}</dt>\n\t\t\t\t\t<dd>{$counts.robots|number}</dd>\n\t\t\t\t</dl>\n\t\t\t</xf:if>"
 }
