@@ -15,6 +15,7 @@ class Robot extends XFCP_Robot
 			'adscanner' => 'adscanner',
 			'ahrefsbot' => 'ahrefs',
 			'aiohttp' => 'aiohttp',
+			'amazonbot' => 'amazonbot',
 			'archive.org_bot' => 'archive.org',
 			'archivebot' => 'archiveteam',
 			'aspiegelbot' => 'aspiegelbot',
@@ -88,6 +89,7 @@ class Robot extends XFCP_Robot
 			'outclicksbot' => 'outclicksbot',
 			'panscient' => 'panscient',
 			'pcore-http' => 'pcore-http',
+			'petalbot' => 'petalbot',
 			'php' => 'php',
 			'pinterestbot' => 'pinterest',
 			'postmanruntime' => 'postman',
@@ -105,6 +107,7 @@ class Robot extends XFCP_Robot
 			'serendeputybot' => 'serendeputybot',
 			'seznambot' => 'seznambot',
 			'sitesucker' => 'sitesucker',
+			'slackbot' => 'slackbot',
 			'smtbot' => 'smtbot',
 			'spbot' => 'spbot',
 			'special_archiver' => 'special_archiver',
@@ -230,6 +233,10 @@ class Robot extends XFCP_Robot
 			'aiohttp' => [
 				'title' => 'aiohttp',
 				'link' => 'https://github.com/aio-libs/aiohttp',
+			],
+			'amazonbot' => [
+				'title' => 'Amazonbot',
+				'link' => 'https://developer.amazon.com/support/amazonbot',
 			],
 			'apache-httpclient' => [
 				'title' => 'Apache-HttpClient',
@@ -507,6 +514,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Pcore-HTTP',
 				'link' => ''
 			],
+			'petalbot' => [
+				'title' => 'PetalBot',
+				'link' => 'http://aspiegel.com/petalbot'
+			],
 			'php' => [
 				'title' => 'PHP',
 				'link' => ''
@@ -570,6 +581,10 @@ class Robot extends XFCP_Robot
 			'sitesucker' => [
 				'title' => 'SiteSucker for OS X',
 				'link' => 'http://ricks-apps.com/osx/sitesucker/',
+			],
+			'slackbot' => [
+				'title' => 'SlackBot',
+				'link' => 'https://api.slack.com/robots'
 			],
 			'smtbot' => [
 				'title' => 'SMTBot',
