@@ -1,5 +1,11 @@
 {
 	"exec": [
+		"rm -v _build/upload/src/addons/{addon_id}/TESTING.md",
+		"rm -v _build/upload/src/addons/{addon_id}/composer.json",
+		"rm -v _build/upload/src/addons/{addon_id}/composer.lock",
+		"rm -v _build/upload/src/addons/{addon_id}/phpunit.xml",
+		"rm -v -r _build/upload/src/addons/{addon_id}/tests",
+		"rm -v -r _build/upload/src/addons/{addon_id}/vendor",
 		"mv -v _build/upload/src/addons/{addon_id}/*.md _build/"
 	]
 }
