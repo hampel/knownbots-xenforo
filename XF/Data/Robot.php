@@ -4,13 +4,11 @@ use Hampel\KnownBots\Repository\UserAgentCache;
 
 class Robot extends XFCP_Robot
 {
-	// TODO: AccompanyBot
-	// TODO: PostmanRuntime
-
 	public function getRobotUserAgents()
 	{
 		$newBots = [
 			'7siters' => '7siters',
+			'accompanybot' => 'accompanybot',
 			'adbeat' => 'adbeat',
 			'adsbot-google-mobile' => 'adsbot-google-mobile',
 			'adsbot-google' => 'adsbot-google', // this should come after adsbot-google-mobile
@@ -92,6 +90,7 @@ class Robot extends XFCP_Robot
 			'pcore-http' => 'pcore-http',
 			'php' => 'php',
 			'pinterestbot' => 'pinterest',
+			'postmanruntime' => 'postman',
 			'python-requests' => 'python-requests',
 			'quantcastbot' => 'quantcastbot',
 			'quick-crawler' => 'scrapinghub',
@@ -203,6 +202,10 @@ class Robot extends XFCP_Robot
 			'7siters' => [
 				'title' => '7Siters',
 				'link' => 'https://7ooo.ru/siters/',
+			],
+			'accompanybot' => [
+				'title' => 'AccompanyBot',
+				'link' => '',
 			],
 			'adbeat' => [
 				'title' => 'Adbeat',
@@ -511,6 +514,10 @@ class Robot extends XFCP_Robot
 			'pinterest' => [
 				'title' => 'Pinterestbot',
 				'link' => 'http://www.pinterest.com/bot.html'
+			],
+			'postman' => [
+				'title' => 'Postman',
+				'link' => 'https://github.com/postmanlabs/postman-runtime'
 			],
 			'quantcastbot' => [
 				'title' => 'Quantcastbot',
