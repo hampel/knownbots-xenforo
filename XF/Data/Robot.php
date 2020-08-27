@@ -1,7 +1,12 @@
 <?php namespace Hampel\KnownBots\XF\Data;
 
+use Hampel\KnownBots\Repository\UserAgentCache;
+
 class Robot extends XFCP_Robot
 {
+	// TODO: AccompanyBot
+	// TODO: PostmanRuntime
+
 	public function getRobotUserAgents()
 	{
 		$newBots = [
@@ -133,6 +138,65 @@ class Robot extends XFCP_Robot
 		return array_merge(parent::getRobotUserAgents(), $newBots);
 	}
 
+	public function userAgentMatchesRobot($userAgent)
+	{
+		$robotName = parent::userAgentMatchesRobot($userAgent);
+
+		if (!empty($robotName))
+		{
+			// if we already found a robot, we're done
+			return $robotName;
+		}
+
+		if (preg_match(
+			'#(bot|crawl|spider)#i',
+			strtolower($userAgent),
+			$match
+		))
+		{
+			// generic bot/crawler/spider match ... better check for false positives
+
+			$falsePositives = [
+				'idbot553plus build/mra58k', // Logicom BOT phones
+				'b bot 50 build/mra58k',
+				'b bot 550 build/mra58k',
+				'idbot553 build/mra58k',
+				'm bot 551 build/mra58k',
+				'power bot build/mra58k',
+				'id bot 53 build/nrd90m',
+				'id bot 53+ build/nrd90m',
+				'm bot 51 build/nrd90m',
+				'm bot 54 build/nrd90m',
+				'm bot 60 build/nrd90m',
+			];
+
+			if (preg_match(
+				'#(' . implode('|', array_map('preg_quote', $falsePositives)) . ')#i',
+				strtolower($userAgent)
+			))
+			{
+				// anything that matches our false positive list is considered not a bot
+				return '';
+			}
+			else
+			{
+				// we found an actual generic bot/crawler/spider match
+
+				// add it to the cache
+				/** @var UserAgentCache $repo */
+				$repo = \XF::repository('Hampel\KnownBots:UserAgentCache');
+				$repo->addUserAgent($userAgent);
+
+				// return generic bot string
+				return $match[1];
+			}
+		}
+		else
+		{
+			return '';
+		}
+	}
+
 	public function getRobotList()
 	{
 		$newBots = [
@@ -196,6 +260,10 @@ class Robot extends XFCP_Robot
 				'title' => 'BomboraBot',
 				'link' => 'http://www.bombora.com/bot'
 			],
+			'bot' => [
+				'title' => 'Generic Bot',
+				'link' => ''
+			],
 			'brandverity' => [
 				'title' => 'BrandVerity',
 				'link' => 'http://www.brandverity.com/why-is-brandverity-visiting-me'
@@ -231,6 +299,10 @@ class Robot extends XFCP_Robot
 			'contxbot' => [
 				'title' => 'Amazon contxbot',
 				'link' => 'https://affiliate-program.amazon.com/help/node/topic/GT98G5PPRERNVZ2C'
+			],
+			'crawl' => [
+				'title' => 'Generic Crawler',
+				'link' => ''
 			],
 			'crawler4j' => [
 				'title' => 'crawler4j',
@@ -503,6 +575,10 @@ class Robot extends XFCP_Robot
 			'special_archiver' => [
 				'title' => 'Archive.org bot',
 				'link' => 'http://www.archive.org/details/archive.org_bot'
+			],
+			'spider' => [
+				'title' => 'Generic Spider',
+				'link' => ''
 			],
 			'sqlmap' => [
 				'title' => 'sqlmap',
