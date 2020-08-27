@@ -8,7 +8,7 @@ By [Simon Hampel](https://twitter.com/SimonHampel).
 Requirements
 ------------
 
-This addon requires PHP 5.4 or higher and works on XenForo 2.x
+This addon requires PHP 7.0 or higher and works on XenForo 2.x
 
 Usage
 -----
