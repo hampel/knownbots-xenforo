@@ -21,3 +21,21 @@ links to more information about them (where available)
 
 A count of robots online is added to the Members online and Online statistics widgets. This can be disabled using the
 options.
+
+Privacy
+-------
+
+v3.0.0 adds new functionality to email the list of new bots detected automatically to an email address configurable by
+the admin.
+
+The default and recommended value is to email knownbots@hampel.io
+
+Emails sent to this address will only be used for the purposes of identifying new bots to add to this addon.
+
+Email addresses will NOT be sold or added to any marketing lists - not even ours.
+
+If there are issues detected from the emails you are sending us, we may reply to establish communication - but that will
+be on a case-by-case basis and only for the purposes of troubleshooting the operation of this addon.
+
+You can check the information contained in the emails by changing the address temporarily to your own so that emails go
+to you. If you still want us to process these emails - please feel free to forward them to the above address.
