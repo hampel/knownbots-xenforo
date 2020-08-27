@@ -59,6 +59,7 @@ class Robot extends XFCP_Robot
 			'google-read-aloud' => 'google-read-aloud',
 			'google favicon' => 'google-favicon',
 			'grapeshotcrawler' => 'grapeshotcrawler',
+			'hetrixtools' => 'hetrixtools',
 			'httrack' => 'httrack',
 			'ias-ir' => 'admantx',
 			'ias-or' => 'admantx',
@@ -209,6 +210,10 @@ class Robot extends XFCP_Robot
 			'accompanybot' => [
 				'title' => 'AccompanyBot',
 				'link' => '',
+			],
+			'admantx' => [
+				'title' => 'ADmantX Service Fetcher',
+				'link' => 'https://www.admantx.com/service-fetcher.html'
 			],
 			'adbeat' => [
 				'title' => 'Adbeat',
@@ -406,13 +411,13 @@ class Robot extends XFCP_Robot
 				'title' => 'Google Real Aloud',
 				'link' => 'https://support.google.com/webmasters/answer/1061943'
 			],
+			'hetrixtools' => [
+				'title' => 'HetrixTools Uptime Monitoring Bot',
+				'link' => 'https://hetrix.tools/uptime-monitoring-bot.html'
+			],
 			'httrack' => [
 				'title' => 'HTTrack',
 				'link' => 'http://www.httrack.com/'
-			],
-			'admantx' => [
-				'title' => 'ADmantX Service Fetcher',
-				'link' => 'https://www.admantx.com/service-fetcher.html'
 			],
 			'indeedbot' => [
 				'title' => 'IndeedBot',
