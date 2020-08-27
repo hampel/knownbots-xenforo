@@ -4,7 +4,7 @@ CHANGELOG
 3.1.0 (2020-08-27)
 -------------------
 
-* new bots (already!)
+* new bots (already!): amazonbot; petalbot; slackbot
 
 3.0.0 (2020-08-27)
 -------------------
@@ -13,19 +13,22 @@ CHANGELOG
 * caches list of new bots detected
 * option to email list weekly
 * minimum PHP version now 7.0.0
-* new bots
+* new bots: AccompanyBot; PostmanRuntime
 
 2.7.0 (2020-05-17)
 -------------------
 
-* lots of new bots
+* lots of new bots:
+	* bots from Google: https://support.google.com/webmasters/answer/1061943?hl=en
+	* UptimeBot
 * renamed a few ids and phrase strings
 * new tool to detect bots in user agent strings
 
 2.6.0 (2020-04-12)
 -------------------
 
-* new bots
+* new bots: AspiegelBot; internetnz; microsoft office; winhttp
+* TelegramBot (thanks alsogamer_)
 
 2.5.0 (2020-03-02)
 -------------------
@@ -35,7 +38,8 @@ CHANGELOG
 2.4.0 (2020-03-02)
 -------------------
 
-* new bots
+* new bots: 7siters; adscanner; brandverity; duckduckbot; e.ventures; exabot; httrack; just-crawling; pinterestbot; 
+re-re studio; semanticscholarbot; symfony browserkit; tracemyfile; um-ln; v-bot; wget
 
 2.3.0 (2019-11-18)
 -------------------
@@ -51,7 +55,7 @@ CHANGELOG
 2.1.0 (2019-09-30)
 -------------------
 
-* new bots added
+* new bots added: ArchiveTeam; ArchiveBot; BrandVerity  
 * added tool to admin area to show list of bots
 
 2.0.0a (2018-08-12)
