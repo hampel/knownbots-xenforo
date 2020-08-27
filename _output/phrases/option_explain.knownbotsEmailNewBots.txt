@@ -1,0 +1,3 @@
+With this enabled, the addon checks UserAgent strings that were not identified as bots for keywords which indicates it might be a new bot. It caches these strings and then once per day will send an email to the address specified with information about the strings.<br />
+<br />
+By default the system sends emails directly to the addon author at knownbots@hampel.io - but you can have it send email to any address if you want to check what information the emails contain (you may still forward it to the above address if you choose). Please read the privacy statement included in the addon instructions.
