@@ -1,0 +1,1 @@
+Turn on to show robot statistics in the sidebar widgets
