@@ -21,7 +21,13 @@
         "global_cache": false,
         "version_id": 2070070,
         "version_string": "2.7.0",
-        "hash": "3dc5abf3f166b2655226e1be65233c43"
+        "hash": "0875af8d32445b92f4986a71cace26a2"
+    },
+    "cron_entry.hampelKnownBotsNewBots.txt": {
+        "global_cache": false,
+        "version_id": 2070070,
+        "version_string": "2.7.0",
+        "hash": "d212ada7a52d6ffbc10cd594f7431348"
     },
     "hampel_knownbots_detect.txt": {
         "global_cache": false,
@@ -45,7 +51,7 @@
         "global_cache": false,
         "version_id": 2070070,
         "version_string": "2.7.0",
-        "hash": "15cff49ace71719dbe4bf00624f65baa"
+        "hash": "58f91b81300d1be07f42b154e1c8f0ff"
     },
     "hampel_knownbots_email_none_found.txt": {
         "global_cache": false,
@@ -123,7 +129,7 @@
         "global_cache": false,
         "version_id": 2070070,
         "version_string": "2.7.0",
-        "hash": "244322975f2238ef4d3a247835cccd22"
+        "hash": "a148d3189e1fcce38c96f13796397872"
     },
     "option_explain.knownbotsShowBotStats.txt": {
         "global_cache": false,

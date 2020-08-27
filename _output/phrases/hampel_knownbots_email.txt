@@ -1,1 +1,1 @@
-Email list of new bots
+Send new bots email
