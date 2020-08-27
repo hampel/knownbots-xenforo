@@ -1,0 +1,17 @@
+{
+    "cron_class": "Hampel\\KnownBots\\Cron\\NewBots",
+    "cron_method": "sendWeeklyEmail",
+    "run_rules": {
+        "day_type": "dow",
+        "dow": [
+            0
+        ],
+        "hours": [
+            20
+        ],
+        "minutes": [
+            5
+        ]
+    },
+    "active": true
+}
