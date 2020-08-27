@@ -17,6 +17,12 @@
         "version_string": "2.0.0",
         "hash": "11e31d91976cf01cab07b0adbf7e61df"
     },
+    "admin_navigation.hampelKnownBotsNew.txt": {
+        "global_cache": false,
+        "version_id": 2070070,
+        "version_string": "2.7.0",
+        "hash": "3dc5abf3f166b2655226e1be65233c43"
+    },
     "hampel_knownbots_detect.txt": {
         "global_cache": false,
         "version_id": 2060070,
@@ -35,6 +41,30 @@
         "version_string": "2.6.0",
         "hash": "a7fee2892f568643fcd93ddf387ba6bf"
     },
+    "hampel_knownbots_email.txt": {
+        "global_cache": false,
+        "version_id": 2070070,
+        "version_string": "2.7.0",
+        "hash": "15cff49ace71719dbe4bf00624f65baa"
+    },
+    "hampel_knownbots_email_none_found.txt": {
+        "global_cache": false,
+        "version_id": 2070070,
+        "version_string": "2.7.0",
+        "hash": "b6364dfae8da2acbbd3c75e4533fd3a4"
+    },
+    "hampel_knownbots_email_not_configured.txt": {
+        "global_cache": false,
+        "version_id": 2070070,
+        "version_string": "2.7.0",
+        "hash": "9ab7fd6068420c948304c8f9526b0eb0"
+    },
+    "hampel_knownbots_email_sent.txt": {
+        "global_cache": false,
+        "version_id": 2070070,
+        "version_string": "2.7.0",
+        "hash": "061f14b48d0efd480546e53c090be379"
+    },
     "hampel_knownbots_is_this_a_bot.txt": {
         "global_cache": false,
         "version_id": 2060070,
@@ -46,6 +76,12 @@
         "version_id": 2060070,
         "version_string": "2.6.0",
         "hash": "f74c5de0e2efea63bfbc3ca382dee2ba"
+    },
+    "hampel_knownbots_new.txt": {
+        "global_cache": false,
+        "version_id": 2070070,
+        "version_string": "2.7.0",
+        "hash": "ad3618c3e7968b497005aa1718466224"
     },
     "hampel_knownbots_none_detected.txt": {
         "global_cache": false,
@@ -71,11 +107,23 @@
         "version_string": "2.6.0",
         "hash": "56f5e3c0ba4b9f62aa41317c5346e371"
     },
+    "option.knownbotsEmailNewBots.txt": {
+        "global_cache": false,
+        "version_id": 2070070,
+        "version_string": "2.7.0",
+        "hash": "9f4c94ffc6bdc174c6c0a81848c3b3a4"
+    },
     "option.knownbotsShowBotStats.txt": {
         "global_cache": false,
         "version_id": 2040070,
         "version_string": "2.4.0",
         "hash": "a68ee845b4a42fac353c3a450093b5e2"
+    },
+    "option_explain.knownbotsEmailNewBots.txt": {
+        "global_cache": false,
+        "version_id": 2070070,
+        "version_string": "2.7.0",
+        "hash": "244322975f2238ef4d3a247835cccd22"
     },
     "option_explain.knownbotsShowBotStats.txt": {
         "global_cache": false,

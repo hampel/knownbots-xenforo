@@ -1,7 +1,7 @@
 {
     "parent_navigation_id": "hampelKnownBots",
-    "display_order": 3,
-    "link": "tools/hampel-knownbots-list",
+    "display_order": 1,
+    "link": "tools/hampel-knownbots-new",
     "icon": "",
     "admin_permission_id": "",
     "debug_only": false,

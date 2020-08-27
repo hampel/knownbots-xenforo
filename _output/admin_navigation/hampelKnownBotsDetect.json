@@ -1,6 +1,6 @@
 {
     "parent_navigation_id": "hampelKnownBots",
-    "display_order": 999,
+    "display_order": 2,
     "link": "tools/hampel-knownbots-detect",
     "icon": "",
     "admin_permission_id": "",

@@ -1,0 +1,25 @@
+<xf:title>{{ phrase('hampel_knownbots_new') }}</xf:title>
+
+<xf:if is="$newBots">
+	<xf:pageaction>
+		<xf:if is="$xf.options.knownbotsEmailNewBots.enabled">
+			<xf:button href="{{ link('tools/hampel-knownbots-email') }}">
+				{{ phrase('hampel_knownbots_email') }}
+			</xf:button>
+		</xf:if>
+	</xf:pageaction>
+</xf:if>
+
+<div class="block-container">
+	<div class="block-body">
+		<xf:if is="$newBots">		
+		<ul>
+			<xf:foreach loop="$newBots" value="$bot">
+				<li>{{ $bot }}</li>
+			</xf:foreach>
+		</ul>
+		<xf:else />
+			<div class="blockMessage">{{ phrase('hampel_knownbots_email_none_found') }}</div>
+		</xf:if>
+	</div>
+</div>

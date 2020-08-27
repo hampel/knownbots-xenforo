@@ -3,9 +3,12 @@
         "hash": "00b60a803c336ab16ee152e16787fd67"
     },
     "hampelKnownBotsDetect.json": {
-        "hash": "5afdbb825691893112c1e8491cc5d93e"
+        "hash": "23f3cc2f3c6986a9b66697e7a8f1599e"
     },
     "hampelKnownBotsList.json": {
-        "hash": "237a4a9475e8c27cd6145de0286205ce"
+        "hash": "3fb5df6f6dc70fc0199bbba37567257b"
+    },
+    "hampelKnownBotsNew.json": {
+        "hash": "b5bbbd4fad765d6c83492e870cf46663"
     }
 }
