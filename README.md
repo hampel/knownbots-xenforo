@@ -39,3 +39,5 @@ be on a case-by-case basis and only for the purposes of troubleshooting the oper
 
 You can check the information contained in the emails by changing the address temporarily to your own so that emails go
 to you. If you still want us to process these emails - please feel free to forward them to the above address.
+
+Other than a list of user agent strings, the only information contained in the email will be those automatically added to the email header by the forum mailer and SMTP servers.
