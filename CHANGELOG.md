@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+3.0.0 (2020-08-27)
+-------------------
+
+* major update: generic bot detection
+* caches list of new bots detected
+* option to email list weekly
+* minimum PHP version now 7.0.0
+* new bots
+
 2.7.0 (2020-05-17)
 -------------------
 
