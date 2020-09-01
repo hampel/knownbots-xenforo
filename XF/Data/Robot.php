@@ -230,6 +230,9 @@ class Robot extends XFCP_Robot
 				'm bot 51 build/nrd90m',
 				'm bot 54 build/nrd90m',
 				'm bot 60 build/nrd90m',
+				'cubot_j3', // Cubot phones
+				'cubot_p20',
+				'cubot x18',
 			];
 
 			if (preg_match(
