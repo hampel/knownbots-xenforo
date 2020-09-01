@@ -1,6 +1,71 @@
 CHANGELOG
 =========
 
+3.2.0 (2020-09-01)
+-------------------
+
+* lots of new bots:
+	* 360spider
+	* adsbot
+	* adstxtcrawler
+	* awariorssbot
+	* bitlybot
+	* boardreader
+	* ccbot
+	* cincraw
+	* clickagy intelligence bot
+	* crawlson
+	* crsspxlbot
+	* datagnionbot
+	* deskyobot
+	* df bot
+	* dnsresearchbot
+	* duckduckgo favicons bot
+	* eyeotabot
+	* feedlybot
+	* foocrawlerbot
+	* germcrawler
+	* google adwords instant
+	* gumgum bot
+	* hatena
+	* hubpages
+	* ias_crawler
+	* internet structure research project bot
+	* jugendschutzprogramm-crawler
+	* krzana bot
+	* lightspeedsystemcrawler
+	* linespider
+	* livelapbot
+	* lufsbot
+	* moatbot
+	* netestate ne crawler
+	* netpeakchekerbot
+	* netvibes
+	* nimbostratus bot
+	* nixstatsbot
+	* obot
+	* odklbot
+	* paperlibot
+	* pilicanbot
+	* pleskbot
+	* politecrawl
+	* pubmatic crawler bot
+	* rogerbot
+	* scooperbot
+	* screaming frog seo spider
+	* semantic-visions.com
+	* semanticbot
+	* seolizer
+	* sirdatabot
+	* surdotlybot
+	* tapatalk cloudsearch platform
+	* tpradstxtcrawler
+	* velenpublicwebcrawler
+	* yisouspider
+	* wp.com feedbot
+	* zoombot
+* added cubot smartphones to false positive list
+
 3.1.0 (2020-08-27)
 -------------------
 
