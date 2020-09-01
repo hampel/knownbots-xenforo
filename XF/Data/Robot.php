@@ -160,6 +160,8 @@ class Robot extends XFCP_Robot
 			'seznambot' => 'seznambot',
 			'sirdatabot' => 'sirdatabot',
 			'sitesucker' => 'sitesucker',
+			'slack-imgproxy' => 'slack-imgproxy',
+			'slackbot-linkexpanding' => 'slackbot-linkexpanding',
 			'slackbot' => 'slackbot',
 			'smtbot' => 'smtbot',
 			'spbot' => 'spbot',
@@ -860,6 +862,14 @@ class Robot extends XFCP_Robot
 			'sitesucker' => [
 				'title' => 'SiteSucker for macOS',
 				'link' => 'http://ricks-apps.com/osx/sitesucker/',
+			],
+			'slack-imgproxy' => [
+				'title' => 'Slack Image Proxy',
+				'link' => 'https://api.slack.com/robots'
+			],
+			'slackbot-linkexpanding' => [
+				'title' => 'SlackBot Link Expanding',
+				'link' => 'https://api.slack.com/robots'
 			],
 			'slackbot' => [
 				'title' => 'SlackBot',
