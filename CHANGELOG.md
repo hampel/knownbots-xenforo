@@ -28,6 +28,7 @@ CHANGELOG
 	* google adwords instant
 	* gumgum bot
 	* hatena
+	* hetrixtools
 	* hubpages
 	* ias_crawler
 	* internet structure research project bot
