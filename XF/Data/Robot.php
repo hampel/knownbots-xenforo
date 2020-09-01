@@ -197,6 +197,7 @@ class Robot extends XFCP_Robot
 			'xenu link sleuth' => 'xenu link sleuth',
 			'yisouspider' => 'yisouspider',
 			'telegrambot' => 'telegrambot',
+			'vkrobot' => 'vkrobot',
 			'wp.com feedbot' => 'wp.com feedbot',
 			'zoombot' => 'zoombot',
 			'zoominfobot' => 'zoominfobot',
@@ -977,6 +978,10 @@ class Robot extends XFCP_Robot
 			'velenpublicwebcrawler' => [
 				'title' => 'Velen Public Web Crawler',
 				'link' => 'https://velen.io'
+			],
+			'vkrobot' => [
+				'title' => 'VKRobot',
+				'link' => ''
 			],
 			'voluumdsp' => [
 				'title' => 'VoluumDSP Content Bot',
