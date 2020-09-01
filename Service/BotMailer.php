@@ -29,7 +29,7 @@ class BotMailer extends AbstractService
 
 			$mail = $this->getMail();
 			$mail->setContent(
-				"New bots detected",
+				\XF::phrase('hampel_knownbots_email_subject')->render('raw'),
 				"<ul>" . PHP_EOL . $botList . PHP_EOL . "</ul>" . PHP_EOL
 			);
 			return $mail->queue();
