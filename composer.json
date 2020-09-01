@@ -1,6 +1,9 @@
 {
+	"require": {
+		"php": ">=7.0.0"
+	},
 	"require-dev": {
-		"hampel/xenforo-test-framework": "^1.0"
+		"hampel/xenforo-test-framework": "^2.0"
 	},
     "autoload-dev": {
         "psr-4": {
