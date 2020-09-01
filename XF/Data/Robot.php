@@ -85,6 +85,7 @@ class Robot extends XFCP_Robot
 			'hetrixtools' => 'hetrixtools',
 			'httrack' => 'httrack',
 			'hubpages' => 'hubpages',
+			'hubspot url validation check' => 'hubspot url validation check',
 			'ias-ir' => 'admantx',
 			'ias-or' => 'admantx',
 			'ias-va' => 'admantx',
@@ -94,6 +95,7 @@ class Robot extends XFCP_Robot
 			'internetnz' => 'internetnz',
 			'jugendschutzprogramm-crawler' => 'jugendschutzprogramm',
 			'just-crawling' => 'just-crawling',
+			'knot group' => 'knot group',
 			'knowknot' => 'knowknot',
 			'krzana bot' => 'krzana bot',
 			'lightspeedsystemscrawler' => 'lightspeedsystemscrawler',
@@ -107,6 +109,7 @@ class Robot extends XFCP_Robot
 			'ltx71' => 'ltx71',
 			'lufsbot' => 'lufsbot',
 			'mail.ru' => 'mail.ru',
+			'mastodon' => 'mastodon',
 			'mbcrawler' => 'mbcrawler',
 			'mediatoolkitbot' => 'mediatoolkitbot',
 			'megaindex' => 'megaindex',
@@ -579,6 +582,10 @@ class Robot extends XFCP_Robot
 				'title' => 'HubPages Crawler',
 				'link' => 'https://hubpages.com/help/crawlingpolicy'
 			],
+			'hubspot url validation check' => [
+				'title' => 'HubSpot Url validation check',
+				'link' => 'web-crawlers+url-validation@hubspot.com'
+			],
 			'ias_crawler' => [
 				'title' => 'Integral Ad Science Crawler',
 				'link' => 'http://integralads.com/site-indexing-policy/'
@@ -606,6 +613,10 @@ class Robot extends XFCP_Robot
 			'knowknot' => [
 				'title' => 'Knowknot API Spider',
 				'link' => 'http://knowknot.com/faq.htm'
+			],
+			'knot group' => [
+				'title' => 'KNOT@FIT Brno University of Technology',
+				'link' => 'http://knot.fit.vutbr.cz/crawling/'
 			],
 			'krzana bot' => [
 				'title' => 'Krzana Newsgathering Bot',
@@ -654,6 +665,10 @@ class Robot extends XFCP_Robot
 			'mail.ru' => [
 				'title' => 'Mail.RU',
 				'link' => 'http://go.mail.ru/help/robots',
+			],
+			'mastodon' => [
+				'title' => 'Mastodon',
+				'link' => 'https://joinmastodon.org/',
 			],
 			'mbcrawler' => [
 				'title' => 'MBCrawler',
