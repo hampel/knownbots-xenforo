@@ -131,6 +131,7 @@ class Robot extends XFCP_Robot
 			'odklbot' => 'odklbot',
 			'omgili' => 'omgili',
 			'outclicksbot' => 'outclicksbot',
+			'pagepeeker' => 'pagepeeker',
 			'panscient' => 'panscient',
 			'paperlibot' => 'paperlibot',
 			'pcore-http' => 'pcore-http',
@@ -750,6 +751,10 @@ class Robot extends XFCP_Robot
 			'outclicksbot' => [
 				'title' => 'OutclicksBot',
 				'link' => 'https://www.outclicks.net/agent/fkn6dy'
+			],
+			'pagepeeker' => [
+				'title' => 'PagePeeker Website Thumbnailing Robot',
+				'link' => 'https://pagepeeker.com/robots/'
 			],
 			'panscient' => [
 				'title' => 'Panscient Crawler',
