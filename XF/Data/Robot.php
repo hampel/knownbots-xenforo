@@ -149,6 +149,7 @@ class Robot extends XFCP_Robot
 			're-re studio' => 're-re studio',
 			'relemindbot' => 'relemindbot',
 			'rogerbot' => 'rogerbot',
+			'rssingbot' => 'rssingbot',
 			'scooperbot' => 'scooperbot',
 			'scrapy' => 'scrapy',
 			'screaming frog seo spider' => 'screaming frog seo spider',
