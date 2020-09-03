@@ -55,9 +55,9 @@
     },
     "hampel_knownbots_email_none_found.txt": {
         "global_cache": false,
-        "version_id": 2070070,
-        "version_string": "2.7.0",
-        "hash": "b6364dfae8da2acbbd3c75e4533fd3a4"
+        "version_id": 3020070,
+        "version_string": "3.2.0",
+        "hash": "4511f5a7df648fbe6841643290c29483"
     },
     "hampel_knownbots_email_not_configured.txt": {
         "global_cache": false,
