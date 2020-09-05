@@ -16,6 +16,7 @@ class Robot extends XFCP_Robot
 			'adsbot' => 'adsbot', // this is not Google
 			'adscanner' => 'adscanner',
 			'adstxtcrawler' => 'adstxtcrawler',
+			'adstxtlab.com' => 'adstxtlab.com',
 			'ahrefsbot' => 'ahrefs',
 			'aiohttp' => 'aiohttp',
 			'amazonbot' => 'amazonbot',
@@ -98,6 +99,7 @@ class Robot extends XFCP_Robot
 			'knot group' => 'knot group',
 			'knowknot' => 'knowknot',
 			'krzana bot' => 'krzana bot',
+			'lawinsiderbot' => 'lawinsiderbot',
 			'lightspeedsystemscrawler' => 'lightspeedsystemscrawler',
 			'leikibot' => 'leikibot',
 			'linespider' => 'linespider',
@@ -132,6 +134,7 @@ class Robot extends XFCP_Robot
 			'omgili' => 'omgili',
 			'outclicksbot' => 'outclicksbot',
 			'pagepeeker' => 'pagepeeker',
+			'pagething.com' => 'pagething.com',
 			'panscient' => 'panscient',
 			'paperlibot' => 'paperlibot',
 			'pcore-http' => 'pcore-http',
@@ -312,6 +315,10 @@ class Robot extends XFCP_Robot
 			'adstxtcrawler' => [
 				'title' => 'IAB ads.txt crawler',
 				'link' => 'https://github.com/InteractiveAdvertisingBureau/adstxtcrawler'
+			],
+			'adstxtlab.com' => [
+				'title' => 'adstxtlab ads.txt crawler',
+				'link' => 'http://adstxtlab.com/'
 			],
 			'ahrefs' => [
 				'title' => 'AhrefsBot',
@@ -625,6 +632,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Krzana Newsgathering Bot',
 				'link' => 'https://krzana.com/'
 			],
+			'lawinsiderbot' => [
+				'title' => 'Law Insider Bot',
+				'link' => 'http://www.lawinsider.com/about'
+			],
 			'leikibot' => [
 				'title' => 'Leikibot',
 				'link' => 'http://www.leiki.com'
@@ -756,6 +767,10 @@ class Robot extends XFCP_Robot
 			'pagepeeker' => [
 				'title' => 'PagePeeker Website Thumbnailing Robot',
 				'link' => 'https://pagepeeker.com/robots/'
+			],
+			'pagething.com' => [
+				'title' => 'PageThing Indexer',
+				'link' => 'https://pagething.com/'
 			],
 			'panscient' => [
 				'title' => 'Panscient Crawler',
