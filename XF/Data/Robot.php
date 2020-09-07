@@ -67,6 +67,7 @@ class Robot extends XFCP_Robot
 			'demandbasepublisheranalyzer' => 'demandbasepublisheranalyzer',
 			'deskyobot' => 'deskyobot',
 			'df bot' => 'df bot',
+			'diffbot' => 'diffbot',
 			'dingtalkbot-linkservice' => 'dingtalkbot-linkservice',
 			'discordbot' => 'discordbot',
 			'dispatch' => 'dispatch',
@@ -102,6 +103,7 @@ class Robot extends XFCP_Robot
 			'hubpages' => 'hubpages',
 			'hubspot crawler' => 'hubspot crawler',
 			'hubspot url validation check' => 'hubspot url validation check',
+			'hypestat' => 'hypestat',
 			'ias-ir' => 'admantx',
 			'ias-or' => 'admantx',
 			'ias-va' => 'admantx',
@@ -579,6 +581,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Deskyobot',
 				'link' => 'https://www.deskyo.com/bot'
 			],
+			'diffbot' => [
+				'title' => 'Diffbot Crawler',
+				'link' => 'http://www.diffbot.com'
+			],
 			'df bot' => [
 				'title' => 'DF Bot',
 				'link' => ''
@@ -722,6 +728,10 @@ class Robot extends XFCP_Robot
 			'hubspot url validation check' => [
 				'title' => 'HubSpot Url validation check',
 				'link' => 'mailto:web-crawlers+url-validation@hubspot.com'
+			],
+			'hypestat' => [
+				'title' => 'HypeStat bot',
+				'link' => 'https://hypestat.com/bot'
 			],
 			'ias_crawler' => [
 				'title' => 'Integral Ad Science Crawler',
