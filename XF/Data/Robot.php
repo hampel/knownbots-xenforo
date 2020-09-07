@@ -717,11 +717,11 @@ class Robot extends XFCP_Robot
 			],
 			'hubspot crawler' => [
 				'title' => 'HubSpot Crawler',
-				'link' => 'web-crawlers@hubspot.com'
+				'link' => 'mailto:web-crawlers@hubspot.com'
 			],
 			'hubspot url validation check' => [
 				'title' => 'HubSpot Url validation check',
-				'link' => 'web-crawlers+url-validation@hubspot.com'
+				'link' => 'mailto:web-crawlers+url-validation@hubspot.com'
 			],
 			'ias_crawler' => [
 				'title' => 'Integral Ad Science Crawler',
@@ -933,7 +933,7 @@ class Robot extends XFCP_Robot
 			],
 			'odklbot' => [
 				'title' => 'OdklBot',
-				'link' => 'klass@odnoklassniki.ru'
+				'link' => 'mailto:klass@odnoklassniki.ru'
 			],
 			'omgili' => [
 				'title' => 'Omgili Bot',
