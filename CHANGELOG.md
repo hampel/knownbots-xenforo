@@ -1,6 +1,94 @@
 CHANGELOG
 =========
 
+3.3.0 (2020-09-07)
+-------------------
+
+* added a phrase for email subject instead of hardcoding the string
+* removed some unused phrases
+* removed Dalvik from list of bots - it's an Android browser
+* fixed missing user agent string for rssingbot
+* new Cubot phone false positives
+	* cubot echo
+	* cubot_j3
+	* cubot king kong
+	* cubot max
+	* cubot note plus
+	* cubot_note_s
+	* cubot_note_s build/mra58k
+	* cubot_nova
+	* cubot r9
+	* cubot_x18_plus	
+* lots of new bots
+	* adstxtlab.com
+	* anderspinkbot
+	* arquivo-web-crawler
+	* barkrowler
+	* botw spider
+	* buzzbot
+	* centro ads.txt crawler
+	* cispa webcrawler
+	* claritybot
+	* cognitiveseo.com
+	* crowdtanglebot
+	* dingtalkbot-linkservice
+	* elmer, the thinglink imagebot
+	* elisabot
+	* grfzbot
+	* hubspot crawler
+	* hubspot url validation check
+	* icc-crawler
+	* jobboersebot
+	* kingbot
+	* knot group
+	* lawinsiderbot
+	* makemoneyteamworkbot
+	* mastodon
+	* maxpointcrawler
+	* mediapartners-google
+	* mediumbot-metatagfetcher
+	* metajobbot
+	* msiecrawler
+	* neticle crawler
+	* netseer crawler
+	* nextcloud server crawler
+	* ninjbot
+	* pagething.com
+	* pagepeeker
+	* pandalytics
+	* parsijoobot
+	* pimeyes.com
+	* popscreen bot
+	* pulno
+	* pulsepoint-ads.txt-crawler
+	* ravencrawler
+	* redditbot
+	* rely bot
+	* rssmicro.com
+	* sbooksnet
+	* scanmine newsspider
+	* seo-audit-check-bot
+	* seoclaritycrawl
+	* sitelockspider
+	* slack-imgproxy
+	* slackbot-linkexpanding
+	* snappreviewbot
+	* spiderling
+	* squidbot
+	* stormcrawler
+	* superfeedr bot
+	* superpagesbot
+	* tmmbot
+	* trendkite-akashic-crawler
+	* ucmore crawler app
+	* vebidoobot
+	* yellowbrandprotectionbot
+	* vkrobot
+	* voilabot
+	* wiederfreibot
+	* yacybot
+	* zumbot                                                                                                                                                                                                                                                                                                                           	
+	
 3.2.0 (2020-09-01)
 -------------------
 
