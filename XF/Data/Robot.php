@@ -251,6 +251,7 @@ class Robot extends XFCP_Robot
 			'velenpublicwebcrawler' => 'velenpublicwebcrawler',
 			'voluumdsp-content-bot' => 'voluumdsp',
 			'wget' => 'wget',
+			'wikido' => 'wikido',
 			'winhttp' => 'winhttp',
 			'wonderbot' => 'wonderbot',
 			'wotbox' => 'wotbox',
@@ -263,6 +264,7 @@ class Robot extends XFCP_Robot
 			'wiederfreibot' => 'wiederfreibot',
 			'wp.com feedbot' => 'wp.com feedbot',
 			'yacybot' => 'yacybot',
+			'zombiebot' => 'zombiebot',
 			'zoombot' => 'zoombot',
 			'zoominfobot' => 'zoominfobot',
 			'zumbot' => 'zumbot',
@@ -1309,6 +1311,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Wieder Frei Bot',
 				'link' => 'http://twitter.com/wiederfrei'
 			],
+			'wikido' => [
+				'title' => 'WikiDo Event Crawler',
+				'link' => 'https://www.wikido.com/wikido.php'
+			],
 			'winhttp' => [
 				'title' => 'Microsoft WinHttp',
 				'link' => 'https://docs.microsoft.com/en-us/windows/win32/winhttp/about-winhttp'
@@ -1348,6 +1354,10 @@ class Robot extends XFCP_Robot
 			'yellowbrandprotectionbot' => [
 				'title' => 'Yellow Brand Protection Bot',
 				'link' => 'https://www.yellowbp.com/bot.html'
+			],
+			'zombiebot' => [
+				'title' => 'Zombiebot backlink checker',
+				'link' => 'http://www.zombiedomain.net/robot/'
 			],
 			'zoombot' => [
 				'title' => 'SEOZoom Bot',
