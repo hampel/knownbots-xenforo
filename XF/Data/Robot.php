@@ -232,6 +232,7 @@ class Robot extends XFCP_Robot
 			'symfony browserkit' => 'symfony browserkit',
 			'symfony2 browserkit' => 'symfony browserkit',
 			'tapatalk cloudsearch platform' => 'tapatalk',
+			'telegrambot' => 'telegrambot',
 			'tmmbot' => 'tmmbot',
 			'tpradstxtcrawler' => 'tpradstxtcrawler',
 			'tracemyfile' => 'tracemyfile',
@@ -249,20 +250,19 @@ class Robot extends XFCP_Robot
 			'vebidoobot' => 'vebidoobot',
 			'vegi bot' => 'vegibot',
 			'velenpublicwebcrawler' => 'velenpublicwebcrawler',
+			'vkrobot' => 'vkrobot',
+			'voilabot' => 'voilabot',
 			'voluumdsp-content-bot' => 'voluumdsp',
 			'wget' => 'wget',
+			'wiederfreibot' => 'wiederfreibot',
 			'wikido' => 'wikido',
 			'winhttp' => 'winhttp',
 			'wonderbot' => 'wonderbot',
 			'wotbox' => 'wotbox',
+			'wp.com feedbot' => 'wp.com feedbot',
 			'xenu link sleuth' => 'xenu link sleuth',
 			'yellowbrandprotectionbot' => 'yellowbrandprotectionbot',
 			'yisouspider' => 'yisouspider',
-			'telegrambot' => 'telegrambot',
-			'voilabot' => 'voilabot',
-			'vkrobot' => 'vkrobot',
-			'wiederfreibot' => 'wiederfreibot',
-			'wp.com feedbot' => 'wp.com feedbot',
 			'yacybot' => 'yacybot',
 			'zombiebot' => 'zombiebot',
 			'zoombot' => 'zoombot',
@@ -1227,6 +1227,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Tapatalk CloudSearch Platform',
 				'link' => 'http://www.tapatalk.com/bot.html'
 			],
+			'telegrambot' => [
+				'title' => 'TelegramBot (like TwitterBot)',
+				'link' => 'https://telegram.org/blog/link-preview'
+			],
 			'tmmbot' => [
 				'title' => 'Travel and Make Money TMMbot',
 				'link' => 'http://www.dslab.ch'
@@ -1295,6 +1299,10 @@ class Robot extends XFCP_Robot
 				'title' => 'VKRobot',
 				'link' => ''
 			],
+			'voilabot' => [
+				'title' => 'VoilaBot',
+				'link' => 'mailto:support.voilabot@orange-ftgroup.com'
+			],
 			'voluumdsp' => [
 				'title' => 'VoluumDSP Content Bot',
 				'link' => 'mailto:dsp-dev@codewise.com'
@@ -1338,14 +1346,6 @@ class Robot extends XFCP_Robot
 			'yisouspider' => [
 				'title' => 'YisouSpider Search Engine Bot (Shenma)',
 				'link' => 'https://m.sm.cn/'
-			],
-			'telegrambot' => [
-				'title' => 'TelegramBot (like TwitterBot)',
-				'link' => 'https://telegram.org/blog/link-preview'
-			],
-			'voilabot' => [
-				'title' => 'VoilaBot',
-				'link' => 'mailto:support.voilabot@orange-ftgroup.com'
 			],
 			'yacybot' => [
 				'title' => 'YaCy Search Engine Bot',
