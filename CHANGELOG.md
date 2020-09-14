@@ -1,8 +1,77 @@
 CHANGELOG
 =========
 
+3.4.0 (2020-09-14)
+------------------
+
+* update: email subject line now includes addon version
+* feature: now optionally uses Monolog Logging Service addon for logging info about sent emails
+* fixed missing mailto: in some email links
+* new Cubot phone false positives:
+	* cubot h3
+	* cubot_note_s build/lmy47i
+* weekly new bots:
+	* 3dd trunk
+	* 3w24bot
+	* auto spider
+	* aylien
+	* bidswitchbot
+	* bnf.fr_bot
+	* bublupbot
+	* checkmarknetwork
+	* chimebot
+	* cloudservermarketspider
+	* curious george
+	* diffbot
+    * everyfeed-spider	
+	* ffzbot
+	* finditanswersbot
+	* fyrebot
+	* gigabot 
+	* graydon bot
+	* hrankbot
+	* huaweiwebcatbot
+	* hypestat
+	* hyscore 
+	* implisensebot
+	* jasper's lil' bot'
+	* jetslide
+	* jpg-newsbot
+	* konturbot
+	* letsearchbot
+	* looid.com crawler
+	* magibot
+	* mauibot            
+	* mindupbot
+	* miralinks robot                                                                                                          
+	* onalyticabot
+	* online-webceo-bot
+	* queryseekerspider
+	* randomsurfer
+	* rankurbot
+	* researchbot                                                                                                           
+	* safednsbot
+	* serptimizerbot
+	* sitecheckerbotcrawler
+	* somdsearchbot
+	* ssblog rsscrawler
+	* sserobots
+	* statdom.ru
+	* synthesio crawler
+	* toutiaospider
+	* turnitinbot
+	* website-audit.be crawler
+	* who.is bot
+	* wikido
+	* wlc pywikibot
+	* x28-job-bot
+	* xyz spider
+	* y!j-asr
+	* yetibot
+	* zombiebot
+
 3.3.0 (2020-09-07)
--------------------
+------------------
 
 * added a phrase for email subject instead of hardcoding the string
 * removed some unused phrases
