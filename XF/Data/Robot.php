@@ -92,6 +92,7 @@ class Robot extends XFCP_Robot
 			'e.ventures' => 'eventures',
 			'elmer, the thinglink imagebot' => 'elmer, the thinglink imagebot',
 			'elisabot' => 'elisabot',
+			'everyfeed-spider' => 'everyfeed-spider',
 			'exabot' => 'exabot',
 			'eyeotabot' => 'eyeotabot',
 			'ezooms' => 'ezooms',
@@ -115,6 +116,7 @@ class Robot extends XFCP_Robot
 			'gumgum-bot' => 'gumgum-bot',
 			'hatena' => 'hatena',
 			'hetrixtools' => 'hetrixtools',
+			'hrankbot' => 'hrankbot',
 			'httrack' => 'httrack',
 			'huaweiwebcatbot' => 'huaweiwebcatbot',
 			'hubpages' => 'hubpages',
@@ -282,6 +284,7 @@ class Robot extends XFCP_Robot
 			'trendictionbot' => 'trendictionbot',
 			'trendkite-akashic-crawler' => 'trendkite-akashic-crawler',
 			'triplecheckerrobot' => 'triplecheckerrobot',
+			'turnitinbot' => 'turnitinbot',
 			'tweetmemebot' => 'tweetmemebot',
 			'twitterbot' => 'twitterbot',
 			'ttd-content' => 'ttd-content',
@@ -749,6 +752,10 @@ class Robot extends XFCP_Robot
 				'title' => 'e.ventures Investment Crawler',
 				'link' => 'https://www.eventures.vc/'
 			],
+			'everyfeed-spider' => [
+				'title' => 'Everyfeed Spider',
+				'link' => 'http://www.everyfeed.com'
+			],
 			'exabot' => [
 				'title' => 'Exalead Exabot',
 				'link' => 'https://www.exalead.com/search/webmasterguide'
@@ -840,6 +847,10 @@ class Robot extends XFCP_Robot
 			'hetrixtools' => [
 				'title' => 'HetrixTools Uptime Monitoring Bot',
 				'link' => 'https://hetrix.tools/uptime-monitoring-bot.html'
+			],
+			'hrankbot' => [
+				'title' => 'HRank Hosting Ranking Bot',
+				'link' => 'https://www.hrank.com/bot'
 			],
 			'httrack' => [
 				'title' => 'HTTrack Website Copier',
@@ -1504,6 +1515,10 @@ class Robot extends XFCP_Robot
 			'ttd-content' => [
 				'title' => 'theTradeDesk Content Scraper',
 				'link' => 'https://www.thetradedesk.com/general/ttd-content'
+			],
+			'turnitinbot' => [
+				'title' => 'Turnitin Anti-plagiarism Bot',
+				'link' => 'https://turnitin.com/robot/crawlerinfo.html'
 			],
 			'tweetmemebot' => [
 				'title' => 'TweetmemeBot',
