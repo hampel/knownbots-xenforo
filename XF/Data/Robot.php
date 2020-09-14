@@ -1242,6 +1242,10 @@ class Robot extends XFCP_Robot
 				'title' => 'PulsePoint ads.txt Crawler',
 				'link' => 'https://docs.pulsepoint.com/display/PDB/Ads.txt+Compliance'
 			],
+			'python-requests' => [
+				'title' => 'Python Requests Library',
+				'link' => 'https://requests.readthedocs.io/en/master/'
+			],
 			'quantcastbot' => [
 				'title' => 'Quantcast Bot',
 				'link' => 'http://www.quantcast.com/bot'
