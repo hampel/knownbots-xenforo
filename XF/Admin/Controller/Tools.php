@@ -1,7 +1,9 @@
 <?php namespace Hampel\KnownBots\XF\Admin\Controller;
 
+use Hampel\KnownBots\Option\EmailNewBots;
 use Hampel\KnownBots\Repository\UserAgentCache;
 use Hampel\KnownBots\Service\BotMailer;
+use Hampel\KnownBots\SubContainer\Log;
 
 class Tools extends XFCP_Tools
 {
@@ -60,33 +62,39 @@ class Tools extends XFCP_Tools
 
 	public function actionHampelKnownBotsEmail()
 	{
+		$log = $this->getLogger();
 		$this->setSectionContext('hampelKnownBotsNew');
 
-		$emailNewBots = $this->app()->options()->knownbotsEmailNewBots;
-		if (!empty($emailNewBots['email']))
+		$emailTo = EmailNewBots::getAddress();
+
+		if (!EmailNewBots::isEnabled() || empty($emailTo))
 		{
-			/** @var UserAgentCache $repo */
-			$repo = $this->getUserAgentRepo();
+			return $this->message(\XF::phrase('hampel_knownbots_email_not_configured'));
+		}
 
-			$bots = $repo->getUserAgents();
+		$repo = $this->getUserAgentRepo();
+		$bots = $repo->getUserAgents();
 
-			if (!empty($bots))
-			{
-				$service = $this->getBotMailerService();
-
-				$service->setToEmail($emailNewBots['email']);
-				$service->setBots($bots);
-				$service->mailBots();
-
-				$repo->clearCache();
-
-				return $this->message(\XF::phrase('hampel_knownbots_email_sent', ['email' => $emailNewBots['email']]));
-			}
-
+		if (empty($bots))
+		{
 			return $this->message(\XF::phrase('hampel_knownbots_email_none_found'));
 		}
 
-		return $this->message(\XF::phrase('hampel_knownbots_email_not_configured'));
+		$log->info("Email new bots: manually sending detected bots", compact('emailTo', 'bots'));
+
+		$service = $this->getBotMailerService();
+
+		$service->setToEmail($emailTo);
+		$service->setBots($bots);
+		if ($service->mailBots())
+		{
+			$log->info("Clearing user agent cache");
+
+			$repo->clearCache();
+		}
+
+		return $this->message(\XF::phrase('hampel_knownbots_email_sent', ['email' => $emailTo]));
+
 	}
 
 	/**
@@ -103,6 +111,14 @@ class Tools extends XFCP_Tools
 	protected function getBotMailerService()
 	{
 		return $this->app->service('Hampel\KnownBots:BotMailer');
+	}
+
+	/**
+	 * @return Log
+	 */
+	protected function getLogger()
+	{
+		return $this->app->get('knownbots.log');
 	}
 }
 

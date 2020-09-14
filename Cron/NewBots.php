@@ -1,34 +1,74 @@
 <?php namespace Hampel\KnownBots\Cron;
 
+use Hampel\KnownBots\Option\EmailNewBots;
 use Hampel\KnownBots\Repository\UserAgentCache;
 use Hampel\KnownBots\Service\BotMailer;
+use Hampel\KnownBots\SubContainer\Log;
 
 class NewBots
 { 
 	public static function sendWeeklyEmail()
 	{
-		$app = \XF::app();
+		$log = self::getLogger();
 
-		$emailNewBots = $app->options()->knownbotsEmailNewBots;
-		if (!empty($emailNewBots['email']))
+		if (!EmailNewBots::isEnabled())
 		{
-			/** @var UserAgentCache $repo */
-			$repo = $app->repository('Hampel\KnownBots:UserAgentCache');
-
-			$bots = $repo->getUserAgents();
-
-			if (!empty($bots))
-			{
-				/** @var BotMailer $service */
-				$service = $app->service('Hampel\KnownBots:BotMailer');
-
-				$service->setToEmail($emailNewBots['email']);
-				$service->setBots($bots);
-				if ($service->mailBots())
-				{
-					$repo->clearCache();
-				}
-			}
+			$log->debug("Email new bots: disabled - aborting");
+			return;
 		}
+
+		$emailTo = EmailNewBots::getAddress();
+		if (empty($emailTo))
+		{
+			$log->debug("Email new bots: no email address configured - aborting");
+			return;
+		}
+
+		$repo = self::getUserAgentRepo();
+
+		$bots = $repo->getUserAgents();
+
+		if (empty($bots))
+		{
+			$log->debug("Email new bots: no bots found - aborting");
+			return;
+		}
+
+		$log->info("Email new bots: sending detected bots", compact('emailTo', 'bots'));
+
+		$service = self::getBotMailerService();
+
+		$service->setToEmail($emailTo);
+		$service->setBots($bots);
+		if ($service->mailBots())
+		{
+			$log->info("Clearing user agent cache");
+
+			$repo->clearCache();
+		}
+	}
+
+	/**
+	 * @return UserAgentCache
+	 */
+	protected static function getUserAgentRepo()
+	{
+		return \XF::repository('Hampel\KnownBots:UserAgentCache');
+	}
+
+	/**
+	 * @return BotMailer
+	 */
+	protected static function getBotMailerService()
+	{
+		return \XF::service('Hampel\KnownBots:BotMailer');
+	}
+
+	/**
+	 * @return Log
+	 */
+	protected static function getLogger()
+	{
+		return \XF::app()->get('knownbots.log');
 	}
 }
