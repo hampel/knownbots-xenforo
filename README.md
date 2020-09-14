@@ -22,6 +22,12 @@ links to more information about them (where available)
 A count of robots online is added to the Members online and Online statistics widgets. This can be disabled using the
 options.
 
+Options
+-------
+
+This addon can optionally use the [Monolog Logging Service](https://xenforo.com/community/resources/monolog-logging-service.6080/)
+addon to log information about emails sent.
+
 Privacy
 -------
 
