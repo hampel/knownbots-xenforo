@@ -332,6 +332,39 @@ class Robot extends XFCP_Robot
 		return array_merge(parent::getRobotUserAgents(), $newBots);
 	}
 
+	public function getFalsePositives()
+	{
+		$falsePositives = [
+			'idbot553plus build/mra58k', // Logicom BOT phones
+			'b bot 50 build/mra58k',
+			'b bot 550 build/mra58k',
+			'idbot553 build/mra58k',
+			'm bot 551 build/mra58k',
+			'power bot build/mra58k',
+			'id bot 53 build/nrd90m',
+			'id bot 53+ build/nrd90m',
+			'm bot 51 build/nrd90m',
+			'm bot 54 build/nrd90m',
+			'm bot 60 build/nrd90m',
+			'cubot echo', // Cubot phones
+			'cubot_j3',
+			'cubot h3',
+			'cubot king kong',
+			'cubot max',
+			'cubot note plus',
+			'cubot_note_s',
+			'cubot_note_s build/lmy47i',
+			'cubot_note_s build/mra58k',
+			'cubot_nova',
+			'cubot_p20',
+			'cubot r9',
+			'cubot x18',
+			'cubot_x18_plus',
+		];
+
+		return $falsePositives;
+	}
+
 	public function userAgentMatchesRobot($userAgent)
 	{
 		$robotName = parent::userAgentMatchesRobot($userAgent);
@@ -349,34 +382,7 @@ class Robot extends XFCP_Robot
 		))
 		{
 			// generic bot/crawler/spider match ... better check for false positives
-
-			$falsePositives = [
-				'idbot553plus build/mra58k', // Logicom BOT phones
-				'b bot 50 build/mra58k',
-				'b bot 550 build/mra58k',
-				'idbot553 build/mra58k',
-				'm bot 551 build/mra58k',
-				'power bot build/mra58k',
-				'id bot 53 build/nrd90m',
-				'id bot 53+ build/nrd90m',
-				'm bot 51 build/nrd90m',
-				'm bot 54 build/nrd90m',
-				'm bot 60 build/nrd90m',
-				'cubot echo', // Cubot phones
-				'cubot_j3',
-				'cubot h3',
-				'cubot king kong',
-				'cubot max',
-				'cubot note plus',
-				'cubot_note_s',
-				'cubot_note_s build/lmy47i',
-				'cubot_note_s build/mra58k',
-				'cubot_nova',
-				'cubot_p20',
-				'cubot r9',
-				'cubot x18',
-				'cubot_x18_plus',
-			];
+			$falsePositives = $this->getFalsePositives();
 
 			if (preg_match(
 				'#(' . implode('|', array_map('preg_quote', $falsePositives)) . ')#i',
