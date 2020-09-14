@@ -73,9 +73,9 @@
     },
     "hampel_knownbots_email_subject.txt": {
         "global_cache": false,
-        "version_id": 3020070,
-        "version_string": "3.2.0",
-        "hash": "9efa29a764a606ff0e3f8de478b0eb7d"
+        "version_id": 3030070,
+        "version_string": "3.3.0",
+        "hash": "0e107c1018468f3a34e64abcfb8c8bf2"
     },
     "hampel_knownbots_is_this_a_bot.txt": {
         "global_cache": false,

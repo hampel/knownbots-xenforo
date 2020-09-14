@@ -1,1 +1,1 @@
-New bots detected
+New bots detected [{version}]
