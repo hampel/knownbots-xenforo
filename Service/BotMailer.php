@@ -21,6 +21,8 @@ class BotMailer extends AbstractService
 	{
 		if (!empty($this->bots))
 		{
+			$version = $this->app->finder('XF:AddOn')->whereId('Hampel/KnownBots')->fetchOne()->version_string;
+
 			$botList = '';
 			foreach ($this->bots as $bot)
 			{
@@ -29,7 +31,7 @@ class BotMailer extends AbstractService
 
 			$mail = $this->getMail();
 			$mail->setContent(
-				\XF::phrase('hampel_knownbots_email_subject')->render('raw'),
+				\XF::phrase('hampel_knownbots_email_subject', compact('version'))->render('raw'),
 				"<ul>" . PHP_EOL . $botList . PHP_EOL . "</ul>" . PHP_EOL
 			);
 			return $mail->queue();
