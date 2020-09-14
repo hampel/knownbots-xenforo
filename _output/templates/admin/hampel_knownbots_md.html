@@ -1,0 +1,11 @@
+<xf:title>{{ phrase('hampel_knownbots_list') }}</xf:title>
+
+<xf:if is="$bots">
+	<div class="block-container">
+<textarea rows="100" cols="120">
+# List of Known Bots
+<xf:foreach loop="$bots" key="$key" value="$bot">
+ * {{ $key }}: [{{ $bot.title }}]({{ $bot.link }})</xf:foreach>
+</textarea>
+	</div>
+</xf:if>

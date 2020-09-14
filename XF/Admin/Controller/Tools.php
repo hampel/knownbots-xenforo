@@ -4,6 +4,7 @@ use Hampel\KnownBots\Option\EmailNewBots;
 use Hampel\KnownBots\Repository\UserAgentCache;
 use Hampel\KnownBots\Service\BotMailer;
 use Hampel\KnownBots\SubContainer\Log;
+use XF\Data\Robot;
 
 class Tools extends XFCP_Tools
 {
@@ -97,6 +98,28 @@ class Tools extends XFCP_Tools
 
 	}
 
+	public function actionHampelKnownBotsMd()
+	{
+		$robot = $this->getRobot();
+
+		$agents = $robot->getRobotUserAgents();
+		ksort($agents);
+
+		$bots = [];
+
+		foreach ($agents as $agent)
+		{
+			$bots[$agent] = $robot->getRobotInfo($agent);
+		}
+
+		$viewParams = compact('bots');
+
+		return $this->view('Hampel\KnownBots:Tools\KnownBotsGenerateMd', 'hampel_knownbots_md', $viewParams);
+	}
+
+
+	// -------------------------------------------------
+
 	/**
 	 * @return UserAgentCache
 	 */
@@ -119,6 +142,14 @@ class Tools extends XFCP_Tools
 	protected function getLogger()
 	{
 		return $this->app->get('knownbots.log');
+	}
+
+	/**
+	 * @return Robot
+	 */
+	protected function getRobot()
+	{
+		return $this->app()->data('XF:Robot');
 	}
 }
 

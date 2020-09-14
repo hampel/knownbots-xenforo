@@ -9,6 +9,11 @@
         "version_string": "2.6.0",
         "hash": "33ce6d55ec2bc615fcc1b0fa2678a3cb"
     },
+    "admin/hampel_knownbots_md.html": {
+        "version_id": 3040070,
+        "version_string": "3.4.0",
+        "hash": "3e7c8f59154cb3453cabd20467e895ab"
+    },
     "admin/hampel_knownbots_new.html": {
         "version_id": 2070070,
         "version_string": "2.7.0",
