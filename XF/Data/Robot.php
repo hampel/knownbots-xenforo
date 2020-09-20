@@ -259,7 +259,7 @@ class Robot extends XFCP_Robot
 			'semrushbot' => 'semrushbot',
 			'seo-audit-check-bot' => 'seo-audit-check-bot',
 			'seoclaritycrawl' => 'seoclaritycrawl',
-			'seokicks-robot' => 'seokicks-robot',
+			'seokicks' => 'seokicks',
 			'seolizer' => 'seolizer',
 			'serendeputybot' => 'serendeputybot',
 			'serptimizerbot' => 'serptimizerbot',
@@ -1444,7 +1444,7 @@ class Robot extends XFCP_Robot
 				'title' => 'seoClarity Crawler',
 				'link' => 'https://www.seoclarity.net/technology/site-audits/',
 			],
-			'seokicks-robot' => [
+			'seokicks' => [
 				'title' => 'SEOkicks Robot',
 				'link' => 'http://www.seokicks.de/robot.html',
 			],
