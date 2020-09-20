@@ -1,6 +1,39 @@
 CHANGELOG
 =========
 
+3.5.0 (2020-09-21)
+------------------
+
+* new Cubot phone false positives:
+	* cubot magic
+	* cubot_manito
+	* cubot_power
+* simplify seokicks-robot match to just seokicks to catch new bot user agent
+* weekly new bots:
+	* applenewsbot
+	* bl.uk_lddc_bot
+	* dcrawl
+	* dy robot
+	* ezlynx
+	* fast-webcrawler
+	* gdark-spider
+	* gethpinfo.com-bot
+	* gowikibot
+	* image size by siteimprove.com
+	* linkcheck by siteimprove.com
+	* loaderio;verification-bot
+	* pingdompagespeed
+	* pmoz.info odp link checker
+	* refindbot
+	* seebot.org
+	* siteanalyzerbot
+	* sitecheck-sitecrawl
+	* sottopop
+	* superbot
+	* tineye-bot
+	* webliobot	            
+                                                                                                                                                                        	
+
 3.4.0 (2020-09-14)
 ------------------
 
