@@ -377,8 +377,6 @@ class Robot extends XFCP_Robot
 			'cubot max',
 			'cubot note plus',
 			'cubot_note_s',
-			'cubot_note_s build/lmy47i',
-			'cubot_note_s build/mra58k',
 			'cubot_nova',
 			'cubot_p20',
 			'cubot_power',
