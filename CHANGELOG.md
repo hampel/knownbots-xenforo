@@ -1,6 +1,31 @@
 CHANGELOG
 =========
 
+3.6.0 (2020-09-28)
+------------------
+
+* new Cubot phone false positives:
+	* cubot cheetah 2
+* weekly new bots:
+	* better uptime bot 
+	* btcrawler 
+	* crawler_eb_germany_2.0 
+	* dle_spider.exe 
+	* dyno mapper crawler 
+	* flockbrain robot 
+	* infoobot 
+	* microadbot 
+	* nesotebot 
+	* reachabilitycheckbot 
+	* se ranking gentle bot 
+	* seobilitybot 
+	* siteguru linkchecker 
+	* statonlinerubot 
+	* tombot 
+	* viulinkcrawler 
+	* webgains-bot'
+	* _zbot                                                                                                                                                                                                 
+
 3.5.0 (2020-09-21)
 ------------------
 
