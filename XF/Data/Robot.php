@@ -386,7 +386,9 @@ class Robot extends XFCP_Robot
 			'm bot 51 build/nrd90m',
 			'm bot 54 build/nrd90m',
 			'm bot 60 build/nrd90m',
+
 			'cubot cheetah 2', // Cubot phones
+			'cubot dinosaur',
 			'cubot echo',
 			'cubot_j3',
 			'cubot h3',
@@ -402,6 +404,8 @@ class Robot extends XFCP_Robot
 			'cubot r9',
 			'cubot x18',
 			'cubot_x18_plus',
+
+			'glx spideri' // GLX phones
 		];
 
 		return $falsePositives;
