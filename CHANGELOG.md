@@ -1,6 +1,27 @@
 CHANGELOG
 =========
 
+3.7.0 (2020-10-06)
+------------------
+
+* new Cubot phone false positives:
+	* cubot dinosaur
+* new GLX phone false positives:
+	* GLX Spideri
+* weekly new bots:
+	* ant.com beta
+	* bha2r_bot
+	* browserspybot
+	* c-t bot
+	* cms crawler
+	* ioncrawl
+	* js-crawler
+	* k7mlwcbot
+	* quora-bot
+	* qwarrycrawler
+	* sidetrade indexer bot
+	* webzip       
+
 3.6.0 (2020-09-28)
 ------------------
 
