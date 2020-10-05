@@ -23,6 +23,7 @@ class Robot extends XFCP_Robot
 			'aiohttp' => 'aiohttp',
 			'amazonbot' => 'amazonbot',
 			'anderspinkbot' => 'anderspinkbot',
+			'ant.com beta' => 'ant.com beta',
 			'apache-httpclient' => 'apache-httpclient',
 			'applebot' => 'applebot',
 			'applenewsbot' => 'applenewsbot',
@@ -36,6 +37,7 @@ class Robot extends XFCP_Robot
 			'aylien' => 'aylien',
 			'barkrowler' => 'barkrowler',
 			'better uptime bot' => 'better uptime bot',
+			'bha2r_bot' => 'bha2r_bot',
 			'bidswitchbot' => 'bidswitchbot',
 			'bingpreview' => 'bing',
 			'binglocalsearch' => 'bing',
@@ -48,11 +50,13 @@ class Robot extends XFCP_Robot
 			'botw spider' => 'botw spider',
 			'brandverity' => 'brandverity',
 			'brokenlinkcheck' => 'brokenlinkcheck',
+			'browserspybot' => 'browserspybot',
 			'btcrawler' => 'btcrawler',
 			'bublupbot' => 'bublupbot',
 			'buck' => 'buck',
 			'buzzbot' => 'buzzbot',
 			'bytespider' => 'bytespider',
+			'c-t bot' => 'c-t bot',
 			'ccbot' => 'ccbot',
 			'centro ads.txt crawler' => 'centro ads.txt crawler',
 			'checkmarknetwork' => 'checkmarknetwork',
@@ -63,6 +67,7 @@ class Robot extends XFCP_Robot
 			'clickagy intelligence bot' => 'clickagy',
 			'cliqzbot' => 'cliqzbot',
 			'cloudservermarketspider' => 'cloudservermarketspider',
+			'cms crawler' => 'cms crawler',
 			'coccocbot' => 'coccocbot',
 			'cocolyzebot' => 'cocolyzebot',
 			'cognitiveseo.com' => 'cognitiveseo.com',
@@ -150,12 +155,15 @@ class Robot extends XFCP_Robot
 			'infoobot' => 'infoobot',
 			'internet-structure-research-project-bot' => 'isrpb',
 			'internetnz' => 'internetnz',
+			'ioncrawl' => 'ioncrawl',
 			'jasper\'s lil\' bot' => 'jaspers lil bot',
 			'jetslide' => 'jetslide',
 			'jobboersebot' => 'jobboersebot',
 			'jpg-newsbot' => 'jpg-newsbot',
+			'js-crawler' => 'js-crawler',
 			'jugendschutzprogramm-crawler' => 'jugendschutzprogramm',
 			'just-crawling' => 'just-crawling',
+			'k7mlwcbot' => 'k7mlwcbot',
 			'kingbot' => 'kingbot',
 			'knot group' => 'knot group',
 			'knowknot' => 'knowknot',
@@ -242,6 +250,8 @@ class Robot extends XFCP_Robot
 			'quantcastbot' => 'quantcastbot',
 			'queryseekerspider' => 'queryseekerspider',
 			'quick-crawler' => 'scrapinghub',
+			'quora-bot' => 'quora-bot',
+			'qwarrycrawler' => 'qwarrycrawler',
 			'randomsurfer' => 'randomsurfer',
 			'rankurbot' => 'rankurbot',
 			'ravencrawler' => 'ravencrawler',
@@ -276,6 +286,7 @@ class Robot extends XFCP_Robot
 			'serendeputybot' => 'serendeputybot',
 			'serptimizerbot' => 'serptimizerbot',
 			'seznambot' => 'seznambot',
+			'sidetrade indexer bot' => 'sidetrade indexer bot',
 			'sirdatabot' => 'sirdatabot',
 			'siteanalyzerbot' => 'siteanalyzerbot',
 			'sitecheck-sitecrawl' => 'sitecheck-sitecrawl',
@@ -339,6 +350,7 @@ class Robot extends XFCP_Robot
 			'webgains-bot' => 'webgains-bot',
 			'webliobot' => 'webliobot',
 			'website-audit.be crawler' => 'website-audit.be',
+			'webzip' => 'webzip',
 			'who.is bot' => 'who.is bot',
 			'wiederfreibot' => 'wiederfreibot',
 			'wikido' => 'wikido',
@@ -528,6 +540,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Anders Pink Bot',
 				'link' => 'http://anderspink.com/bot.html',
 			],
+			'ant.com beta' => [
+				'title' => 'Ant.com Antmark Crawler',
+				'link' => 'https://www.ant.com',
+			],
 			'apache-httpclient' => [
 				'title' => 'Apache HttpClient',
 				'link' => 'https://hc.apache.org/',
@@ -580,6 +596,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Better Uptime Bot',
 				'link' => 'https://betteruptime.com/'
 			],
+			'bha2r_bot' => [
+				'title' => 'BHa2R_bot',
+				'link' => 'http://www.bha2r.xyz'
+			],
 			'bidswitchbot' => [
 				'title' => 'Bidswitch Bot',
 				'link' => 'https://www.bidswitch.com/'
@@ -628,6 +648,10 @@ class Robot extends XFCP_Robot
 				'title' => 'BrokenLinkCheck.com',
 				'link' => 'http://brokenlinkcheck.com/'
 			],
+			'browserspybot' => [
+				'title' => 'BrowserSpy.dk Bot',
+				'link' => 'http://browserspy.dk/'
+			],
 			'btcrawler' => [
 				'title' => 'Bluetooth Crawler',
 				'link' => ''
@@ -647,6 +671,10 @@ class Robot extends XFCP_Robot
 			'bytespider' => [
 				'title' => 'Bytespider',
 				'link' => 'https://zhanzhang.toutiao.com/'
+			],
+			'c-t bot' => [
+				'title' => 'C-T Bot',
+				'link' => ''
 			],
 			'ccbot' => [
 				'title' => 'Common Crawl Bot',
@@ -687,6 +715,10 @@ class Robot extends XFCP_Robot
 			'cloudservermarketspider' => [
 				'title' => 'Cloud Server Market Spider',
 				'link' => 'http://cloudservermarket.com/spider.html'
+			],
+			'cms crawler' => [
+				'title' => 'CMS Crawler',
+				'link' => 'http://www.cmscrawler.com'
 			],
 			'coccocbot' => [
 				'title' => 'Coc Coc Bot',
@@ -1032,6 +1064,14 @@ class Robot extends XFCP_Robot
 				'title' => 'VIP nytt jpg-newsbot',
 				'link' => 'https://vipnytt.no/bots/',
 			],
+			'js-crawler' => [
+				'title' => 'Node.js Crawler Library',
+				'link' => 'https://www.npmjs.com/package/js-crawler',
+			],
+			'ioncrawl' => [
+				'title' => 'IonCrawl',
+				'link' => '',
+			],
 			'isrpb' => [
 				'title' => 'Internet Structure Research Project Bot',
 				'link' => '',
@@ -1047,6 +1087,10 @@ class Robot extends XFCP_Robot
 			'just-crawling' => [
 				'title' => 'Just-Crawling',
 				'link' => ''
+			],
+			'k7mlwcbot' => [
+				'title' => 'K7 Computing K7MLWCBot',
+				'link' => 'http://www.k7computing.com'
 			],
 			'kingbot' => [
 				'title' => 'KingBot',
@@ -1392,6 +1436,14 @@ class Robot extends XFCP_Robot
 				'title' => 'QuerySeekerSpider',
 				'link' => 'http://queryseeker.com/bot.html'
 			],
+			'quora-bot' => [
+				'title' => 'Quora Bot',
+				'link' => 'http://www.quora.com'
+			],
+			'qwarrycrawler' => [
+				'title' => 'QwarryCrawler',
+				'link' => ''
+			],
 			'randomsurfer' => [
 				'title' => 'Random Surfer Bot',
 				'link' => 'https://random.surf/bot'
@@ -1535,6 +1587,10 @@ class Robot extends XFCP_Robot
 			'seznambot' => [
 				'title' => 'SeznamBot',
 				'link' => 'https://napoveda.seznam.cz/en/seznamcz-web-search/',
+			],
+			'sidetrade indexer bot' => [
+				'title' => 'Sidetrade Indexer Bot',
+				'link' => 'https://www.sidetrade.com/',
 			],
 			'sirdatabot' => [
 				'title' => 'Sirdata Bot',
@@ -1787,6 +1843,10 @@ class Robot extends XFCP_Robot
 			'website-audit.be' => [
 				'title' => 'Website Audit Crawler',
 				'link' => 'https://www.website-audit.be/faq'
+			],
+			'webzip' => [
+				'title' => 'Spidersoft WebZIP',
+				'link' => 'http://www.spidersoft.com/'
 			],
 			'wget' => [
 				'title' => 'Linux Wget',
