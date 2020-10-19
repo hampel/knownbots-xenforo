@@ -1,6 +1,37 @@
 CHANGELOG
 =========
 
+3.8.0 (2020-10-20)
+------------------
+
+* weekly new bots:
+    * ag_dm_spider
+    * aihitbot
+    * avocetcrawler
+    * b2b bot
+    * checkbot
+    * em-crawler
+    * feedsearch-crawler
+    * fullstorybot
+    * krzana-rss-bot
+    * mediacloud bot for open academic research
+    * mlbot
+    * niuebot
+    * ocarinabot
+    * prft-bot
+    * qwantbot
+    * rasabot         
+    * riverbot
+    * rytebot
+    * sabsimbot
+    * scribbr-citation-bot
+    * seodiver
+    * snapbot
+    * solomonobot
+    * temeliobot-keyword-scrapper    
+    * vsusearchspider
+    * your-search-bot 
+
 3.7.0 (2020-10-06)
 ------------------
 
