@@ -1,6 +1,21 @@
 CHANGELOG
 =========
 
+3.9.0 (2020-10-26)
+------------------
+
+* weekly new bots:
+    * earwigbot
+    * fess
+    * metadata-downloader-bot
+    * page audit bot
+    * plurkbot
+    * r6_commentreader
+    * r6_feedfetcher
+    * sc_bot
+    * tkbot
+    * willie irc bot        
+
 3.8.0 (2020-10-20)
 ------------------
 
