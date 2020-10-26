@@ -109,6 +109,7 @@ class Robot extends XFCP_Robot
 			'dy robot' => 'dy robot',
 			'dyno mapper crawler' => 'dyno mapper crawler',
 			'e.ventures' => 'eventures',
+			'earwigbot' => 'earwigbot',
 			'elmer, the thinglink imagebot' => 'elmer, the thinglink imagebot',
 			'elisabot' => 'elisabot',
 			'em-crawler' => 'em-crawler',
@@ -121,6 +122,7 @@ class Robot extends XFCP_Robot
 			'feedfetcher-google' => 'feedfetcher-google',
 			'feedlybot' => 'feedlybot',
 			'feedsearch-crawler' => 'feedsearch-crawler',
+			'fess' => 'fess',
 			'ffzbot' => 'ffzbot',
 			'finditanswersbot' => 'finditanswersbot',
 			'flockbrain robot' => 'flockbrain robot',
@@ -204,6 +206,7 @@ class Robot extends XFCP_Robot
 			'mediapartners-google' => 'mediapartners-google',
 			'mediatoolkitbot' => 'mediatoolkitbot',
 			'mediumbot-metatagfetcher' => 'mediumbot-metatagfetcher',
+			'metadata-downloader-bot' => 'metadata-downloader-bot',
 			'megaindex' => 'megaindex',
 			'metajobbot' => 'metajobbot',
 			'mfibot' => 'mfibot',
@@ -238,6 +241,7 @@ class Robot extends XFCP_Robot
 			'onalyticabot' => 'onalyticabot',
 			'online-webceo-bot' => 'online-webceo-bot',
 			'outclicksbot' => 'outclicksbot',
+			'page audit bot' => 'page audit bot',
 			'pagepeeker' => 'pagepeeker',
 			'pagething.com' => 'pagething.com',
 			'pandalytics' => 'pandalytics',
@@ -252,6 +256,7 @@ class Robot extends XFCP_Robot
 			'pilicanbot' => 'pilicanbot',
 			'pimeyes.com' => 'pimeyes.com',
 			'pleskbot' => 'pleskbot',
+			'plurkbot' => 'plurkbot',
 			'pmoz.info odp link checker' => 'pmoz.info odp link checker',
 			'politecrawl' => 'politecrawl',
 			'popscreen bot' => 'popscreen bot',
@@ -267,6 +272,8 @@ class Robot extends XFCP_Robot
 			'quora-bot' => 'quora-bot',
 			'qwantbot' => 'qwantbot',
 			'qwarrycrawler' => 'qwarrycrawler',
+			'r6_commentreader' => 'r6_commentreader',
+			'r6_feedfetcher' => 'r6_feedfetcher',
 			'randomsurfer' => 'randomsurfer',
 			'rankurbot' => 'rankurbot',
 			'rasabot' => 'rasabot',
@@ -285,6 +292,7 @@ class Robot extends XFCP_Robot
 			'sabsimbot' => 'sabsimbot',
 			'safednsbot' => 'safednsbot',
 			'sbooksnet' => 'sbooksnet',
+			'sc_bot' => 'sc_bot',
 			'scanmine newsspider' => 'scanmine newsspider',
 			'scooperbot' => 'scooperbot',
 			'scrapy' => 'scrapy',
@@ -347,6 +355,7 @@ class Robot extends XFCP_Robot
 			'telegrambot' => 'telegrambot',
 			'temeliobot-keyword-scrapper' => 'temeliobot-keyword-scrapper',
 			'tineye-bot' => 'tineye-bot',
+			'tkbot' => 'tkbot',
 			'tmmbot' => 'tmmbot',
 			'tombot' => 'tombot',
 			'toutiaospider' => 'toutiaospider',
@@ -379,6 +388,7 @@ class Robot extends XFCP_Robot
 			'who.is bot' => 'who.is bot',
 			'wiederfreibot' => 'wiederfreibot',
 			'wikido' => 'wikido',
+			'willie irc bot' => 'willie irc bot',
 			'winhttp' => 'winhttp',
 			'wlc pywikibot' => 'wlc pywikibot',
 			'wonderbot' => 'wonderbot',
@@ -906,6 +916,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Dyno Mapper Website Crawler',
 				'link' => 'https://dynomapper.com/component/content/article?id=432:60-innovative-website-crawlers-for-content-monitoring'
 			],
+			'earwigbot' => [
+				'title' => 'EarwigBot',
+				'link' => 'https://github.com/earwig/earwigbot'
+			],
 			'elisabot' => [
 				'title' => 'ElisaBot',
 				'link' => ''
@@ -957,6 +971,10 @@ class Robot extends XFCP_Robot
 			'feedsearch-crawler' => [
 				'title' => 'Feedsearch Crawler',
 				'link' => 'https://pypi.org/project/feedsearch-crawler'
+			],
+			'fess' => [
+				'title' => 'Fess Search Server Robot',
+				'link' => 'http://fess.codelibs.org/bot.html'
 			],
 			'ffzbot' => [
 				'title' => 'FrankerFaceZ Bot',
@@ -1282,6 +1300,10 @@ class Robot extends XFCP_Robot
 				'title' => 'MegaIndex Crawler',
 				'link' => 'http://megaindex.com/crawler',
 			],
+			'metadata-downloader-bot' => [
+				'title' => 'Linqia Metadata Downloader Bot',
+				'link' => 'mailto:eng@linqia.com',
+			],
 			'metajobbot' => [
 				'title' => 'MetaJobBot Job Crawler',
 				'link' => 'https://www.metajob.de/crawler',
@@ -1410,6 +1432,10 @@ class Robot extends XFCP_Robot
 				'title' => 'OutclicksBot',
 				'link' => 'https://www.outclicks.net/agent/fkn6dy'
 			],
+			'page audit bot' => [
+				'title' => 'Page Audit Bot',
+				'link' => 'https://page-audit.com'
+			],
 			'pagepeeker' => [
 				'title' => 'PagePeeker Website Thumbnailing Robot',
 				'link' => 'https://pagepeeker.com/robots/'
@@ -1474,6 +1500,10 @@ class Robot extends XFCP_Robot
 				'title' => 'PleskBot',
 				'link' => ''
 			],
+			'plurkbot' => [
+				'title' => 'PlurkBot',
+				'link' => 'https://www.plurk.com/'
+			],
 			'pmoz.info odp link checker' => [
 				'title' => 'pmoz.info ODP link checker',
 				'link' => 'http://pmoz.info/doc/botinfo.htm'
@@ -1529,6 +1559,14 @@ class Robot extends XFCP_Robot
 			'qwarrycrawler' => [
 				'title' => 'QwarryCrawler',
 				'link' => ''
+			],
+			'r6_commentreader' => [
+				'title' => 'Radian6 Comment Reader',
+				'link' => 'https://www.radian6.com/crawler'
+			],
+			'r6_feedfetcher' => [
+				'title' => 'Radian6 Feed Fetcher',
+				'link' => 'https://www.radian6.com/crawler'
 			],
 			'randomsurfer' => [
 				'title' => 'Random Surfer Bot',
@@ -1609,6 +1647,10 @@ class Robot extends XFCP_Robot
 			'sbooksnet' => [
 				'title' => 's-books.net crawler',
 				'link' => 'http://s-books.net/crawl_policy',
+			],
+			'sc_bot' => [
+				'title' => 'sc_bot',
+				'link' => '',
 			],
 			'scanmine newsspider' => [
 				'title' => 'ScanMine News Spider',
@@ -1858,6 +1900,10 @@ class Robot extends XFCP_Robot
 				'title' => 'TinEye Open Image Search Crawler',
 				'link' => 'http://www.tineye.com/crawler.html'
 			],
+			'tkbot' => [
+				'title' => 'TkBot',
+				'link' => ''
+			],
 			'tmmbot' => [
 				'title' => 'Travel and Make Money TMMbot',
 				'link' => 'http://www.dslab.ch'
@@ -1989,6 +2035,10 @@ class Robot extends XFCP_Robot
 			'wikido' => [
 				'title' => 'WikiDo Event Crawler',
 				'link' => 'https://www.wikido.com/wikido.php'
+			],
+			'willie irc bot' => [
+				'title' => 'Willie IRC Bot',
+				'link' => 'https://github.com/jantman/willie'
 			],
 			'winhttp' => [
 				'title' => 'Microsoft WinHttp',
