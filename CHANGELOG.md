@@ -1,6 +1,30 @@
 CHANGELOG
 =========
 
+3.10.0 (2020-11-02)
+------------------
+
+* weekly new bots:
+    * aasa-bot
+    * amazon-advertising-ad-standards-bot
+    * crawler/0.0.1
+    * danibot
+    * dragonbot
+    * irlbot
+    * jooblebot
+    * ldspider
+    * linkisbot
+    * mohawk-crawler
+    * newsgator
+    * ottobot
+    * pigafetta
+    * pingdom.com_bot
+    * planckspider
+    * rss bot
+    * speedy spider
+    * summalybot
+    * virusdie crawler                   
+    
 3.9.0 (2020-10-26)
 ------------------
 
