@@ -1,8 +1,26 @@
 CHANGELOG
 =========
 
+3.11.0 (2020-11-09)
+-------------------
+
+* weekly new bots:
+    * girafabot
+    * googebot malware scanning
+    * i-market-bot
+    * intelx.io_bot
+    * ninjabot
+    * pywebcopybot
+    * serpstatbot
+    * supremesearch.net
+    * todoexpertosbot
+    * webmoney megastock robot
+    * wordchampbot
+    * xaldon webspider
+    * yesslebot
+
 3.10.0 (2020-11-02)
-------------------
+-------------------
 
 * weekly new bots:
     * aasa-bot
