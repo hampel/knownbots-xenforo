@@ -1,6 +1,20 @@
 CHANGELOG
 =========
 
+3.12.0 (2020-11-17)
+-------------------
+
+* weekly new bots:
+    * experiancrawluk
+    * impact radius compliance bot
+    * kauaibot
+    * leuchtfeuer crawler
+    * redirectbot
+    * simpleanalyticsbot
+    * skimbot
+    * sogou pic spider
+    * testcrawler
+
 3.11.0 (2020-11-09)
 -------------------
 
