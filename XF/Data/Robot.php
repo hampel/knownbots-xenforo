@@ -119,6 +119,7 @@ class Robot extends XFCP_Robot
 			'em-crawler' => 'em-crawler',
 			'everyfeed-spider' => 'everyfeed-spider',
 			'exabot' => 'exabot',
+			'experiancrawluk' => 'experiancrawluk',
 			'eyeotabot' => 'eyeotabot',
 			'ezlynx' => 'ezlynx',
 			'ezooms' => 'ezooms',
@@ -167,6 +168,7 @@ class Robot extends XFCP_Robot
 			'ias_crawler' => 'ias_crawler',
 			'icc-crawler' => 'icc-crawler',
 			'image size by siteimprove.com' => 'image size by siteimprove.com',
+			'impact radius compliance bot' => 'impact radius compliance bot',
 			'implisensebot' => 'implisensebot',
 			'indeedbot' => 'indeedbot',
 			'infoobot' => 'infoobot',
@@ -184,6 +186,7 @@ class Robot extends XFCP_Robot
 			'jugendschutzprogramm-crawler' => 'jugendschutzprogramm',
 			'just-crawling' => 'just-crawling',
 			'k7mlwcbot' => 'k7mlwcbot',
+			'kauaibot' => 'kauaibot',
 			'kingbot' => 'kingbot',
 			'knot group' => 'knot group',
 			'knowknot' => 'knowknot',
@@ -191,6 +194,7 @@ class Robot extends XFCP_Robot
 			'krzana bot' => 'krzana bot',
 			'krzana-rss-bot' => 'krzana-rss-bot',
 			'lawinsiderbot' => 'lawinsiderbot',
+			'leuchtfeuer crawler' => 'leuchtfeuer crawler',
 			'ldspider' => 'ldspider',
 			'letsearchbot' => 'letsearchbot',
 			'lightspeedsystemscrawler' => 'lightspeedsystemscrawler',
@@ -301,6 +305,7 @@ class Robot extends XFCP_Robot
 			're-re studio' => 're-re studio',
 			'reachabilitycheckbot' => 'reachabilitycheckbot',
 			'redditbot' => 'redditbot',
+			'redirectbot' => 'redirectbot',
 			'refindbot' => 'refindbot',
 			'relemindbot' => 'relemindbot',
 			'rely bot' => 'rely bot',
@@ -338,18 +343,21 @@ class Robot extends XFCP_Robot
 			'seznambot' => 'seznambot',
 			'sidetrade indexer bot' => 'sidetrade indexer bot',
 			'sirdatabot' => 'sirdatabot',
+			'simpleanalyticsbot' => 'simpleanalyticsbot',
 			'siteanalyzerbot' => 'siteanalyzerbot',
 			'sitecheck-sitecrawl' => 'sitecheck-sitecrawl',
 			'sitecheckerbotcrawler' => 'sitecheckerbotcrawler',
 			'siteguru linkchecker' => 'siteguru linkchecker',
 			'sitelockspider' => 'sitelockspider',
 			'sitesucker' => 'sitesucker',
+			'skimbot' => 'skimbot',
 			'slack-imgproxy' => 'slack-imgproxy',
 			'slackbot-linkexpanding' => 'slackbot-linkexpanding',
 			'slackbot' => 'slackbot',
 			'smtbot' => 'smtbot',
 			'snapbot' => 'snapbot',
 			'snappreviewbot' => 'snappreviewbot',
+			'sogou pic spider' => 'sogou pic spider',
 			'solomonobot' => 'solomonobot',
 			'somdsearchbot' => 'somdsearchbot',
 			'sottopop' => 'sottopop',
@@ -378,6 +386,7 @@ class Robot extends XFCP_Robot
 			'tapatalk cloudsearch platform' => 'tapatalk',
 			'telegrambot' => 'telegrambot',
 			'temeliobot-keyword-scrapper' => 'temeliobot-keyword-scrapper',
+			'testcrawler' => 'testcrawler',
 			'tineye-bot' => 'tineye-bot',
 			'tkbot' => 'tkbot',
 			'tmmbot' => 'tmmbot',
@@ -997,6 +1006,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Exalead Exabot',
 				'link' => 'https://www.exalead.com/search/webmasterguide'
 			],
+			'experiancrawluk' => [
+				'title' => 'Experian Crawl UK',
+				'link' => 'mailto:andrew.swanton@phgroup.com'
+			],
 			'eyeotabot' => [
 				'title' => 'Eyeota Bot',
 				'link' => 'https://www.eyeota.com/'
@@ -1213,6 +1226,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Node.js Crawler Library',
 				'link' => 'https://www.npmjs.com/package/js-crawler',
 			],
+			'impact radius compliance bot' => [
+				'title' => 'Impact Radius Compliance Bot',
+				'link' => 'https://impact.com/',
+			],
 			'intelx.io_bot' => [
 				'title' => 'Intelligence X search engine bot',
 				'link' => 'https://intelx.io',
@@ -1239,6 +1256,10 @@ class Robot extends XFCP_Robot
 			],
 			'just-crawling' => [
 				'title' => 'Just-Crawling',
+				'link' => ''
+			],
+			'kauaibot' => [
+				'title' => 'KauaiBot',
 				'link' => ''
 			],
 			'k7mlwcbot' => [
@@ -1284,6 +1305,10 @@ class Robot extends XFCP_Robot
 			'letsearchbot' => [
 				'title' => 'LetSearch.ru Bot',
 				'link' => 'https://letsearch.ru/bots'
+			],
+			'leuchtfeuer crawler' => [
+				'title' => 'Leuchtfeuer Crawler',
+				'link' => ''
 			],
 			'lightspeedsystemscrawler' => [
 				'title' => 'Lightspeed Systems Crawler',
@@ -1713,6 +1738,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Reddit Bot',
 				'link' => 'http://www.reddit.com/feedback'
 			],
+			'redirectbot' => [
+				'title' => 'Redirect Bot',
+				'link' => 'https://sourceforge.net/projects/redirectbot/'
+			],
 			'refindbot' => [
 				'title' => 'Refind Bot',
 				'link' => 'https://refind.com/'
@@ -1869,6 +1898,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Sidetrade Indexer Bot',
 				'link' => 'https://www.sidetrade.com/',
 			],
+			'simpleanalyticsbot' => [
+				'title' => 'Simple Analytics Bot',
+				'link' => 'https://simpleanalytics.com/',
+			],
 			'sirdatabot' => [
 				'title' => 'Sirdata Bot',
 				'link' => 'https://www.sirdata.com/home/',
@@ -1897,6 +1930,10 @@ class Robot extends XFCP_Robot
 				'title' => 'SiteSucker for macOS',
 				'link' => 'http://ricks-apps.com/osx/sitesucker/',
 			],
+			'skimbot' => [
+				'title' => 'Skimlinks Skimbot',
+				'link' => 'https://skimlinks.com/',
+			],
 			'slack-imgproxy' => [
 				'title' => 'Slack Image Proxy',
 				'link' => 'https://api.slack.com/robots'
@@ -1920,6 +1957,10 @@ class Robot extends XFCP_Robot
 			'snappreviewbot' => [
 				'title' => 'SnapPreviewBot',
 				'link' => ''
+			],
+			'sogou pic spider' => [
+				'title' => 'Sogou Search Engine Pic Spider',
+				'link' => 'http://www.sogou.com/docs/help/webmasters.htm#07'
 			],
 			'solomonobot' => [
 				'title' => 'Solomono Bot',
@@ -2031,6 +2072,10 @@ class Robot extends XFCP_Robot
 			],
 			'temeliobot-keyword-scrapper' => [
 				'title' => 'Temeliobot Keyword Scrapper',
+				'link' => ''
+			],
+			'testcrawler' => [
+				'title' => 'Test Crawler',
 				'link' => ''
 			],
 			'tineye-bot' => [
