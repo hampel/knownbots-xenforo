@@ -1,6 +1,32 @@
 CHANGELOG
 =========
 
+3.13.0 (2020-12-02)
+-------------------
+
+* new Cubot phone false positives:
+	* cubot a5
+	* cubot j3 pro
+	
+* weekly new bots:
+    * addsugarspiderbot
+    * annuairefrancais.fr
+    * coibotparser
+    * criteobot
+    * discobot
+    * domainspider-bot
+    * dropboxpreviewbot
+    * dumbot
+    * gnowitnewsbot
+    * hoaxybot
+    * ichiro
+    * lamarkbot
+    * media-bot
+    * nusearch spider
+    * radian6_default_
+    * xovionpagecrawler
+    * zyborg              
+
 3.12.0 (2020-11-17)
 -------------------
 
