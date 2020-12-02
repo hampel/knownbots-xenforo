@@ -477,10 +477,12 @@ class Robot extends XFCP_Robot
 			'm bot 54 build/nrd90m',
 			'm bot 60 build/nrd90m',
 
-			'cubot cheetah 2', // Cubot phones
+			'cubot a5', // Cubot phones
+			'cubot cheetah 2',
 			'cubot dinosaur',
 			'cubot echo',
 			'cubot_j3',
+			'cubot j3 pro',
 			'cubot h3',
 			'cubot king kong',
 			'cubot magic',
