@@ -14,6 +14,7 @@ class Robot extends XFCP_Robot
 			'aasa-bot' => 'aasa-bot',
 			'accompanybot' => 'accompanybot',
 			'adbeat' => 'adbeat',
+			'addsugarspiderbot' => 'addsugarspiderbot',
 			'adsbot-google-mobile' => 'adsbot-google-mobile',
 			'adsbot-google' => 'adsbot-google', // this should come after adsbot-google-mobile
 			'adsbot' => 'adsbot', // this is not Google
@@ -27,6 +28,7 @@ class Robot extends XFCP_Robot
 			'amazon-advertising-ad-standards-bot' => 'amazon-advertising-ad-standards-bot',
 			'amazonbot' => 'amazonbot',
 			'anderspinkbot' => 'anderspinkbot',
+			'annuairefrancais.fr' => 'annuairefrancais.fr',
 			'ant.com beta' => 'ant.com beta',
 			'apache-httpclient' => 'apache-httpclient',
 			'applebot' => 'applebot',
@@ -78,12 +80,14 @@ class Robot extends XFCP_Robot
 			'coccocbot' => 'coccocbot',
 			'cocolyzebot' => 'cocolyzebot',
 			'cognitiveseo.com' => 'cognitiveseo.com',
+			'coibotparser' => 'coibotparser',
 			'companybook-crawler' => 'companybook',
 			'contacts-crawler' => 'scrapinghub',
 			'contxbot' => 'contxbot',
 			'crawler4j' => 'crawler4j',
 			'crawler_eb_germany_2.0' => 'crawler_eb_germany_2.0',
 			'crawlson' => 'crawlson',
+			'criteobot' => 'criteobot',
 			'crowdtanglebot' => 'crowdtanglebot',
 			'crsspxlbot' => 'crsspxlbot',
 			'cukbot' => 'cukbot',
@@ -99,16 +103,20 @@ class Robot extends XFCP_Robot
 			'df bot' => 'df bot',
 			'diffbot' => 'diffbot',
 			'dingtalkbot-linkservice' => 'dingtalkbot-linkservice',
+			'discobot' => 'discobot',
 			'discordbot' => 'discordbot',
 			'dispatch' => 'dispatch',
 			'dle_spider.exe' => 'dle_spider.exe',
 			'dnsresearchbot' => 'dnsresearchbot',
 			'domainappender' => 'domainappender',
+			'domainspider-bot' => 'domainspider-bot',
 			'domainstatsbot' => 'domainstatsbot',
 			'dotbot' => 'dotbot',
 			'dragonbot' => 'dragonbot',
+			'dropboxpreviewbot' => 'dropboxpreviewbot',
 			'duckduckbot' => 'duckduckbot',
 			'duckduckgo-favicons-bot' => 'duckduckgo-favicons',
+			'dumbot' => 'dumbot',
 			'duplexweb-google' => 'duplexweb-google',
 			'dy robot' => 'dy robot',
 			'dyno mapper crawler' => 'dyno mapper crawler',
@@ -141,6 +149,7 @@ class Robot extends XFCP_Robot
 			'getintent crawler' => 'getintent',
 			'gigabot' => 'gigabot',
 			'girafabot' => 'girafabot',
+			'gnowitnewsbot' => 'gnowitnewsbot',
 			'go-http-client' => 'go-http-client',
 			'google-adwords-instant' => 'google-adwords-instant',
 			'google-read-aloud' => 'google-read-aloud',
@@ -153,6 +162,7 @@ class Robot extends XFCP_Robot
 			'gumgum-bot' => 'gumgum-bot',
 			'hatena' => 'hatena',
 			'hetrixtools' => 'hetrixtools',
+			'hoaxybot' => 'hoaxybot',
 			'hrankbot' => 'hrankbot',
 			'httrack' => 'httrack',
 			'huaweiwebcatbot' => 'huaweiwebcatbot',
@@ -167,6 +177,7 @@ class Robot extends XFCP_Robot
 			'ias-va' => 'admantx',
 			'ias_crawler' => 'ias_crawler',
 			'icc-crawler' => 'icc-crawler',
+			'ichiro' => 'ichiro',
 			'image size by siteimprove.com' => 'image size by siteimprove.com',
 			'impact radius compliance bot' => 'impact radius compliance bot',
 			'implisensebot' => 'implisensebot',
@@ -193,6 +204,7 @@ class Robot extends XFCP_Robot
 			'konturbot' => 'konturbot',
 			'krzana bot' => 'krzana bot',
 			'krzana-rss-bot' => 'krzana-rss-bot',
+			'lamarkbot' => 'lamarkbot',
 			'lawinsiderbot' => 'lawinsiderbot',
 			'leuchtfeuer crawler' => 'leuchtfeuer crawler',
 			'ldspider' => 'ldspider',
@@ -218,6 +230,7 @@ class Robot extends XFCP_Robot
 			'mauibot' => 'mauibot',
 			'maxpointcrawler' => 'maxpointcrawler',
 			'mbcrawler' => 'mbcrawler',
+			'media-bot' => 'media-bot',
 			'mediacloud bot for open academic research' => 'mediacloud bot for open academic research',
 			'mediapartners-google' => 'mediapartners-google',
 			'mediatoolkitbot' => 'mediatoolkitbot',
@@ -253,6 +266,7 @@ class Robot extends XFCP_Robot
 			'ninjabot' => 'ninjabot',
 			'nixstatsbot' => 'nixstatsbot',
 			'nlnz_iaharvester' => 'nlnz',
+			'nusearch spider' => 'nusearch spider',
 			'obot/2.3.1' => 'obot',
 			'ocarinabot' => 'ocarinabot',
 			'odklbot' => 'odklbot',
@@ -298,6 +312,7 @@ class Robot extends XFCP_Robot
 			'qwarrycrawler' => 'qwarrycrawler',
 			'r6_commentreader' => 'r6_commentreader',
 			'r6_feedfetcher' => 'r6_feedfetcher',
+			'radian6_default_' => 'radian6_default_',
 			'randomsurfer' => 'randomsurfer',
 			'rankurbot' => 'rankurbot',
 			'rasabot' => 'rasabot',
@@ -434,6 +449,7 @@ class Robot extends XFCP_Robot
 			'xaldon webspider' => 'xaldon webspider',
 			'x28-job-bot' => 'x28-job-bot',
 			'xenu link sleuth' => 'xenu link sleuth',
+			'xovionpagecrawler' => 'xovionpagecrawler',
 			'xyz spider' => 'xyz spider',
 			'y!j-asr' => 'yahoo japan',
 			'yellowbrandprotectionbot' => 'yellowbrandprotectionbot',
@@ -446,6 +462,7 @@ class Robot extends XFCP_Robot
 			'zoombot' => 'zoombot',
 			'zoominfobot' => 'zoominfobot',
 			'zumbot' => 'zumbot',
+			'zyborg' => 'zyborg',
 			'_zbot' => '_zbot',
 
 			// these should appear after other bots
@@ -584,6 +601,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Adbeat',
 				'link' => 'http://adbeat.com/policy',
 			],
+			'addsugarspiderbot' => [
+				'title' => 'IdealObserver AddSugar SpiderBot',
+				'link' => 'https://www.idealobserver.com/',
+			],
 			'adsbot-google-mobile' => [
 				'title' => 'AdsBot Google Mobile',
 				'link' => 'http://www.google.com/mobile/adsbot.html',
@@ -635,6 +656,10 @@ class Robot extends XFCP_Robot
 			'anderspinkbot' => [
 				'title' => 'Anders Pink Bot',
 				'link' => 'http://anderspink.com/bot.html',
+			],
+			'annuairefrancais.fr' => [
+				'title' => 'The French Directory',
+				'link' => 'http://annuairefrancais.fr/',
 			],
 			'ant.com beta' => [
 				'title' => 'Ant.com Antmark Crawler',
@@ -840,6 +865,10 @@ class Robot extends XFCP_Robot
 				'title' => 'cognitiveSEO Bot',
 				'link' => 'http://cognitiveseo.com/bot.html'
 			],
+			'coibotparser' => [
+				'title' => 'COIBot Parser',
+				'link' => ''
+			],
 			'companybook' => [
 				'title' => 'Companybook Crawler',
 				'link' => 'https://www.companybooknetworking.com/'
@@ -867,6 +896,10 @@ class Robot extends XFCP_Robot
 			'crawler4j' => [
 				'title' => 'crawler4j open source Java crawler',
 				'link' => 'http://code.google.com/p/crawler4j/'
+			],
+			'criteobot' => [
+				'title' => 'Criteo Bot',
+				'link' => 'https://www.criteo.com/'
 			],
 			'crowdtanglebot' => [
 				'title' => 'CrowdTangle Social Media Link Check Bot',
@@ -928,6 +961,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Ding Talk Bot Text Link Card Generator',
 				'link' => 'https://open-doc.dingtalk.com/microapp/faquestions/ftpfeu'
 			],
+			'discobot' => [
+				'title' => 'Discovery Engine DiscoBot',
+				'link' => 'http://discoveryengine.com/discobot.html'
+			],
 			'discordbot' => [
 				'title' => 'Discordbot',
 				'link' => 'https://discordapp.com'
@@ -952,6 +989,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Profound Networks Domain Appender',
 				'link' => 'http://www.profound.net/domainappender'
 			],
+			'domainspider-bot' => [
+				'title' => 'Domain Spider Bot',
+				'link' => ''
+			],
 			'domainstatsbot' => [
 				'title' => 'DomainStatsBot',
 				'link' => 'https://domainstats.com/pages/our-bot'
@@ -960,6 +1001,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Dragon Metrics Bot',
 				'link' => 'http://www.dragonmetrics.com'
 			],
+			'dropboxpreviewbot' => [
+				'title' => 'Dropbox Preview Bot',
+				'link' => 'https://www.dropbox.com/'
+			],
 			'duckduckbot' => [
 				'title' => 'DuckDuckBot',
 				'link' => 'http://duckduckgo.com/duckduckbot.html'
@@ -967,6 +1012,10 @@ class Robot extends XFCP_Robot
 			'duckduckgo-favicons' => [
 				'title' => 'DuckDuck Favicons Bot',
 				'link' => 'http://duckduckgo.com'
+			],
+			'dumbot' => [
+				'title' => 'DumBot',
+				'link' => ''
 			],
 			'duplexweb-google' => [
 				'title' => 'Google Duplex on the Web',
@@ -1096,13 +1145,9 @@ class Robot extends XFCP_Robot
 				'title' => 'Girafabot',
 				'link' => 'http://www.girafa.com'
 			],
-			'grapeshotcrawler' => [
-				'title' => 'Oracle Data Cloud Crawler (Grapeshot)',
-				'link' => 'http://www.grapeshot.co.uk/crawler.php'
-			],
-			'graydon bot' => [
-				'title' => 'Graydon Bot',
-				'link' => 'http://www.graydon.nl/'
+			'gnowitnewsbot' => [
+				'title' => 'Gnowit News bot',
+				'link' => 'https://www.gnowit.com/'
 			],
 			'go-http-client' => [
 				'title' => 'Go HTTP Client',
@@ -1128,6 +1173,14 @@ class Robot extends XFCP_Robot
 				'title' => 'Gowiki Search Engine Bot',
 				'link' => 'http://www.gowikibot.com'
 			],
+			'grapeshotcrawler' => [
+				'title' => 'Oracle Data Cloud Crawler (Grapeshot)',
+				'link' => 'http://www.grapeshot.co.uk/crawler.php'
+			],
+			'graydon bot' => [
+				'title' => 'Graydon Bot',
+				'link' => 'http://www.graydon.nl/'
+			],
 			'grfzbot' => [
 				'title' => 'GRFZbot',
 				'link' => ''
@@ -1143,6 +1196,10 @@ class Robot extends XFCP_Robot
 			'hetrixtools' => [
 				'title' => 'HetrixTools Uptime Monitoring Bot',
 				'link' => 'https://hetrix.tools/uptime-monitoring-bot.html'
+			],
+			'hoaxybot' => [
+				'title' => 'Hoaxy Bot - Indiana University CNetS',
+				'link' => 'http://cnets.indiana.edu'
 			],
 			'hrankbot' => [
 				'title' => 'HRank Hosting Ranking Bot',
@@ -1187,6 +1244,10 @@ class Robot extends XFCP_Robot
 			'icc-crawler' => [
 				'title' => 'Universal Communication Research Institute ICC Crawler',
 				'link' => 'http://ucri.nict.go.jp/en/icccrawler.html/'
+			],
+			'ichiro' => [
+				'title' => 'Goo Webcrawler (Ichiro)',
+				'link' => 'http://help.goo.ne.jp/door/crawler.html'
 			],
 			'image size by siteimprove.com' => [
 				'title' => 'Siteimprove Image Size QA Bot',
@@ -1292,6 +1353,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Krzana RSS Bot',
 				'link' => 'https://krzana.com/'
 			],
+			'lamarkbot' => [
+				'title' => 'LAMARK Bot',
+				'link' => 'https://lamark.fr/'
+			],
 			'lawinsiderbot' => [
 				'title' => 'Law Insider Bot',
 				'link' => 'http://www.lawinsider.com/about'
@@ -1391,6 +1456,10 @@ class Robot extends XFCP_Robot
 			'mbcrawler' => [
 				'title' => 'MBCrawler',
 				'link' => 'https://monitorbacklinks.com/robot',
+			],
+			'media-bot' => [
+				'title' => 'Media Bot',
+				'link' => '',
 			],
 			'mediacloud bot for open academic research' => [
 				'title' => 'Media Cloud bot for Open Academic Research',
@@ -1527,6 +1596,10 @@ class Robot extends XFCP_Robot
 			'nlnz' => [
 				'title' => 'National Library of New Zealand Web Domain Harvest',
 				'link' => 'https://natlib.govt.nz/publishers-and-authors/web-harvesting/domain-harvest'
+			],
+			'nusearch spider' => [
+				'title' => 'NuSearch Spider',
+				'link' => 'http://www.nusearch.com'
 			],
 			'obot' => [
 				'title' => 'IBM Germany R&D oBot web crawler',
@@ -1710,6 +1783,10 @@ class Robot extends XFCP_Robot
 			],
 			'r6_feedfetcher' => [
 				'title' => 'Radian6 Feed Fetcher',
+				'link' => 'https://www.radian6.com/crawler'
+			],
+			'radian6_default_' => [
+				'title' => 'Radian6 Default Crawler',
 				'link' => 'https://www.radian6.com/crawler'
 			],
 			'randomsurfer' => [
@@ -2272,6 +2349,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Xenu Link Sleuth',
 				'link' => 'http://home.snafu.de/tilman/xenulink.html'
 			],
+			'xovionpagecrawler' => [
+				'title' => 'Xovi Ion Page Crawler',
+				'link' => 'http://www.xovi.de/'
+			],
 			'xyz spider' => [
 				'title' => 'XYZ Spider',
 				'link' => ''
@@ -2319,6 +2400,10 @@ class Robot extends XFCP_Robot
 			'zumbot' => [
 				'title' => 'ZUM Internet Bot',
 				'link' => 'https://www.zuminternet.com/en'
+			],
+			'zyborg' => [
+				'title' => 'Zyborg Dead Link Checker',
+				'link' => 'http://www.wisenutbot.com'
 			],
 			'_zbot' => [
 				'title' => '_zbot',
