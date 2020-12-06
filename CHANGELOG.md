@@ -1,6 +1,28 @@
 CHANGELOG
 =========
 
+3.14.0 (2020-12-07)
+-------------------
+
+* weekly new bots:
+    * antbot/1.0
+    * becomebot
+    * castlebot
+    * custom-crawler
+    * feedsearch bot
+    * gulper web bot
+    * istellabot
+    * lmspider
+    * marketingminer bot
+    * my nutch spider
+    * networking4all bot
+    * nfwebcrawler
+    * tombapublicwebcrawler
+    * uptimebot
+    * vuhuvbot
+    * webcrawl.net
+    * webspider 1.0
+
 3.13.0 (2020-12-02)
 -------------------
 
