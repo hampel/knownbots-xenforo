@@ -531,7 +531,9 @@ class Robot extends XFCP_Robot
 			'cubot x18',
 			'cubot_x18_plus',
 
-			'glx spideri' // GLX phones
+			'glx spideri', // GLX phones
+
+			'dinobot 4k plus', // Dinobot Android TV
 		];
 
 		return $falsePositives;
