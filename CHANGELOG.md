@@ -1,6 +1,22 @@
 CHANGELOG
 =========
 
+3.15.0 (2020-12-21)
+-------------------
+
+* weekly new bots:
+    * cis455crawler
+    * crystalsemanticsbot
+    * discoverspider
+    * envolk[its]spider
+    * geograph linkcheck bot
+    * gg peekbot
+    * iccrawler
+    * mybot
+    * psbot
+    * suggybot
+    * testbot
+
 3.14.0 (2020-12-07)
 -------------------
 
