@@ -74,6 +74,7 @@ class Robot extends XFCP_Robot
 			'checkmarknetwork' => 'checkmarknetwork',
 			'chimebot' => 'chimebot',
 			'cincraw' => 'cincraw',
+			'cis455crawler' => 'cis455crawler',
 			'cispa webcrawler' => 'cispa webcrawler',
 			'claritybot' => 'claritybot',
 			'clickagy intelligence bot' => 'clickagy',
@@ -93,6 +94,7 @@ class Robot extends XFCP_Robot
 			'criteobot' => 'criteobot',
 			'crowdtanglebot' => 'crowdtanglebot',
 			'crsspxlbot' => 'crsspxlbot',
+			'crystalsemanticsbot' => 'crystalsemanticsbot',
 			'cukbot' => 'cukbot',
 			'curious george' => 'curious george',
 			'curl' => 'curl',
@@ -109,6 +111,7 @@ class Robot extends XFCP_Robot
 			'dingtalkbot-linkservice' => 'dingtalkbot-linkservice',
 			'discobot' => 'discobot',
 			'discordbot' => 'discordbot',
+			'discoverspider' => 'discoverspider',
 			'dispatch' => 'dispatch',
 			'dle_spider.exe' => 'dle_spider.exe',
 			'dnsresearchbot' => 'dnsresearchbot',
@@ -128,6 +131,7 @@ class Robot extends XFCP_Robot
 			'earwigbot' => 'earwigbot',
 			'elmer, the thinglink imagebot' => 'elmer, the thinglink imagebot',
 			'elisabot' => 'elisabot',
+			'envolk[its]spider' => 'envolk[its]spider',
 			'em-crawler' => 'em-crawler',
 			'everyfeed-spider' => 'everyfeed-spider',
 			'exabot' => 'exabot',
@@ -149,9 +153,11 @@ class Robot extends XFCP_Robot
 			'fyrebot' => 'fyrebot',
 			'garlikcrawler' => 'garlikcrawler',
 			'gdark-spider' => 'gdark-spider',
+			'geograph linkcheck bot' => 'geograph linkcheck bot',
 			'germcrawler' => 'germcrawler',
 			'gethpinfo.com-bot' => 'gethpinfo.com-bot',
 			'getintent crawler' => 'getintent',
+			'gg peekbot' => 'gg peekbot',
 			'gigabot' => 'gigabot',
 			'girafabot' => 'girafabot',
 			'gnowitnewsbot' => 'gnowitnewsbot',
@@ -183,6 +189,7 @@ class Robot extends XFCP_Robot
 			'ias-va' => 'admantx',
 			'ias_crawler' => 'ias_crawler',
 			'icc-crawler' => 'icc-crawler',
+			'iccrawler' => 'iccrawler',
 			'ichiro' => 'ichiro',
 			'image size by siteimprove.com' => 'image size by siteimprove.com',
 			'impact radius compliance bot' => 'impact radius compliance bot',
@@ -261,6 +268,7 @@ class Robot extends XFCP_Robot
 			'monsidobot' => 'monsidobot',
 			'msiecrawler' => 'msiecrawler',
 			'my nutch spider' => 'my nutch spider',
+			'mybot' => 'mybot',
 			'nekstbot' => 'nekstbot',
 			'nesotebot' => 'nesotebot',
 			'netestate ne crawler' => 'netestate ne crawler',
@@ -311,6 +319,7 @@ class Robot extends XFCP_Robot
 			'popscreen bot' => 'popscreen bot',
 			'postmanruntime' => 'postman',
 			'prft-bot' => 'prft-bot',
+			'psbot' => 'psbot',
 			'pubmatic crawler bot' => 'pubmatic crawler bot',
 			'pulno' => 'pulno',
 			'pulsepoint-ads.txt-crawler' => 'pulsepoint-ads.txt-crawler',
@@ -401,6 +410,7 @@ class Robot extends XFCP_Robot
 			'statonlinerubot' => 'statonlinerubot',
 			'statuscake/virusscanner' => 'statuscake',
 			'stormcrawler' => 'stormcrawler',
+			'suggybot' => 'suggybot',
 			'summalybot' => 'summalybot',
 			'superbot' => 'superbot',
 			'superfeedr bot' => 'superfeedr bot',
@@ -413,6 +423,7 @@ class Robot extends XFCP_Robot
 			'tapatalk cloudsearch platform' => 'tapatalk',
 			'telegrambot' => 'telegrambot',
 			'temeliobot-keyword-scrapper' => 'temeliobot-keyword-scrapper',
+			'testbot' => 'testbot',
 			'testcrawler' => 'testcrawler',
 			'tineye-bot' => 'tineye-bot',
 			'tkbot' => 'tkbot',
@@ -860,6 +871,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Cincraw Crawler',
 				'link' => 'https://cincrawdata.net/bot/'
 			],
+			'cis455crawler' => [
+				'title' => 'CIS 455 Crawler',
+				'link' => 'https://www.cis.upenn.edu/~cis455/'
+			],
 			'cispa webcrawler' => [
 				'title' => 'CISPA - Helmholtz-Zentrum for Information Security Vulnerability Research Bot',
 				'link' => 'https://vuln-notify-checker.cispa.saarland'
@@ -940,6 +955,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Cross Pixel Bot',
 				'link' => 'http://www.crosspixel.net/'
 			],
+			'crystalsemanticsbot' => [
+				'title' => 'Crystal Semantics Bot',
+				'link' => 'http://www.crystalsemantics.com/user-agent/'
+			],
 			'cukbot' => [
 				'title' => 'CukBot - Companies in the UK',
 				'link' => 'https://www.companiesintheuk.co.uk/bot.html'
@@ -1003,6 +1022,10 @@ class Robot extends XFCP_Robot
 			'discordbot' => [
 				'title' => 'Discordbot',
 				'link' => 'https://discordapp.com'
+			],
+			'discoverspider' => [
+				'title' => 'Discover Spider',
+				'link' => 'http://www.discover.com'
 			],
 			'dotbot' => [
 				'title' => 'Moz Link Index Bot',
@@ -1079,6 +1102,10 @@ class Robot extends XFCP_Robot
 			'em-crawler' => [
 				'title' => 'em-crawler Ruby library',
 				'link' => 'https://github.com/dinesh/em-crawler'
+			],
+			'envolk[its]spider' => [
+				'title' => 'Envolk Spider',
+				'link' => 'http://www.envolk.com/envolkspider.html'
 			],
 			'eventures' => [
 				'title' => 'e.ventures Investment Crawler',
@@ -1164,6 +1191,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Gdark Spider',
 				'link' => ''
 			],
+			'geograph linkcheck bot' => [
+				'title' => 'Geograph LinkCheck Bot',
+				'link' => 'https://www.geograph.org.uk/help/bot'
+			],
 			'germcrawler' => [
 				'title' => 'GermCrawler',
 				'link' => ''
@@ -1175,6 +1206,10 @@ class Robot extends XFCP_Robot
 			'getintent' => [
 				'title' => 'GetIntent Crawler',
 				'link' => 'http://getintent.com/bot.html'
+			],
+			'gg peekbot' => [
+				'title' => 'GG PeekBot',
+				'link' => 'https://www.gg.pl/'
 			],
 			'gigabot' => [
 				'title' => 'Gigablast Crawler',
@@ -1287,6 +1322,10 @@ class Robot extends XFCP_Robot
 			'icc-crawler' => [
 				'title' => 'Universal Communication Research Institute ICC Crawler',
 				'link' => 'http://ucri.nict.go.jp/en/icccrawler.html/'
+			],
+			'iccrawler' => [
+				'title' => 'IC Center Bot',
+				'link' => 'http://www.iccenter.net/bot.htm'
 			],
 			'ichiro' => [
 				'title' => 'Goo Webcrawler (Ichiro)',
@@ -1592,6 +1631,10 @@ class Robot extends XFCP_Robot
 				'title' => 'MSIE Offline Website Crawler',
 				'link' => 'http://nekst.ipipan.waw.pl/nekstbot/'
 			],
+			'mybot' => [
+				'title' => 'mybot',
+				'link' => ''
+			],
 			'my nutch spider' => [
 				'title' => 'My Nutch Spider',
 				'link' => 'http://nutch.apache.org/'
@@ -1803,6 +1846,10 @@ class Robot extends XFCP_Robot
 			'prft-bot' => [
 				'title' => 'PRFT Bot',
 				'link' => ''
+			],
+			'psbot' => [
+				'title' => 'Picsearch PsBot',
+				'link' => 'http://www.picsearch.com/bot.html'
 			],
 			'pubmatic crawler bot' => [
 				'title' => 'PubMatic ads.txt crawler',
@@ -2176,6 +2223,10 @@ class Robot extends XFCP_Robot
 				'title' => 'StormCrawler Open Source Crawler SDK',
 				'link' => 'http://stormcrawler.net/'
 			],
+			'suggybot' => [
+				'title' => 'SuggyBot',
+				'link' => 'https://blog.suggy.com/was-ist-suggy/suggy-webcrawler/'
+			],
 			'summalybot' => [
 				'title' => 'SummalyBot',
 				'link' => 'https://github.com/syuilo/summaly'
@@ -2218,6 +2269,10 @@ class Robot extends XFCP_Robot
 			],
 			'temeliobot-keyword-scrapper' => [
 				'title' => 'Temeliobot Keyword Scrapper',
+				'link' => ''
+			],
+			'testbot' => [
+				'title' => 'Test Bot',
 				'link' => ''
 			],
 			'testcrawler' => [
