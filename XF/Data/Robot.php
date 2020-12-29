@@ -56,6 +56,7 @@ class Robot extends XFCP_Robot
 			'blexbot' => 'blexbot',
 			'bnf.fr_bot' => 'bnf.fr_bot',
 			'boardreader' => 'boardreader',
+			'boitho.com-dc' => 'boitho.com-dc',
 			'bomborabot' => 'bomborabot',
 			'botw spider' => 'botw spider',
 			'brandverity' => 'brandverity',
@@ -266,6 +267,7 @@ class Robot extends XFCP_Robot
 			'mohawk-crawler' => 'mohawk-crawler',
 			'mojeekbot' => 'mojeekbot',
 			'monsidobot' => 'monsidobot',
+			'msc crawl project radboud university' => 'msc crawl project radboud university',
 			'msiecrawler' => 'msiecrawler',
 			'my nutch spider' => 'my nutch spider',
 			'mybot' => 'mybot',
@@ -284,6 +286,7 @@ class Robot extends XFCP_Robot
 			'nimbostratus-bot' => 'nimbostratus',
 			'ninjbot' => 'ninjbot',
 			'ninjabot' => 'ninjabot',
+			'niocbot' => 'niocbot',
 			'nixstatsbot' => 'nixstatsbot',
 			'nlnz_iaharvester' => 'nlnz',
 			'nusearch spider' => 'nusearch spider',
@@ -293,6 +296,7 @@ class Robot extends XFCP_Robot
 			'omgili' => 'omgili',
 			'onalyticabot' => 'onalyticabot',
 			'online-webceo-bot' => 'online-webceo-bot',
+			'open web analytics bot' => 'open web analytics bot',
 			'ottobot' => 'ottobot',
 			'outclicksbot' => 'outclicksbot',
 			'page audit bot' => 'page audit bot',
@@ -327,6 +331,7 @@ class Robot extends XFCP_Robot
 			'pywebcopybot' => 'pywebcopybot',
 			'quantcastbot' => 'quantcastbot',
 			'queryseekerspider' => 'queryseekerspider',
+			'quetextbot' => 'quetextbot',
 			'quick-crawler' => 'scrapinghub',
 			'quora-bot' => 'quora-bot',
 			'qwantbot' => 'qwantbot',
@@ -338,6 +343,7 @@ class Robot extends XFCP_Robot
 			'rankurbot' => 'rankurbot',
 			'rasabot' => 'rasabot',
 			'ravencrawler' => 'ravencrawler',
+			'rc-crawler' => 'rc-crawler',
 			're-re studio' => 're-re studio',
 			'reachabilitycheckbot' => 'reachabilitycheckbot',
 			'redditbot' => 'redditbot',
@@ -429,6 +435,7 @@ class Robot extends XFCP_Robot
 			'tkbot' => 'tkbot',
 			'tmmbot' => 'tmmbot',
 			'todoexpertosbot' => 'todoexpertosbot',
+			'tokenspider' => 'tokenspider',
 			'tombapublicwebcrawler' => 'tombapublicwebcrawler',
 			'tombot' => 'tombot',
 			'toutiaospider' => 'toutiaospider',
@@ -469,6 +476,7 @@ class Robot extends XFCP_Robot
 			'willie irc bot' => 'willie irc bot',
 			'winhttp' => 'winhttp',
 			'wlc pywikibot' => 'wlc pywikibot',
+			'womlpefactory' => 'womlpefactory',
 			'wonderbot' => 'wonderbot',
 			'wordchampbot' => 'wordchampbot',
 			'wotbox' => 'wotbox',
@@ -481,6 +489,7 @@ class Robot extends XFCP_Robot
 			'y!j-asr' => 'yahoo japan',
 			'yellowbrandprotectionbot' => 'yellowbrandprotectionbot',
 			'yesslebot' => 'yesslebot',
+			'yeti/1.0' => 'yeti/1.0',
 			'yetibot' => 'yetibot',
 			'yisouspider' => 'yisouspider',
 			'yacybot' => 'yacybot',
@@ -790,6 +799,10 @@ class Robot extends XFCP_Robot
 			'boardreader' => [
 				'title' => 'BoardReader',
 				'link' => 'http://spider.boardreader.com'
+			],
+			'boitho.com-dc' => [
+				'title' => 'Boitho.com Web Crawler',
+				'link' => 'http://www.boitho.com/dcbot.html'
 			],
 			'bomborabot' => [
 				'title' => 'Bombora Bot',
@@ -1627,6 +1640,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Monsidobot',
 				'link' => 'http://monsido.com/bot.html',
 			],
+			'msc crawl project radboud university' => [
+				'title' => 'MSC Crawl Project - Raboud University',
+				'link' => ''
+			],
 			'msiecrawler' => [
 				'title' => 'MSIE Offline Website Crawler',
 				'link' => 'http://nekst.ipipan.waw.pl/nekstbot/'
@@ -1699,6 +1716,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Ninjabot',
 				'link' => ''
 			],
+			'niocbot' => [
+				'title' => 'niocBot',
+				'link' => 'https://nioc.de/bot'
+			],
 			'nixstatsbot' => [
 				'title' => 'NIXStatsbot',
 				'link' => 'https://www.nixstats.com/bot.html'
@@ -1734,6 +1755,10 @@ class Robot extends XFCP_Robot
 			'online-webceo-bot' => [
 				'title' => 'WebCEO SEO Bot',
 				'link' => 'http://online.webceo.com'
+			],
+			'open web analytics bot' => [
+				'title' => 'Open Web Analytics Bot',
+				'link' => 'https://github.com/Open-Web-Analytics/Open-Web-Analytics'
 			],
 			'ottobot' => [
 				'title' => 'AskGus OttoBot',
@@ -1879,6 +1904,10 @@ class Robot extends XFCP_Robot
 				'title' => 'QuerySeekerSpider',
 				'link' => 'http://queryseeker.com/bot.html'
 			],
+			'quetextbot' => [
+				'title' => 'Quetext Plagiarism Checker Bot',
+				'link' => 'https://www.quetext.com/quetextbot'
+			],
 			'quora-bot' => [
 				'title' => 'Quora Bot',
 				'link' => 'http://www.quora.com'
@@ -1918,6 +1947,10 @@ class Robot extends XFCP_Robot
 			'ravencrawler' => [
 				'title' => 'Raven Tools Website SEO Auditor',
 				'link' => 'https://raventools.com/seo-website-auditor/'
+			],
+			'rc-crawler' => [
+				'title' => 'RC Crawler',
+				'link' => ''
 			],
 			're-re studio' => [
 				'title' => 'Re-re Studio',
@@ -2295,6 +2328,10 @@ class Robot extends XFCP_Robot
 				'title' => 'TodoExpertosBot',
 				'link' => 'https://www.todoexpertos.com/'
 			],
+			'tokenspider' => [
+				'title' => 'Token Spider',
+				'link' => ''
+			],
 			'tombapublicwebcrawler' => [
 				'title' => 'Tomba Public Web Crawler',
 				'link' => 'https://tombascraper.com'
@@ -2463,6 +2500,10 @@ class Robot extends XFCP_Robot
 				'title' => 'wlc Pywikibot',
 				'link' => 'https://pypi.org/project/pywikibot/'
 			],
+			'womlpefactory' => [
+				'title' => 'WompleFactory',
+				'link' => 'http://www.womple.com/bot.html'
+			],
 			'wonderbot' => [
 				'title' => 'wonderbot',
 				'link' => 'https://wonder-bot.com/'
@@ -2502,6 +2543,10 @@ class Robot extends XFCP_Robot
 			'yahoo japan' => [
 				'title' => 'Yahoo! Japan Web Crawler',
 				'link' => 'https://www.yahoo-help.jp/app/answers/detail/p/595/a_id/42716/'
+			],
+			'yeti/1.0' => [
+				'title' => 'Yeti - Naver',
+				'link' => 'http://help.naver.com/robots/'
 			],
 			'yetibot' => [
 				'title' => 'YetiBOT',
