@@ -4,6 +4,9 @@ CHANGELOG
 3.15.0 (2020-12-21)
 -------------------
 
+* new Dinobot Android TV false positives:
+    * dinobot 4k plus
+
 * weekly new bots:
     * cis455crawler
     * crystalsemanticsbot
