@@ -1,6 +1,20 @@
 CHANGELOG
 =========
 
+3.16.0 (2020-12-29)
+-------------------
+
+* weekly new bots:
+    * boitho.com-dc
+    * msc crawl project radboud university
+    * niocbot
+    * open web analytics bot
+    * quetextbot
+    * rc-crawler
+    * tokenspider
+    * womlpefactory
+    * yeti/1.0
+
 3.15.0 (2020-12-21)
 -------------------
 
