@@ -4,6 +4,11 @@ CHANGELOG
 3.17.0 (2021-01-25)
 -------------------
 
+* new false positives: 
+    * cubot r11
+    * spider v7 build/lmy47i
+    * spider v7 (MyCell Spider v7 from Bangladesh)
+
 * weekly new bots:
     * adbot/1.0
     * ahrefssiteaudit
