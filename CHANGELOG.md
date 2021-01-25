@@ -1,6 +1,50 @@
 CHANGELOG
 =========
 
+3.17.0 (2021-01-25)
+-------------------
+
+* weekly new bots:
+    * adbot/1.0
+    * ahrefssiteaudit
+    * amazonadbot
+    * amg-bot
+    * ampxfbot
+    * anybot
+    * aranea web-crawled corpora project
+    * backlinkcrawler
+    * botelaire
+    * chirpyhubbot
+    * cookiebot
+    * crawl/1.0
+    * dataforseobot
+    * diffeobot
+    * digitalshadowsbot
+    * discoverbot
+    * dmasslinksafetybot
+    * domcopbot
+    * echocrawl
+    * emeraldshield.com webbot
+    * historyspider
+    * iplogger crawler
+    * mohawk crawler
+    * mtrobot
+    * mxbot
+    * netresearchserver
+    * openindexspider
+    * pinllc search robot
+    * rustbot
+    * sellers.guide crawler by primis
+    * snaplocalbot
+    * test-deep-cocrawler
+    * vdo.ai bot
+    * wesee:search
+    * whizebot
+    * xaldon_webspider
+    * xovibot
+    * yaanibot
+    * yelpbot           
+
 3.16.0 (2020-12-29)
 -------------------
 
