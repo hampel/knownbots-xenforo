@@ -548,12 +548,16 @@ class Robot extends XFCP_Robot
 			'cubot_p20',
 			'cubot_power',
 			'cubot r9',
+			'cubot r11',
 			'cubot x18',
 			'cubot_x18_plus',
 
 			'glx spideri', // GLX phones
 
 			'dinobot 4k plus', // Dinobot Android TV
+
+			'spider v7 build/lmy47i', // MyCell Spider v7 phone from Bangladesh
+			'spider v7',
 		];
 
 		return $falsePositives;
