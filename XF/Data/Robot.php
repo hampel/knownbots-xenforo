@@ -7,13 +7,18 @@ class Robot extends XFCP_Robot
 	public function getRobotUserAgents()
 	{
 		$newBots = [
+			'200pleasebot' => '200pleasebot',
 			'3dd trunk' => '3dd trunk',
 			'3w24bot' => '3w24bot',
 			'360spider' => '360spider',
 			'7siters' => '7siters',
+			'a8bot' => 'a8bot',
 			'aasa-bot' => 'aasa-bot',
+			'abilogicbot' => 'abilogicbot',
 			'accompanybot' => 'accompanybot',
+			'acoonbot' => 'acoonbot',
 			'adbeat' => 'adbeat',
+			'adform robot' => 'adform robot', // iab atq team adform robot
 			'addsugarspiderbot' => 'addsugarspiderbot',
 			'adsbot-google-mobile' => 'adsbot-google-mobile',
 			'adsbot-google' => 'adsbot-google', // this should come after adsbot-google-mobile
@@ -41,15 +46,19 @@ class Robot extends XFCP_Robot
 			'aranea web-crawled corpora project' => 'aranea web-crawled corpora project',
 			'archive.org_bot' => 'archive.org',
 			'archivebot' => 'archiveteam',
+			'arhpostbot' => 'arhpostbot',
 			'arquivo-web-crawler' => 'arquivo-web-crawler',
 			'aspiegelbot' => 'aspiegelbot',
+			'atomseobot' => 'atomseobot',
 			'auto spider' => 'auto spider',
 			'avocetcrawler' => 'avocetcrawler',
+			'awariorendererbot' => 'awariorendererbot',
 			'awariosmartbot' => 'awariosmartbot',
 			'awariorssbot' => 'awariorssbot',
 			'aylien' => 'aylien',
 			'b2b bot' => 'b2b bot',
 			'backlinkcrawler' => 'backlinkcrawler',
+			'badoobot' => 'badoobot',
 			'barkrowler' => 'barkrowler',
 			'becomebot' => 'becomebot',
 			'better uptime bot' => 'better uptime bot',
@@ -59,6 +68,7 @@ class Robot extends XFCP_Robot
 			'binglocalsearch' => 'bing',
 			'bitlybot' => 'bitlybot',
 			'bl.uk_lddc_bot' => 'bl.uk_lddc_bot',
+			'bl.uk_ldfc_bot' => 'bl.uk_ldfc_bot',
 			'blexbot' => 'blexbot',
 			'bnf.fr_bot' => 'bnf.fr_bot',
 			'boardreader' => 'boardreader',
@@ -67,6 +77,7 @@ class Robot extends XFCP_Robot
 			'botelaire' => 'botelaire',
 			'botw spider' => 'botw spider',
 			'brandverity' => 'brandverity',
+			'brobot' => 'brobot',
 			'brokenlinkcheck' => 'brokenlinkcheck',
 			'browserspybot' => 'browserspybot',
 			'btcrawler' => 'btcrawler',
@@ -78,6 +89,8 @@ class Robot extends XFCP_Robot
 			'castlebot' => 'castlebot',
 			'ccbot' => 'ccbot',
 			'centro ads.txt crawler' => 'centro ads.txt crawler',
+			'charityengine bot' => 'charityengine bot',
+			'charlotte: the financial institution crawler' => 'charlotte: the financial institution crawler',
 			'checkbot/1' => 'checkbot',
 			'checkmarknetwork' => 'checkmarknetwork',
 			'chimebot' => 'chimebot',
@@ -98,6 +111,9 @@ class Robot extends XFCP_Robot
 			'contacts-crawler' => 'scrapinghub',
 			'contxbot' => 'contxbot',
 			'cookiebot' => 'cookiebot',
+			'cosmos' => 'cosmos',
+			'coveobot' => 'coveobot',
+			'crawlbot/1.0.0' => 'crawlbot/1.0.0',
 			'crawler4j' => 'crawler4j',
 			'crawler_eb_germany_2.0' => 'crawler_eb_germany_2.0',
 			'crawlson' => 'crawlson',
@@ -109,6 +125,7 @@ class Robot extends XFCP_Robot
 			'curious george' => 'curious george',
 			'curl' => 'curl',
 			'custom-crawler' => 'custom-crawler',
+			'cxensebot' => 'cxensebot',
 //			'dalvik' => 'dalvik',
 			'danibot' => 'danibot',
 			'dataforseobot' => 'dataforseobot',
@@ -157,6 +174,8 @@ class Robot extends XFCP_Robot
 			'eyeotabot' => 'eyeotabot',
 			'ezlynx' => 'ezlynx',
 			'ezooms' => 'ezooms',
+			'facebot' => 'facebot',
+			'fandomopengraphbot' => 'fandomopengraphbot',
 			'fast-webcrawler' => 'fast-webcrawler',
 			'feedfetcher-google' => 'feedfetcher-google',
 			'feedlybot' => 'feedlybot',
@@ -167,14 +186,18 @@ class Robot extends XFCP_Robot
 			'finditanswersbot' => 'finditanswersbot',
 			'flockbrain robot' => 'flockbrain robot',
 			'foocrawlerbot' => 'foocrawlerbot',
+			'freshpingbot' => 'freshpingbot',
+			'fuelbot' => 'fuelbot',
 			'fullstorybot' => 'fullstorybot',
 			'fyrebot' => 'fyrebot',
 			'garlikcrawler' => 'garlikcrawler',
 			'gdark-spider' => 'gdark-spider',
+			'geedobot' => 'geedobot',
 			'geograph linkcheck bot' => 'geograph linkcheck bot',
 			'germcrawler' => 'germcrawler',
 			'gethpinfo.com-bot' => 'gethpinfo.com-bot',
 			'getintent crawler' => 'getintent',
+			'getlocalbot' => 'getlocalbot',
 			'gg peekbot' => 'gg peekbot',
 			'gigabot' => 'gigabot',
 			'girafabot' => 'girafabot',
@@ -182,18 +205,25 @@ class Robot extends XFCP_Robot
 			'go-http-client' => 'go-http-client',
 			'google-adwords-instant' => 'google-adwords-instant',
 			'google-read-aloud' => 'google-read-aloud',
+			'google-safety' => 'google-safety',
 			'google favicon' => 'google-favicon',
 			'googebot malware scanning' => 'googebot malware scanning',
 			'gowikibot' => 'gowikibot',
+			'gpcsupbot' => 'gpcsupbot',
 			'grapeshotcrawler' => 'grapeshotcrawler',
 			'graydon bot' => 'graydon bot',
 			'grfzbot' => 'grfzbot',
+			'grub-client' => 'grub-client',
 			'gulper web bot' => 'gulper web bot',
 			'gumgum-bot' => 'gumgum-bot',
+			'gynxbot' => 'gynxbot',
 			'hatena' => 'hatena',
+			'healrworld crawler' => 'healrworld crawler',
 			'hetrixtools' => 'hetrixtools',
+			'hgfalphaxcrawl' => 'hgfalphaxcrawl',
 			'historyspider' => 'historyspider',
 			'hoaxybot' => 'hoaxybot',
+			'hoodle crawler' => 'hoodle crawler',
 			'hrankbot' => 'hrankbot',
 			'httrack' => 'httrack',
 			'huaweiwebcatbot' => 'huaweiwebcatbot',
@@ -210,9 +240,11 @@ class Robot extends XFCP_Robot
 			'icc-crawler' => 'icc-crawler',
 			'iccrawler' => 'iccrawler',
 			'ichiro' => 'ichiro',
+			'idmarch automatic' => 'idmarch automatic',
 			'image size by siteimprove.com' => 'image size by siteimprove.com',
 			'impact radius compliance bot' => 'impact radius compliance bot',
 			'implisensebot' => 'implisensebot',
+			'imrbot' => 'imrbot',
 			'indeedbot' => 'indeedbot',
 			'infoobot' => 'infoobot',
 			'intelx.io_bot' => 'intelx.io_bot',
@@ -222,6 +254,7 @@ class Robot extends XFCP_Robot
 			'iplogger crawler' => 'iplogger crawler',
 			'irlbot' => 'irlbot',
 			'istellabot' => 'istellabot',
+			'jambot' => 'jambot',
 			'jasper\'s lil\' bot' => 'jaspers lil bot',
 			'jetslide' => 'jetslide',
 			'jobboersebot' => 'jobboersebot',
@@ -230,15 +263,23 @@ class Robot extends XFCP_Robot
 			'js-crawler' => 'js-crawler',
 			'jugendschutzprogramm-crawler' => 'jugendschutzprogramm',
 			'just-crawling' => 'just-crawling',
+			'justlocal.nl' => 'justlocal.nl',
 			'k7mlwcbot' => 'k7mlwcbot',
+			'kantarsifomediaauditbot' => 'kantarsifomediaauditbot',
 			'kauaibot' => 'kauaibot',
+			'keobsbot' => 'keobsbot',
+			'keybasebot' => 'keybasebot',
 			'kingbot' => 'kingbot',
 			'knot group' => 'knot group',
 			'knowknot' => 'knowknot',
+			'koepabot' => 'koepabot',
 			'konturbot' => 'konturbot',
 			'krzana bot' => 'krzana bot',
 			'krzana-rss-bot' => 'krzana-rss-bot',
 			'lamarkbot' => 'lamarkbot',
+			'lanaibot' => 'lanaibot',
+			'landsbokasafn' => 'landsbokasafn',
+			'lapozzbot' => 'lapozzbot',
 			'lawinsiderbot' => 'lawinsiderbot',
 			'leuchtfeuer crawler' => 'leuchtfeuer crawler',
 			'ldspider' => 'ldspider',
@@ -252,12 +293,15 @@ class Robot extends XFCP_Robot
 			'linkfluence' => 'linkfluence',
 			'linkisbot' => 'linkisbot',
 			'linkpadbot' => 'linkpadbot',
+			'linkpulse metacrawler' => 'linkpulse metacrawler',
+			'linksmanager.com_bot' => 'linksmanager.com_bot',
 			'livelapbot' => 'livelapbot',
 			'lmspider' => 'lmspider',
 			'loaderio;verification-bot' => 'loaderio;verification-bot',
 			'looid.com crawler' => 'looid.com crawler',
 			'ltx71' => 'ltx71',
 			'lufsbot' => 'lufsbot',
+			'lxrbot' => 'lxrbot',
 			'magibot' => 'magibot',
 			'mail.ru' => 'mail.ru',
 			'makemoneyteamworkbot' => 'makemoneyteamworkbot',
@@ -266,6 +310,7 @@ class Robot extends XFCP_Robot
 			'mauibot' => 'mauibot',
 			'maxpointcrawler' => 'maxpointcrawler',
 			'mbcrawler' => 'mbcrawler',
+			'mbot v' => 'mbot v',
 			'media-bot' => 'media-bot',
 			'mediacloud bot for open academic research' => 'mediacloud bot for open academic research',
 			'mediapartners-google' => 'mediapartners-google',
@@ -287,6 +332,7 @@ class Robot extends XFCP_Robot
 			'mohawk-crawler' => 'mohawk-crawler',
 			'mojeekbot' => 'mojeekbot',
 			'monsidobot' => 'monsidobot',
+			'moreoverbot' => 'moreoverbot',
 			'msc crawl project radboud university' => 'msc crawl project radboud university',
 			'msiecrawler' => 'msiecrawler',
 			'mtrobot' => 'mtrobot',
@@ -298,6 +344,7 @@ class Robot extends XFCP_Robot
 			'netestate ne crawler' => 'netestate ne crawler',
 			'neticle crawler' => 'neticle crawler',
 			'netpeakcheckerbot' => 'netpeakcheckerbot',
+			'netpeakspiderbot' => 'netpeakspiderbot',
 			'netresearchserver' => 'netresearchserver',
 			'netseer crawler' => 'netseer crawler',
 			'netvibes' => 'netvibes',
@@ -310,15 +357,23 @@ class Robot extends XFCP_Robot
 			'ninjbot' => 'ninjbot',
 			'ninjabot' => 'ninjabot',
 			'niocbot' => 'niocbot',
+			'niraiya.com' => 'www.niraiya.com',
 			'nixstatsbot' => 'nixstatsbot',
 			'nlnz_iaharvester' => 'nlnz',
+			'node/simplecrawler' => 'node/simplecrawler',
+			'nu.marginalia.wmsa.edge-crawler' => 'nu.marginalia.wmsa.edge-crawler',
 			'nusearch spider' => 'nusearch spider',
+			'nutchcvs' => 'nutchcvs',
 			'obot/2.3.1' => 'obot',
 			'ocarinabot' => 'ocarinabot',
 			'odklbot' => 'odklbot',
+			'oer commons bot' => 'oer commons bot',
 			'omgili' => 'omgili',
+			'omniexplorer_bot' => 'omniexplorer_bot',
 			'onalyticabot' => 'onalyticabot',
+			'onefuncbot' => 'onefuncbot',
 			'online-webceo-bot' => 'online-webceo-bot',
+			'oozbot' => 'oozbot',
 			'open web analytics bot' => 'open web analytics bot',
 			'openindexspider' => 'openindexspider',
 			'ottobot' => 'ottobot',
@@ -333,6 +388,8 @@ class Robot extends XFCP_Robot
 			'pcore-http' => 'pcore-http',
 			'pdf drive crawler' => 'pdf drive crawler',
 			'petalbot' => 'petalbot',
+			'pickybot' => 'pickybot',
+			'piepmatz bot' => 'piepmatz bot',
 			'pigafetta' => 'pigafetta',
 			'pilicanbot' => 'pilicanbot',
 			'pimeyes.com' => 'pimeyes.com',
@@ -342,6 +399,7 @@ class Robot extends XFCP_Robot
 			'pinterestbot' => 'pinterest',
 			'planckspider' => 'planckspider',
 			'pleskbot' => 'pleskbot',
+			'plukkie' => 'plukkie',
 			'plurkbot' => 'plurkbot',
 			'pmoz.info odp link checker' => 'pmoz.info odp link checker',
 			'politecrawl' => 'politecrawl',
@@ -349,9 +407,12 @@ class Robot extends XFCP_Robot
 			'postmanruntime' => 'postman',
 			'prft-bot' => 'prft-bot',
 			'psbot' => 'psbot',
+			'pu_in crawler' => 'pu_in crawler',
 			'pubmatic crawler bot' => 'pubmatic crawler bot',
 			'pulno' => 'pulno',
 			'pulsepoint-ads.txt-crawler' => 'pulsepoint-ads.txt-crawler',
+			'punkspider' => 'punkspider',
+			'pwa-crawler' => 'pwa-crawler',
 			'python-requests' => 'python-requests',
 			'pywebcopybot' => 'pywebcopybot',
 			'quantcastbot' => 'quantcastbot',
@@ -371,15 +432,18 @@ class Robot extends XFCP_Robot
 			'rc-crawler' => 'rc-crawler',
 			're-re studio' => 're-re studio',
 			'reachabilitycheckbot' => 'reachabilitycheckbot',
+			'reasonalbot' => 'reasonalbot',
 			'redditbot' => 'redditbot',
 			'redirectbot' => 'redirectbot',
 			'refindbot' => 'refindbot',
 			'relemindbot' => 'relemindbot',
 			'rely bot' => 'rely bot',
+			'revuebot' => 'revuebot',
 			'riverbot' => 'riverbot',
 			'rogerbot' => 'rogerbot',
 			'rssingbot' => 'rssingbot',
 			'rssmicro.com' => 'rssmicro.com',
+			'runet-research-crawler' => 'runet-research-crawler',
 			'rustbot' => 'rustbot',
 			'rytebot' => 'rytebot',
 			'sabsimbot' => 'sabsimbot',
@@ -390,9 +454,13 @@ class Robot extends XFCP_Robot
 			'scooperbot' => 'scooperbot',
 			'scrapy' => 'scrapy',
 			'screaming frog seo spider' => 'screaming frog seo spider',
+			'screenerbot crawler' => 'screenerbot crawler',
 			'scribbr-citation-bot' => 'scribbr-citation-bot',
 			'se ranking gentle bot' => 'se ranking gentle bot',
+			'searchenginecrawler' => 'searchenginecrawler',
+			'sebot-wa' => 'sebot-wa',
 			'seebot.org' => 'seebot.org',
+			'seekbot' => 'seekbot',
 			'seekport crawler' => 'seekport',
 			'seewithkids' => 'seewithkids',
 			'sellers.guide crawler by primis' => 'sellers.guide crawler by primis',
@@ -410,14 +478,18 @@ class Robot extends XFCP_Robot
 			'serpstatbot' => 'serpstatbot',
 			'serptimizerbot' => 'serptimizerbot',
 			'seznambot' => 'seznambot',
+			'showyoubot' => 'showyoubot',
+			'shopwiki' => 'shopwiki',
 			'sidetrade indexer bot' => 'sidetrade indexer bot',
 			'sirdatabot' => 'sirdatabot',
 			'simpleanalyticsbot' => 'simpleanalyticsbot',
 			'siteanalyzerbot' => 'siteanalyzerbot',
+			'siteauditbot' => 'siteauditbot',
 			'sitecheck-sitecrawl' => 'sitecheck-sitecrawl',
 			'sitecheckerbotcrawler' => 'sitecheckerbotcrawler',
 			'siteguru linkchecker' => 'siteguru linkchecker',
 			'sitelockspider' => 'sitelockspider',
+			'sitescorebot' => 'sitescorebot',
 			'sitesucker' => 'sitesucker',
 			'skimbot' => 'skimbot',
 			'slack-imgproxy' => 'slack-imgproxy',
@@ -435,10 +507,13 @@ class Robot extends XFCP_Robot
 			'special_archiver' => 'special_archiver',
 			'speedy spider' => 'speedy spider',
 			'spiderling' => 'spiderling',
+			'spinn3r' => 'spinn3r',
 			'sqlmap' => 'sqlmap',
 			'squidbot' => 'squidbot',
+			'squirrobot' => 'squirrobot',
 			'ssブログ rsscrawler' => 'ssblog',
 			'sserobots' => 'sserobots',
+			'ssl-crawler' => 'ssl-crawler',
 			'startmebot' => 'startmebot',
 			'statdom.ru' => 'statdom.ru',
 			'statonlinerubot' => 'statonlinerubot',
@@ -460,6 +535,8 @@ class Robot extends XFCP_Robot
 			'test-deep-cocrawler' => 'test-deep-cocrawler',
 			'testbot' => 'testbot',
 			'testcrawler' => 'testcrawler',
+			'thinkbot' => 'thinkbot',
+			'tineye' => 'tineye-bot',
 			'tineye-bot' => 'tineye-bot',
 			'tkbot' => 'tkbot',
 			'tmmbot' => 'tmmbot',
@@ -473,20 +550,26 @@ class Robot extends XFCP_Robot
 			'trendictionbot' => 'trendictionbot',
 			'trendkite-akashic-crawler' => 'trendkite-akashic-crawler',
 			'triplecheckerrobot' => 'triplecheckerrobot',
+			'tsmbot' => 'tsmbot',
 			'turnitinbot' => 'turnitinbot',
+			'tweetedtimes bot' => 'tweetedtimes bot',
 			'tweetmemebot' => 'tweetmemebot',
 			'twitterbot' => 'twitterbot',
 			'ttd-content' => 'ttd-content',
 			'ucmore crawler app' => 'ucmore crawler app',
+			'ucrawl' => 'ucrawl',
 			'um-ln' => 'ubermetrics-technologies',
 			'uipbot' => 'uipbot',
+			'umichbot' => 'umichbot',
 			'uptimebot' => 'uptimebot',
 			'uptimerobot' => 'uptimerobot',
+			'urlappendbot' => 'urlappendbot',
 			'v-bot' => 'voyager',
 			'vdo.ai bot' => 'vdo.ai bot',
 			'vebidoobot' => 'vebidoobot',
 			'vegi bot' => 'vegibot',
 			'velenpublicwebcrawler' => 'velenpublicwebcrawler',
+			'verticalleap-sitestatusbot' => 'verticalleap-sitestatusbot',
 			'virusdie crawler' => 'virusdie crawler',
 			'viulinkcrawler' => 'viulinkcrawler',
 			'vkrobot' => 'vkrobot',
@@ -496,10 +579,14 @@ class Robot extends XFCP_Robot
 			'vuhuvbot' => 'vuhuvbot',
 			'webcrawl.net' => 'webcrawl.net',
 			'webgains-bot' => 'webgains-bot',
+			'webgraph' => 'webgraph',
+			'weblinkchecker' => 'weblinkchecker',
 			'webliobot' => 'webliobot',
 			'webmoney megastock robot' => 'webmoney megastock robot',
 			'website-audit.be crawler' => 'website-audit.be',
+			'websquash.com' => 'websquash.com',
 			'webzip' => 'webzip',
+			'wellknownbot' => 'wellknownbot',
 			'wesee:search' => 'wesee:search',
 			'whizebot' => 'whizebot',
 			'who.is bot' => 'who.is bot',
@@ -507,6 +594,7 @@ class Robot extends XFCP_Robot
 			'wikido' => 'wikido',
 			'willie irc bot' => 'willie irc bot',
 			'winhttp' => 'winhttp',
+			'wizenozebot' => 'wizenozebot',
 			'wlc pywikibot' => 'wlc pywikibot',
 			'womlpefactory' => 'womlpefactory',
 			'wonderbot' => 'wonderbot',
@@ -550,7 +638,7 @@ class Robot extends XFCP_Robot
 			'php' => 'php',
 			'wget' => 'wget',
 			'researchbot' => 'researchbot',
-		];
+ 		];
 
 		return array_merge(parent::getRobotUserAgents(), $newBots);
 	}
@@ -654,6 +742,10 @@ class Robot extends XFCP_Robot
 	public function getRobotList()
 	{
 		$newBots = [
+			'200pleasebot' => [
+				'title' => '200pleasebot',
+				'link' => '',
+			],
 			'360spider' => [
 				'title' => '360Spider',
 				'link' => 'https://www.360.cn/',
@@ -670,13 +762,25 @@ class Robot extends XFCP_Robot
 				'title' => '7Siters',
 				'link' => 'https://7ooo.ru/siters/',
 			],
+			'a8bot' => [
+				'title' => 'a8bot',
+				'link' => '',
+			],
 			'aasa-bot' => [
 				'title' => 'Apple App Site Association CDN bot',
 				'link' => 'https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html',
 			],
+			'abilogicbot' => [
+				'title' => 'AbiLogic Bot',
+				'link' => 'http://www.abilogic.com',
+			],
 			'accompanybot' => [
 				'title' => 'AccompanyBot',
 				'link' => '',
+			],
+			'acoonbot' => [
+				'title' => 'Acoon Bot',
+				'link' => 'http://www.acoon.de/robot.asp',
 			],
 			'adbeat' => [
 				'title' => 'Adbeat',
@@ -685,6 +789,10 @@ class Robot extends XFCP_Robot
 			'adbot/1.0' => [
 				'title' => 'Adbot',
 				'link' => '',
+			],
+			'adform robot' => [
+				'title' => 'Adform Fetcher',
+				'link' => 'https://site.adform.com/general/url-fetcher',
 			],
 			'admantx' => [
 				'title' => 'ADmantX Service Fetcher',
@@ -802,6 +910,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Archive Team ArchiveBot',
 				'link' => 'https://www.archiveteam.org/index.php?title=ArchiveBot'
 			],
+			'arhpostbot' => [
+				'title' => 'Arhpost Bot',
+				'link' => 'https://arhpost.ru'
+			],
 			'arquivo-web-crawler' => [
 				'title' => 'Arquivo Web Archive Bot',
 				'link' => 'http://arquivo.pt'
@@ -810,6 +922,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Huawei AspiegelBot',
 				'link' => 'https://aspiegel.com/about'
 			],
+			'atomseobot' => [
+				'title' => 'Atomseo Broken Link Checker',
+				'link' => 'https://error404.atomseo.com/'
+			],
 			'auto spider' => [
 				'title' => 'Auto Spider Exploit Scanner',
 				'link' => ''
@@ -817,6 +933,10 @@ class Robot extends XFCP_Robot
 			'avocetcrawler' => [
 				'title' => 'AvocetCrawler',
 				'link' => ''
+			],
+			'awariorendererbot' => [
+				'title' => 'AwarioRendererBot',
+				'link' => 'https://awario.com/bots.html'
 			],
 			'awariosmartbot' => [
 				'title' => 'AwarioSmartBot',
@@ -837,6 +957,10 @@ class Robot extends XFCP_Robot
 			'backlinkcrawler' => [
 				'title' => 'BacklinkCrawler',
 				'link' => 'http://www.backlinktest.com/crawler.html'
+			],
+			'badoobot' => [
+				'title' => 'Badoo Bot',
+				'link' => 'https://badoo.com/'
 			],
 			'barkrowler' => [
 				'title' => 'Barkrowler Metrics Bot',
@@ -865,6 +989,10 @@ class Robot extends XFCP_Robot
 			'bl.uk_lddc_bot' => [
 				'title' => 'British Library Legal Deposit Libraries',
 				'link' => 'http://vll-minos.bl.uk/aboutus/legaldeposit/websites/websites/faqswebmaster/'
+			],
+			'bl.uk_ldfc_bot' => [
+				'title' => 'British Library Legal Deposit Libraries',
+				'link' => 'http://www.bl.uk/aboutus/legaldeposit/websites/websites/faqswebmaster/index.html'
 			],
 			'blexbot' => [
 				'title' => 'BLEXBot Crawler',
@@ -905,6 +1033,10 @@ class Robot extends XFCP_Robot
 			'brandverity' => [
 				'title' => 'BrandVerity',
 				'link' => 'http://www.brandverity.com/why-is-brandverity-visiting-me'
+			],
+			'brobot' => [
+				'title' => 'Bro Bot',
+				'link' => 'https://bro.ee/bot'
 			],
 			'brokenlinkcheck' => [
 				'title' => 'BrokenLinkCheck.com',
@@ -949,6 +1081,14 @@ class Robot extends XFCP_Robot
 			'centro ads.txt crawler' => [
 				'title' => 'Centro ads.txt crawler',
 				'link' => 'https://www.centro.net/news/centro-aligns-with-iab-tech-labs-ads-txt-project-designed-to-reduce-ad-fraud-and-improve-ad-transparency'
+			],
+			'charityengine bot' => [
+				'title' => 'Charity Engine CRM Bot',
+				'link' => 'https://www.charityengine.net/'
+			],
+			'charlotte: the financial institution crawler' => [
+				'title' => 'Charlotte Financial Institution Crawler',
+				'link' => ''
 			],
 			'checkbot' => [
 				'title' => 'Checkbot',
@@ -1026,6 +1166,14 @@ class Robot extends XFCP_Robot
 				'title' => 'CookieBot',
 				'link' => 'http://cookiebot.com/'
 			],
+			'cosmos' => [
+				'title' => 'Xeleme Cosmos Bot',
+				'link' => 'mailto:robot@xyleme.com'
+			],
+			'coveobot' => [
+				'title' => 'Coveo Bot',
+				'link' => 'http://www.coveo.com/bot.html'
+			],
 			'crawl' => [
 				'title' => 'Generic Crawler',
 				'link' => ''
@@ -1033,6 +1181,10 @@ class Robot extends XFCP_Robot
 			'crawl/1.0' => [
 				'title' => 'Crawl by @yschimke',
 				'link' => 'https://twitter.com/yschimke'
+			],
+			'crawlbot/1.0.0' => [
+				'title' => 'CrawlBot',
+				'link' => ''
 			],
 			'crawler/0.0.1' => [
 				'title' => 'Unknown Crawler/0.0.1',
@@ -1081,6 +1233,10 @@ class Robot extends XFCP_Robot
 			'custom-crawler' => [
 				'title' => 'Custom Crawler',
 				'link' => ''
+			],
+			'cxensebot' => [
+				'title' => 'Cxense Bot',
+				'link' => 'http://www.cxense.com/bot.html'
 			],
 //			'dalvik' => [
 //				'title' => 'Android Dalvik',
@@ -1274,6 +1430,14 @@ class Robot extends XFCP_Robot
 				'title' => 'Ezoicbot',
 				'link' => 'http://www.ezoic.com/bot.html'
 			],
+			'facebot' => [
+				'title' => 'Facebot',
+				'link' => ''
+			],
+			'fandomopengraphbot' => [
+				'title' => 'Fandom Open Graph Bot',
+				'link' => 'https://www.fandom.com/'
+			],
 			'fast-webcrawler' => [
 				'title' => 'FAST-WebCrawler',
 				'link' => 'http://www.alltheweb.com/help/webmaster/crawler'
@@ -1314,6 +1478,14 @@ class Robot extends XFCP_Robot
 				'title' => 'FooCrawlerBot',
 				'link' => ''
 			],
+			'freshpingbot' => [
+				'title' => 'Freshping Bot',
+				'link' => 'https://freshping.io/'
+			],
+			'fuelbot' => [
+				'title' => 'fuelbot',
+				'link' => ''
+			],
 			'fullstorybot' => [
 				'title' => 'FullStory Bot',
 				'link' => 'https://www.fullstory.com'
@@ -1330,6 +1502,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Gdark Spider',
 				'link' => ''
 			],
+			'geedobot' => [
+				'title' => 'GeedoBot',
+				'link' => 'http://www.geedo.com/bot.html'
+			],
 			'geograph linkcheck bot' => [
 				'title' => 'Geograph LinkCheck Bot',
 				'link' => 'https://www.geograph.org.uk/help/bot'
@@ -1345,6 +1521,10 @@ class Robot extends XFCP_Robot
 			'getintent' => [
 				'title' => 'GetIntent Crawler',
 				'link' => 'http://getintent.com/bot.html'
+			],
+			'getlocalbot' => [
+				'title' => 'GetLocal Bot',
+				'link' => 'https://getlocal.ie/merchants/'
 			],
 			'gg peekbot' => [
 				'title' => 'GG PeekBot',
@@ -1378,6 +1558,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Google Real Aloud',
 				'link' => 'http://www.google.com/adsbot.html'
 			],
+			'google-safety' => [
+				'title' => 'Google Safety',
+				'link' => 'http://www.google.com/bot.html'
+			],
 			'googebot malware scanning' => [
 				'title' => 'Googlebot Malware Scanning',
 				'link' => ''
@@ -1385,6 +1569,10 @@ class Robot extends XFCP_Robot
 			'gowikibot' => [
 				'title' => 'Gowiki Search Engine Bot',
 				'link' => 'http://www.gowikibot.com'
+			],
+			'gpcsupbot' => [
+				'title' => 'GPC Support Bot',
+				'link' => 'https://gpcsup.com'
 			],
 			'grapeshotcrawler' => [
 				'title' => 'Oracle Data Cloud Crawler (Grapeshot)',
@@ -1398,6 +1586,10 @@ class Robot extends XFCP_Robot
 				'title' => 'GRFZbot',
 				'link' => ''
 			],
+			'grub-client' => [
+				'title' => 'Grub Client',
+				'link' => 'http://grub.org'
+			],
 			'gulper web bot' => [
 				'title' => 'Gulper Web Bot',
 				'link' => 'http://www.ecsl.cs.sunysb.edu/~maxim/cgi-bin/link/gulperbot'
@@ -1406,13 +1598,25 @@ class Robot extends XFCP_Robot
 				'title' => 'GumGum Bot',
 				'link' => 'https://gumgum.com/'
 			],
+			'gynxbot' => [
+				'title' => 'GynxBot',
+				'link' => 'https://gynx.com/crawler'
+			],
 			'hatena' => [
 				'title' => 'Hatena::Russia::Crawler',
+				'link' => ''
+			],
+			'healrworld crawler' => [
+				'title' => 'HealRWorld Crawler',
 				'link' => ''
 			],
 			'hetrixtools' => [
 				'title' => 'HetrixTools Uptime Monitoring Bot',
 				'link' => 'https://hetrix.tools/uptime-monitoring-bot.html'
+			],
+			'hgfalphaxcrawl' => [
+				'title' => 'Passau University Open Search Crawler',
+				'link' => 'https://www.fim.uni-passau.de/data-science/forschung/open-search'
 			],
 			'historyspider' => [
 				'title' => 'History Spider',
@@ -1421,6 +1625,10 @@ class Robot extends XFCP_Robot
 			'hoaxybot' => [
 				'title' => 'Hoaxy Bot - Indiana University CNetS',
 				'link' => 'http://cnets.indiana.edu'
+			],
+			'hoodle crawler' => [
+				'title' => 'Hoodle Crawler',
+				'link' => ''
 			],
 			'hrankbot' => [
 				'title' => 'HRank Hosting Ranking Bot',
@@ -1474,6 +1682,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Goo Webcrawler (Ichiro)',
 				'link' => 'http://help.goo.ne.jp/door/crawler.html'
 			],
+			'idmarch automatic' => [
+				'title' => 'IDMARCH Automatic Bot',
+				'link' => 'https://www.pdfsearch.io/bot.html'
+			],
 			'image size by siteimprove.com' => [
 				'title' => 'Siteimprove Image Size QA Bot',
 				'link' => 'https://support.siteimprove.com/hc/en-gb/articles/115000082872-Quality-Assurance-Technical-Specifications'
@@ -1481,6 +1693,10 @@ class Robot extends XFCP_Robot
 			'implisensebot' => [
 				'title' => 'ImplisenseBot',
 				'link' => ''
+			],
+			'imrbot' => [
+				'title' => 'IMR Bot',
+				'link' => 'http://www.mignify.com'
 			],
 			'indeedbot' => [
 				'title' => 'IndeedBot',
@@ -1542,6 +1758,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Internet Structure Research Project Bot',
 				'link' => '',
 			],
+			'jambot' => [
+				'title' => 'JamBot Crawler',
+				'link' => 'https://jambot.com/webmaster',
+			],
 			'jobboersebot' => [
 				'title' => 'Xing Job Exchange Bot',
 				'link' => 'http://www.jobboerse.com/bot.htm',
@@ -1554,6 +1774,14 @@ class Robot extends XFCP_Robot
 				'title' => 'Just-Crawling',
 				'link' => ''
 			],
+			'justlocal.nl' => [
+				'title' => 'Justlocal Webcrawler',
+				'link' => 'https://justlocal.nl'
+			],
+			'kantarsifomediaauditbot' => [
+				'title' => 'Kantar Sifo Media Audit Bot',
+				'link' => 'https://www.kantarsifo.se/mediaaudit'
+			],
 			'kauaibot' => [
 				'title' => 'KauaiBot',
 				'link' => ''
@@ -1561,6 +1789,14 @@ class Robot extends XFCP_Robot
 			'k7mlwcbot' => [
 				'title' => 'K7 Computing K7MLWCBot',
 				'link' => 'http://www.k7computing.com'
+			],
+			'keobsbot' => [
+				'title' => 'Keobs Bot',
+				'link' => 'http://www.keobs.com'
+			],
+			'keybasebot' => [
+				'title' => 'Keybase Bot',
+				'link' => 'https://keybase.io'
 			],
 			'kingbot' => [
 				'title' => 'KingBot',
@@ -1573,6 +1809,10 @@ class Robot extends XFCP_Robot
 			'knot group' => [
 				'title' => 'KNOT@FIT Brno University of Technology',
 				'link' => 'http://knot.fit.vutbr.cz/crawling/'
+			],
+			'koepabot' => [
+				'title' => 'KoepaBot',
+				'link' => 'http://www.koepa.nl/bot.html'
 			],
 			'konturbot' => [
 				'title' => 'KonturBot',
@@ -1589,6 +1829,18 @@ class Robot extends XFCP_Robot
 			'lamarkbot' => [
 				'title' => 'LAMARK Bot',
 				'link' => 'https://lamark.fr/'
+			],
+			'lanaibot' => [
+				'title' => 'Lanai Bot',
+				'link' => ''
+			],
+			'landsbokasafn' => [
+				'title' => 'Icelandic Web Archive Crawler',
+				'link' => 'https://vefsafn.is/crawler'
+			],
+			'lapozzbot' => [
+				'title' => 'Lapozz Bot',
+				'link' => 'http://robot.lapozz.com'
 			],
 			'lawinsiderbot' => [
 				'title' => 'Law Insider Bot',
@@ -1642,6 +1894,14 @@ class Robot extends XFCP_Robot
 				'title' => 'Linkpad Bot',
 				'link' => 'https://linkpad.org/en-au/help/'
 			],
+			'linkpulse metacrawler' => [
+				'title' => 'LinkPulse MetaCrawler',
+				'link' => ''
+			],
+			'linksmanager.com_bot' => [
+				'title' => 'Links Manager Bot',
+				'link' => 'http://linksmanager.com/linkchecker.html'
+			],
 			'livelapbot' => [
 				'title' => 'Livelap Crawler: LivelapBot',
 				'link' => 'https://site.livelap.com/crawler'
@@ -1665,6 +1925,10 @@ class Robot extends XFCP_Robot
 			'lufsbot' => [
 				'title' => 'Lufs Bot',
 				'link' => 'http://www.lufs.org/bot.html'
+			],
+			'lxrbot' => [
+				'title' => 'LXR Marketplace Bot',
+				'link' => 'https://lxrmarketplace.com/'
 			],
 			'magibot' => [
 				'title' => 'MagiBot (Matarael) Web Crawler',
@@ -1697,6 +1961,10 @@ class Robot extends XFCP_Robot
 			'mbcrawler' => [
 				'title' => 'MBCrawler',
 				'link' => 'https://monitorbacklinks.com/robot',
+			],
+			'mbot v' => [
+				'title' => 'mbot',
+				'link' => '',
 			],
 			'media-bot' => [
 				'title' => 'Media Bot',
@@ -1778,6 +2046,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Monsidobot',
 				'link' => 'http://monsido.com/bot.html',
 			],
+			'moreoverbot' => [
+				'title' => 'Moreover Bot',
+				'link' => 'http://www.moreover.com',
+			],
 			'msc crawl project radboud university' => [
 				'title' => 'MSC Crawl Project - Raboud University',
 				'link' => ''
@@ -1822,6 +2094,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Netpeak Checker SERP Scraping',
 				'link' => 'https://netpeaksoftware.com/blog/netpeak-checker-3-0-serp-scraping'
 			],
+			'netpeakspiderbot' => [
+				'title' => 'Netpeak Spider Bot',
+				'link' => 'https://netpeaksoftware.com/spider'
+			],
 			'netresearchserver' => [
 				'title' => 'NetResearch Server',
 				'link' => 'http://loopimprovements.com/robot.html'
@@ -1849,6 +2125,10 @@ class Robot extends XFCP_Robot
 			'nfwebcrawler' => [
 				'title' => 'NF Web Crawler',
 				'link' => ''
+			],
+			'niraiya.com' => [
+				'title' => 'Niraiya Stolen Passwords Checker Bot',
+				'link' => 'https://www.niraiya.com/'
 			],
 			'niuebot' => [
 				'title' => 'NiueBot',
@@ -1878,9 +2158,21 @@ class Robot extends XFCP_Robot
 				'title' => 'National Library of New Zealand Web Domain Harvest',
 				'link' => 'https://natlib.govt.nz/publishers-and-authors/web-harvesting/domain-harvest'
 			],
+			'node/simplecrawler' => [
+				'title' => 'Simple web crawler for node.js',
+				'link' => 'https://github.com/simplecrawler/simplecrawler'
+			],
+			'nu.marginalia.wmsa.edge-crawler' => [
+				'title' => 'Marginalia WMSA Edge Crawler',
+				'link' => 'https://marginalia.nu/'
+			],
 			'nusearch spider' => [
 				'title' => 'NuSearch Spider',
 				'link' => 'http://www.nusearch.com'
+			],
+			'nutchcvs' => [
+				'title' => 'Nutch Robot',
+				'link' => 'http://lucene.apache.org/nutch/bot.html'
 			],
 			'obot' => [
 				'title' => 'IBM Germany R&D oBot web crawler',
@@ -1894,17 +2186,33 @@ class Robot extends XFCP_Robot
 				'title' => 'OdklBot',
 				'link' => 'mailto:klass@odnoklassniki.ru'
 			],
+			'oer commons bot' => [
+				'title' => 'OER Commons Bot',
+				'link' => 'https://oercommons.org/'
+			],
 			'omgili' => [
 				'title' => 'Omgili Bot',
 				'link' => 'https://webhose.io/blog/api/what-is-the-omgili-bot-and-why-is-it-crawling-your-website/'
+			],
+			'omniexplorer_bot' => [
+				'title' => 'Omni Explorer Bot',
+				'link' => 'http://www.omni-explorer.com'
 			],
 			'onalyticabot' => [
 				'title' => 'Onalytica Bot',
 				'link' => 'https://onalytica.com/'
 			],
+			'onefuncbot' => [
+				'title' => 'OneFunc Bot',
+				'link' => 'https://onefunc.com/glance/'
+			],
 			'online-webceo-bot' => [
 				'title' => 'WebCEO SEO Bot',
 				'link' => 'http://online.webceo.com'
+			],
+			'oozbot' => [
+				'title' => 'Ooz Bot',
+				'link' => 'http://www.setooz.com/oozbot.html'
 			],
 			'openindexspider' => [
 				'title' => 'Openindex Spider',
@@ -1966,6 +2274,14 @@ class Robot extends XFCP_Robot
 				'title' => 'PHP',
 				'link' => ''
 			],
+			'pickybot' => [
+				'title' => 'PickyBot web crawler',
+				'link' => 'http://www.pickysear.ch/pickybot.html'
+			],
+			'piepmatz bot' => [
+				'title' => 'Piepmatz Bot',
+				'link' => 'https://openrepos.net/content/werkwolf/piepmatz'
+			],
 			'pigafetta' => [
 				'title' => 'Pigafetta Visual SEO Studio crawler',
 				'link' => 'http://visual-seo.com/pigafetta-bot'
@@ -2006,6 +2322,10 @@ class Robot extends XFCP_Robot
 				'title' => 'PleskBot',
 				'link' => ''
 			],
+			'plukkie' => [
+				'title' => 'Plukkie Web Crawler',
+				'link' => 'http://www.botje.com/plukkie.htm'
+			],
 			'plurkbot' => [
 				'title' => 'PlurkBot',
 				'link' => 'https://www.plurk.com/'
@@ -2034,6 +2354,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Picsearch PsBot',
 				'link' => 'http://www.picsearch.com/bot.html'
 			],
+			'pu_in crawler' => [
+				'title' => 'Semantic Juice Crawler',
+				'link' => 'http://semanticjuice.com/'
+			],
 			'pubmatic crawler bot' => [
 				'title' => 'PubMatic ads.txt crawler',
 				'link' => 'https://pubmatic.com/blog/auto-scaling-ads-txt-crawler/'
@@ -2045,6 +2369,14 @@ class Robot extends XFCP_Robot
 			'pulsepoint-ads.txt-crawler' => [
 				'title' => 'PulsePoint ads.txt Crawler',
 				'link' => 'https://docs.pulsepoint.com/display/PDB/Ads.txt+Compliance'
+			],
+			'punkspider' => [
+				'title' => 'Punk Spider',
+				'link' => 'mailto:support@hyperiongray.com'
+			],
+			'pwa-crawler' => [
+				'title' => 'PWA Crawler',
+				'link' => ''
 			],
 			'python-requests' => [
 				'title' => 'Python Requests Library',
@@ -2118,6 +2450,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Reachability Check Bot',
 				'link' => ''
 			],
+			'reasonalbot' => [
+				'title' => 'ReasonalBot',
+				'link' => ''
+			],
 			'redditbot' => [
 				'title' => 'Reddit Bot',
 				'link' => 'http://www.reddit.com/feedback'
@@ -2142,6 +2478,10 @@ class Robot extends XFCP_Robot
 				'title' => 'ResearchBot',
 				'link' => ''
 			],
+			'revuebot' => [
+				'title' => 'Revue Bot',
+				'link' => 'https://www.getrevue.co/'
+			],
 			'riverbot' => [
 				'title' => 'RiverBot',
 				'link' => 'http://www.useriver.com/bot.html'
@@ -2161,6 +2501,10 @@ class Robot extends XFCP_Robot
 			'rssmicro.com' => [
 				'title' => 'RSS Micro Feed Bot',
 				'link' => 'http://rssmicro.com/',
+			],
+			'runet-research-crawler' => [
+				'title' => 'Runet Research Crawler',
+				'link' => 'https://itrack.ru/research/cmsrate/',
 			],
 			'rustbot' => [
 				'title' => 'Rustbot',
@@ -2210,6 +2554,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Screaming Frog SEO Spider',
 				'link' => 'https://www.screamingfrog.co.uk/seo-spider/',
 			],
+			'screenerbot crawler' => [
+				'title' => 'Screenerbot Crawler',
+				'link' => 'http://www.screenerbot.com',
+			],
 			'scribbr-citation-bot' => [
 				'title' => 'Scribbr Citation Bot',
 				'link' => 'https://www.scribbr.com/',
@@ -2218,9 +2566,21 @@ class Robot extends XFCP_Robot
 				'title' => 'SE Ranking Gentle Bot',
 				'link' => 'https://seranking.com/website-audit.html',
 			],
+			'searchenginecrawler' => [
+				'title' => 'UMich Search Engine Crawler',
+				'link' => 'mailto:eecs440-clickbaiters@umich.edu',
+			],
+			'sebot-wa' => [
+				'title' => 'sebot-wa',
+				'link' => '',
+			],
 			'seebot.org' => [
 				'title' => 'SeeBot',
 				'link' => 'http://seebot.org',
+			],
+			'seekbot' => [
+				'title' => 'Seek Bot',
+				'link' => 'http://www.seekbot.net/bot.html',
 			],
 			'seekport' => [
 				'title' => 'Seekport Crawler',
@@ -2286,6 +2646,14 @@ class Robot extends XFCP_Robot
 				'title' => 'SeznamBot',
 				'link' => 'https://napoveda.seznam.cz/en/seznamcz-web-search/',
 			],
+			'shopwiki' => [
+				'title' => 'ShopWiki Bot',
+				'link' => 'http://www.shopwiki.com/wiki/help:bot',
+			],
+			'showyoubot' => [
+				'title' => 'Show You Bot',
+				'link' => 'http://showyou.com/crawler',
+			],
 			'sidetrade indexer bot' => [
 				'title' => 'Sidetrade Indexer Bot',
 				'link' => 'https://www.sidetrade.com/',
@@ -2302,6 +2670,10 @@ class Robot extends XFCP_Robot
 				'title' => 'SiteAnalyzer Web Crawler',
 				'link' => 'https://site-analyzer.pro/',
 			],
+			'siteauditbot' => [
+				'title' => 'SEMrush Site Audit Bot',
+				'link' => 'http://www.semrush.com/bot.html',
+			],
 			'sitecheck-sitecrawl' => [
 				'title' => 'Siteimprove QA Crawler',
 				'link' => 'https://support.siteimprove.com/hc/en-gb/articles/115000082872-Quality-Assurance-Technical-Specifications',
@@ -2317,6 +2689,10 @@ class Robot extends XFCP_Robot
 			'sitelockspider' => [
 				'title' => 'SiteLock Spider',
 				'link' => 'https://www.sitelock.com/',
+			],
+			'sitescorebot' => [
+				'title' => 'SiteScore Bot',
+				'link' => 'https://sitescore.ai',
 			],
 			'sitesucker' => [
 				'title' => 'SiteSucker for macOS',
@@ -2390,6 +2766,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Big Web Corpora Natural Language Processing Bot',
 				'link' => 'http://nlp.fi.muni.cz/projects/biwec/'
 			],
+			'spinn3r' => [
+				'title' => 'Spinn3r',
+				'link' => 'http://spinn3r.com/robot'
+			],
 			'sqlmap' => [
 				'title' => 'sqlmap Automatic SQL injection and database takeover tool',
 				'link' => 'http://sqlmap.org'
@@ -2398,6 +2778,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Squidbot',
 				'link' => ''
 			],
+			'squirrobot' => [
+				'title' => 'Squirrobot',
+				'link' => 'http://intro.squirro.com/squirrobot/'
+			],
 			'ssblog' => [
 				'title' => 'Seesaa SS Blog RSS Crawler',
 				'link' => 'https://blog.ss-blog.jp/'
@@ -2405,6 +2789,10 @@ class Robot extends XFCP_Robot
 			'sserobots' => [
 				'title' => 'SSERobots',
 				'link' => ''
+			],
+			'ssl-crawler' => [
+				'title' => 'SSL Crawler',
+				'link' => 'http://crawler.dcsec.uni-hannover.de'
 			],
 			'startmebot' => [
 				'title' => 'startmebot',
@@ -2486,6 +2874,10 @@ class Robot extends XFCP_Robot
 				'title' => 'Test Crawler',
 				'link' => ''
 			],
+			'thinkbot' => [
+				'title' => 'ThinkBot',
+				'link' => ''
+			],
 			'tineye-bot' => [
 				'title' => 'TinEye Open Image Search Crawler',
 				'link' => 'http://www.tineye.com/crawler.html'
@@ -2538,6 +2930,10 @@ class Robot extends XFCP_Robot
 				'title' => 'TripleChecker Website Spelling and Grammar Error Checker',
 				'link' => 'https://www.triplechecker.com/'
 			],
+			'tsmbot' => [
+				'title' => 'TSM Bot',
+				'link' => ''
+			],
 			'ttd-content' => [
 				'title' => 'theTradeDesk Content Scraper',
 				'link' => 'https://www.thetradedesk.com/general/ttd-content'
@@ -2545,6 +2941,10 @@ class Robot extends XFCP_Robot
 			'turnitinbot' => [
 				'title' => 'Turnitin Anti-plagiarism Bot',
 				'link' => 'https://turnitin.com/robot/crawlerinfo.html'
+			],
+			'tweetedtimes bot' => [
+				'title' => 'Tweeted Times Bot',
+				'link' => 'http://tweetedtimes.com'
 			],
 			'tweetmemebot' => [
 				'title' => 'TweetmemeBot',
@@ -2562,9 +2962,17 @@ class Robot extends XFCP_Robot
 				'title' => 'UCMore Crawler',
 				'link' => 'http://ucmore.com/'
 			],
+			'ucrawl' => [
+				'title' => 'Ucrawl',
+				'link' => ''
+			],
 			'uipbot' => [
 				'title' => 'Semasio uipbot',
 				'link' => 'mailto:uipbot@semasio.net'
+			],
+			'umichbot' => [
+				'title' => 'UMich Bot',
+				'link' => ''
 			],
 			'uptimebot' => [
 				'title' => 'UptimeBot',
@@ -2573,6 +2981,10 @@ class Robot extends XFCP_Robot
 			'uptimerobot' => [
 				'title' => 'UptimeRobot',
 				'link' => 'http://www.uptimerobot.com/'
+			],
+			'urlappendbot' => [
+				'title' => 'Profound Networks URL Append Bot',
+				'link' => 'http://www.profound.net/urlappendbot.html'
 			],
 			'vdo.ai bot' => [
 				'title' => 'VDO.ai Bot',
@@ -2589,6 +3001,10 @@ class Robot extends XFCP_Robot
 			'velenpublicwebcrawler' => [
 				'title' => 'Velen Public Web Crawler',
 				'link' => 'https://velen.io'
+			],
+			'verticalleap-sitestatusbot' => [
+				'title' => 'Apollo Insights - Vertical Leap',
+				'link' => 'https://www.apolloinsights.com/'
 			],
 			'virusdie crawler' => [
 				'title' => 'VirusDie Antivirus Crawler',
@@ -2630,6 +3046,14 @@ class Robot extends XFCP_Robot
 				'title' => 'Webgains Bot',
 				'link' => 'https://www.webgains.com/public/en/'
 			],
+			'webgraph' => [
+				'title' => 'Web Graph',
+				'link' => 'https://github.com/jamesjarvis/web-graph'
+			],
+			'weblinkchecker' => [
+				'title' => 'Weblink Checker',
+				'link' => ''
+			],
 			'webliobot' => [
 				'title' => 'Webliobot',
 				'link' => 'http://www.weblio.jp/info/crawler.jsp'
@@ -2646,9 +3070,17 @@ class Robot extends XFCP_Robot
 				'title' => 'Web Spider 1.0',
 				'link' => ''
 			],
+			'websquash.com' => [
+				'title' => 'Websquash Add URL Robot',
+				'link' => 'https://websquash.com/'
+			],
 			'webzip' => [
 				'title' => 'Spidersoft WebZIP',
 				'link' => 'http://www.spidersoft.com/'
+			],
+			'wellknownbot' => [
+				'title' => 'Well-Known Bot',
+				'link' => 'https://well-known.dev'
 			],
 			'wesee:search' => [
 				'title' => 'WeSee Search Bot',
@@ -2681,6 +3113,10 @@ class Robot extends XFCP_Robot
 			'winhttp' => [
 				'title' => 'Microsoft WinHttp',
 				'link' => 'https://docs.microsoft.com/en-us/windows/win32/winhttp/about-winhttp'
+			],
+			'wizenozebot' => [
+				'title' => 'WizenozeBot',
+				'link' => 'http://wizenoze.com/bot'
 			],
 			'wlc pywikibot' => [
 				'title' => 'wlc Pywikibot',
