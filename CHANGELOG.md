@@ -9,93 +9,93 @@ CHANGELOG
     * baiduboxapp
 
 * new bots:
- * 200pleasebot
- * a8bot
- * abilogicbot
- * acoonbot
- * adform robot
- * arhpostbot
- * atomseobot
- * awariorendererbot
- * badoobot
- * bl.uk_ldfc_bot
- * brobot
- * charityengine bot
- * charlotte
- * cosmos
- * coveobot
- * crawlbot/1.0.0
- * cxensebot
- * facebot
- * fandomopengraphbot
- * freshpingbot
- * fuelbot
- * geedobot
- * getlocalbot
- * google-safety
- * gpcsupbot
- * grub-client
- * gynxbot
- * healrworld crawler
- * hgfalphaxcrawl
- * hoodle crawler
- * idmarch automatic
- * imrbot
- * jambot
- * justlocal.nl
- * kantarsifomediaauditbot
- * keobsbot
- * keybasebot
- * koepabot
- * lanaibot
- * landsbokasafn
- * lapozzbot
- * linkpulse metacrawler
- * linksmanager.com_bot
- * lxrbot
- * mbot v
- * moreoverbot
- * netpeakspiderbot
- * www.niraiya.com
- * node/simplecrawler
- * nu.marginalia.wmsa.edge-crawler
- * nutchcvs
- * oer commons bot
- * omniexplorer_bot
- * onefuncbot
- * oozbot
- * pickybot
- * piepmatz bot
- * plukkie
- * pu_in crawler
- * punkspider
- * pwa-crawler
- * reasonalbot
- * revuebot
- * runet-research-crawler
- * screenerbot crawler
- * searchenginecrawler
- * sebot-wa
- * seekbot
- * shopwiki
- * showyoubot
- * siteauditbot
- * sitescorebot
- * spinn3r
- * squirrobot
- * ssl-crawler
- * thinkbot
- * tsmbot
- * tweetedtimes bot
- * ucrawl
- * umichbot
- * urlappendbot
- * verticalleap-sitestatusbot
- * webgraph
- * weblinkchecker
- * websquash.com
- * wellknownbot
- * wizenozebot
+    * 200pleasebot
+    * a8bot
+    * abilogicbot
+    * acoonbot
+    * adform robot
+    * arhpostbot
+    * atomseobot
+    * awariorendererbot
+    * badoobot
+    * bl.uk_ldfc_bot
+    * brobot
+    * charityengine bot
+    * charlotte
+    * cosmos
+    * coveobot
+    * crawlbot/1.0.0
+    * cxensebot
+    * facebot
+    * fandomopengraphbot
+    * freshpingbot
+    * fuelbot
+    * geedobot
+    * getlocalbot
+    * google-safety
+    * gpcsupbot
+    * grub-client
+    * gynxbot
+    * healrworld crawler
+    * hgfalphaxcrawl
+    * hoodle crawler
+    * idmarch automatic
+    * imrbot
+    * jambot
+    * justlocal.nl
+    * kantarsifomediaauditbot
+    * keobsbot
+    * keybasebot
+    * koepabot
+    * lanaibot
+    * landsbokasafn
+    * lapozzbot
+    * linkpulse metacrawler
+    * linksmanager.com_bot
+    * lxrbot
+    * mbot v
+    * moreoverbot
+    * netpeakspiderbot
+    * www.niraiya.com
+    * node/simplecrawler
+    * nu.marginalia.wmsa.edge-crawler
+    * nutchcvs
+    * oer commons bot
+    * omniexplorer_bot
+    * onefuncbot
+    * oozbot
+    * pickybot
+    * piepmatz bot
+    * plukkie
+    * pu_in crawler
+    * punkspider
+    * pwa-crawler
+    * reasonalbot
+    * revuebot
+    * runet-research-crawler
+    * screenerbot crawler
+    * searchenginecrawler
+    * sebot-wa
+    * seekbot
+    * shopwiki
+    * showyoubot
+    * siteauditbot
+    * sitescorebot
+    * spinn3r
+    * squirrobot
+    * ssl-crawler
+    * thinkbot
+    * tsmbot
+    * tweetedtimes bot
+    * ucrawl
+    * umichbot
+    * urlappendbot
+    * verticalleap-sitestatusbot
+    * webgraph
+    * weblinkchecker
+    * websquash.com
+    * wellknownbot
+    * wizenozebot
 
 3.17.0 (2021-01-25)
 -------------------
