@@ -576,6 +576,7 @@ class Robot extends XFCP_Robot
 			'cubot echo',
 			'cubot_j3',
 			'cubot j3 pro',
+			'cubot; j5',
 			'cubot h3',
 			'cubot king kong',
 			'cubot magic',
@@ -597,6 +598,8 @@ class Robot extends XFCP_Robot
 
 			'spider v7 build/lmy47i', // MyCell Spider v7 phone from Bangladesh
 			'spider v7',
+
+			'baiduboxapp', // Baidu Box App
 		];
 
 		return $falsePositives;
