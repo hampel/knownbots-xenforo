@@ -1,6 +1,55 @@
 CHANGELOG
 =========
 
+3.19.0 (2021-05-31)
+-------------------
+
+* new false positives:
+    * spider v9 build/mra58k
+    
+* new bots:
+    * 80legs.com: [80legs Crawler](https://80legs.com/)
+    * adssellerscrawler: [Ads Sellers Crawler](https://www.protected.media/)
+    * apesearch crawler: [ApeSearch Crawler](mailto:xiongrob@umich.edu)
+    * aportcatalogrobot: [AportCatalogRobot]()
+    * bot dns-cache.fr: [bot dns-cache.fr]()
+    * crusty broad web crawler: [Crusty Broad Web Crawler](https://lib.rs/crates/crusty)
+    * docomo: [NTT Docomo Goo Bot](http://help.goo.ne.jp/door/crawler.html)
+    * dubbotbot: [DubBot Bot](https://dubbot.com/)
+    * electricmonk: [DueDil Electric Monk Crawler](https://www.duedil.com/our-crawler/)
+    * finbot: [Finbot]()
+    * flok's crawler: [Flok's Crawler](https://flok.codes)
+    * goodbot: [GoodBot]()
+    * grover: [Grover web crawler]()
+    * joc web spider: [JOC Web Spider](http://www.jocsoft.com/jws/)
+    * linkarchiver twitter bot: [LinkArchiver Twitter Bot](https://github.com/thisisparker/linkarchiver)
+    * linkscrawler: [LinksCrawler]()
+    * neevabot: [Neevabot Search Engine Bot](https://neeva.com/neevabot)
+    * newsharecounts.com: [Newshare Counts](http://newsharecounts.com/crawler)
+    * newslitbot: [Newslit Bot](https://www.newslit.co)
+    * opensearch@mpdl: [OpenSearch@MPDL](https://www.mpdl.mpg.de/opensearch_crawler_faq.html)
+    * orbbot: [orbbot]()
+    * pajbot1: [Pajbot](https://pajbot.com/)
+    * richaudience brandsafety bot: [Rich Audience Brandsafety Bot](https://richaudience.com/en/advertisers/)
+    * semjibot: [SemjiBot](http://semji.com)
+    * simplecrawler/0.1: [SimpleCrawler]()
+    * snap url preview service: [Snap URL Preview Service](https://developer.snapchat.com/robots)
+    * spider_bot/3.0: [Spider_bot]()
+    * spotibobot: [Spotibo bot](http://spotibo.com)
+    * synologychatbot: [Synology Chat Bot](https://www.synology.com/en-global/knowledgebase/DSM/help/Chat/chat_integration)
+    * terrawizbot: [TerrawizBot]()
+    * top100.rambler.ru crawler: [Top-100 Rambler Crawler](https://top100.rambler.ru/)
+    * webshopchecker bot: [Webshop Checker Bot](https://webshopchecker.nl)
+    * wi job roboter spider: [Web Integration Job Robot](https://www.webintegration.at)
+    * woobot: [WooBot]()
+    * woriobot: [Zite.com WorioBot](http://zite.com)
+    * wp fastest cache preload bot: [WP Fastest Cache Preload Bot](https://www.wpfastestcache.com/features/preload-settings/)
+    * xenforo: [XenForo](https://xenforo.com/)
+    * your bot: [Your Bot]()
+    * yunsecuritybot: [YunSecurityBot]()
+    * yurichevbot: [Yurichev Bot](http://yurichev.com/bot.html)
+                 
+
 3.18.0 (2021-04-24)
 -------------------
 
