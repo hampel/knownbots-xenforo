@@ -1,1 +1,1 @@
-Test Bot Detection
+Test bot detection

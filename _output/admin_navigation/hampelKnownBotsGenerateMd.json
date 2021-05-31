@@ -1,0 +1,10 @@
+{
+    "parent_navigation_id": "development",
+    "display_order": 900,
+    "link": "tools/hampel-knownbots-md",
+    "icon": "",
+    "admin_permission_id": "",
+    "debug_only": false,
+    "development_only": false,
+    "hide_no_children": false
+}

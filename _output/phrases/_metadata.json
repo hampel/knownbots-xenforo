@@ -7,9 +7,15 @@
     },
     "admin_navigation.hampelKnownBotsDetect.txt": {
         "global_cache": false,
-        "version_id": 2060070,
-        "version_string": "2.6.0",
-        "hash": "a7fee2892f568643fcd93ddf387ba6bf"
+        "version_id": 3180070,
+        "version_string": "3.18.0",
+        "hash": "477c534cf5e3f07ab08e64cbfe72e0d3"
+    },
+    "admin_navigation.hampelKnownBotsGenerateMd.txt": {
+        "global_cache": false,
+        "version_id": 3180070,
+        "version_string": "3.18.0",
+        "hash": "8e41623d1b0ec9fa03ec117e0b63d268"
     },
     "admin_navigation.hampelKnownBotsList.txt": {
         "global_cache": false,
@@ -19,9 +25,9 @@
     },
     "admin_navigation.hampelKnownBotsNew.txt": {
         "global_cache": false,
-        "version_id": 2070070,
-        "version_string": "2.7.0",
-        "hash": "0875af8d32445b92f4986a71cace26a2"
+        "version_id": 3180070,
+        "version_string": "3.18.0",
+        "hash": "0ed8046c586b6cce0d52af138f631579"
     },
     "cron_entry.hampelKnownBotsNewBots.txt": {
         "global_cache": false,
