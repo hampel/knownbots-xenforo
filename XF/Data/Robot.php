@@ -685,7 +685,7 @@ class Robot extends XFCP_Robot
 			'dinobot 4k plus', // Dinobot Android TV
 
 			'spider v7 build/lmy47i', // MyCell Spider v7 phone from Bangladesh
-			'spider v7',
+			'spider v9 build/mra58k',
 
 			'baiduboxapp', // Baidu Box App
 		];
