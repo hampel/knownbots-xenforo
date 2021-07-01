@@ -1,6 +1,39 @@
 CHANGELOG
 =========
 
+3.20.0 (2021-07-01)
+-------------------
+
+* new bots:
+    * btbot: [BT Bot](http://www.btbot.com/btbot.html)
+    * catchbot: [Catchbot](http://www.catchbot.com)
+    * comodospider: [Comodo SSL Spider](https://ssl.comodo.com/)
+    * deepnoc: [deepnoc bot (network optimized crawling)](https://deepnoc.com/bot)
+    * dispenserbot: [Dispenser Dab Solver Checklinks Bot](http://dispenser.info.tm/~dispenser/view/checklinks)
+    * epicbot: [Epictions EpicBot](http://www.epictions.com/epicbot)
+    * esperanzabot: [EsperanzaBot](http://www.esperanza.to/bot/)
+    * fast enterprise crawler: [Fast enterprise crawler 6 used by Schibsted](mailto:webcrawl@schibstedsok.no)
+    * fleabot: [Mercadopar Fleabot](https://mercadopar.com/fleabot)
+    * fuseonbot: [Fuseon Link Affinity Bot](http://linkaffinity.io)
+    * google/bot: [google/bot]()
+    * greenflare seo crawler: [Greenflare SEO Crawler](https://greenflare.io/)
+    * gsitecrawler: [GSiteCrawler](http://gsitecrawler.com/)
+    * holmes: [Morfeo Holmes Bot](http://morfeo.centrum.cz/bot)
+    * infotigerbot: [InfoTiger Search Engine Bot](https://infotiger.com/bot)
+    * internet security survey bot: [Internet Security Survey Bot]()
+    * jetpack-bot: [JetPack Bot]()
+    * mojoo robot: [Mojoo Bot](http://www.mojoo.com/)
+    * nicecrawler: [NiceCrawler](http://www.nicecrawler.com/)
+    * prem.moe crawler: [Prem.moe Crawler](https://prem.moe/)
+    * sayindexbot: [SayIndex Bot]()
+    * sbl-bot: [SoftByte Labs Bot](http://sbl.net)
+    * siteliner: [Siteliner Bot](http://www.siteliner.com/bot)
+    * swjschecketbot: [Swjschecketbot]()
+    * trade desk ads.txt & sellers.json crawler: [Trade Desk ads.txt & sellers.json crawler]()
+    * vortex: [Marty Anstey Vortex Bot](http://marty.anstey.ca/robots/vortex/)
+    * www.hlabs.co.ke: [hLabs Bot](https://www.hlabs.co.ke/bot.html)
+    * zspider: [Red Kolibri ZSpider](http://feedback.redkolibri.com/)
+
 3.19.0 (2021-05-31)
 -------------------
 
