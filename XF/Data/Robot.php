@@ -4,6 +4,21 @@ use Hampel\KnownBots\Repository\UserAgentCache;
 
 class Robot extends XFCP_Robot
 {
+	/*
+	 * TODO: AccompanyBot
+	 * colly - https://github.com/gocolly/colly
+	 * InternetNZ Webscan. https://zonescan.nzrs.net.nz
+	 * Java/11.0.10
+	 * Java1.1.4
+	 * Microsoft Office Excel 2013 (15.0.4420) Windows NT 6.1
+	 * node-fetch/1.0 (+https://github.com/bitinn/node-fetch)
+	 * Punkspider/5.0 (opt-out to support@hyperiongray.com)
+	 * Punkspider/5.0 (Visit https://punkspider.io for more information)
+	 * winHttp 12917292
+	 * Mozilla/5.0 (compatible; Adsbot/3.1)
+	 * Mozilla/5.0+(compatible; TripleCheckerRobot/1.0; https://www.triplechecker.com/)
+	 */
+
 	public function getRobotUserAgents()
 	{
 		$newBots = [
@@ -445,6 +460,7 @@ class Robot extends XFCP_Robot
 			'pinllc search robot' => 'pinllc-search-robot',
 			'pinterestbot' => 'pinterest',
 			'planckspider' => 'planckspider',
+            'pleroma' => 'pleroma',
 			'pleskbot' => 'pleskbot',
 			'plukkie' => 'plukkie',
 			'plurkbot' => 'plurkbot',
@@ -3529,7 +3545,7 @@ class Robot extends XFCP_Robot
 				'title' => 'Zyborg Dead Link Checker',
 				'link' => 'http://www.wisenutbot.com'
 			],
-			'_zbot' => [
+			'zbot' => [
 				'title' => '_zbot',
 				'link' => ''
 			],
@@ -3563,7 +3579,7 @@ class Robot extends XFCP_Robot
             ],
             'php' => [
                 'title' => 'PHP',
-                'link' => ''
+                'link' => 'https://www.php.net/'
             ],
             'wget' => [
                 'title' => 'Linux Wget',
