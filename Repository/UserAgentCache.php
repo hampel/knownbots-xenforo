@@ -31,7 +31,7 @@ class UserAgentCache extends Repository
 	public function addUserAgent($userAgent)
 	{
 		// only store the first 512 characters of the UserAgent string to prevent
-		$userAgent = substr(strtolower($userAgent), 0, 512);
+		$userAgent = substr($userAgent, 0, 512);
 		$agents = $this->getUserAgents();
 
 		if (!in_array($userAgent, $agents))
