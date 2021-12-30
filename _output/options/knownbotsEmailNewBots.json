@@ -8,8 +8,9 @@
     ],
     "validation_class": "",
     "validation_method": "",
+    "advanced": false,
     "default_value": "{\"enabled\":\"0\",\"email\":\"knownbots@hampel.io\"}",
     "relations": {
-        "knownbots": 100
+        "knownbots": 200
     }
 }

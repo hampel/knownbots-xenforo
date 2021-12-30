@@ -1,6 +1,9 @@
 {
     "knownbotsEmailNewBots.json": {
-        "hash": "f466b1412384ff29ab572f20a6a22e3d"
+        "hash": "aaf2146d0fc3546a7f15b91b64b86290"
+    },
+    "knownbotsFetchNewBots.json": {
+        "hash": "45b075e0dbe4a666cb3d33341e82c828"
     },
     "knownbotsShowBotStats.json": {
         "hash": "84e7c5c76c04e9b0bd20197bcad03177"

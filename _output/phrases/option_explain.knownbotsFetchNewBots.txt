@@ -1,0 +1,1 @@
+Turn on to automatically fetch new bot identifiers from the KnownBots API set up by the addon author

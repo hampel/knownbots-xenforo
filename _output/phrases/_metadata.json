@@ -131,6 +131,12 @@
         "version_string": "2.7.0",
         "hash": "9f4c94ffc6bdc174c6c0a81848c3b3a4"
     },
+    "option.knownbotsFetchNewBots.txt": {
+        "global_cache": false,
+        "version_id": 3200070,
+        "version_string": "3.20.0",
+        "hash": "743bb9b3aee17bac7c93614f0711c28b"
+    },
     "option.knownbotsShowBotStats.txt": {
         "global_cache": false,
         "version_id": 2040070,
@@ -139,9 +145,15 @@
     },
     "option_explain.knownbotsEmailNewBots.txt": {
         "global_cache": false,
-        "version_id": 2070070,
-        "version_string": "2.7.0",
+        "version_id": 3200070,
+        "version_string": "3.20.0",
         "hash": "a148d3189e1fcce38c96f13796397872"
+    },
+    "option_explain.knownbotsFetchNewBots.txt": {
+        "global_cache": false,
+        "version_id": 3200070,
+        "version_string": "3.20.0",
+        "hash": "a599cee330b078028d044b3855d9f375"
     },
     "option_explain.knownbotsShowBotStats.txt": {
         "global_cache": false,

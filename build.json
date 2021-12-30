@@ -1,6 +1,7 @@
 {
 	"exec": [
-		"rm -v _build/upload/src/addons/{addon_id}/TESTING.md",
+		"php ../../../../cmd.php known-bots:build",
+		"rm -v _build/upload/src/addons/{addon_id}/Cli/Command/BuildBots.php",
 		"rm -v _build/upload/src/addons/{addon_id}/composer.json",
 		"rm -v _build/upload/src/addons/{addon_id}/composer.lock",
 		"rm -v _build/upload/src/addons/{addon_id}/phpunit.xml",
