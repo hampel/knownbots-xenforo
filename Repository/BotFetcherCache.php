@@ -13,12 +13,12 @@ class BotFetcherCache extends Repository
 
     public function getLastChecked()
     {
-        return $this->getCache()->getValue('botFetchLastCheck');
+        return $this->getCache()->getValue('last-checked');
     }
 
     public function setLastChecked($timestamp)
     {
-        $this->getCache()->setValue('botFetchLastCheck', $timestamp);
+        $this->getCache()->setValue('last-checked', $timestamp);
     }
 
     public function resetLastChecked()
@@ -28,12 +28,12 @@ class BotFetcherCache extends Repository
 
     public function getFalsePositives()
     {
-        return $this->getCache()->getValue('falsePositives');
+        return $this->getCache()->getValue('false-positives');
     }
 
     public function setFalsePositives(array $search_keys)
     {
-        $this->getCache()->setValue('falsePositives', $search_keys);
+        $this->getCache()->setValue('false-positives', $search_keys);
     }
 
     public function resetFalsePositives()
