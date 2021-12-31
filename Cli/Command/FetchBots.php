@@ -12,23 +12,40 @@ class FetchBots extends Command
 	{
 		$this
 			->setName('known-bots:fetch')
-			->setDescription('Fetch the latest bots lists')
+			->setDescription('Fetch and update bots lists')
             ->addOption(
-                'all',
-                'a',
+                'force',
+                'f',
                 InputOption::VALUE_NONE,
-                "Fetch all bot data"
+                "Force update"
             );
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
-	    $all = $input->getOption('all');
+	    $force = $input->getOption('force');
 
 		/** @var BotFetcher $fetcher */
 		$fetcher = \XF::service('Hampel\KnownBots:BotFetcher');
 
-		$fetcher->fetchBots($all);
+		$bots = $fetcher->fetchBots($force);
+
+		if (is_null($bots))
+        {
+            $output->writeln("No updates available");
+            return 0;
+        }
+
+		if ($bots === false)
+        {
+            $output->writeln("Error processing updates - check XenForo logs");
+            return 1;
+        }
+
+        $output->writeln("Loaded maps: " . count($bots['maps']));
+        $output->writeln("Loaded bots: " . count($bots['bots']));
+        $output->writeln("Loaded false positives: " . count($bots['falsepos']));
+        $output->writeln("Last checked: {$bots['built']}");
 
 		return 0;
 	}

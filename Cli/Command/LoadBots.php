@@ -20,10 +20,14 @@ class LoadBots extends Command
 		/** @var BotFetcher $fetcher */
 		$fetcher = \XF::service('Hampel\KnownBots:BotFetcher');
 
-		$count = $fetcher->updateBots($fetcher->loadBots(), true);
-		$output->writeln("Loaded maps: {$count['maps']}");
-		$output->writeln("Loaded bots: {$count['bots']}");
-		$output->writeln("Loaded false positives: {$count['falsepos']}");
+		$bots = $fetcher->loadBots();
+
+		$fetcher->updateBots($bots);
+
+		$output->writeln("Loaded maps: " . count($bots['maps']));
+		$output->writeln("Loaded bots: " . count($bots['bots']));
+		$output->writeln("Loaded false positives: " . count($bots['falsepos']));
+		$output->writeln("Last checked: {$bots['built']}");
 
 		return 0;
 	}
