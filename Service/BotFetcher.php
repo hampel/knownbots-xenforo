@@ -1,8 +1,6 @@
 <?php namespace Hampel\KnownBots\Service;
 
 use Hampel\KnownBots\Repository\BotFetcherCache;
-use Hampel\KnownBots\Repository\BotRepository;
-use Hampel\KnownBots\Repository\MapRepository;
 use Hampel\KnownBots\SubContainer\Log;
 use XF\Service\AbstractService;
 use XF\Util\File;
@@ -13,12 +11,12 @@ class BotFetcher extends AbstractService
 
     protected $local = "internal-data://knownbots.json";
 
-    public function fetchBots($all = false)
+    public function fetchBots($force = false)
     {
         $cache = $this->getCacheRepo();
         $log = $this->getLogger();
 
-        $since = $all ? 0 : $cache->getLastChecked();
+        $since = $force ? 0 : $cache->getLastChecked();
         $url = $this->url . ($since > 0 ? ("?" . http_build_query(compact('since'))) : '');
 
         $log->debug('Fetching updated bots', compact('url'));
@@ -34,37 +32,75 @@ class BotFetcher extends AbstractService
 
         $bots = json_decode(file_get_contents($destination), true);
 
-        if ($all)
+        $status = $bots['status'] ?? '';
+        if ($status == 'no updates')
         {
-            // save a copy of the full data dump - pretty printed to make it readable
-            File::writeToAbstractedPath($this->local, json_encode($bots, JSON_PRETTY_PRINT));
+            // no data returned
+            $log->debug('No new bots found - aborting');
+            return;
         }
 
-        $count = $this->updateBots($bots, $all);
+        if (!$this->isValid($bots))
+        {
+            $log->error("Invalid data return from fetchBots", compact('url', 'bots'));
+            \XF::logError("Invalid data returned from fetchBots [{$url}]");
+            return false;
+        }
 
-        $log->info('Updated map & bot data', $count);
+        // save a copy of the full data dump - pretty printed to make it readable
+        File::writeToAbstractedPath($this->local, json_encode($bots, JSON_PRETTY_PRINT));
+
+        $this->updateBots($bots);
+
+        return $bots;
     }
 
-    public function updateBots(array $bots, $all = false)
+    public function updateBots(array $bots)
     {
+        if (empty($bots)) return;
+
+        $this->rebuildCodeCache($bots['maps'], 'maps');
+        $this->rebuildCodeCache($bots['bots'], 'bots');
+
         $cache = $this->getCacheRepo();
-
-        $count = [];
-        $count['maps'] = $this->getMapRepository()->updateMaps($bots['maps'], $all);
-        $count['bots'] = $this->getBotRepository()->updateBots($bots['bots'], $all);
-
         $cache->setFalsePositives($bots);
-        $count['falsepos'] = count($bots['falsepos']);
 
-        $this->getLogger()->debug('Setting last checked', ['built' => $bots['built']]);
-        $cache->setLastChecked(strtotime($bots['built']));
+        $cache->setLastChecked($bots['built']);
+        $this->getLogger()->debug('Bots updated', [
+            'built' => $bots['built'],
+            'maps' => count($bots['maps']),
+            'bots' => count($bots['bots']),
+            'falsepos' => count($bots['falsepos']),
+        ]);
+    }
 
-        return $count;
+    public function rebuildCodeCache(array $data, $type)
+    {
+        $path = "code-cache://known_bots/{$type}.php";
+
+        $output = "<?php\nreturn " . var_export($data, true) . ';';
+
+        File::writeToAbstractedPath($path, $output);
     }
 
     public function loadBots()
     {
-        return json_decode($this->app->fs()->read($this->local), true);
+        $bots = json_decode($this->app->fs()->read($this->local), true);
+        return $this->isValid($bots) ? $bots : [];
+    }
+
+    protected function isValid(array $bots)
+    {
+        return isset($bots['status']) &&
+            $bots['status'] == 'OK' &&
+            isset($bots['built']) &&
+            isset($bots['maps']) &&
+            isset($bots['bots']) &&
+            isset($bots['falsepos']) &&
+            is_int($bots['built']) &&
+            is_array($bots['maps']) &&
+            is_array($bots['bots']) &&
+            is_array($bots['falsepos']);
     }
 
     /**
@@ -83,19 +119,4 @@ class BotFetcher extends AbstractService
         return $this->app->get('knownbots.log');
     }
 
-    /**
-     * @return MapRepository
-     */
-    protected function getMapRepository()
-    {
-        return $this->app->repository('Hampel\KnownBots:MapRepository');
-    }
-
-    /**
-     * @return BotRepository
-     */
-    protected function getBotRepository()
-    {
-        return $this->app->repository('Hampel\KnownBots:BotRepository');
-    }
 }
