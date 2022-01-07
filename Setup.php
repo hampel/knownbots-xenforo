@@ -46,8 +46,7 @@ class Setup extends AbstractSetup
 
 	public function uninstall(array $stepParams = [])
 	{
-		$this->schemaManager()->dropTable('xf_knownbots_map');
-		$this->schemaManager()->dropTable('xf_knownbots_bot');
+	    $this->getApi()->removeBots();
 	}
 
     // ################################ Helpers ##################

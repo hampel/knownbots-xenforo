@@ -107,6 +107,11 @@ class Api extends AbstractSubContainer
         return $this->isValid($bots) ? $bots : [];
     }
 
+    public function removeBots()
+    {
+        return $this->fs()->delete($this->local());
+    }
+
     protected function isValid(array $bots)
     {
         return isset($bots['status']) &&
