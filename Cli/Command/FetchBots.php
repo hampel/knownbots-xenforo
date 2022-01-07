@@ -1,6 +1,6 @@
 <?php namespace Hampel\KnownBots\Cli\Command;
 
-use Hampel\KnownBots\Service\BotFetcher;
+use Hampel\KnownBots\SubContainer\Api;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -25,10 +25,7 @@ class FetchBots extends Command
 	{
 	    $force = $input->getOption('force');
 
-		/** @var BotFetcher $fetcher */
-		$fetcher = \XF::service('Hampel\KnownBots:BotFetcher');
-
-		$bots = $fetcher->fetchBots($force);
+		$bots = $this->getApi()->fetchBots($force);
 
 		if (is_null($bots))
         {
@@ -44,9 +41,19 @@ class FetchBots extends Command
 
         $output->writeln("Loaded maps: " . count($bots['maps']));
         $output->writeln("Loaded bots: " . count($bots['bots']));
+        $output->writeln("Loaded generic maps: " . count($bots['generic']));
         $output->writeln("Loaded false positives: " . count($bots['falsepos']));
+        $output->writeln("Loaded ignored: " . count($bots['ignored']));
         $output->writeln("Last checked: {$bots['built']}");
 
 		return 0;
 	}
+
+    /**
+     * @return Api
+     */
+    protected function getApi()
+    {
+        return \XF::app()->container('knownbots.api');
+    }
 }

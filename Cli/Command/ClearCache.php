@@ -1,6 +1,6 @@
 <?php namespace Hampel\KnownBots\Cli\Command;
 
-use Hampel\KnownBots\Repository\UserAgentCache;
+use Hampel\KnownBots\SubContainer\Cache;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -16,11 +16,16 @@ class ClearCache extends Command
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
-		/** @var UserAgentCache $repo */
-		$repo = \XF::repository('Hampel\KnownBots:UserAgentCache');
-
-		$repo->clearCache();
+		$this->getCache()->clearUserAgents();
 
 		return 0;
 	}
+
+    /**
+     * @return Cache
+     */
+    protected function getCache()
+    {
+        return \XF::app()->container('knownbots.cache');
+    }
 }
