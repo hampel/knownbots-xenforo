@@ -1,6 +1,10 @@
 {
+	"additional_files": [
+		"internal_data/knownbots.json"
+	],
 	"exec": [
-		"php ../../../../cmd.php known-bots:build",
+		"php ../../../../cmd.php known-bots:fetch -f",
+		"cp -v ../../../../internal_data/knownbots.json _build/upload/internal_data/",
 		"rm -v _build/upload/src/addons/{addon_id}/Cli/Command/BuildBots.php",
 		"rm -v _build/upload/src/addons/{addon_id}/composer.json",
 		"rm -v _build/upload/src/addons/{addon_id}/composer.lock",
