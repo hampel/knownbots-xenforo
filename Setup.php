@@ -48,8 +48,9 @@ class Setup extends AbstractSetup
 	{
         $fs = $this->app->fs();
 
-        // remove json
-        $fs->delete("internal-data://knownbots.json");
+        // remove json EDIT: actually, don't - because if you do, then uninstalling and reinstalling without
+        // re-uploading the archive zip will lead to an error
+        // $fs->delete("internal-data://knownbots.json");
 
         // remove code cache files
         foreach (['maps', 'bots', 'generic', 'falsepos', 'ignored'] as $type)
