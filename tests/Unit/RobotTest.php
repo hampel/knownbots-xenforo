@@ -1,5 +1,6 @@
 <?php namespace Tests\Unit;
 
+use Hampel\KnownBots\SubContainer\Cache;
 use Tests\TestCase;
 use XF\Data\Robot;
 
@@ -10,11 +11,15 @@ class RobotTest extends TestCase
 	 */
 	private $robot;
 
+	private $cache;
+
 	protected function setUp() : void
 	{
 		parent::setUp();
 
 		$this->robot = $this->app()->data('XF:Robot');
+
+		$this->cache = $this->mock('knownbots.cache', Cache::class);
 	}
 
 	public function test_robotClass()
@@ -22,75 +27,92 @@ class RobotTest extends TestCase
 		$this->assertInstanceOf(Robot::class, $this->robot);
 	}
 
-	public function test_robot_list_has_custom_bots()
+    public function test_robot_user_agents_has_default_bots()
+    {
+        $this->cache->expects('getCodeCache')->with('maps')->once()->andReturns(null);
+        $this->assertArrayHasKey('magpie-crawler', $this->robot->getRobotUserAgents());
+    }
+
+	public function test_robot_user_agents_has_custom_bots()
 	{
-		$this->assertArrayHasKey('curl', $this->robot->getRobotUserAgents());
+        $this->cache->expects('getCodeCache')->with('maps')->once()->andReturns(['foo' => 'bar']);
+
+        $agents = $this->robot->getRobotUserAgents();
+		$this->assertArrayHasKey('foo', $agents);
+		$this->assertEquals('bar', $agents['foo']);
 	}
 
-	public function test_userAgentMatchesRobot_returns_empty_string_on_no_match()
+    public function test_robot_list_has_default_bots()
+    {
+        $this->cache->expects('getCodeCache')->with('bots')->once()->andReturns(null);
+
+        $robots = $this->robot->getRobotList();
+
+        $this->assertArrayHasKey('brandwatch', $robots);
+        $this->assertEquals('Brandwatch', $robots['brandwatch']['title']);
+
+    }
+
+    public function test_robot_list_has_custom_bots()
+    {
+        $this->cache->expects('getCodeCache')->with('bots')->twice()->andReturns(['foo' => ['title' => 'Foo', 'link' => 'http://example.com']]);
+
+        $this->assertArrayHasKey('foo', $this->robot->getRobotList());
+        $info = $this->robot->getRobotInfo('foo');
+
+        $this->assertIsArray($info);
+        $this->assertArrayHasKey('title', $info);
+        $this->assertEquals('Foo', $info['title']);
+        $this->assertEquals('http://example.com', $info['link']);
+    }
+
+    public function test_userAgentMatchesRobot_returns_robotName_on_match()
+    {
+        $this->cache->expects('getCodeCache')->with('maps')->times(3)->andReturns(null);
+
+        $this->assertEquals('baidu', $this->robot->userAgentMatchesRobot('baiduspider'));
+        $this->assertEquals('baidu', $this->robot->userAgentMatchesRobot('abc baiduspider 123'));
+        $this->assertEquals('bing', $this->robot->userAgentMatchesRobot('bingbot'));
+    }
+
+    public function test_userAgentMatchesRobot_returns_empty_on_no_genericmatch()
+    {
+        $this->cache->expects('getCodeCache')->with('maps')->once()->andReturns(null);
+        $this->cache->expects('getCodeCache')->with('generic')->once()->andReturns(['foo' => 'bar']);
+
+        $this->assertEmpty($this->robot->userAgentMatchesRobot('abc'));
+    }
+
+	public function test_userAgentMatchesRobot_returns_empty_string_on_fp_match()
 	{
-		$this->fakesSimpleCache();
+        $this->cache->expects('getCodeCache')->with('maps')->once()->andReturns(null);
+        $this->cache->expects('getCodeCache')->with('generic')->once()->andReturns(['bot' => 'generic-bot']);
+        $this->cache->expects('getCodeCache')->with('falsepos')->once()->andReturns(['cubot']);
 
-		$this->assertEmpty($this->robot->userAgentMatchesRobot('foo'));
-
-		// no user agents should have been cached
-		$this->assertSimpleCacheHasNot('Hampel/KnownBots', 'user-agents');
+		$this->assertEmpty($this->robot->userAgentMatchesRobot('xyx cubot_123'));
 	}
 
-	public function test_userAgentMatchesRobot_returns_robotName_on_match()
+	public function test_userAgentMatchesRobot_returns_generic_name_on_match_cache_ignored()
 	{
-		$this->fakesSimpleCache();
+        $this->cache->expects('getCodeCache')->with('maps')->once()->andReturns(null);
+        $this->cache->expects('getCodeCache')->with('generic')->once()->andReturns(['bot' => 'generic-bot']);
+        $this->cache->expects('getCodeCache')->with('falsepos')->once()->andReturns(null);
+        $this->cache->expects('getCodeCache')->with('ignored')->once()->andReturns(['bot']);
 
-		$this->assertEquals('curl', $this->robot->userAgentMatchesRobot('curl'));
-		$this->assertEquals('curl', $this->robot->userAgentMatchesRobot('xcurlx'));
-		$this->assertEquals('msnbot', $this->robot->userAgentMatchesRobot('msnbot'));
-		$this->assertEquals('msnbot', $this->robot->userAgentMatchesRobot('xmsnbotx'));
+        $this->cache->shouldNotReceive('addUserAgent');
 
-		// no user agents should have been cached
-		$this->assertSimpleCacheHasNot('Hampel/KnownBots', 'user-agents');
+		$this->assertEquals('generic-bot', $this->robot->userAgentMatchesRobot('bot'));
 	}
 
-	public function test_userAgentMatchesRobot_returns_generic_name_on_match()
-	{
-		$this->fakesSimpleCache();
+    public function test_userAgentMatchesRobot_returns_generic_name_on_match_added_to_cache()
+    {
+        $this->cache->expects('getCodeCache')->with('maps')->once()->andReturns(null);
+        $this->cache->expects('getCodeCache')->with('generic')->once()->andReturns(['spider' => 'generic-spider']);
+        $this->cache->expects('getCodeCache')->with('falsepos')->once()->andReturns(null);
+        $this->cache->expects('getCodeCache')->with('ignored')->once()->andReturns(['bot']);
 
-		$this->assertEquals('bot', $this->robot->userAgentMatchesRobot('bot'));
-		$this->assertEquals('bot', $this->robot->userAgentMatchesRobot('xbotx'));
-		$this->assertEquals('crawl', $this->robot->userAgentMatchesRobot('crawl'));
-		$this->assertEquals('crawl', $this->robot->userAgentMatchesRobot('xcrawlx'));
-		$this->assertEquals('spider', $this->robot->userAgentMatchesRobot('spider'));
-		$this->assertEquals('spider', $this->robot->userAgentMatchesRobot('xspiderx'));
+        $this->cache->expects('addUserAgent')->with('xspiderx');
 
-		// cache should contain last 5 bots
-		$this->assertSimpleCacheEquals(['xbotx', 'crawl', 'xcrawlx', 'spider', 'xspiderx'], 'Hampel/KnownBots', 'user-agents');
-	}
-
-	public function test_userAgentMatchesRobot_returns_empty_on_false_positive()
-	{
-		$this->fakesSimpleCache();
-
-		$userAgents = [
-			'Mozilla/5.0 (Linux; Android 6.0; IDbot553PLUS Build/MRA58K; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/79.0.3945.136 Mobile Safari/537.36',
-			'Mozilla/5.0 (Linux; Android 6.0; B BOT 50 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.116 Mobile Safari/537.36',
-			'Mozilla/5.0 (Linux; Android 6.0; B BOT 550 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.124 Mobile Safari/537.36',
-			'Mozilla/5.0 (Linux; Android 6.0; IDbot553 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.85 Mobile Safari/537.36',
-			'Mozilla/5.0 (Linux; Android 6.0; IDbot553PLUS Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.111 Mobile Safari/537.36',
-			'Mozilla/5.0 (Linux; Android 6.0; M BOT 551 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.85 Mobile Safari/537.36',
-			'Mozilla/5.0 (Linux; Android 6.0; POWER BOT Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.85 Mobile Safari/537.36',
-			'Mozilla/5.0 (Linux; Android 7.0; ID bot 53 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/63.0.3239.111 Mobile Safari/537.36',
-			'Mozilla/5.0 (Linux; Android 7.0; ID bot 53+ Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36',
-			'Mozilla/5.0 (Linux; Android 7.0; M bot 51 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Mobile Safari/537.36',
-			'Mozilla/5.0 (Linux; Android 7.0; M bot 54 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.83 Mobile Safari/537.36',
-			'Mozilla/5.0 (Linux; Android 7.0; M bot 60 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/56.0.2924.87 Mobile Safari/537.36',
-		];
-
-		foreach ($userAgents as $userAgent)
-		{
-			$bot = $this->robot->userAgentMatchesRobot($userAgent);
-			$this->assertEmpty($bot, "incorrectly detected [{$bot}] for UserAgent string [{$userAgent}]");
-		}
-
-		// no user agents should have been cached
-		$this->assertSimpleCacheHasNot('Hampel/KnownBots', 'user-agents');
-	}
+		$this->assertEquals('generic-spider', $this->robot->userAgentMatchesRobot('xspiderx'));
+    }
 }
