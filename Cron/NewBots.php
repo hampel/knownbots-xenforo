@@ -1,8 +1,8 @@
 <?php namespace Hampel\KnownBots\Cron;
 
 use Hampel\KnownBots\Option\EmailNewBots;
-use Hampel\KnownBots\Repository\UserAgentCache;
 use Hampel\KnownBots\Service\BotMailer;
+use Hampel\KnownBots\SubContainer\Cache;
 use Hampel\KnownBots\SubContainer\Log;
 
 class NewBots
@@ -24,9 +24,9 @@ class NewBots
 			return;
 		}
 
-		$repo = self::getUserAgentRepo();
+		$cache = self::getCache();
 
-		$bots = $repo->getUserAgents();
+		$bots = $cache->getUserAgents();
 
 		if (empty($bots))
 		{
@@ -44,16 +44,8 @@ class NewBots
 		{
 			$log->info("Clearing user agent cache");
 
-			$repo->clearCache();
+			$cache->clearUserAgents();
 		}
-	}
-
-	/**
-	 * @return UserAgentCache
-	 */
-	protected static function getUserAgentRepo()
-	{
-		return \XF::repository('Hampel\KnownBots:UserAgentCache');
 	}
 
 	/**
@@ -69,6 +61,14 @@ class NewBots
 	 */
 	protected static function getLogger()
 	{
-		return \XF::app()->get('knownbots.log');
+		return \XF::app()->container('knownbots.log');
 	}
+
+    /**
+     * @return Cache
+     */
+    protected static function getCache()
+    {
+        return \XF::app()->container('knownbots.cache');
+    }
 }

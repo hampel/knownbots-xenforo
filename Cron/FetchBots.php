@@ -1,7 +1,7 @@
 <?php namespace Hampel\KnownBots\Cron;
 
 use Hampel\KnownBots\Option\FetchNewBots;
-use Hampel\KnownBots\Service\BotFetcher;
+use Hampel\KnownBots\SubContainer\Api;
 use Hampel\KnownBots\SubContainer\Log;
 
 class FetchBots
@@ -16,9 +16,7 @@ class FetchBots
             return;
         }
 
-        /** @var BotFetcher $service */
-        $service = \XF::service('Hampel\KnownBots:BotFetcher');
-        $service->fetchBots();
+        self::getApi()->fetchBots();
     }
 
     /**
@@ -26,6 +24,14 @@ class FetchBots
      */
     protected static function getLogger()
     {
-        return \XF::app()->get('knownbots.log');
+        return \XF::app()->container('knownbots.log');
+    }
+
+    /**
+     * @return Api
+     */
+    protected static function getApi()
+    {
+        return \XF::app()->container('knownbots.api');
     }
 }
