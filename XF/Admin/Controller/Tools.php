@@ -1,8 +1,8 @@
 <?php namespace Hampel\KnownBots\XF\Admin\Controller;
 
 use Hampel\KnownBots\Option\EmailNewBots;
-use Hampel\KnownBots\Repository\UserAgentCache;
 use Hampel\KnownBots\Service\BotMailer;
+use Hampel\KnownBots\SubContainer\Cache;
 use Hampel\KnownBots\SubContainer\Log;
 use XF\Data\Robot;
 
@@ -53,7 +53,7 @@ class Tools extends XFCP_Tools
 	{
 		$this->setSectionContext('hampelKnownBotsNew');
 
-		$newBots = $this->getUserAgentRepo()->getUserAgents();
+		$newBots = $this->getCache()->getUserAgents();
 
 		sort($newBots, SORT_NATURAL | SORT_FLAG_CASE);
 
@@ -73,8 +73,8 @@ class Tools extends XFCP_Tools
 			return $this->message(\XF::phrase('hampel_knownbots_email_not_configured'));
 		}
 
-		$repo = $this->getUserAgentRepo();
-		$bots = $repo->getUserAgents();
+		$cache = $this->getCache();
+		$bots = $cache->getUserAgents();
 
 		if (empty($bots))
 		{
@@ -91,7 +91,7 @@ class Tools extends XFCP_Tools
 		{
 			$log->info("Clearing user agent cache");
 
-			$repo->clearCache();
+			$cache->clearUserAgents();
 		}
 
 		return $this->message(\XF::phrase('hampel_knownbots_email_sent', ['email' => $emailTo]));
@@ -121,14 +121,6 @@ class Tools extends XFCP_Tools
 	// -------------------------------------------------
 
 	/**
-	 * @return UserAgentCache
-	 */
-	protected function getUserAgentRepo()
-	{
-		return $this->app->repository('Hampel\KnownBots:UserAgentCache');
-	}
-
-	/**
 	 * @return BotMailer
 	 */
 	protected function getBotMailerService()
@@ -141,7 +133,7 @@ class Tools extends XFCP_Tools
 	 */
 	protected function getLogger()
 	{
-		return $this->app->get('knownbots.log');
+		return $this->app['knownbots.log'];
 	}
 
 	/**
@@ -151,5 +143,13 @@ class Tools extends XFCP_Tools
 	{
 		return $this->app()->data('XF:Robot');
 	}
+
+    /**
+     * @return Cache
+     */
+    protected function getCache()
+    {
+        return $this->app['knownbots.cache'];
+    }
 }
 
