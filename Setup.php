@@ -2,7 +2,7 @@
 
 namespace Hampel\KnownBots;
 
-use Hampel\KnownBots\Service\BotFetcher;
+use Hampel\KnownBots\SubContainer\Api;
 use XF\AddOn\AbstractSetup;
 use XF\AddOn\StepRunnerUpgradeTrait;
 use XF\Db\Schema\Alter;
@@ -18,9 +18,7 @@ class Setup extends AbstractSetup
 
     public function postInstall(array &$stateChanges)
     {
-        /** @var BotFetcher $service */
-        $service = \XF::service('Hampel\KnownBots:BotFetcher');
-        $service->updateBots($service->loadBots());
+        $this->loadBots();
 
         // randomize cron run time
         $cron = $this->app()->find('XF:CronEntry', 'hampelKnownBotsFetchBots');
@@ -41,9 +39,7 @@ class Setup extends AbstractSetup
 
     public function postUpgrade($previousVersion, array &$stateChanges)
     {
-        /** @var BotFetcher $service */
-        $service = \XF::service('Hampel\KnownBots:BotFetcher');
-        $service->updateBots($service->loadBots());
+        $this->loadBots();
     }
 
     // ################################ UNINSTALL ##################
@@ -54,4 +50,19 @@ class Setup extends AbstractSetup
 		$this->schemaManager()->dropTable('xf_knownbots_bot');
 	}
 
+    // ################################ Helpers ##################
+
+    protected function loadBots()
+    {
+        $fetcher = $this->getApi();
+        $fetcher->updateBots($fetcher->loadBots());
+    }
+
+    /**
+     * @return Api
+     */
+    protected function getApi()
+    {
+        return $this->app['knownbots.api'];
+    }
 }
