@@ -29,11 +29,11 @@ class TestBots extends Command
 
 	    if (empty($robot))
         {
-            $output->writeln("No bot detected");
+            $output->writeln("<info>No bot detected</info>");
             return 0;
         }
 
-        $output->writeln("Found robot: [{$robot}]");
+        $output->writeln("<info>Found robot: [{$robot}]</info>");
         $info = $robots->getRobotInfo($robot);
 
         if ($info)
