@@ -46,8 +46,19 @@ class Setup extends AbstractSetup
 
 	public function uninstall(array $stepParams = [])
 	{
-	    $this->getApi()->removeBots();
-	}
+        $fs = $this->app->fs();
+
+        // remove json
+        $fs->delete("internal-data://knownbots.json");
+
+        // remove code cache files
+        foreach (['maps', 'bots', 'generic', 'falsepos', 'ignored'] as $type)
+        {
+            $fs->delete("code-cache://known_bots/{$type}.php");
+        }
+
+        $fs->deleteDir("code-cache://known_bots");
+    }
 
     // ################################ Helpers ##################
 
