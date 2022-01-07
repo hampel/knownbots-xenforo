@@ -35,7 +35,7 @@ class FetchBots extends Command
 
 		if ($bots === false)
         {
-            $output->writeln("Error processing updates - check XenForo logs");
+            $output->writeln("<error>Error processing updates - check XenForo logs</error>");
             return 1;
         }
 
