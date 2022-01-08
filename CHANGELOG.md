@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+4.0.0 beta 1 (2022-01-08)
+-------------------------
+
+* completely new build - bots are no longer hard coded, but updated via API calls and uses the XF code cache to store
+  bot data
+* raw bot data downloaded from API is stored in internal_data/knownbots.json  
+* new CLI tool for manually fetching bots from API (Cron task is also provided)
+* new CLI tool for manually loading bots from knownbots.json
+* new CLI tool for testing user agent matches
+
 3.20.0 (2021-07-01)
 -------------------
 
