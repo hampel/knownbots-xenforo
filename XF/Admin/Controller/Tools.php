@@ -16,7 +16,10 @@ class Tools extends XFCP_Tools
 
 		ksort($knownBots);
 
-		$viewParams = compact('knownBots');
+        $updated = $this->getCache()->getLastChecked();
+
+		$viewParams = compact('knownBots', 'updated');
+
 		return $this->view('Hampel\KnownBots:Tools\KnownBotsList', 'hampel_knownbots_list', $viewParams);
 	}
 
@@ -112,7 +115,9 @@ class Tools extends XFCP_Tools
 			$bots[$agent] = $robot->getRobotInfo($agent);
 		}
 
-		$viewParams = compact('bots');
+		$updated = $this->getCache()->getLastChecked();
+
+		$viewParams = compact('bots', 'updated');
 
 		return $this->view('Hampel\KnownBots:Tools\KnownBotsGenerateMd', 'hampel_knownbots_md', $viewParams);
 	}

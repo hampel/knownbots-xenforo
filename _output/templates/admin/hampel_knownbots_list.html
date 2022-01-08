@@ -2,10 +2,15 @@
 
 <xf:if is="$knownBots">
 	<div class="block-container">
-		<ul>
-			<xf:foreach loop="$knownBots" value="$bot">
-				<li><a href="{{ $bot.link }}" target="_blank">{{ $bot.title }}</a></li>
-			</xf:foreach>
-		</ul>
+		<div class="block-body">
+			<p>
+				Last updated: {{ date($updated, 'r') }}
+			</p>
+			<ul>
+				<xf:foreach loop="$knownBots" value="$bot">
+					<li><a href="{{ $bot.link }}" target="_blank">{{ $bot.title }}</a></li>
+				</xf:foreach>
+			</ul>
+		</div>
 	</div>
 </xf:if>

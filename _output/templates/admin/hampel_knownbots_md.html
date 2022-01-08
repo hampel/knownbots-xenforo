@@ -3,7 +3,7 @@
 <xf:if is="$bots">
 	<div class="block-container">
 <textarea rows="100" cols="120">
-# List of Known Bots
+# List of Known Bots as of {{ date($updated, 'r') }}
 <xf:foreach loop="$bots" key="$key" value="$bot">
  * {{ $key }}: [{{ $bot.title }}]({{ $bot.link }})</xf:foreach>
 </textarea>

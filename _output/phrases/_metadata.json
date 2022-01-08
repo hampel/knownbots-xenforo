@@ -97,8 +97,8 @@
     },
     "hampel_knownbots_list.txt": {
         "global_cache": false,
-        "version_id": 2060070,
-        "version_string": "2.6.0",
+        "version_id": 4000031,
+        "version_string": "4.0.0 Beta 1",
         "hash": "f74c5de0e2efea63bfbc3ca382dee2ba"
     },
     "hampel_knownbots_new.txt": {
