@@ -20,19 +20,7 @@ class Setup extends AbstractSetup
     {
         $this->loadBots();
 
-        // randomize cron run time
-        $cron = $this->app()->find('XF:CronEntry', 'hampelKnownBotsFetchBots');
-        if ($cron)
-        {
-            $hours = rand(0, 23);
-            $minutes = rand(0, 59);
-
-            $rules = $cron->run_rules;
-            $rules['hours'] = [$hours];
-            $rules['minutes'] = [$minutes];
-            $cron->run_rules = $rules;
-            $cron->save();
-        }
+        $this->randomizeCron();
     }
 
     // ################################ UPGRADE TO 4.0.0b1 ##################
@@ -40,6 +28,11 @@ class Setup extends AbstractSetup
     public function postUpgrade($previousVersion, array &$stateChanges)
     {
         $this->loadBots();
+
+        if ($previousVersion < 4000031)
+        {
+            $this->randomizeCron();
+        }
     }
 
     // ################################ UNINSTALL ##################
@@ -67,6 +60,23 @@ class Setup extends AbstractSetup
     {
         $fetcher = $this->getApi();
         $fetcher->updateBots($fetcher->loadBots());
+    }
+
+    protected function randomizeCron()
+    {
+        // randomize cron run time
+        $cron = $this->app()->find('XF:CronEntry', 'hampelKnownBotsFetchBots');
+        if ($cron)
+        {
+            $hours = rand(0, 23);
+            $minutes = rand(0, 59);
+
+            $rules = $cron->run_rules;
+            $rules['hours'] = [$hours];
+            $rules['minutes'] = [$minutes];
+            $cron->run_rules = $rules;
+            $cron->save();
+        }
     }
 
     /**
