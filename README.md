@@ -28,11 +28,16 @@ Options
 This addon can optionally use the [Monolog Logging Service](https://xenforo.com/community/resources/monolog-logging-service.6080/)
 addon to log information about emails sent.
 
+In v4.x, by default this addon will query our [KnownBots API](https://knownbots.hampel.io/api/bots) for updates and 
+automatically apply them - no more manually installing updates to get new bot lists. You may query the API directly at 
+any time, and you may also disable the automatic update process in favour of manually downloading the json file and
+loading the data in using a CLI script. Instructions for doing this can be found in the addon FAQ section.  
+
 Privacy
 -------
 
-v3.0.0 adds new functionality to email the list of new bots detected automatically to an email address configurable by
-the admin.
+v3.x and higher adds new functionality to email the list of new bots detected automatically to an email address 
+configurable by the admin.
 
 The default and recommended value is to email knownbots@hampel.io
 
@@ -46,4 +51,5 @@ be on a case-by-case basis and only for the purposes of troubleshooting the oper
 You can check the information contained in the emails by changing the address temporarily to your own so that emails go
 to you. If you still want us to process these emails - please feel free to forward them to the above address.
 
-Other than a list of user agent strings, the only information contained in the email will be those automatically added to the email header by the forum mailer and SMTP servers.
+Other than a list of user agent strings, the only information contained in the email will be those automatically added 
+to the email header by the forum mailer and SMTP servers.
