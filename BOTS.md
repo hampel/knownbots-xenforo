@@ -1,4 +1,4 @@
-# List of Known Bots
+# List of Known Bots as of Thu, 06 Jan 2022 08:28:59 +1100
 
  * 200pleasebot: [200pleasebot]()
  * 360spider: [360Spider](https://www.360.cn/)
