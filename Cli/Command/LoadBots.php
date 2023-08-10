@@ -38,6 +38,6 @@ class LoadBots extends Command
      */
     protected function getApi()
     {
-        return $this->app['knownbots.api'];
+        return \XF::app()->container('knownbots.api');
     }
 }
