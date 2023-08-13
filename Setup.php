@@ -7,10 +7,13 @@ use XF\AddOn\AbstractSetup;
 use XF\AddOn\StepRunnerUpgradeTrait;
 use XF\Db\Schema\Alter;
 use XF\Db\Schema\Create;
+use XF\Util\File;
 
 class Setup extends AbstractSetup
 {
 	use StepRunnerUpgradeTrait;
+
+    const BOTPATH = 'internal-data://knownbots.json';
 
 	public function install(array $stepParams = [])
 	{
@@ -18,7 +21,14 @@ class Setup extends AbstractSetup
 
     public function postInstall(array &$stateChanges)
     {
-        $this->loadBots();
+        $fs = $this->app->fs();
+        if (!$fs->has(self::BOTPATH))
+        {
+            $sourceFile = sprintf("%s/knownbots.json", $this->addOn->getAddOnDirectory());
+            File::copyFileToAbstractedPath($sourceFile, self::BOTPATH);
+
+            $this->loadBots();
+        }
 
         $this->randomizeCron();
     }
@@ -40,15 +50,19 @@ class Setup extends AbstractSetup
 	public function uninstall(array $stepParams = [])
 	{
         $fs = $this->app->fs();
-
-        // remove json EDIT: actually, don't - because if you do, then uninstalling and reinstalling without
-        // re-uploading the archive zip will lead to an error
-        // $fs->delete("internal-data://knownbots.json");
+        if ($fs->has(self::BOTPATH))
+        {
+            $fs->delete(self::BOTPATH);
+        }
 
         // remove code cache files
         foreach (['maps', 'bots', 'generic', 'falsepos', 'ignored'] as $type)
         {
-            $fs->delete("code-cache://known_bots/{$type}.php");
+            $path = "code-cache://known_bots/{$type}.php";
+            if ($fs->has($path))
+            {
+                $fs->delete($path);
+            }
         }
 
         $fs->deleteDir("code-cache://known_bots");
@@ -58,8 +72,11 @@ class Setup extends AbstractSetup
 
     protected function loadBots()
     {
-        $fetcher = $this->getApi();
-        $fetcher->updateBots($fetcher->loadBots());
+        if ($this->app->fs()->has(self::BOTPATH))
+        {
+            $fetcher = $this->getApi();
+            $fetcher->updateBots($fetcher->loadBots());
+        }
     }
 
     protected function randomizeCron()
