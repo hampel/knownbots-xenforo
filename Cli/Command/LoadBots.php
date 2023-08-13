@@ -23,15 +23,25 @@ class LoadBots extends Command
 
 		$fetcher->updateBots($bots);
 
+        $checked = $this->formatTime($bots['built']);
+
 		$output->writeln("Loaded maps: " . count($bots['maps']));
 		$output->writeln("Loaded bots: " . count($bots['bots']));
         $output->writeln("Loaded generic maps: " . count($bots['generic']));
 		$output->writeln("Loaded false positives: " . count($bots['falsepos']));
         $output->writeln("Loaded ignored bots: " . count($bots['ignored']));
-		$output->writeln("Last checked: {$bots['built']}");
+		$output->writeln("knownbots.json build date: {$checked}");
 
 		return 0;
 	}
+
+    protected function formatTime($timestamp)
+    {
+        $dt = new \DateTime();
+        $dt->setTimezone(\XF::language()->getTimeZone());
+        $dt->setTimestamp($timestamp);
+        return $dt->format(\DateTimeInterface::COOKIE);
+    }
 
     /**
      * @return Api
