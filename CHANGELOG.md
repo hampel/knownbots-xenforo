@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+4.0.0 (2023-08-14)
+------------------
+
+* randomize cron time when installing to prevent API server being flooded
+* bugfix: don't write initial knownbots.json directly to internal-data - we'll get file integrity errors when we update 
+  it; just put it in the addon root and we'll copy it to internal-data during setup
+* show knownbots.json build date in meaningful string format in CLI tools
+
 4.0.0 beta 1 (2022-01-08)
 -------------------------
 
