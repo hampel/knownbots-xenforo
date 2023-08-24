@@ -2,8 +2,8 @@
 
 use Hampel\KnownBots\Option\EmailNewBots;
 use Hampel\KnownBots\Service\BotMailer;
-use Hampel\KnownBots\SubContainer\Cache;
 use Hampel\KnownBots\SubContainer\Log;
+use Hampel\KnownBots\Repository\Agent;
 
 class NewBots
 { 
@@ -24,10 +24,9 @@ class NewBots
 			return;
 		}
 
-		$cache = self::getCache();
+		$repo = self::getAgentRepo();
 
-		$bots = $cache->getUserAgents();
-
+		$bots = $repo->getUserAgents();
 		if (empty($bots))
 		{
 			$log->debug("Email new bots: no bots found - aborting");
@@ -44,7 +43,7 @@ class NewBots
 		{
 			$log->info("Clearing user agent cache");
 
-			$cache->clearUserAgents();
+            $repo->clearUserAgents();
 		}
 	}
 
@@ -65,10 +64,10 @@ class NewBots
 	}
 
     /**
-     * @return Cache
+     * @return Agent
      */
-    protected static function getCache()
+    protected static function getAgentRepo()
     {
-        return \XF::app()->container('knownbots.cache');
+        return \XF::app()->repository('Hampel\KnownBots:Agent');
     }
 }

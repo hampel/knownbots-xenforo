@@ -21,22 +21,6 @@ class Cache extends AbstractSubContainer
         };
     }
 
-    /**
-     * @return CodeCache
-     */
-    public function codeCache()
-    {
-        return $this->container['code.cache'];
-    }
-
-    /**
-     * @return SimpleCache
-     */
-    public function simpleCache()
-    {
-        return $this->container['simple.cache'];
-    }
-
     public function setLastChecked($timestamp)
     {
         $this->simpleCache()->setValue('last-checked', $timestamp);
@@ -49,57 +33,35 @@ class Cache extends AbstractSubContainer
         return $last ?? 0;
     }
 
-    public function setUserAgents(array $agents)
-    {
-        $this->simpleCache()->setValue('user-agents', $agents);
-    }
-
-    public function getUserAgents()
-    {
-        $agents = $this->simpleCache()->getValue('user-agents');
-        return $agents ?? [];
-    }
-
-    public function countUserAgents()
-    {
-        return count($this->getUserAgents());
-    }
-
-    public function addUserAgent($userAgent)
-    {
-        // only store the first 512 characters of the UserAgent string to prevent bad data causing issues
-        $userAgent = substr($userAgent, 0, 512);
-        $agents = $this->getUserAgents();
-
-        if (!in_array($userAgent, $agents))
-        {
-            $agents[] = $userAgent;
-
-            $this->setUserAgents($agents);
-        }
-    }
-
-    public function clearUserAgents()
-    {
-        $this->setUserAgents([]);
-    }
-
-    public function setCodeCache($type, $data)
-    {
-        $this->codeCache()->setValue($type, $data);
-    }
-
-    public function getCodeCache($type)
+    public function loadBotData($type)
     {
         return $this->codeCache()->getValue($type);
     }
 
     public function rebuildBotCache($bots)
     {
-        $this->setCodeCache('maps', $bots['maps']);
-        $this->setCodeCache('bots', $bots['bots']);
-        $this->setCodeCache('generic', $bots['generic']);
-        $this->setCodeCache('falsepos', $bots['falsepos']);
-        $this->setCodeCache('ignored', $bots['ignored']);
+        $cache = $this->codeCache();
+
+        $cache->setValue('maps', $bots['maps']);
+        $cache->setValue('bots', $bots['bots']);
+        $cache->setValue('generic', $bots['generic']);
+        $cache->setValue('ignored', $bots['ignored']);
+        $cache->setValue('browsers', $bots['browsers']);
+    }
+
+    /**
+     * @return CodeCache
+     */
+    protected function codeCache()
+    {
+        return $this->container['code.cache'];
+    }
+
+    /**
+     * @return SimpleCache
+     */
+    protected function simpleCache()
+    {
+        return $this->container['simple.cache'];
     }
 }

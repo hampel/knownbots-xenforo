@@ -12,7 +12,15 @@ class Api extends AbstractSubContainer
 
         $container['bots'] = function($c)
         {
-            return new BotFetcher($this->app);
+            $fetcher = new BotFetcher($this->app);
+
+            $customApi = $this->app->config('knownBotsApi');
+            if ($customApi)
+            {
+                $fetcher->setUrl($customApi, true);
+            }
+
+            return $fetcher;
         };
 
         $container['local'] = function($c)
@@ -24,12 +32,12 @@ class Api extends AbstractSubContainer
     /**
      * @return BotFetcher
      */
-    public function fetcher()
+    protected function botFetcher()
     {
         return $this->container['bots'];
     }
 
-    public function local()
+    protected function local()
     {
         return $this->container['local'];
     }
@@ -37,8 +45,9 @@ class Api extends AbstractSubContainer
     public function fetchBots($force = false)
     {
         $log = $this->getLogger();
+        $lastChecked = $this->getCache()->getLastChecked();
 
-        $bots = $this->fetcher()->fetchBots($force);
+        $bots = $this->botFetcher()->fetch($lastChecked, $force);
 
         if (!$bots)
         {
@@ -54,7 +63,7 @@ class Api extends AbstractSubContainer
             $log->debug('No bot updates available');
             return null;
         }
-        elseif ($status == "OK")
+        elseif ($status == 'OK')
         {
             if (!$this->isValid($bots))
             {
@@ -91,8 +100,8 @@ class Api extends AbstractSubContainer
             'maps' => count($bots['maps']),
             'bots' => count($bots['bots']),
             'generic' => count($bots['generic']),
-            'falsepos' => count($bots['falsepos']),
             'ignored' => count($bots['ignored']),
+            'browsers' => count($bots['browsers']),
         ]);
     }
 
@@ -114,20 +123,22 @@ class Api extends AbstractSubContainer
 
     protected function isValid(array $bots)
     {
+        \XF::dump($bots);
+
         return isset($bots['status']) &&
             $bots['status'] == 'OK' &&
             isset($bots['built']) &&
             isset($bots['maps']) &&
             isset($bots['bots']) &&
-            isset($bots['falsepos']) &&
             isset($bots['generic']) &&
             isset($bots['ignored']) &&
+            isset($bots['browsers']) &&
             is_int($bots['built']) &&
             is_array($bots['maps']) &&
             is_array($bots['bots']) &&
-            is_array($bots['falsepos']) &&
             is_array($bots['generic']) &&
-            is_array($bots['ignored']);
+            is_array($bots['ignored']) &&
+            is_array($bots['browsers']);
     }
 
     /**
@@ -153,4 +164,6 @@ class Api extends AbstractSubContainer
     {
         return $this->app->fs();
     }
+
+
 }

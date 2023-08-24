@@ -17,6 +17,13 @@ class Setup extends AbstractSetup
 
 	public function install(array $stepParams = [])
 	{
+        $this->schemaManager()->createTable('xf_knownbots_agent', function (Create $table) {
+            $table->addColumn('agent_id', 'int')->autoIncrement();
+            $table->addColumn('hash', 'varchar', 64);
+            $table->addColumn('user_agent', 'text');
+
+            $table->addUniqueKey('hash');
+        });
 	}
 
     public function postInstall(array &$stateChanges)
@@ -34,6 +41,19 @@ class Setup extends AbstractSetup
     }
 
     // ################################ UPGRADE TO 4.0.0b1 ##################
+
+    // ################################ UPGRADE TO 5.0.0b1 ##################
+
+    public function upgrade5000031Step1()
+    {
+        $this->schemaManager()->createTable('xf_knownbots_agent', function (Create $table) {
+            $table->addColumn('agent_id', 'int')->autoIncrement();
+            $table->addColumn('hash', 'varchar', 64);
+            $table->addColumn('user_agent', 'text');
+
+            $table->addUniqueKey('hash');
+        });
+    }
 
     public function postUpgrade($previousVersion, array &$stateChanges)
     {
@@ -56,7 +76,7 @@ class Setup extends AbstractSetup
         }
 
         // remove code cache files
-        foreach (['maps', 'bots', 'generic', 'falsepos', 'ignored'] as $type)
+        foreach (['maps', 'bots', 'generic', 'ignored', 'browsers'] as $type)
         {
             $path = "code-cache://known_bots/{$type}.php";
             if ($fs->has($path))
@@ -66,6 +86,8 @@ class Setup extends AbstractSetup
         }
 
         $fs->deleteDir("code-cache://known_bots");
+
+        $this->schemaManager()->dropTable('xf_knownbots_agent');
     }
 
     // ################################ Helpers ##################

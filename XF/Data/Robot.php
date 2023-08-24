@@ -1,66 +1,17 @@
 <?php namespace Hampel\KnownBots\XF\Data;
 
+use Hampel\KnownBots\Option\EmailNewBots;
 use Hampel\KnownBots\SubContainer\Cache;
+use Hampel\KnownBots\Repository\Agent;
 
 class Robot extends XFCP_Robot
 {
 	public function getRobotUserAgents()
 	{
-	    $maps = $this->loadFromCodeCache('maps');
+	    $maps = $this->loadBotData('maps');
 
 	    return $maps ?? parent::getRobotUserAgents();
 	}
-
-	public function getFalsePositives()
-	{
-		$falsePositives = $this->loadFromCodeCache('falsepos');
-
-		return $falsePositives ?? [];
-	}
-
-    public function getGenericMaps()
-    {
-        $generic = $this->loadFromCodeCache('generic');
-
-        return $generic ?? [];
-    }
-
-    public function userAgentMatchesGeneric($userAgent)
-    {
-        $bots = $this->getGenericMaps();
-
-        if (!empty($bots) && preg_match(
-            '#(' . implode('|', array_map('preg_quote', array_keys($bots))) . ')#i',
-            strtolower($userAgent),
-            $match
-        ))
-        {
-            return $bots[$match[1]];
-        }
-        else
-        {
-            return '';
-        }
-    }
-
-    protected function userAgentMatchesFalsePositives($userAgent)
-    {
-        $falsePositives = $this->getFalsePositives();
-
-        if (empty($falsePositives)) return false;
-
-        return preg_match(
-            '#(' . implode('|', array_map('preg_quote', $falsePositives)) . ')#i',
-            strtolower($userAgent)
-        );
-    }
-
-    protected function getIgnored()
-    {
-        $ignored = $this->loadFromCodeCache('ignored');
-
-        return $ignored ?? [];
-    }
 
     public function userAgentMatchesRobot($userAgent)
 	{
@@ -71,45 +22,103 @@ class Robot extends XFCP_Robot
 			return $robotName;
 		}
 
+        if (EmailNewBots::isEnabled())
+        {
+            $stripped = $this->userAgentMatchesValidBrowser($userAgent);
+            if (empty($stripped))
+            {
+                // we found a valid user browser, we're done
+                return '';
+            }
+        }
+
+        // check for generic bots that are otherwise meaningless
 		$robotName = $this->userAgentMatchesGeneric($userAgent);
 		if (!empty($robotName))
 		{
-			// generic match ... better check for false positives
-			if ($this->userAgentMatchesFalsePositives($userAgent))
-			{
-				// anything that matches our false positive list is considered not a bot
-				return '';
-			}
-			else
-			{
-				// we found an actual generic bot/crawler/spider match
+            if (!in_array($userAgent, $this->getIgnored()) && EmailNewBots::isEnabled())
+            {
+                // add it to the database - but only if it's not in our ignored list
+                $this->getAgentRepo()->addUserAgent($userAgent);
+            }
 
-                if (!in_array($userAgent, $this->getIgnored()))
-                {
-                    // add it to the cache - but only if it's not in our ignored list
-                    $this->getCache()->addUserAgent($userAgent);
-                }
-
-				// return generic bot string
-				return $robotName;
-			}
+            // return generic bot string
+            return $robotName;
 		}
 		else
 		{
+            // we don't know what this is
 			return '';
 		}
 	}
 
 	public function getRobotList()
 	{
-        $bots = $this->loadFromCodeCache('bots');
+        $bots = $this->loadBotData('bots');
 
         return $bots ?? parent::getRobotList();
 	}
 
-    public function loadFromCodeCache($type)
+    // -------------------------------------------------------------
+
+    protected function getGenericMaps()
     {
-        return $this->getCache()->getCodeCache($type);
+        $generic = $this->loadBotData('generic');
+
+        return $generic ?? [];
+    }
+
+    protected function getIgnored()
+    {
+        $ignored = $this->loadBotData('ignored');
+
+        return $ignored ?? [];
+    }
+
+    protected function getBrowsers()
+    {
+        $browsers = $this->loadBotData('browsers');
+
+        return $browsers ?? [];
+    }
+
+    protected function userAgentMatchesGeneric($userAgent)
+    {
+        $bots = $this->getGenericMaps();
+
+        if (!empty($bots) && preg_match(
+                '#(' . implode('|', array_map('preg_quote', array_keys($bots))) . ')#i',
+                strtolower($userAgent),
+                $match
+            ))
+        {
+            return $bots[$match[1]];
+        }
+        else
+        {
+            return '';
+        }
+    }
+
+    public function userAgentMatchesValidBrowser(string $userAgent)
+    {
+        $browsers = $this->getBrowsers();
+        if (empty($browsers))
+        {
+            // something went wrong with our browser list - just continue
+            return $userAgent;
+        }
+
+        $searches = array_map(function ($item) {
+            return "#{$item}#i";
+        }, $browsers);
+
+        return trim(preg_replace($searches, '', $userAgent));
+    }
+
+    protected function loadBotData($type)
+    {
+        return $this->getCache()->loadBotData($type);
     }
 
     /**
@@ -118,5 +127,13 @@ class Robot extends XFCP_Robot
     protected function getCache()
     {
         return \XF::app()->container('knownbots.cache');
+    }
+
+    /**
+     * @return Agent
+     */
+    protected function getAgentRepo()
+    {
+        return \XF::repository('Hampel\KnownBots:Agent');
     }
 }

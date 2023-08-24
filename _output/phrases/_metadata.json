@@ -41,6 +41,12 @@
         "version_string": "2.7.0",
         "hash": "d212ada7a52d6ffbc10cd594f7431348"
     },
+    "hampel_knownbots_deleted.txt": {
+        "global_cache": false,
+        "version_id": 4000070,
+        "version_string": "4.0.0",
+        "hash": "d8cdc7951710fe8a6c200a2792584857"
+    },
     "hampel_knownbots_detect.txt": {
         "global_cache": false,
         "version_id": 2060070,
@@ -119,6 +125,12 @@
         "version_string": "2.6.0",
         "hash": "d519c8f4ee78ade3eed4a68c37043d63"
     },
+    "hampel_knownbots_purge.txt": {
+        "global_cache": false,
+        "version_id": 4000070,
+        "version_string": "4.0.0",
+        "hash": "4a5840ed6824f6feb3e73a11a90a3cc5"
+    },
     "hampel_knownbots_useragent.txt": {
         "global_cache": false,
         "version_id": 2060070,
@@ -133,9 +145,9 @@
     },
     "option.knownbotsEmailNewBots.txt": {
         "global_cache": false,
-        "version_id": 2070070,
-        "version_string": "2.7.0",
-        "hash": "9f4c94ffc6bdc174c6c0a81848c3b3a4"
+        "version_id": 4000070,
+        "version_string": "4.0.0",
+        "hash": "72f136a5495068cad2ddf6081e1a0a44"
     },
     "option.knownbotsFetchNewBots.txt": {
         "global_cache": false,
@@ -151,9 +163,9 @@
     },
     "option_explain.knownbotsEmailNewBots.txt": {
         "global_cache": false,
-        "version_id": 3200070,
-        "version_string": "3.20.0",
-        "hash": "a148d3189e1fcce38c96f13796397872"
+        "version_id": 4000070,
+        "version_string": "4.0.0",
+        "hash": "73a9db3c12eff20a8a7b8f6bd5d35660"
     },
     "option_explain.knownbotsFetchNewBots.txt": {
         "global_cache": false,

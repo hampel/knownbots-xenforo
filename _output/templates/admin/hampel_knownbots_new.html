@@ -2,11 +2,16 @@
 
 <xf:if is="$newBots">
 	<xf:pageaction>
-		<xf:if is="$xf.options.knownbotsEmailNewBots.enabled">
+		<xf:if is="$xf.options.knownbotsEmailNewBots.enabled && $xf.options.knownbotsEmailNewBots.email">
 			<xf:button href="{{ link('tools/hampel-knownbots-email') }}">
 				{{ phrase('hampel_knownbots_email') }}
 			</xf:button>
 		</xf:if>
+		<xf:if is="$xf.options.knownbotsEmailNewBots.enabled">
+			<xf:button href="{{ link('tools/hampel-knownbots-purge') }}">
+				{{ phrase('hampel_knownbots_purge') }}
+			</xf:button>
+		</xf:if>		
 	</xf:pageaction>
 </xf:if>
 
