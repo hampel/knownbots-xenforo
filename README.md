@@ -8,7 +8,10 @@ By [Simon Hampel](https://twitter.com/SimonHampel).
 Requirements
 ------------
 
-This addon requires PHP 7.0 or higher and works on XenForo 2.x
+This addon requires PHP 7.1 or higher and works on XenForo 2.x
+
+The minimum version of PHP 7.1 is related to the use of the sha256 hashing algorithm and applies to KnownBots v5.x and 
+above.
 
 Usage
 -----
