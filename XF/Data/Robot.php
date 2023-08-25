@@ -113,7 +113,7 @@ class Robot extends XFCP_Robot
             return "#{$item}#i";
         }, $browsers);
 
-        return trim(preg_replace($searches, '', $userAgent));
+        return trim(trim(preg_replace($searches, '', $userAgent)), '()[]{}"\'');
     }
 
     protected function loadBotData($type)
