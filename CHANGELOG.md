@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+5.0.0 beta 2 (2023-08-25)
+-------------------------
+
+* trim some additional information from the end of browser search results
+
 5.0.0 beta 1 (2023-08-24)
 -------------------------
 
