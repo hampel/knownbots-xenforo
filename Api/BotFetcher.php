@@ -11,7 +11,7 @@ class BotFetcher
     protected $app;
 
     /** @var string */
-    protected $baseUrl = 'https://knownbots.hampel.io/api';
+    protected $baseUrl = 'https://knownbots.hampel.io/api/v2';
 
     /** @var bool */
     protected $trustedUrl = false;
@@ -36,36 +36,43 @@ class BotFetcher
     {
         $log = $this->getLogger();
 
-        $url = $this->buildUrl($force ? 0 : $lastChecked);
+        $options = [];
+        $since = null;
+        if (!$force)
+        {
+            $since = date('D, d M Y H:i:s', $lastChecked) . " GMT";
+            $options = ['headers' => ['If-Modified-Since' => $since]];
+        }
 
-        $log->debug('Fetching updated bots', compact('url'));
+        $log->debug('Fetching updated bots', compact('since'));
 
+        $url = "{$this->baseUrl}/bots";
         $destination = File::getNamedTempFile(sprintf("knownbots-%s.json", \XF::$time));
 
         if ($this->trustedUrl)
         {
             // only used when we set a manual API url, used to bypass checks so we can use localhost for testing
-            $response = $this->app->http()->reader()->get($url, [], $destination, [], $error);
+            $response = $this->app->http()->reader()->get($url, [], $destination, $options, $error);
         }
         else
         {
             // treat URLs as untrusted by default, will run through proxy server if configured
-            $response = $this->app->http()->reader()->getUntrusted($url, [], $destination, [], $error);
+            $response = $this->app->http()->reader()->getUntrusted($url, [], $destination, $options, $error);
         }
 
         if(!$response)
         {
-            $log->error('Error fetching bots', compact('url', 'destination', 'error'));
+            $log->error('Error fetching bots', compact('url', 'destination', 'since', 'error'));
             \XF::logError($error);
             return false;
         }
+        elseif ($response->getStatusCode() == 304)
+        {
+            $log->info('Bots not modified');
+            return null;
+        }
 
         return json_decode(file_get_contents($destination), true);
-    }
-
-    protected function buildUrl($since)
-    {
-        return "{$this->baseUrl}/bots" . ($since > 0 ? ("?" . http_build_query(compact('since'))) : '');
     }
 
     /**

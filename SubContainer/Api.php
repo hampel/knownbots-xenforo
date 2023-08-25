@@ -49,41 +49,29 @@ class Api extends AbstractSubContainer
 
         $bots = $this->botFetcher()->fetch($lastChecked, $force);
 
-        if (!$bots)
+        if ($bots === false)
         {
-            $log->error("No data returned from BotFetcher");
-            \XF::logError("No data returned from BotFetcher");
+            // there was an error fetching bots
             return false;
         }
 
-        $status = $bots['status'] ?? '';
-
-        if ($status == 'no updates')
+        if (empty($bots))
         {
-            $log->debug('No bot updates available');
+            // there was no data returned
             return null;
         }
-        elseif ($status == 'OK')
+
+        if (!$this->isValid($bots))
         {
-            if (!$this->isValid($bots))
-            {
-                $log->error("Invalid bot data returned", $bots);
-                \XF::logError("Invalid bot data returned from api call");
-                return false;
-            }
-
-            $this->storeBots($bots); // write to fs
-            $this->updateBots($bots); // generate code cache
-
-            return $bots;
-        }
-        else
-        {
-            $log->error('Invalid status returned from api call', compact('status'));
-            \XF::logError("Invalid status returned from api call: [{$status}]");
-
+            $log->error("Invalid bot data returned", $bots);
+            \XF::logError("Invalid bot data returned from api call");
             return false;
         }
+
+        $this->storeBots($bots); // write to fs
+        $this->updateBots($bots); // generate code cache
+
+        return $bots;
     }
 
     public function updateBots(array $bots)
@@ -123,11 +111,7 @@ class Api extends AbstractSubContainer
 
     protected function isValid(array $bots)
     {
-        \XF::dump($bots);
-
-        return isset($bots['status']) &&
-            $bots['status'] == 'OK' &&
-            isset($bots['built']) &&
+        return isset($bots['built']) &&
             isset($bots['maps']) &&
             isset($bots['bots']) &&
             isset($bots['generic']) &&
