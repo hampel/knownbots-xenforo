@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+5.0.0 beta 1 (2023-08-24)
+-------------------------
+
+* major rewrite - no longer use "bot|spider|crawl" search strings and false-positive lists to identify possible bots, 
+  rely instead on search strings supplied by API to identify valid browsers and store them directly in the database 
+  rather than the SimpleCache, ready for emailing
+* allow BotFetcher to be manually configured to bypass untrusted http agent - used for testing when API source is on a 
+  .local domain
+* using new v2 API from KnownBots
+* minimum version of PHP now 7.1 due to hashing function used when storing user agents
+
 4.0.0 (2023-08-14)
 ------------------
 
