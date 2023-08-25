@@ -28,13 +28,13 @@ options.
 Options
 -------
 
-This addon can optionally use the [Monolog Logging Service](https://xenforo.com/community/resources/monolog-logging-service.6080/)
-addon to log information about emails sent.
-
 In v4.x, by default this addon will query our [KnownBots API](https://knownbots.hampel.io/api/bots) for updates and 
 automatically apply them - no more manually installing updates to get new bot lists. You may query the API directly at 
 any time, and you may also disable the automatic update process in favour of manually downloading the json file and
 loading the data in using a CLI script. Instructions for doing this can be found in the addon FAQ section.  
+
+This addon can optionally use the [Monolog Logging Service](https://xenforo.com/community/resources/monolog-logging-service.6080/)
+addon to log information about emails sent and API queries made.
 
 Privacy
 -------
@@ -42,17 +42,27 @@ Privacy
 v3.x and higher adds new functionality to email the list of new bots detected automatically to an email address 
 configurable by the admin.
 
-The default and recommended value is to email knownbots@hampel.io
-
-Emails sent to this address will only be used for the purposes of identifying new bots to add to this addon.
-
-Email addresses will NOT be sold or added to any marketing lists - not even ours.
+The default and recommended value is to email knownbots@hampel.io - emails sent to this address will only be used for
+the purposes of identifying new bots to add to this addon. Email addresses will never be sold or added to any marketing 
+lists - not even ours.
 
 If there are issues detected from the emails you are sending us, we may reply to establish communication - but that will
 be on a case-by-case basis and only for the purposes of troubleshooting the operation of this addon.
 
 You can check the information contained in the emails by changing the address temporarily to your own so that emails go
-to you. If you still want us to process these emails - please feel free to forward them to the above address.
+to you. If you still want us to process these emails - please feel free to forward them to the above address or post the
+list of user agents to the resource support thread on the XenForo forums and the addon author will manually process
+them.
 
 Other than a list of user agent strings, the only information contained in the email will be those automatically added 
 to the email header by the forum mailer and SMTP servers.
+
+v4.x and higher adds new functionality to query our API server for bot updates. This functionality can be disabled in
+the addon options. 
+
+API calls are made using the standard "untrusted" HTTP client built into XenForo, which means they are forwarded through
+a proxy server if you have one configured. Information collected in web server log files includes the IP address of your
+server (or proxy if used), and your forum name as supplied in the user agent of the XenForo HTTP client. 
+
+HTTP server log information is used solely for analytics and troubleshooting purposes and is never made available to 
+third parties.
