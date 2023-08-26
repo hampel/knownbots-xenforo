@@ -1,5 +1,13 @@
 <xf:title>{{ phrase('hampel_knownbots_list') }}</xf:title>
 
+<xf:pageaction>
+	<xf:if is="$xf.options.knownbotsFetchNewBots">
+		<xf:button href="{{ link('tools/hampel-knownbots-fetch') }}">
+			{{ phrase('hampel_knownbots_fetch') }}
+		</xf:button>
+	</xf:if>		
+</xf:pageaction>
+
 <xf:if is="$knownBots">
 	<div class="block-container">
 		<div class="block-body">

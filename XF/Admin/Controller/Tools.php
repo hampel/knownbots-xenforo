@@ -2,6 +2,7 @@
 
 use Hampel\KnownBots\Option\EmailNewBots;
 use Hampel\KnownBots\Service\BotMailer;
+use Hampel\KnownBots\SubContainer\Api;
 use Hampel\KnownBots\SubContainer\Cache;
 use Hampel\KnownBots\SubContainer\Log;
 use Hampel\KnownBots\Repository\Agent;
@@ -13,7 +14,7 @@ class Tools extends XFCP_Tools
 	{
 		$this->setSectionContext('hampelKnownBotsList');
 
-		$knownBots = $this->app()->data('XF:Robot')->getRobotList();
+		$knownBots = $this->getRobot()->getRobotList();
 
 		ksort($knownBots);
 
@@ -23,6 +24,30 @@ class Tools extends XFCP_Tools
 
 		return $this->view('Hampel\KnownBots:Tools\KnownBotsList', 'hampel_knownbots_list', $viewParams);
 	}
+
+    public function actionHampelKnownBotsFetch()
+    {
+        $this->setSectionContext('hampelKnownBotsList');
+
+        $botData = $this->getApi()->fetchBots();
+
+        if (is_null($botData))
+        {
+            return $this->message(\XF::phrase('hampel_knownbots_no_updates_available'));
+        }
+
+        if ($botData === false)
+        {
+            return $this->message(\XF::phrase('hampel_knownbots_error_updating'));
+        }
+
+        $lang = \XF::language();
+        $maps = $lang->numberFormat(count($botData['maps']));
+        $bots = $lang->numberFormat(count($botData['bots']));
+        $browsers = $lang->numberFormat(count($botData['browsers']));
+
+        return $this->message(\XF::phrase('hampel_knownbots_successfully_updated', compact('maps', 'bots', 'browsers')));
+    }
 
 	public function actionHampelKnownBotsDetect()
 	{
@@ -34,8 +59,7 @@ class Tools extends XFCP_Tools
 
 		if ($this->isPost())
 		{
-			/** @var Robot $robots */
-			$robots = $this->app()->data('XF:Robot');
+			$robots = $this->getRobot();
 
 			$useragent = $this->filter('useragent', 'str');
 
@@ -133,6 +157,14 @@ class Tools extends XFCP_Tools
 
 	// -------------------------------------------------
 
+    protected function formatTime($timestamp)
+    {
+        $dt = new \DateTime();
+        $dt->setTimezone(\XF::language()->getTimeZone());
+        $dt->setTimestamp($timestamp);
+        return $dt->format(\DateTimeInterface::COOKIE);
+    }
+
 	/**
 	 * @return BotMailer
 	 */
@@ -163,6 +195,14 @@ class Tools extends XFCP_Tools
     protected function getCache()
     {
         return $this->app['knownbots.cache'];
+    }
+
+    /**
+     * @return Api
+     */
+    protected function getApi()
+    {
+        return $this->app['knownbots.api'];
     }
 
     /**
