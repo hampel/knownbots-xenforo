@@ -4,5 +4,8 @@
     },
     "hampelKnownBotsNewBots.json": {
         "hash": "6bd1b0bcab6ae12c10ec2006dde89fb1"
+    },
+    "hampelKnownBotsPurgeAgent.json": {
+        "hash": "80f1db66d9584837679a3918b4c0d93d"
     }
 }

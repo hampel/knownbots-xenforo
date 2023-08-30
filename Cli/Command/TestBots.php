@@ -1,13 +1,11 @@
 <?php namespace Hampel\KnownBots\Cli\Command;
 
-use Hampel\KnownBots\Api\BotFetcher;
-use Hampel\KnownBots\Entity\Agent;
 use Hampel\KnownBots\XF\Data\Robot;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use XF\Db\Schema\Create;
 
 class TestBots extends Command
 {
@@ -20,6 +18,12 @@ class TestBots extends Command
                 'agent',
                 InputArgument::REQUIRED,
                 "User agent to test"
+            )
+            ->addOption(
+                'save',
+                's',
+                InputOption::VALUE_NONE,
+                'Save user agents to database'
             );
 	}
 
@@ -29,8 +33,9 @@ class TestBots extends Command
 	    $robots = \XF::app()->data('XF:Robot');
 
         $userAgent = $input->getArgument('agent');
+        $save = $input->getOption('save');
 
-	    $robot = $robots->userAgentMatchesRobot($userAgent);
+	    $robot = $robots->userAgentMatchesRobot($userAgent, $save);
 
 	    if (empty($robot))
         {

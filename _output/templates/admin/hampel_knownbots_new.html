@@ -1,26 +1,36 @@
 <xf:title>{{ phrase('hampel_knownbots_new') }}</xf:title>
 
-<xf:if is="$newBots">
+<xf:if is="$recentBots">
 	<xf:pageaction>
 		<xf:if is="$xf.options.knownbotsEmailNewBots.enabled && $xf.options.knownbotsEmailNewBots.email">
 			<xf:button href="{{ link('tools/hampel-knownbots-email') }}">
 				{{ phrase('hampel_knownbots_email') }}
 			</xf:button>
 		</xf:if>
-		<xf:if is="$xf.options.knownbotsEmailNewBots.enabled">
-			<xf:button href="{{ link('tools/hampel-knownbots-purge') }}">
-				{{ phrase('hampel_knownbots_purge') }}
-			</xf:button>
-		</xf:if>		
+		<xf:button href="{{ link('tools/hampel-knownbots-purge') }}">
+			{{ phrase('hampel_knownbots_purge') }}
+		</xf:button>
+		<xf:button href="{{ link('tools/hampel-knownbots-clear') }}">
+			{{ phrase('hampel_knownbots_clear') }}
+		</xf:button>		
 	</xf:pageaction>
 </xf:if>
 
 <div class="block-container">
 	<div class="block-body">
-		<xf:if is="$newBots">		
+		<xf:if is="$recentBots">		
 		<ul>
-			<xf:foreach loop="$newBots" value="$bot">
-				<li>{{ $bot }}</li>
+			<xf:foreach loop="$recentBots" value="$bot">
+				<li>
+					<xf:if is="$bot.title">
+						<xf:if is="$bot.link">
+							<a target="_blank" href="{{ $bot.link }}">{{ $bot.title }}:</a>
+						<xf:else />
+							{{ $bot.title }}
+						</xf:if>
+					</xf:if>
+					[{{ $bot.user_agent }}]
+				</li>
 			</xf:foreach>
 		</ul>
 		<xf:else />

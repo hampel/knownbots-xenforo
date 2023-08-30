@@ -87,7 +87,7 @@ class Api extends AbstractSubContainer
             'built' => $bots['built'],
             'maps' => count($bots['maps']),
             'bots' => count($bots['bots']),
-            'generic' => count($bots['generic']),
+            'complex' => count($bots['complex']),
             'ignored' => count($bots['ignored']),
             'browsers' => count($bots['browsers']),
         ]);
@@ -114,13 +114,13 @@ class Api extends AbstractSubContainer
         return isset($bots['built']) &&
             isset($bots['maps']) &&
             isset($bots['bots']) &&
-            isset($bots['generic']) &&
+            isset($bots['complex']) &&
             isset($bots['ignored']) &&
             isset($bots['browsers']) &&
             is_int($bots['built']) &&
             is_array($bots['maps']) &&
             is_array($bots['bots']) &&
-            is_array($bots['generic']) &&
+            is_array($bots['complex']) &&
             is_array($bots['ignored']) &&
             is_array($bots['browsers']);
     }

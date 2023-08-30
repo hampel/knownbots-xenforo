@@ -17,13 +17,7 @@ class Setup extends AbstractSetup
 
 	public function install(array $stepParams = [])
 	{
-        $this->schemaManager()->createTable('xf_knownbots_agent', function (Create $table) {
-            $table->addColumn('agent_id', 'int')->autoIncrement();
-            $table->addColumn('hash', 'varchar', 64);
-            $table->addColumn('user_agent', 'text');
-
-            $table->addUniqueKey('hash');
-        });
+        $this->createAgentTable();
 	}
 
     public function postInstall(array &$stateChanges)
@@ -37,22 +31,15 @@ class Setup extends AbstractSetup
             $this->loadBots();
         }
 
-        $this->randomizeCron();
+        $this->randomizeFetchCron();
+        $this->randomizeEmailCron();
     }
-
-    // ################################ UPGRADE TO 4.0.0b1 ##################
 
     // ################################ UPGRADE TO 5.0.0b1 ##################
 
     public function upgrade5000031Step1()
     {
-        $this->schemaManager()->createTable('xf_knownbots_agent', function (Create $table) {
-            $table->addColumn('agent_id', 'int')->autoIncrement();
-            $table->addColumn('hash', 'varchar', 64);
-            $table->addColumn('user_agent', 'text');
-
-            $table->addUniqueKey('hash');
-        });
+        $this->createAgentTable();
     }
 
     public function postUpgrade($previousVersion, array &$stateChanges)
@@ -61,7 +48,12 @@ class Setup extends AbstractSetup
 
         if ($previousVersion < 4000031)
         {
-            $this->randomizeCron();
+            $this->randomizeFetchCron();
+        }
+
+        if ($previousVersion < 5000031)
+        {
+            $this->randomizeEmailCron();
         }
     }
 
@@ -76,7 +68,7 @@ class Setup extends AbstractSetup
         }
 
         // remove code cache files
-        foreach (['maps', 'bots', 'generic', 'ignored', 'browsers'] as $type)
+        foreach (['maps', 'bots', 'complex', 'generic', 'ignored', 'browsers'] as $type)
         {
             $path = "code-cache://known_bots/{$type}.php";
             if ($fs->has($path))
@@ -92,6 +84,21 @@ class Setup extends AbstractSetup
 
     // ################################ Helpers ##################
 
+    protected function createAgentTable()
+    {
+        $this->schemaManager()->createTable('xf_knownbots_agent', function (Create $table) {
+            $table->addColumn('agent_id', 'int')->autoIncrement();
+            $table->addColumn('hash', 'varchar', 64);
+            $table->addColumn('user_agent', 'text');
+            $table->addColumn('robot_key', 'varchar', 25);
+            $table->addColumn('last_updated', 'int');
+            $table->addColumn('sent', 'bool');
+
+            $table->addUniqueKey('hash');
+            $table->addIndex('last_updated');
+        });
+    }
+
     protected function loadBots()
     {
         if ($this->app->fs()->has(self::BOTPATH))
@@ -101,7 +108,7 @@ class Setup extends AbstractSetup
         }
     }
 
-    protected function randomizeCron()
+    protected function randomizeFetchCron()
     {
         // randomize cron run time
         $cron = $this->app()->find('XF:CronEntry', 'hampelKnownBotsFetchBots');
@@ -111,6 +118,25 @@ class Setup extends AbstractSetup
             $minutes = rand(0, 59);
 
             $rules = $cron->run_rules;
+            $rules['hours'] = [$hours];
+            $rules['minutes'] = [$minutes];
+            $cron->run_rules = $rules;
+            $cron->save();
+        }
+    }
+
+    protected function randomizeEmailCron()
+    {
+        // randomize cron run time
+        $cron = $this->app()->find('XF:CronEntry', 'hampelKnownBotsNewBots');
+        if ($cron)
+        {
+            $dow = rand(0, 6);
+            $hours = rand(0, 23);
+            $minutes = rand(0, 59);
+
+            $rules = $cron->run_rules;
+            $rules['dow'] = [$dow];
             $rules['hours'] = [$hours];
             $rules['minutes'] = [$minutes];
             $cron->run_rules = $rules;

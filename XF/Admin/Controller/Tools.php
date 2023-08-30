@@ -1,12 +1,13 @@
 <?php namespace Hampel\KnownBots\XF\Admin\Controller;
 
 use Hampel\KnownBots\Option\EmailNewBots;
+use Hampel\KnownBots\Option\StoreUserAgents;
 use Hampel\KnownBots\Service\BotMailer;
 use Hampel\KnownBots\SubContainer\Api;
 use Hampel\KnownBots\SubContainer\Cache;
 use Hampel\KnownBots\SubContainer\Log;
 use Hampel\KnownBots\Repository\Agent;
-use XF\Data\Robot;
+use Hampel\KnownBots\XF\Data\Robot;
 
 class Tools extends XFCP_Tools
 {
@@ -63,7 +64,7 @@ class Tools extends XFCP_Tools
 
 			$useragent = $this->filter('useragent', 'str');
 
-			$robot = $robots->userAgentMatchesRobot($useragent);
+			$robot = $robots->userAgentMatchesRobot($useragent, false);
 
 			if (!empty($robot))
 			{
@@ -81,11 +82,34 @@ class Tools extends XFCP_Tools
 	{
 		$this->setSectionContext('hampelKnownBotsNew');
 
-		$newBots = $this->getRepo()->getUserAgents();
+        $data = $this->getRobot();
+		$newBots = $this->getRepo()->getUserAgentsForDisplay();
 
-		sort($newBots, SORT_NATURAL | SORT_FLAG_CASE);
+        $recentBots = [];
 
-		$viewParams = compact('newBots');
+        foreach ($newBots as $bot)
+        {
+            $info = [
+                'user_agent' => $bot->user_agent,
+                'title' => $bot->robot_key,
+                'link' => '',
+            ];
+
+            if ($bot->robot_key)
+            {
+                $robot = $data->getRobotInfo($bot->robot_key);
+
+                if ($robot)
+                {
+                    $info['title'] = $robot['title'];
+                    $info['link'] = $robot['link'];
+                }
+            }
+
+            $recentBots[] = $info;
+        }
+
+		$viewParams = compact('recentBots');
 		return $this->view('Hampel\KnownBots:Tools\KnownBotsNew', 'hampel_knownbots_new', $viewParams);
 	}
 
@@ -94,7 +118,7 @@ class Tools extends XFCP_Tools
 		$log = $this->getLogger();
 		$this->setSectionContext('hampelKnownBotsNew');
 
-		$emailTo = EmailNewBots::getAddress();
+		$emailTo = EmailNewBots::getAddresses();
 
 		if (!EmailNewBots::isEnabled() || empty($emailTo))
 		{
@@ -102,7 +126,7 @@ class Tools extends XFCP_Tools
 		}
 
 		$repo = $this->getRepo();
-		$bots = $repo->getUserAgents();
+		$bots = $repo->getUserAgentsForEmail();
 
 		if (empty($bots))
 		{
@@ -117,20 +141,29 @@ class Tools extends XFCP_Tools
 		$service->setBots($bots);
 		if ($service->mailBots())
 		{
-			$log->info("Clearing user agent cache");
-
-            $repo->clearUserAgents();
+            $rows = $repo->markUserAgentsSent();
+            $log->info('Marked user agents sent', compact('rows'));
 		}
 
 		return $this->message(\XF::phrase('hampel_knownbots_email_sent', ['email' => $emailTo]));
-
 	}
 
     public function actionHampelKnownBotsPurge()
     {
-        $this->getRepo()->clearUserAgents();
+        $days = StoreUserAgents::daysUntilPurge();
 
-        return $this->message(\XF::phrase('hampel_knownbots_deleted'));
+        if ($days == 0) return; // stop if we're not automatically purging old agents
+
+        $rows = self::getRepo()->purgeUserAgents($days);
+
+        return $this->message(\XF::phrase('hampel_knownbots_deleted', compact('rows')));
+    }
+
+    public function actionHampelKnownBotsClear()
+    {
+        $rows = self::getRepo()->clearAllUserAgents();
+
+        return $this->message(\XF::phrase('hampel_knownbots_cleared', compact('rows')));
     }
 
 	public function actionHampelKnownBotsMd()

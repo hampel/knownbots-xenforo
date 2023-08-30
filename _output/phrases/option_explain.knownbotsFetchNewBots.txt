@@ -1,1 +1,1 @@
-Turn on to automatically fetch new bot identifiers from the KnownBots API set up by the addon author
+Turn on to automatically fetch new bot identifiers from the KnownBots API set up by the addon author. If you disable this option, you must set up your own system to update the known bots definitions - see the addon FAQ for instructions.

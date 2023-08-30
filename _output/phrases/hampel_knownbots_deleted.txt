@@ -1,1 +1,1 @@
-User agents successfully deleted
+Purged {rows} old user agents

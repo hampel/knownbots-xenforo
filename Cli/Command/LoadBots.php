@@ -27,8 +27,9 @@ class LoadBots extends Command
 
 		$output->writeln("Loaded maps: " . count($bots['maps']));
 		$output->writeln("Loaded bots: " . count($bots['bots']));
-        $output->writeln("Loaded generic maps: " . count($bots['generic']));
-        $output->writeln("Loaded ignored bots: " . count($bots['ignored']));
+        $output->writeln("Loaded complex: " . count($bots['complex']));
+        $output->writeln("Loaded ignored: " . count($bots['ignored']));
+        $output->writeln("Loaded browsers: " . count($bots['browsers']));
 		$output->writeln("knownbots.json build date: {$checked}");
 
 		return 0;

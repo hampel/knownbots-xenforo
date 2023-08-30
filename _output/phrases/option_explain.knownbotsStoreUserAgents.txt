@@ -1,0 +1,1 @@
+Enable to store unknown and bot user agents in the database for further analysis. Choose how long to retain user agent records before being automatically purged. Set days to zero to never purge user agent records (not recommended).

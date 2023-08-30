@@ -41,11 +41,29 @@
         "version_string": "2.7.0",
         "hash": "d212ada7a52d6ffbc10cd594f7431348"
     },
+    "cron_entry.hampelKnownBotsPurgeAgent.txt": {
+        "global_cache": false,
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "faa304a8fa83a813b50ff5a6cf24b1ca"
+    },
+    "hampel_knownbots_clear.txt": {
+        "global_cache": false,
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "fe9b2706296c60edf3a13552ddb59c89"
+    },
+    "hampel_knownbots_cleared.txt": {
+        "global_cache": false,
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "1e1248b7f9a1bb41bcd4ff3249e407be"
+    },
     "hampel_knownbots_deleted.txt": {
         "global_cache": false,
-        "version_id": 4000070,
-        "version_string": "4.0.0",
-        "hash": "d8cdc7951710fe8a6c200a2792584857"
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "c1ce442f3c8c350b774eecdad7dfccba"
     },
     "hampel_knownbots_detect.txt": {
         "global_cache": false,
@@ -121,9 +139,9 @@
     },
     "hampel_knownbots_new.txt": {
         "global_cache": false,
-        "version_id": 2070070,
-        "version_string": "2.7.0",
-        "hash": "ad3618c3e7968b497005aa1718466224"
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "3d00cf60ce446b05376d7f78d4c203df"
     },
     "hampel_knownbots_no_updates_available.txt": {
         "global_cache": false,
@@ -145,9 +163,9 @@
     },
     "hampel_knownbots_purge.txt": {
         "global_cache": false,
-        "version_id": 4000070,
-        "version_string": "4.0.0",
-        "hash": "4a5840ed6824f6feb3e73a11a90a3cc5"
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "3f3c24447ed46bbc9d040e4d6e0898ee"
     },
     "hampel_knownbots_successfully_updated.txt": {
         "global_cache": false,
@@ -169,39 +187,51 @@
     },
     "option.knownbotsEmailNewBots.txt": {
         "global_cache": false,
-        "version_id": 4000070,
-        "version_string": "4.0.0",
-        "hash": "72f136a5495068cad2ddf6081e1a0a44"
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "dec9f225b0021d7b317f7694c1049429"
     },
     "option.knownbotsFetchNewBots.txt": {
         "global_cache": false,
-        "version_id": 3200070,
-        "version_string": "3.20.0",
-        "hash": "743bb9b3aee17bac7c93614f0711c28b"
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "5593d0bf26949327367a4294d0d5432c"
     },
     "option.knownbotsShowBotStats.txt": {
         "global_cache": false,
-        "version_id": 2040070,
-        "version_string": "2.4.0",
-        "hash": "a68ee845b4a42fac353c3a450093b5e2"
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "d4064bab70143d60a9dcb325dc7985e9"
+    },
+    "option.knownbotsStoreUserAgents.txt": {
+        "global_cache": false,
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "7905c8c3cc1e6eba2a31057a4ce55c70"
     },
     "option_explain.knownbotsEmailNewBots.txt": {
         "global_cache": false,
-        "version_id": 4000070,
-        "version_string": "4.0.0",
-        "hash": "73a9db3c12eff20a8a7b8f6bd5d35660"
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "bcea7e24527051b5c6b8d3ab921d8d47"
     },
     "option_explain.knownbotsFetchNewBots.txt": {
         "global_cache": false,
-        "version_id": 3200070,
-        "version_string": "3.20.0",
-        "hash": "a599cee330b078028d044b3855d9f375"
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "9dcb0649c5e2e4086b96058e63491e6e"
     },
     "option_explain.knownbotsShowBotStats.txt": {
         "global_cache": false,
         "version_id": 2040070,
         "version_string": "2.4.0",
         "hash": "281ed8788d5b38c35d61916fe75490ca"
+    },
+    "option_explain.knownbotsStoreUserAgents.txt": {
+        "global_cache": false,
+        "version_id": 5000032,
+        "version_string": "5.0.0 Beta 2",
+        "hash": "7dc430ab67172fc2d9450b0392eb4675"
     },
     "option_group.knownbots.txt": {
         "global_cache": false,

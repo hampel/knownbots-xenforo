@@ -21,9 +21,14 @@ class EmailNewBots extends AbstractOption
 		return $emailNewBots['enabled'] == 1;
 	}
 
-	public static function getAddress()
+	public static function getAddresses()
 	{
 		$emailNewBots = self::get();
-		return $emailNewBots['email'] ?? "";
+        if (!$emailNewBots)
+        {
+            return [];
+        }
+
+        return array_map('trim', explode(',', $emailNewBots));
 	}
 }

@@ -4,10 +4,10 @@ use XF\Service\AbstractService;
 
 class BotMailer extends AbstractService
 {
-	protected $toEmail = '';
+	protected $toEmail = [];
 	protected $bots = [];
 
-	public function setToEmail($email)
+	public function setToEmail(array $email)
 	{
 		$this->toEmail = $email;
 	}
@@ -41,7 +41,20 @@ class BotMailer extends AbstractService
 	protected function getMail()
 	{
 		$mail = $this->app->mailer()->newMail();
-		$mail->setTo($this->toEmail);
+        $count = 0;
+        foreach ($this->toEmail as $email)
+        {
+            if ($count == 0)
+            {
+                $mail->setTo($email);
+            }
+            else
+            {
+                $mail->getMessageObject()->addCc($email);
+            }
+
+            $count++;
+        }
 
 		return $mail;
 	}
