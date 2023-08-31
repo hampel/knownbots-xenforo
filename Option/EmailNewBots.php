@@ -24,11 +24,7 @@ class EmailNewBots extends AbstractOption
 	public static function getAddresses()
 	{
 		$emailNewBots = self::get();
-        if (!$emailNewBots)
-        {
-            return [];
-        }
 
-        return array_map('trim', explode(',', $emailNewBots));
+        return array_map('trim', explode(',', $emailNewBots['email'] ?? ''));
 	}
 }
