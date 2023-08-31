@@ -91,11 +91,11 @@ class Setup extends AbstractSetup
             $table->addColumn('hash', 'varchar', 64);
             $table->addColumn('user_agent', 'text');
             $table->addColumn('robot_key', 'varchar', 25);
-            $table->addColumn('last_updated', 'int');
-            $table->addColumn('sent', 'bool');
+            $table->addColumn('last_updated', 'int')->setDefault(0);
+            $table->addColumn('sent', 'bool')->setDefault(0);
 
             $table->addUniqueKey('hash');
-            $table->addIndex('last_updated');
+            $table->addKey('last_updated');
         });
     }
 
