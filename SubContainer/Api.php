@@ -111,7 +111,10 @@ class Api extends AbstractSubContainer
 
     protected function isValid(array $bots)
     {
-        return isset($bots['built']) &&
+        $test = isset($bots['version']) &&
+            is_int($bots['version']) &&
+            $bots['version'] == 2 &&
+            isset($bots['built']) &&
             isset($bots['maps']) &&
             isset($bots['bots']) &&
             isset($bots['complex']) &&
@@ -123,6 +126,42 @@ class Api extends AbstractSubContainer
             is_array($bots['complex']) &&
             is_array($bots['ignored']) &&
             is_array($bots['browsers']);
+
+        if ($test)
+        {
+            foreach ($bots['maps'] as $key => $value)
+            {
+                if (!is_string($key)) return false;
+                if (!is_string($value)) return false;
+            }
+            foreach ($bots['bots'] as $key => $value)
+            {
+                if (!is_string($key)) return false;
+                if (!is_array($value)) return false;
+                foreach ($value as $k => $v)
+                {
+                    if (!is_string($k)) return false;
+                    if (!is_string($v) && !is_null($v)) return false;
+                }
+            }
+            foreach ($bots['complex'] as $key => $value)
+            {
+                if (!is_string($key)) return false;
+                if (!is_string($value)) return false;
+            }
+            foreach ($bots['ignored'] as $key => $value)
+            {
+                if (!is_numeric($key)) return false;
+                if (!is_string($value)) return false;
+            }
+            foreach ($bots['browsers'] as $key => $value)
+            {
+                if (!is_numeric($key)) return false;
+                if (!is_string($value)) return false;
+            }
+        }
+
+        return $test;
     }
 
     /**
