@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+4.0.1 (2023-09-01)
+------------------
+
+* additional sanity checks on API data returned to prevent bad data breaking sites
+
 4.0.0 (2023-08-14)
 ------------------
 
