@@ -44,7 +44,7 @@ class Cache extends AbstractSubContainer
 
         $cache->setValue('maps', $bots['maps']);
         $cache->setValue('bots', $bots['bots']);
-        $cache->setValue('generic', $bots['generic']);
+        $cache->setValue('complex', $bots['complex']);
         $cache->setValue('ignored', $bots['ignored']);
         $cache->setValue('browsers', $bots['browsers']);
     }
