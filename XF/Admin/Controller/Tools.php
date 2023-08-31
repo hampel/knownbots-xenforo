@@ -145,7 +145,7 @@ class Tools extends XFCP_Tools
             $log->info('Marked user agents sent', compact('rows'));
 		}
 
-		return $this->message(\XF::phrase('hampel_knownbots_email_sent', ['email' => $emailTo]));
+		return $this->message(\XF::phrase('hampel_knownbots_email_sent', ['email' => implode(", ", $emailTo)]));
 	}
 
     public function actionHampelKnownBotsPurge()
