@@ -1,1 +1,1 @@
-Purged {rows} old user agents
+Purged {rows} user agents older than {days} days

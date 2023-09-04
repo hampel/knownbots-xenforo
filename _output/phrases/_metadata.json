@@ -61,9 +61,9 @@
     },
     "hampel_knownbots_deleted.txt": {
         "global_cache": false,
-        "version_id": 5000032,
-        "version_string": "5.0.0 Beta 2",
-        "hash": "c1ce442f3c8c350b774eecdad7dfccba"
+        "version_id": 5000033,
+        "version_string": "5.0.0 Beta 3",
+        "hash": "2f469f3b75ae92f2dfffac65dd781466"
     },
     "hampel_knownbots_detect.txt": {
         "global_cache": false,

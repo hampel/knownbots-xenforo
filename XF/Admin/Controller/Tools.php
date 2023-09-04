@@ -156,7 +156,7 @@ class Tools extends XFCP_Tools
 
         $rows = self::getRepo()->purgeUserAgents($days);
 
-        return $this->message(\XF::phrase('hampel_knownbots_deleted', compact('rows')));
+        return $this->message(\XF::phrase('hampel_knownbots_deleted', compact('rows', 'days')));
     }
 
     public function actionHampelKnownBotsClear()
