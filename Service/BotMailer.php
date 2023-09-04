@@ -50,7 +50,7 @@ class BotMailer extends AbstractService
             }
             else
             {
-                $mail->getMessageObject()->addCc($email);
+                $mail->getMessageObject()->addBcc($email);
             }
 
             $count++;
