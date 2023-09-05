@@ -17,7 +17,11 @@
 			<div class="block-body block-row">
 				<ul>
 					<xf:foreach loop="$knownBots" value="$bot">
-						<li><a href="{{ $bot.link }}" target="_blank">{{ $bot.title }}</a></li>
+						<xf:if is="$bot.link">
+							<li><a href="{{ $bot.link }}" target="_blank">{{ $bot.title }}</a></li>
+						<xf:else />
+							<li>{{ $bot.title }}</li>
+						</xf:if>
 					</xf:foreach>
 				</ul>
 			</div>
