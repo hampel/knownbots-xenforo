@@ -4,22 +4,41 @@ use XF\Mvc\Entity\Repository;
 
 class Agent extends Repository
 {
-    public function addUserAgent($userAgent, $robot_key = '')
+    public function addUserAgent($userAgent, $robot_key = null)
     {
-        // only store the first 512 characters of the UserAgent string to prevent bad data causing issues
-        $userAgent = substr($userAgent, 0, 512);
-        $hash = hash("sha256", strtolower($userAgent));
-        $last_updated = mktime(0, 0, 0); // midnight today
+        $userAgent = trim(substr($userAgent, 0, 512));
 
-        $query = \XF::db()->query("
-            INSERT INTO xf_knownbots_agent (hash, user_agent, robot_key, last_updated)
-            VALUES (?, ?, ?, ?)
-            ON DUPLICATE KEY UPDATE
-                robot_key = VALUES(robot_key),
-                last_updated = VALUES(last_updated)
-        ", [$hash, $userAgent, $robot_key, $last_updated]);
+        $agent = \XF::db()->fetchRow("
+            SELECT * FROM xf_knownbots_agent WHERE user_agent = ?
+        ", [$userAgent]);
 
-        return $query->rowsAffected();
+        $midnight = mktime(0, 0, 0);
+
+        if ($agent)
+        {
+            $robot_key = $robot_key ?? $agent['robot_key'];
+
+            if ($agent['robot_key'] != $robot_key || $agent['last_updated'] < $midnight)
+            {
+                \XF::db()->query("
+                 UPDATE xf_knownbots_agent 
+                 SET robot_key = ?,
+                     last_updated = ?
+                 WHERE user_agent = ?
+                ", [$robot_key, $midnight, $userAgent]);
+
+                return 2;
+            }
+
+            return 0;
+        }
+
+        \XF::db()->query("
+            INSERT IGNORE INTO xf_knownbots_agent (user_agent, robot_key, last_updated)
+            VALUES (?, ?, ?)
+        ", [$userAgent, $robot_key, $midnight]);
+
+        return 1;
     }
 
     public function getUserAgentsForEmail()

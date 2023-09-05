@@ -64,7 +64,7 @@ class Robot extends XFCP_Robot
 
     // -------------------------------------------------------------
 
-    protected function saveUserAgent($save, $userAgent, $robotName = '')
+    protected function saveUserAgent($save, $userAgent, $robotName = null)
     {
         if ($save && StoreUserAgents::isEnabled())
         {

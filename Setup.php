@@ -87,14 +87,11 @@ class Setup extends AbstractSetup
     protected function createAgentTable()
     {
         $this->schemaManager()->createTable('xf_knownbots_agent', function (Create $table) {
-            $table->addColumn('agent_id', 'int')->autoIncrement();
-            $table->addColumn('hash', 'varchar', 64);
-            $table->addColumn('user_agent', 'text');
-            $table->addColumn('robot_key', 'varchar', 25);
+            $table->addColumn('user_agent', 'varbinary', 512)->primaryKey();
+            $table->addColumn('robot_key', 'varchar', 25)->nullable();
             $table->addColumn('last_updated', 'int')->setDefault(0);
             $table->addColumn('sent', 'bool')->setDefault(0);
 
-            $table->addUniqueKey('hash');
             $table->addKey('last_updated');
         });
     }
