@@ -131,6 +131,12 @@
         "version_string": "2.6.0",
         "hash": "e6e3b9cea05d1457e28cd35076f7364c"
     },
+    "hampel_knownbots_last_updated.txt": {
+        "global_cache": false,
+        "version_id": 5000033,
+        "version_string": "5.0.0 Beta 3",
+        "hash": "743d5c0c4d20be6a8e42664288dc26c4"
+    },
     "hampel_knownbots_list.txt": {
         "global_cache": false,
         "version_id": 4000031,
@@ -139,9 +145,9 @@
     },
     "hampel_knownbots_new.txt": {
         "global_cache": false,
-        "version_id": 5000032,
-        "version_string": "5.0.0 Beta 2",
-        "hash": "3d00cf60ce446b05376d7f78d4c203df"
+        "version_id": 5000033,
+        "version_string": "5.0.0 Beta 3",
+        "hash": "ea4468e5f2cfd9c9c323fc46d05d84be"
     },
     "hampel_knownbots_no_updates_available.txt": {
         "global_cache": false,
@@ -167,11 +173,23 @@
         "version_string": "5.0.0 Beta 2",
         "hash": "3f3c24447ed46bbc9d040e4d6e0898ee"
     },
+    "hampel_knownbots_recently_seen_bots.txt": {
+        "global_cache": false,
+        "version_id": 5000033,
+        "version_string": "5.0.0 Beta 3",
+        "hash": "2d4e9e18814fbb0ffa616ed70f2909bf"
+    },
     "hampel_knownbots_successfully_updated.txt": {
         "global_cache": false,
         "version_id": 5000032,
         "version_string": "5.0.0 Beta 2",
         "hash": "d4e1d1fbc6d13578a82a487cdf20682c"
+    },
+    "hampel_knownbots_unidentified_user_agents.txt": {
+        "global_cache": false,
+        "version_id": 5000033,
+        "version_string": "5.0.0 Beta 3",
+        "hash": "47f833cbf68e32b02ada9003aaf79071"
     },
     "hampel_knownbots_useragent.txt": {
         "global_cache": false,
@@ -211,9 +229,9 @@
     },
     "option_explain.knownbotsEmailNewBots.txt": {
         "global_cache": false,
-        "version_id": 5000032,
-        "version_string": "5.0.0 Beta 2",
-        "hash": "bcea7e24527051b5c6b8d3ab921d8d47"
+        "version_id": 5000033,
+        "version_string": "5.0.0 Beta 3",
+        "hash": "35ef6d230bbd24ad704f4c8331603abc"
     },
     "option_explain.knownbotsFetchNewBots.txt": {
         "global_cache": false,

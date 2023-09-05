@@ -9,16 +9,18 @@
 </xf:pageaction>
 
 <xf:if is="$knownBots">
-	<div class="block-container">
-		<div class="block-body">
-			<p>
-				Last updated: {{ date($updated, 'r') }}
-			</p>
-			<ul>
-				<xf:foreach loop="$knownBots" value="$bot">
-					<li><a href="{{ $bot.link }}" target="_blank">{{ $bot.title }}</a></li>
-				</xf:foreach>
-			</ul>
+	<div class="block">	
+		<div class="block-container">
+			<h2 class="block-header">
+				{{ phrase('hampel_knownbots_last_updated', {'date': date($updated, 'r')}) }}
+			</h2>				
+			<div class="block-body block-row">
+				<ul>
+					<xf:foreach loop="$knownBots" value="$bot">
+						<li><a href="{{ $bot.link }}" target="_blank">{{ $bot.title }}</a></li>
+					</xf:foreach>
+				</ul>
+			</div>
 		</div>
 	</div>
 </xf:if>

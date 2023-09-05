@@ -1,40 +1,64 @@
 <xf:title>{{ phrase('hampel_knownbots_new') }}</xf:title>
 
-<xf:if is="$recentBots">
-	<xf:pageaction>
-		<xf:if is="$xf.options.knownbotsEmailNewBots.enabled && $xf.options.knownbotsEmailNewBots.email">
-			<xf:button href="{{ link('tools/hampel-knownbots-email') }}">
-				{{ phrase('hampel_knownbots_email') }}
-			</xf:button>
-		</xf:if>
-		<xf:button href="{{ link('tools/hampel-knownbots-purge') }}">
-			{{ phrase('hampel_knownbots_purge') }}
+<xf:pageaction>
+	<xf:if is="$xf.options.knownbotsEmailNewBots.enabled && $xf.options.knownbotsEmailNewBots.email">
+		<xf:button href="{{ link('tools/hampel-knownbots-email') }}">
+			{{ phrase('hampel_knownbots_email') }}
 		</xf:button>
-		<xf:button href="{{ link('tools/hampel-knownbots-clear') }}">
-			{{ phrase('hampel_knownbots_clear') }}
-		</xf:button>		
-	</xf:pageaction>
-</xf:if>
+	</xf:if>
+	<xf:button href="{{ link('tools/hampel-knownbots-purge') }}">
+		{{ phrase('hampel_knownbots_purge') }}
+	</xf:button>
+	<xf:button href="{{ link('tools/hampel-knownbots-clear') }}">
+		{{ phrase('hampel_knownbots_clear') }}
+	</xf:button>		
+</xf:pageaction>
 
-<div class="block-container">
-	<div class="block-body">
-		<xf:if is="$recentBots">		
-		<ul>
-			<xf:foreach loop="$recentBots" value="$bot">
-				<li>
-					<xf:if is="$bot.title">
-						<xf:if is="$bot.link">
-							<a target="_blank" href="{{ $bot.link }}">{{ $bot.title }}:</a>
-						<xf:else />
-							{{ $bot.title }}
-						</xf:if>
-					</xf:if>
-					[{{ $bot.user_agent }}]
-				</li>
-			</xf:foreach>
-		</ul>
-		<xf:else />
-			<div class="blockMessage">{{ phrase('hampel_knownbots_email_none_found') }}</div>
-		</xf:if>
+<div class="block">
+	<div class="block-container">
+		<h2 class="block-header">
+			{{ phrase('hampel_knownbots_recently_seen_bots') }}
+		</h2>	
+		<div class="block-body block-row">
+			<xf:if is="$bots">		
+				<ul>
+					<xf:foreach loop="$bots" value="$bot">
+						<li>
+							<xf:if is="$bot.link">
+								<a target="_blank" href="{{ $bot.link }}">{{ $bot.title }}:</a>
+								<xf:else />
+								{{ $bot.title }}
+							</xf:if>
+							[{{ $bot.user_agent }}]
+						</li>
+					</xf:foreach>
+				</ul>
+				<xf:else />
+				<div class="blockMessage">{{ phrase('hampel_knownbots_email_none_found') }}</div>
+			</xf:if>
+		</div>
+	</div>
+</div>
+<div class="block">
+	<div class="block-container">
+		<h2 class="block-header">
+			{{ phrase('hampel_knownbots_unidentified_user_agents') }}
+		</h2>			
+		<div class="block-body block-row">
+			<p>
+
+			</p>
+			<xf:if is="$unidentified">		
+				<ul>
+					<xf:foreach loop="$unidentified" value="$bot">
+						<li>
+							{{ $bot }}
+						</li>
+					</xf:foreach>
+				</ul>
+				<xf:else />
+				<div class="blockMessage">{{ phrase('hampel_knownbots_email_none_found') }}</div>
+			</xf:if>			
+		</div>
 	</div>
 </div>

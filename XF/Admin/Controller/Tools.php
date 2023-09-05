@@ -85,31 +85,33 @@ class Tools extends XFCP_Tools
         $data = $this->getRobot();
 		$newBots = $this->getRepo()->getUserAgentsForDisplay();
 
-        $recentBots = [];
+        $bots = [];
+        $unidentified = [];
 
         foreach ($newBots as $bot)
         {
-            $info = [
-                'user_agent' => $bot->user_agent,
-                'title' => $bot->robot_key,
-                'link' => '',
-            ];
-
             if ($bot->robot_key)
             {
                 $robot = $data->getRobotInfo($bot->robot_key);
 
-                if ($robot)
-                {
-                    $info['title'] = $robot['title'];
-                    $info['link'] = $robot['link'];
-                }
-            }
+                $info = [
+                    'user_agent' => $bot->user_agent,
+                    'title' => $robot['title'] ?? $bot->robot_key,
+                    'link' => $robot['link'] ?? '',
+                ];
 
-            $recentBots[] = $info;
+                $bots[$info['title']] = $info;
+            }
+            else
+            {
+                $unidentified[] = $bot->user_agent;
+            }
         }
 
-		$viewParams = compact('recentBots');
+        ksort($bots, SORT_NATURAL | SORT_FLAG_CASE);
+        natcasesort($unidentified);
+
+		$viewParams = compact('bots', 'unidentified');
 		return $this->view('Hampel\KnownBots:Tools\KnownBotsNew', 'hampel_knownbots_new', $viewParams);
 	}
 

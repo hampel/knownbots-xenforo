@@ -5,9 +5,9 @@
         "hash": "d41c89a7e3d8f79500ec5defc9c1d12a"
     },
     "admin/hampel_knownbots_list.html": {
-        "version_id": 5000032,
-        "version_string": "5.0.0 Beta 2",
-        "hash": "49ad9553e32a37d042b8f14450361f75"
+        "version_id": 5000033,
+        "version_string": "5.0.0 Beta 3",
+        "hash": "e073f696913f77577a610c95a6c23476"
     },
     "admin/hampel_knownbots_md.html": {
         "version_id": 4000031,
@@ -15,8 +15,8 @@
         "hash": "cdd575e0880eeedf56b15ad4b02b9934"
     },
     "admin/hampel_knownbots_new.html": {
-        "version_id": 5000032,
-        "version_string": "5.0.0 Beta 2",
-        "hash": "0718654a663c045dc2dc51de760382c0"
+        "version_id": 5000033,
+        "version_string": "5.0.0 Beta 3",
+        "hash": "1a10000ae296a127b1a4c1ad1b7d71a3"
     }
 }
