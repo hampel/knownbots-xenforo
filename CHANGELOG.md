@@ -1,6 +1,20 @@
 CHANGELOG
 =========
 
+5.0.0 beta 4 (2023-09-05)
+-------------------------
+
+* more detailed checks for valid API data to avoid breaking sites
+* change database structure to use user agent as a varbinary primary key, dropping hash and make robot_key nullable
+* change algorithm for adding user agents to database to minimise writes
+* update bot lists in admin ui
+
+5.0.0 beta 3 (2023-08-30)
+-------------------------
+
+* replace generic bots with complex (regex) based searches
+* add "Fetch new bots" button to Known Bots List in admin UI
+
 5.0.0 beta 2 (2023-08-25)
 -------------------------
 
