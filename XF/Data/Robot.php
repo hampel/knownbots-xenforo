@@ -102,7 +102,7 @@ class Robot extends XFCP_Robot
         return $generic ?? [];
     }
 
-    protected function getIgnored()
+    public function getIgnored()
     {
         $ignored = $this->loadBotData('ignored');
 

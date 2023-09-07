@@ -55,8 +55,8 @@ class Tools extends XFCP_Tools
 		$this->setSectionContext('hampelKnownBotsDetect');
 
 		$useragent = '';
-		$info = [];
-		$processed = false;
+		$botInfo = [];
+        $status = '';
 
 		if ($this->isPost())
 		{
@@ -68,13 +68,29 @@ class Tools extends XFCP_Tools
 
 			if (!empty($robot))
 			{
-				$info = $robots->getRobotInfo($robot);
+                $status = 'bot';
+				$botInfo = $robots->getRobotInfo($robot);
+                if (!$botInfo)
+                {
+                    $botInfo['title'] = $robot;
+                    $botInfo['link'] = '';
+                }
 			}
-
-			$processed = true;
+            elseif (empty($robots->userAgentMatchesValidBrowser($useragent)))
+            {
+                $status = 'browser';
+            }
+            elseif (in_array(strtolower($useragent), $robots->getIgnored()))
+            {
+                $status = 'ignored';
+            }
+            else
+            {
+                $status = 'unknown';
+            }
 		}
 
-		$viewParams = compact('useragent', 'info', 'processed');
+		$viewParams = compact('useragent', 'botInfo', 'status');
 		return $this->view('Hampel\KnownBots:Tools\KnownBotsDetect', 'hampel_knownbots_detect', $viewParams);
 	}
 
