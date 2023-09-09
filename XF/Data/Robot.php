@@ -150,6 +150,25 @@ class Robot extends XFCP_Robot
         return $this->getCache()->loadBotData($type);
     }
 
+    public function reprocessUserAgents()
+    {
+        $log = $this->getLog();
+        $repo = $this->getAgentRepo();
+        $agents = $repo->getUserAgentsForReprocessing();
+
+        foreach ($agents as $agent)
+        {
+            $robot_key = $this->userAgentMatchesRobot($agent->user_agent, false);
+            if (!empty($robot_key))
+            {
+                $user_agent = $agent->user_agent;
+
+                $log->info("Reprocessing user agent",  compact('user_agent', 'robot_key'));
+                $repo->addUserAgent($user_agent, $robot_key);
+            }
+        }
+    }
+
     /**
      * @return Cache
      */

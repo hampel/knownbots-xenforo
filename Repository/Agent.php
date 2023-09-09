@@ -55,6 +55,14 @@ class Agent extends Repository
         return $this->agentFinder()->order('last_updated', 'DESC')->fetch(100);
     }
 
+    public function getUserAgentsForReprocessing()
+    {
+        return $this->agentFinder()
+            ->where('robot_key', '=', null)
+            ->order('last_updated', 'DESC')
+            ->fetch();
+    }
+
     public function markUserAgentsSent()
     {
         $query = \XF::db()->query("

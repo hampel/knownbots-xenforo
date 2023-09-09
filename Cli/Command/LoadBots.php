@@ -32,6 +32,8 @@ class LoadBots extends Command
         $output->writeln("Loaded browsers: " . count($bots['browsers']));
 		$output->writeln("knownbots.json build date: {$checked}");
 
+        $fetcher->reprocessUserAgents();
+
 		return 0;
 	}
 

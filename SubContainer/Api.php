@@ -1,6 +1,7 @@
 <?php namespace Hampel\KnownBots\SubContainer;
 
 use Hampel\KnownBots\Api\BotFetcher;
+use Hampel\KnownBots\XF\Data\Robot;
 use League\Flysystem\FilesystemInterface;
 use XF\SubContainer\AbstractSubContainer;
 
@@ -71,7 +72,14 @@ class Api extends AbstractSubContainer
         $this->storeBots($bots); // write to fs
         $this->updateBots($bots); // generate code cache
 
+        $this->reprocessUserAgents();
+
         return $bots;
+    }
+
+    public function storeBots(array $bots)
+    {
+        return $this->fs()->put($this->local(), json_encode($bots, JSON_PRETTY_PRINT));
     }
 
     public function updateBots(array $bots)
@@ -91,11 +99,6 @@ class Api extends AbstractSubContainer
             'ignored' => count($bots['ignored']),
             'browsers' => count($bots['browsers']),
         ]);
-    }
-
-    public function storeBots(array $bots)
-    {
-        return $this->fs()->put($this->local(), json_encode($bots, JSON_PRETTY_PRINT));
     }
 
     public function loadBots()
@@ -164,6 +167,11 @@ class Api extends AbstractSubContainer
         return $test;
     }
 
+    public function reprocessUserAgents()
+    {
+        return $this->robots()->reprocessUserAgents();
+    }
+
     /**
      * @return Log
      */
@@ -188,5 +196,11 @@ class Api extends AbstractSubContainer
         return $this->app->fs();
     }
 
-
+    /**
+     * @return Robot
+     */
+    protected function robots()
+    {
+        return $this->app->data('XF:Robot');
+    }
 }
