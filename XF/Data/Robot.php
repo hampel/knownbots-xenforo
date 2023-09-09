@@ -84,7 +84,7 @@ class Robot extends XFCP_Robot
                 $message = 'Updated';
             }
 
-            $this->getLog()->info("{$message} user agent", compact('userAgent', 'robot_key'));
+            $this->getLog()->debug("{$message} user agent", compact('userAgent', 'robot_key'));
         }
     }
 
@@ -168,19 +168,28 @@ class Robot extends XFCP_Robot
                 $robot_key = $this->userAgentMatchesRobot($user_agent, false);
                 if (!empty($robot_key))
                 {
-                    $this->saveUserAgent(true, $user_agent, $robot_key);
+                    $rowsAffected = $repo->addUserAgent($user_agent, $robot_key);
+
+                    if ($rowsAffected == 2)
+                    {
+                        $log->info("Updated bot user agent", compact('user_agent', 'robot_key'));
+                    }
+                    elseif ($rowsAffected == 0)
+                    {
+                        $log->debug("Skipped existing bot user agent", compact('user_agent', 'robot_key'));
+                    }
                 }
                 elseif (empty($this->userAgentMatchesValidBrowser($user_agent)))
                 {
                     // we have a valid browser, delete the user agent
                     $repo->deleteUserAgent($user_agent);
-                    $log->info("Deleted valid browser user agent", compact('user_agent', 'robot_key'));
+                    $log->info("Deleted valid browser user agent", compact('user_agent'));
                 }
                 elseif (in_array(strtolower($user_agent), $this->getIgnored()))
                 {
                     // delete ignored user agents
                     $repo->deleteUserAgent($user_agent);
-                    $log->info("Deleted ignored browser user agent", compact('user_agent', 'robot_key'));
+                    $log->info("Deleted ignored user agent", compact('user_agent'));
                 }
             }
         }
