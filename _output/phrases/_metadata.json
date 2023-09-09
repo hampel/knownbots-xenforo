@@ -47,6 +47,18 @@
         "version_string": "5.0.0 Beta 2",
         "hash": "faa304a8fa83a813b50ff5a6cf24b1ca"
     },
+    "hampel_knownbots_bot_detected.txt": {
+        "global_cache": false,
+        "version_id": 5000034,
+        "version_string": "5.0.0 Beta 4",
+        "hash": "2f4f69c77b0f65b51ab8889c29f8ac66"
+    },
+    "hampel_knownbots_browser_detected.txt": {
+        "global_cache": false,
+        "version_id": 5000034,
+        "version_string": "5.0.0 Beta 4",
+        "hash": "71b556e7fe76333688ee1bd761695b81"
+    },
     "hampel_knownbots_clear.txt": {
         "global_cache": false,
         "version_id": 5000032,
@@ -70,12 +82,6 @@
         "version_id": 2060070,
         "version_string": "2.6.0",
         "hash": "0e370cdb75dc1ea3a1afc49c33e9dcc2"
-    },
-    "hampel_knownbots_detected.txt": {
-        "global_cache": false,
-        "version_id": 2060070,
-        "version_string": "2.6.0",
-        "hash": "2f4f69c77b0f65b51ab8889c29f8ac66"
     },
     "hampel_knownbots_detection_test.txt": {
         "global_cache": false,
@@ -124,6 +130,12 @@
         "version_id": 5000032,
         "version_string": "5.0.0 Beta 2",
         "hash": "5593d0bf26949327367a4294d0d5432c"
+    },
+    "hampel_knownbots_ignored.txt": {
+        "global_cache": false,
+        "version_id": 5000034,
+        "version_string": "5.0.0 Beta 4",
+        "hash": "f59173f7f7e1194c0fb4b93ec99d8fa2"
     },
     "hampel_knownbots_is_this_a_bot.txt": {
         "global_cache": false,

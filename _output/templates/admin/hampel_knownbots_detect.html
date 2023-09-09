@@ -1,11 +1,24 @@
 <xf:title>{{ phrase('hampel_knownbots_detection_test') }}</xf:title>
 
-<xf:if is="$processed">
+<xf:if is="$status">
 	
-	<xf:if is="$info">
+	<xf:if is="$status == 'bot'">
 		<div class="blockMessage blockMessage--success blockMessage--iconic">
-			{{ phrase('hampel_knownbots_detected:') }} <a href="{{ $info.link }}" target="_blank">{{ $info.title }}</a>
+			{{ phrase('hampel_knownbots_bot_detected:') }} 
+			<xf:if is="$botInfo.link">
+				<a href="{{ $botInfo.link }}" target="_blank">{{ $botInfo.title }}</a>
+			<xf:else />
+				{{ $botInfo.title }}
+			</xf:if>
 		</div>
+	<xf:elseif is="$status == 'browser'" />
+		<div class="blockMessage blockMessage--success blockMessage--iconic">
+			{{ phrase('hampel_knownbots_browser_detected') }} 
+		</div>
+	<xf:elseif is="$status == 'ignored'" />
+		<div class="blockMessage blockMessage--success blockMessage--iconic">
+			{{ phrase('hampel_knownbots_ignored') }} 
+		</div>		
 	<xf:else />
 		<div class="blockMessage blockMessage--important blockMessage--iconic">
 			{{ phrase('hampel_knownbots_none_detected') }}

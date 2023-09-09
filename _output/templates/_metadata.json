@@ -1,8 +1,8 @@
 {
     "admin/hampel_knownbots_detect.html": {
-        "version_id": 2060070,
-        "version_string": "2.6.0",
-        "hash": "d41c89a7e3d8f79500ec5defc9c1d12a"
+        "version_id": 5000034,
+        "version_string": "5.0.0 Beta 4",
+        "hash": "4b77bbdb4cd3a37a21b473ba2e8688f6"
     },
     "admin/hampel_knownbots_list.html": {
         "version_id": 5000034,
