@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+5.0.0 beta 6 (2023-09-10)
+-------------------------
+
+* reprocessing now checks for valid browsers and ignored user agents
+* new Cli command for reprocessing user agents, including the option to force all user agents to be reprocessed
+
 5.0.0 beta 5 (2023-09-09)
 -------------------------
 
