@@ -1,6 +1,7 @@
 <?php namespace Hampel\KnownBots\SubContainer;
 
 use Hampel\KnownBots\Api\BotFetcher;
+use Hampel\KnownBots\Option\StoreUserAgents;
 use Hampel\KnownBots\XF\Data\Robot;
 use League\Flysystem\FilesystemInterface;
 use XF\SubContainer\AbstractSubContainer;
@@ -167,9 +168,12 @@ class Api extends AbstractSubContainer
         return $test;
     }
 
-    public function reprocessUserAgents()
+    public function reprocessUserAgents($onlyNull = true)
     {
-        return $this->robots()->reprocessUserAgents();
+        if (StoreUserAgents::isEnabled())
+        {
+            return $this->robots()->reprocessUserAgents($onlyNull);
+        }
     }
 
     /**

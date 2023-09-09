@@ -41,6 +41,14 @@ class Agent extends Repository
         return 1;
     }
 
+    public function deleteUserAgent($userAgent)
+    {
+        \XF::db()->query("
+            DELETE FROM xf_knownbots_agent
+            WHERE user_agent = ?
+        ", [$userAgent]);
+    }
+
     public function getUserAgentsForEmail()
     {
         return $this->agentFinder()
@@ -55,12 +63,14 @@ class Agent extends Repository
         return $this->agentFinder()->order('last_updated', 'DESC')->fetch(100);
     }
 
-    public function getUserAgentsForReprocessing()
+    public function getUserAgentsForReprocessing($onlyNull = true)
     {
-        return $this->agentFinder()
-            ->where('robot_key', '=', null)
-            ->order('last_updated', 'DESC')
-            ->fetch();
+        $query = $this->agentFinder();
+        if ($onlyNull)
+        {
+            $query->where('robot_key', '=', null);
+        }
+        return $query->order('last_updated', 'DESC')->fetch();
     }
 
     public function markUserAgentsSent()

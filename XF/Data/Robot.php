@@ -64,11 +64,11 @@ class Robot extends XFCP_Robot
 
     // -------------------------------------------------------------
 
-    protected function saveUserAgent($save, $userAgent, $robotName = null)
+    protected function saveUserAgent($save, $userAgent, $robot_key = null)
     {
         if ($save && StoreUserAgents::isEnabled())
         {
-            $rowsAffected = $this->getAgentRepo()->addUserAgent($userAgent, $robotName);
+            $rowsAffected = $this->getAgentRepo()->addUserAgent($userAgent, $robot_key);
 
             $message = '';
             if ($rowsAffected == 0)
@@ -84,7 +84,7 @@ class Robot extends XFCP_Robot
                 $message = 'Updated';
             }
 
-            $this->getLog()->debug("{$message} user agent", compact('userAgent', 'robotName'));
+            $this->getLog()->info("{$message} user agent", compact('userAgent', 'robot_key'));
         }
     }
 
@@ -150,21 +150,38 @@ class Robot extends XFCP_Robot
         return $this->getCache()->loadBotData($type);
     }
 
-    public function reprocessUserAgents()
+    public function reprocessUserAgents($onlyNull = true)
     {
         $log = $this->getLog();
         $repo = $this->getAgentRepo();
-        $agents = $repo->getUserAgentsForReprocessing();
+        $agents = $repo->getUserAgentsForReprocessing($onlyNull);
 
-        foreach ($agents as $agent)
+        if ($agents->count() > 0)
         {
-            $robot_key = $this->userAgentMatchesRobot($agent->user_agent, false);
-            if (!empty($robot_key))
+            $nullOrAll = $onlyNull ? "unknown" : "all";
+            $log->info("Reprocessing {$nullOrAll} user agents");
+
+            foreach ($agents as $agent)
             {
                 $user_agent = $agent->user_agent;
 
-                $log->info("Reprocessing user agent",  compact('user_agent', 'robot_key'));
-                $repo->addUserAgent($user_agent, $robot_key);
+                $robot_key = $this->userAgentMatchesRobot($user_agent, false);
+                if (!empty($robot_key))
+                {
+                    $this->saveUserAgent(true, $user_agent, $robot_key);
+                }
+                elseif (empty($this->userAgentMatchesValidBrowser($user_agent)))
+                {
+                    // we have a valid browser, delete the user agent
+                    $repo->deleteUserAgent($user_agent);
+                    $log->info("Deleted valid browser user agent", compact('user_agent', 'robot_key'));
+                }
+                elseif (in_array(strtolower($user_agent), $this->getIgnored()))
+                {
+                    // delete ignored user agents
+                    $repo->deleteUserAgent($user_agent);
+                    $log->info("Deleted ignored browser user agent", compact('user_agent', 'robot_key'));
+                }
             }
         }
     }
