@@ -44,7 +44,7 @@ class BotFetcher
             $options = ['headers' => ['If-Modified-Since' => $since]];
         }
 
-        $log->debug('Fetching updated bots', compact('since'));
+        $log->info('Fetching updated bots', compact('since'));
 
         $url = "{$this->baseUrl}/bots";
         $destination = File::getNamedTempFile(sprintf("knownbots-%s.json", \XF::$time));

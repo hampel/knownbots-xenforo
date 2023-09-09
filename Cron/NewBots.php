@@ -14,14 +14,14 @@ class NewBots
 
 		if (!EmailNewBots::isEnabled())
 		{
-			$log->debug("Email new bots: disabled - aborting");
+			$log->info("Email new bots: disabled - aborting");
 			return;
 		}
 
 		$emailTo = EmailNewBots::getAddresses();
 		if (empty($emailTo))
 		{
-			$log->debug("Email new bots: no email address configured - aborting");
+			$log->info("Email new bots: no email address configured - aborting");
 			return;
 		}
 
@@ -30,7 +30,7 @@ class NewBots
 		$bots = $repo->getUserAgentsForEmail();
 		if (empty($bots))
 		{
-			$log->debug("Email new bots: no bots found - aborting");
+			$log->info("Email new bots: no bots found - aborting");
 			return;
 		}
 

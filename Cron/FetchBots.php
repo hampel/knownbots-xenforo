@@ -12,7 +12,7 @@ class FetchBots
 
         if (!FetchNewBots::isEnabled())
         {
-            $log->debug("Fetch new bots: disabled - aborting");
+            $log->info("Fetch new bots: disabled - aborting");
             return;
         }
 
