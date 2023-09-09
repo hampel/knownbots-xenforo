@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+5.0.0 beta 5 (2023-09-09)
+-------------------------
+
+* bugfix: don't linkify known bot list when no links supplied
+* improvements to user agent test in admin ui
+* automatically reprocess user agents after loading new bot data
+
 5.0.0 beta 4 (2023-09-05)
 -------------------------
 
