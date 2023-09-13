@@ -106,7 +106,12 @@ class Robot extends XFCP_Robot
     {
         $ignored = $this->loadBotData('ignored');
 
-        return $ignored ?? [];
+        if (!$ignored)
+        {
+            return [];
+        }
+
+        return array_map('strtolower', $ignored);
     }
 
     protected function getBrowsers()
@@ -155,6 +160,7 @@ class Robot extends XFCP_Robot
         $log = $this->getLog();
         $repo = $this->getAgentRepo();
         $agents = $repo->getUserAgentsForReprocessing($onlyNull);
+        $ignored = $this->getIgnored();
 
         if ($agents->count() > 0)
         {
@@ -185,7 +191,7 @@ class Robot extends XFCP_Robot
                     $repo->deleteUserAgent($user_agent);
                     $log->info("Deleted valid browser user agent", compact('user_agent'));
                 }
-                elseif (in_array(strtolower($user_agent), $this->getIgnored()))
+                elseif (in_array(strtolower($user_agent), $ignored))
                 {
                     // delete ignored user agents
                     $repo->deleteUserAgent($user_agent);
