@@ -60,7 +60,11 @@ class Agent extends Repository
 
     public function getUserAgentsForDisplay()
     {
-        return $this->agentFinder()->order('last_updated', 'DESC')->fetch(100);
+        return $this
+            ->agentFinder()
+            ->whereOr(['robot_key', '!=', null], ['sent', '=', 0])
+            ->order('last_updated', 'DESC')
+            ->fetch(100);
     }
 
     public function getUserAgentsForReprocessing($onlyNull = true)
