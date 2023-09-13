@@ -4,7 +4,7 @@ use XF\Mvc\Entity\Repository;
 
 class Agent extends Repository
 {
-    public function addUserAgent($userAgent, $robot_key = null)
+    public function addUserAgent($userAgent, $robot_key, $touch = true)
     {
         $userAgent = trim(substr($userAgent, 0, 512));
 
@@ -18,7 +18,7 @@ class Agent extends Repository
         {
             $robot_key = $robot_key ?? $agent['robot_key'];
 
-            if ($agent['robot_key'] != $robot_key || $agent['last_updated'] < $midnight)
+            if ($agent['robot_key'] != $robot_key || ($touch && $agent['last_updated'] < $midnight))
             {
                 \XF::db()->query("
                  UPDATE xf_knownbots_agent 

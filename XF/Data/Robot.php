@@ -174,7 +174,8 @@ class Robot extends XFCP_Robot
                 $robot_key = $this->userAgentMatchesRobot($user_agent, false);
                 if (!empty($robot_key))
                 {
-                    $rowsAffected = $repo->addUserAgent($user_agent, $robot_key);
+                    // add the robot info to the database if it has changed, but don't update the last_updated time
+                    $rowsAffected = $repo->addUserAgent($user_agent, $robot_key, false);
 
                     if ($rowsAffected == 2)
                     {
