@@ -16,7 +16,7 @@ class Robot extends XFCP_Robot
 
     public function userAgentMatchesRobot($userAgent, $save = true)
 	{
-		if ($robotName = parent::userAgentMatchesRobot($userAgent))
+		if ($robotName = $this->userAgentMatchesSimpleBot($userAgent))
 		{
 			// we found a robot
             $this->saveUserAgent($save, $userAgent, $robotName);
@@ -119,6 +119,22 @@ class Robot extends XFCP_Robot
         $browsers = $this->loadBotData('browsers');
 
         return $browsers ?? [];
+    }
+
+    protected function userAgentMatchesSimpleBot($userAgent)
+    {
+        $userAgent = strtolower($userAgent);
+
+        foreach ($this->getRobotUserAgents() as $search => $bot)
+        {
+            // assume all search strings are already lowercase
+            if (strpos($userAgent, $search) !== false)
+            {
+                return $bot;
+            }
+        }
+
+        return null;
     }
 
     protected function userAgentMatchesComplexBot($userAgent)
