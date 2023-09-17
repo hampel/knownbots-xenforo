@@ -1,27 +1,27 @@
 <?php namespace Hampel\KnownBots\Cron;
 
-use Hampel\KnownBots\Option\EmailNewBots;
+use Hampel\KnownBots\Option\EmailUserAgents;
 use Hampel\KnownBots\Option\StoreUserAgents;
 use Hampel\KnownBots\Service\BotMailer;
 use Hampel\KnownBots\SubContainer\Log;
 use Hampel\KnownBots\Repository\Agent;
 
-class NewBots
+class NewUserAgents
 { 
-	public static function sendWeeklyEmail()
+	public static function sendEmail()
 	{
 		$log = self::getLog();
 
-		if (!EmailNewBots::isEnabled())
+		if (!EmailUserAgents::isEnabled())
 		{
-			$log->info("Email new bots: disabled - aborting");
+			$log->info("Email user agents: disabled - aborting");
 			return;
 		}
 
-		$emailTo = EmailNewBots::getAddresses();
+		$emailTo = EmailUserAgents::getAddresses();
 		if (empty($emailTo))
 		{
-			$log->info("Email new bots: no email address configured - aborting");
+			$log->info("Email user agents: no email address configured - aborting");
 			return;
 		}
 
@@ -30,11 +30,11 @@ class NewBots
 		$bots = $repo->getUserAgentsForEmail();
 		if (empty($bots))
 		{
-			$log->info("Email new bots: no bots found - aborting");
+			$log->info("Email user agents: no bots found - aborting");
 			return;
 		}
 
-		$log->info("Email new bots: sending detected bots", compact('emailTo', 'bots'));
+		$log->info("Email user agents: sending detected bots", compact('emailTo', 'bots'));
 
 		$service = self::getBotMailerService();
 

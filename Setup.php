@@ -51,7 +51,7 @@ class Setup extends AbstractSetup
             $this->randomizeFetchCron();
         }
 
-        if ($previousVersion < 5000031)
+        if ($previousVersion < 5000038)
         {
             $this->randomizeEmailCron();
         }
@@ -125,15 +125,13 @@ class Setup extends AbstractSetup
     protected function randomizeEmailCron()
     {
         // randomize cron run time
-        $cron = $this->app()->find('XF:CronEntry', 'hampelKnownBotsNewBots');
+        $cron = $this->app()->find('XF:CronEntry', 'hampelKnownBotsUserAgents');
         if ($cron)
         {
-            $dow = rand(0, 6);
             $hours = rand(0, 23);
             $minutes = rand(0, 59);
 
             $rules = $cron->run_rules;
-            $rules['dow'] = [$dow];
             $rules['hours'] = [$hours];
             $rules['minutes'] = [$minutes];
             $cron->run_rules = $rules;

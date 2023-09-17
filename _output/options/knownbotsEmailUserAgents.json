@@ -9,7 +9,7 @@
     "validation_class": "",
     "validation_method": "",
     "advanced": false,
-    "default_value": "{\"enabled\":\"0\",\"email\":\"knownbots@hampel.io\"}",
+    "default_value": "{\"enabled\":\"1\",\"email\":\"knownbots@hampel.io\"}",
     "relations": {
         "knownbots": 210
     }

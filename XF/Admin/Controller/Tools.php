@@ -1,6 +1,6 @@
 <?php namespace Hampel\KnownBots\XF\Admin\Controller;
 
-use Hampel\KnownBots\Option\EmailNewBots;
+use Hampel\KnownBots\Option\EmailUserAgents;
 use Hampel\KnownBots\Option\StoreUserAgents;
 use Hampel\KnownBots\Service\BotMailer;
 use Hampel\KnownBots\SubContainer\Api;
@@ -136,9 +136,9 @@ class Tools extends XFCP_Tools
 		$log = $this->getLogger();
 		$this->setSectionContext('hampelKnownBotsNew');
 
-		$emailTo = EmailNewBots::getAddresses();
+		$emailTo = EmailUserAgents::getAddresses();
 
-		if (!EmailNewBots::isEnabled() || empty($emailTo))
+		if (!EmailUserAgents::isEnabled() || empty($emailTo))
 		{
 			return $this->message(\XF::phrase('hampel_knownbots_email_not_configured'));
 		}

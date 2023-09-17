@@ -2,14 +2,14 @@
 
 use XF\Option\AbstractOption;
 
-class EmailNewBots extends AbstractOption
+class EmailUserAgents extends AbstractOption
 {
 	/**
 	 * @return bool
 	 */
 	public static function get()
 	{
-		return \XF::options()->knownbotsEmailNewBots;
+		return \XF::options()->knownbotsEmailUserAgents;
 	}
 
 	/**
