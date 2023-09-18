@@ -1,7 +1,7 @@
 <xf:title>{{ phrase('hampel_knownbots_new') }}</xf:title>
 
 <xf:pageaction>
-	<xf:if is="$xf.options.knownbotsEmailNewBots.enabled && $xf.options.knownbotsEmailNewBots.email">
+	<xf:if is="$xf.options.knownbotsEmailUserAgents.enabled && $xf.options.knownbotsEmailUserAgents.email">
 		<xf:button href="{{ link('tools/hampel-knownbots-email') }}">
 			{{ phrase('hampel_knownbots_email') }}
 		</xf:button>
