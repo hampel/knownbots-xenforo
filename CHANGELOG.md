@@ -1,48 +1,31 @@
 CHANGELOG
 =========
 
-5.0.0 beta 6 (2023-09-10)
--------------------------
-
-* reprocessing now checks for valid browsers and ignored user agents
-* new Cli command for reprocessing user agents, including the option to force all user agents to be reprocessed
-
-5.0.0 beta 5 (2023-09-09)
--------------------------
-
-* bugfix: don't linkify known bot list when no links supplied
-* improvements to user agent test in admin ui
-* automatically reprocess user agents after loading new bot data
-
-5.0.0 beta 4 (2023-09-05)
--------------------------
-
-* more detailed checks for valid API data to avoid breaking sites
-* change database structure to use user agent as a varbinary primary key, dropping hash and make robot_key nullable
-* change algorithm for adding user agents to database to minimise writes
-* update bot lists in admin ui
-
-5.0.0 beta 3 (2023-08-30)
--------------------------
-
-* replace generic bots with complex (regex) based searches
-* add "Fetch new bots" button to Known Bots List in admin UI
-
-5.0.0 beta 2 (2023-08-25)
--------------------------
-
-* trim some additional information from the end of browser search results
-
-5.0.0 beta 1 (2023-08-24)
--------------------------
+5.0.0 (2023-09-19)
+------------------
 
 * major rewrite - no longer use "bot|spider|crawl" search strings and false-positive lists to identify possible bots, 
   rely instead on search strings supplied by API to identify valid browsers and store them directly in the database 
   rather than the SimpleCache, ready for emailing
+* more complete agent reprocessing - check for valid browsers and ignored agents
+* change userAgentMatchesRobot to use strpos instead of preg_match, it's much faster and won't fall over with extremely 
+  high numbers of bot match strings
 * allow BotFetcher to be manually configured to bypass untrusted http agent - used for testing when API source is on a 
   .local domain
+* change email cron to daily send
 * using new v2 API from KnownBots
-* minimum version of PHP now 7.1 due to hashing function used when storing user agents
+* replace generic bots with complex (regex) based searches
+* add "Fetch new bots" button to Known Bots List in admin UI
+* automatically reprocess user agents after loading new bot data
+* new Cli command for reprocessing user agents, including the option to force all user agents to be reprocessed
+* improvements to user agent test in admin ui to be more descriptive
+* bcc additional email address to keep them private
+* bugfix: don't linkify known bot list when no links supplied
+
+4.0.1 (2023-09-01)
+------------------
+
+* more detailed checks for valid API data to avoid breaking sites
 
 4.0.0 (2023-08-14)
 ------------------
