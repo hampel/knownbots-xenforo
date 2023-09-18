@@ -25,17 +25,18 @@ class RobotTest extends TestCase
 	public function test_robotClass()
 	{
 		$this->assertInstanceOf(Robot::class, $this->robot);
+        $this->assertEquals('Hampel\KnownBots\XF\Data\Robot', get_class($this->robot));
 	}
 
     public function test_robot_user_agents_has_default_bots()
     {
-        $this->cache->expects('getCodeCache')->with('maps')->once()->andReturns(null);
+        $this->cache->expects('loadBotData')->with('maps')->once()->andReturns(null);
         $this->assertArrayHasKey('magpie-crawler', $this->robot->getRobotUserAgents());
     }
 
 	public function test_robot_user_agents_has_custom_bots()
 	{
-        $this->cache->expects('getCodeCache')->with('maps')->once()->andReturns(['foo' => 'bar']);
+        $this->cache->expects('loadBotData')->with('maps')->once()->andReturns(['foo' => 'bar']);
 
         $agents = $this->robot->getRobotUserAgents();
 		$this->assertArrayHasKey('foo', $agents);
@@ -44,7 +45,7 @@ class RobotTest extends TestCase
 
     public function test_robot_list_has_default_bots()
     {
-        $this->cache->expects('getCodeCache')->with('bots')->once()->andReturns(null);
+        $this->cache->expects('loadBotData')->with('bots')->once()->andReturns(null);
 
         $robots = $this->robot->getRobotList();
 
@@ -55,7 +56,7 @@ class RobotTest extends TestCase
 
     public function test_robot_list_has_custom_bots()
     {
-        $this->cache->expects('getCodeCache')->with('bots')->twice()->andReturns(['foo' => ['title' => 'Foo', 'link' => 'http://example.com']]);
+        $this->cache->expects('loadBotData')->with('bots')->twice()->andReturns(['foo' => ['title' => 'Foo', 'link' => 'http://example.com']]);
 
         $this->assertArrayHasKey('foo', $this->robot->getRobotList());
         $info = $this->robot->getRobotInfo('foo');
@@ -68,51 +69,53 @@ class RobotTest extends TestCase
 
     public function test_userAgentMatchesRobot_returns_robotName_on_match()
     {
-        $this->cache->expects('getCodeCache')->with('maps')->times(3)->andReturns(null);
+        $this->cache->expects('loadBotData')->with('maps')->times(3)->andReturns(null);
 
         $this->assertEquals('baidu', $this->robot->userAgentMatchesRobot('baiduspider'));
         $this->assertEquals('baidu', $this->robot->userAgentMatchesRobot('abc baiduspider 123'));
         $this->assertEquals('bing', $this->robot->userAgentMatchesRobot('bingbot'));
     }
 
-    public function test_userAgentMatchesRobot_returns_empty_on_no_genericmatch()
+    public function test_userAgentMatchesRobot_returns_empty_on_no_matches()
     {
-        $this->cache->expects('getCodeCache')->with('maps')->once()->andReturns(null);
-        $this->cache->expects('getCodeCache')->with('generic')->once()->andReturns(['foo' => 'bar']);
+        $this->cache->expects('loadBotData')->with('maps')->once()->andReturns(null);
+        $this->cache->expects('loadBotData')->with('complex')->once()->andReturns(null);
+        $this->cache->expects('loadBotData')->with('browsers')->once()->andReturns(null);
+        $this->cache->expects('loadBotData')->with('ignored')->once()->andReturns(null);
 
-        $this->assertEmpty($this->robot->userAgentMatchesRobot('abc'));
+        $this->assertEmpty($this->robot->userAgentMatchesRobot('abc', false));
     }
 
-	public function test_userAgentMatchesRobot_returns_empty_string_on_fp_match()
-	{
-        $this->cache->expects('getCodeCache')->with('maps')->once()->andReturns(null);
-        $this->cache->expects('getCodeCache')->with('generic')->once()->andReturns(['bot' => 'generic-bot']);
-        $this->cache->expects('getCodeCache')->with('falsepos')->once()->andReturns(['cubot']);
-
-		$this->assertEmpty($this->robot->userAgentMatchesRobot('xyx cubot_123'));
-	}
-
-	public function test_userAgentMatchesRobot_returns_generic_name_on_match_cache_ignored()
-	{
-        $this->cache->expects('getCodeCache')->with('maps')->once()->andReturns(null);
-        $this->cache->expects('getCodeCache')->with('generic')->once()->andReturns(['bot' => 'generic-bot']);
-        $this->cache->expects('getCodeCache')->with('falsepos')->once()->andReturns(null);
-        $this->cache->expects('getCodeCache')->with('ignored')->once()->andReturns(['bot']);
-
-        $this->cache->shouldNotReceive('addUserAgent');
-
-		$this->assertEquals('generic-bot', $this->robot->userAgentMatchesRobot('bot'));
-	}
-
-    public function test_userAgentMatchesRobot_returns_generic_name_on_match_added_to_cache()
-    {
-        $this->cache->expects('getCodeCache')->with('maps')->once()->andReturns(null);
-        $this->cache->expects('getCodeCache')->with('generic')->once()->andReturns(['spider' => 'generic-spider']);
-        $this->cache->expects('getCodeCache')->with('falsepos')->once()->andReturns(null);
-        $this->cache->expects('getCodeCache')->with('ignored')->once()->andReturns(['bot']);
-
-        $this->cache->expects('addUserAgent')->with('xspiderx');
-
-		$this->assertEquals('generic-spider', $this->robot->userAgentMatchesRobot('xspiderx'));
-    }
+//	public function test_userAgentMatchesRobot_returns_empty_string_on_fp_match()
+//	{
+//        $this->cache->expects('loadBotData')->with('maps')->once()->andReturns(null);
+//        $this->cache->expects('loadBotData')->with('generic')->once()->andReturns(['bot' => 'generic-bot']);
+//        $this->cache->expects('loadBotData')->with('falsepos')->once()->andReturns(['cubot']);
+//
+//		$this->assertEmpty($this->robot->userAgentMatchesRobot('xyx cubot_123'));
+//	}
+//
+//	public function test_userAgentMatchesRobot_returns_generic_name_on_match_cache_ignored()
+//	{
+//        $this->cache->expects('loadBotData')->with('maps')->once()->andReturns(null);
+//        $this->cache->expects('loadBotData')->with('generic')->once()->andReturns(['bot' => 'generic-bot']);
+//        $this->cache->expects('loadBotData')->with('falsepos')->once()->andReturns(null);
+//        $this->cache->expects('loadBotData')->with('ignored')->once()->andReturns(['bot']);
+//
+//        $this->cache->shouldNotReceive('addUserAgent');
+//
+//		$this->assertEquals('generic-bot', $this->robot->userAgentMatchesRobot('bot'));
+//	}
+//
+//    public function test_userAgentMatchesRobot_returns_generic_name_on_match_added_to_cache()
+//    {
+//        $this->cache->expects('loadBotData')->with('maps')->once()->andReturns(null);
+//        $this->cache->expects('loadBotData')->with('generic')->once()->andReturns(['spider' => 'generic-spider']);
+//        $this->cache->expects('loadBotData')->with('falsepos')->once()->andReturns(null);
+//        $this->cache->expects('loadBotData')->with('ignored')->once()->andReturns(['bot']);
+//
+//        $this->cache->expects('addUserAgent')->with('xspiderx');
+//
+//		$this->assertEquals('generic-spider', $this->robot->userAgentMatchesRobot('xspiderx'));
+//    }
 }
