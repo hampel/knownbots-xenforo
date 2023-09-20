@@ -137,6 +137,51 @@ Title: AhrefsBot
 
 Use the `-s` option to save your user agent strings to the database for further processing.
 
+#### Parse Log Files
+
+Reads web server log file information and lists all detected bots.
+
+```bash
+$ php cmd.php known-bots:parse {file}
+```
+
+Use the `-a` or `--agents` option to simply list all user agents found in the supplied log file - no bot detection occurs
+
+Command will also accept data from stdin if you specify a hyphen as the file name.
+
+Note that this tool assumes you are using standard "Apache" log file format, which is used by most web servers.
+
+Usage examples:
+
+List all user agents. Invalid (or no) data will be returned if you are not using standard Apache log file format.
+```bash
+$ php cmd.php known-bots:parse --agents /var/log/nginx/xenforo/xenforo.access.log
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36
+Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
+Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Mobile Safari/537.36
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36 Edg/94.0.992.37
+...
+```
+
+List bots:
+```bash
+$ php cmd.php known-bots:parse /var/log/nginx/xenforo/xenforo.access.log
+[postman                  ] PostmanRuntime/7.28.4
+[guzzlehttp               ] GuzzleHttp/7
+[postman                  ] PostmanRuntime/7.29.0
+[curl                     ] curl/7.68.0
+...
+```
+
+Examples of reading data from stdin:
+```bash
+$ cat /var/log/nginx/xenforo/xenforo.access.log | php cmd.php known-bots:parse -
+...
+
+$ php cmd.php known-bots:parse - < /var/log/nginx/xenforo/xenforo.access.log
+...
+```
+
 ### Privacy
 
 #### Privacy Summary
