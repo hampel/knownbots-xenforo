@@ -67,7 +67,7 @@ of data stored. Set days to zero to never purge user agent data (not recommended
 #### Email user agents
 
 Enable to periodically email user agent strings to the addon author for further analysis to detect previously 
-unidentified bots. This option only has effect is the "Store user agents in database" option is also enabled.
+unidentified bots. This option only has effect if the "Store user agents in database" option is also enabled.
 
 By default, the system sends emails directly to the addon author at `knownbots@hampel.io` - but you may have it send 
 email to any address if you want to check what information the emails contain. You may manually forward the email to 
@@ -107,7 +107,7 @@ Load bots data from the `knownbots.json` file already on the filesystem.
 $ php cmd.php known-bots:load
 ```
 
-The addon looks for the file `internat_data/knownbots.json` - if you download it manually and place the updated version
+The addon looks for the file `internal_data/knownbots.json` - if you download it manually and place the updated version
 in this location, you may then execute the above command to load the data without calling the API.
 
 #### Reprocess User Agents
