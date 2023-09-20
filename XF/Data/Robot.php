@@ -30,7 +30,7 @@ class Robot extends XFCP_Robot
 
             return $robotName;
         }
-        elseif (!StoreUserAgents::isEnabled())
+        elseif (!$save || !StoreUserAgents::isEnabled())
         {
             // if we're not going to store the user agents for further analysis, there's no point continuing
             return '';
