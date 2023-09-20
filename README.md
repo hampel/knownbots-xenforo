@@ -139,16 +139,15 @@ Use the `-s` option to save your user agent strings to the database for further 
 
 ### Privacy
 
-#### Executive summary
+#### Privacy Summary
 
 Depending on the options enabled, there is some information collected about sites using this 
 addon by the addon author - but it is only ever used for anonymous analytics and for troubleshooting purposes and never 
 disclosed to third parties, nor is it ever used for marketing or any purposes other than for the operation of this 
 addon.
 
-The addon author commits to being a "good citizen" in regard to how data is used and collected and will gladly answer 
-any questions about how our systems work. We also provide options to disable or bypass certain functionality if you
-remain uncomfortable about using the systems as designed.
+Options are provided to disable or bypass certain functionality if you remain uncomfortable about using the systems as 
+designed.
 
 #### Details
 
@@ -159,7 +158,11 @@ the data returned.
 API calls by the addon are made using the standard "untrusted" HTTP client built into XenForo, which means they are 
 forwarded through a proxy server if you have one configured. Standard web server log files on the API server will 
 contain information about requests made, including the IP address of your server (or proxy if used), and your forum 
-name as supplied in the user agent of the XenForo HTTP client.
+name as supplied in the user agent of the XenForo HTTP client. For example:
+
+```
+2400:8907:e001:xx::xxx - - [15/Aug/2023:00:00:07 +0000] "GET /api/bots?since=1691729327 HTTP/1.1" 200 119647 "-" "XenForo/2.x (https://www.example.com)"
+```
 
 HTTP server log information is used solely for analytics and troubleshooting purposes and is never made available to 
 third parties.
