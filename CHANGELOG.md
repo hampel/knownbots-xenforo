@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+5.1.0 (2023-09-21)
+------------------
+
+* new CLI tool to parse web server log files and display detected bots
+
 5.0.0 (2023-09-19)
 ------------------
 
