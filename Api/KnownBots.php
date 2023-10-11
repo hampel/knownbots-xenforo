@@ -1,5 +1,8 @@
 <?php namespace Hampel\KnownBots\Api;
 
+use Hampel\KnownBots\Exception\CustomerException;
+use Hampel\KnownBots\Exception\RequestException;
+use Hampel\KnownBots\Exception\ServerException;
 use Hampel\KnownBots\SubContainer\Log;
 use XF\Util\File;
 
@@ -27,12 +30,17 @@ class KnownBots
     {
         $log = $this->getLogger();
 
-        $options = [];
+        $options = [
+            'headers' => [
+                'Accept' => "application/json",
+            ],
+        ];
+
         $since = null;
         if (!$force)
         {
             $since = date('D, d M Y H:i:s', $lastChecked) . " GMT";
-            $options = ['headers' => ['If-Modified-Since' => $since]];
+            $options['headers']['If-Modified-Since'] = $since;
         }
 
         $url = "{$this->baseUrl}/v3/bots";
@@ -54,9 +62,8 @@ class KnownBots
 
         if(!$response)
         {
-            $log->error('Error fetching bots', compact('url', 'destination', 'since', 'error'));
-            \XF::logError($error);
-            return false;
+            // something went wrong with the HTTP request
+            throw new RequestException('fetching bots', $error);
         }
 
         $status = $response->getStatusCode();
@@ -77,16 +84,13 @@ class KnownBots
         }
         elseif ($status >= 500)
         {
-            // service unavailable or similar - log it, but don't create an error message, it's hopefully only temporary
-            $log->warning('Server error fetching bots', compact('url', 'destination', 'since', 'reason'));
-            return null;
+            // service unavailable or similar - hopefully a temporary error
+            throw new ServerException('fetching bots', $reason, $status);
         }
         else
         {
             // some other more serious error - will log it and create error message for XF logs
-            \XF::logError("Could not fetch bots - request to [{$url}] returned status code [{$status}]: {$reason}");
-            $log->error('Could not fetch bots', compact('url', 'destination', 'since', 'reason'));
-            return false;
+            throw new CustomerException('fetching bots', $reason, $status);
         }
     }
 

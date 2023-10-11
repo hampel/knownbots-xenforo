@@ -1,5 +1,7 @@
 <?php namespace Hampel\KnownBots\Cron;
 
+use Hampel\KnownBots\Exception\KnownBotsException;
+use Hampel\KnownBots\Exception\ServerException;
 use Hampel\KnownBots\Option\FetchNewBots;
 use Hampel\KnownBots\SubContainer\Api;
 use Hampel\KnownBots\SubContainer\Log;
@@ -16,7 +18,22 @@ class FetchBots
             return;
         }
 
-        self::getApi()->fetchBots();
+        try
+        {
+            self::getApi()->fetchBots();
+        }
+        catch (KnownBotsException $e)
+        {
+            if (get_class($e) == ServerException::class)
+            {
+                $log->warning($e->getMessage());
+            }
+            else
+            {
+                $log->error($e->getMessage());
+                \XF::logException($e);
+            }
+        }
     }
 
     /**

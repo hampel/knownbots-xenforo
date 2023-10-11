@@ -1,5 +1,6 @@
 <?php namespace Hampel\KnownBots\Cli\Command;
 
+use Hampel\KnownBots\Exception\KnownBotsException;
 use Hampel\KnownBots\SubContainer\Api;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -25,18 +26,21 @@ class FetchBots extends Command
 	{
 	    $force = $input->getOption('force');
 
-		$bots = $this->getApi()->fetchBots($force);
+        try
+        {
+            $bots = $this->getApi()->fetchBots($force);
+        }
+        catch (KnownBotsException $e)
+        {
+            \XF::logException($e);
+            $output->writeln($e->getMessage());
+            return 1;
+        }
 
 		if (is_null($bots))
         {
             $output->writeln("No updates available");
             return 0;
-        }
-
-		if ($bots === false)
-        {
-            $output->writeln("<error>Error processing updates - check XenForo logs</error>");
-            return 1;
         }
 
         $checked = $this->formatTime($bots['built']);

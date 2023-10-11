@@ -1,5 +1,6 @@
 <?php namespace Hampel\KnownBots\XF\Admin\Controller;
 
+use Hampel\KnownBots\Exception\KnownBotsException;
 use Hampel\KnownBots\Option\EmailUserAgents;
 use Hampel\KnownBots\Option\StoreUserAgents;
 use Hampel\KnownBots\Service\BotMailer;
@@ -30,16 +31,18 @@ class Tools extends XFCP_Tools
     {
         $this->setSectionContext('hampelKnownBotsList');
 
-        $botData = $this->getApi()->fetchBots();
+        try
+        {
+            $botData = $this->getApi()->fetchBots();
+        }
+        catch (KnownBotsException $e)
+        {
+            return $this->message(\XF::phrase('hampel_knownbots_error_updating', ['message' => $e->getMessage()]));
+        }
 
         if (is_null($botData))
         {
             return $this->message(\XF::phrase('hampel_knownbots_no_updates_available'));
-        }
-
-        if ($botData === false)
-        {
-            return $this->message(\XF::phrase('hampel_knownbots_error_updating'));
         }
 
         $lang = \XF::language();
