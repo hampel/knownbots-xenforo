@@ -94,6 +94,114 @@ class KnownBots
         }
     }
 
+    public function validate($validation_token, $domain)
+    {
+        $log = $this->getLogger();
+
+        $options = [
+            'json' => compact('validation_token', 'domain'),
+            'headers' => [
+                'Accept' => "application/json",
+            ],
+        ];
+
+        $url = "{$this->baseUrl}/v3/validate-customer";
+
+        $log->info('Validating token', compact('validation_token', 'url'));
+
+        if ($this->trustedUrl)
+        {
+            // only used when we set a manual API url, used to bypass checks so we can use localhost for testing
+            $response = $this->app->http()->reader()->request('post', $url, [], null, $options, $error);
+        }
+        else
+        {
+            // treat URLs as untrusted by default, will run through proxy server if configured
+            $response = $this->app->http()->reader()->requestUntrusted('post', $url, [], null, $options, $error);
+        }
+
+        if(!$response)
+        {
+            throw new RequestException('validating token', $error);
+        }
+
+        $status = $response->getStatusCode();
+        $body = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+
+        if ($status == 200)
+        {
+            // we're all good
+            return $body['token'] ?? '';
+        }
+
+        $reason = $body['message'] ?? $response->getReasonPhrase();
+
+        if ($status >= 500)
+        {
+            // service unavailable or similar - hopefully a temporary error
+            throw new ServerException('validating token', $reason, $status);
+        }
+        else
+        {
+            // some other more serious error - will log it and create error message for XF logs
+            throw new CustomerException('validating token', $reason, $status);
+        }
+    }
+
+    public function checkApiToken($api_token)
+    {
+        $log = $this->getLogger();
+
+        $options = [
+            'headers' => [
+                'Authorization' => "Bearer {$api_token}",
+                'Accept' => "application/json",
+            ],
+        ];
+
+        $url = "{$this->baseUrl}/v3/check-token";
+
+        $log->info('Checking api token', compact('url'));
+
+        if ($this->trustedUrl)
+        {
+            // only used when we set a manual API url, used to bypass checks so we can use localhost for testing
+            $response = $this->app->http()->reader()->request('post', $url, [], null, $options, $error);
+        }
+        else
+        {
+            // treat URLs as untrusted by default, will run through proxy server if configured
+            $response = $this->app->http()->reader()->requestUntrusted('post', $url, [], null, $options, $error);
+        }
+
+        if(!$response)
+        {
+            throw new RequestException('checking token', $error);
+        }
+
+        $status = $response->getStatusCode();
+        $body = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+
+        if ($status == 200)
+        {
+            // we're all good
+            return $body;
+        }
+
+        $reason = $response->getReasonPhrase();
+
+        if ($status >= 500)
+        {
+            // service unavailable or similar - hopefully a temporary error
+            throw new ServerException('checking token', $reason, $status);
+        }
+        else
+        {
+            // some other more serious error - will log it and create error message for XF logs
+            throw new CustomerException('checking token', $reason, $status);
+        }
+    }
+
     /**
      * @return Log
      */

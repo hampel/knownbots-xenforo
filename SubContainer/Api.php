@@ -31,6 +31,14 @@ class Api extends AbstractSubContainer
         {
             return "internal-data://knownbots.json";
         };
+
+        $container['domain'] = function($c)
+        {
+            // on our dev server we may want to over-ride the customer domain so we can test against the real XenForo
+            // customer validation API
+            $domainOverride = $this->app->config('knownBotsDomain');
+            return $domainOverride ?? $this->app->options()->boardUrl;
+        };
     }
 
     /**
@@ -44,6 +52,11 @@ class Api extends AbstractSubContainer
     protected function local()
     {
         return $this->container['local'];
+    }
+
+    protected function domain()
+    {
+        return $this->container['domain'];
     }
 
     public function fetchBots($force = false)
@@ -78,6 +91,16 @@ class Api extends AbstractSubContainer
         $this->reprocessUserAgents();
 
         return $bots;
+    }
+
+    public function validate($validation_token)
+    {
+        return $this->api()->validate($validation_token, $this->domain());
+    }
+
+    public function checkApiToken($api_token)
+    {
+        return $this->api()->checkApiToken($api_token);
     }
 
     public function storeBots(array $bots)

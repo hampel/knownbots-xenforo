@@ -1,0 +1,19 @@
+<xf:title>{$option.title}</xf:title>
+
+<xf:form action="{{ link('options/knownbots-api-configure', $option) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:set var="$values" value="{{ $type == $option.option_value.type ? $option.option_value : [] }}" />
+
+			<xf:formrow label="{{ phrase('hampel_knownbots_license_validation_token') }}" rowtype="input">
+				<xf:textbox name="validation_token" value="" placeholder="{{ phrase('hampel_knownbots_validation_token') }}" size="40" required="required" />
+			</xf:formrow>
+					
+			<xf:inforow rowtype="simple">
+				{{ phrase('hampel_knownbots_about_license_validation') }}
+			</xf:inforow>
+
+		</div>
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>

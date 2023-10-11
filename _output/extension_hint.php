@@ -5,6 +5,7 @@
 
 namespace Hampel\KnownBots\XF\Admin\Controller
 {
+	class XFCP_Option extends \XF\Admin\Controller\Option {}
 	class XFCP_Tools extends \XF\Admin\Controller\Tools {}
 }
 

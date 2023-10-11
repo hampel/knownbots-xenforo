@@ -1,0 +1,6 @@
+<ul>
+<li>Enter your <a href="https://xenforo.com/customers/" target="_blank">XenForo license validation token</a> which will be sent to the KnownBots API server and validated.</li>
+<li>A KnownBots API token will be returned and used to authenticate when sending updates. </li>
+<li>KnonwBots API tokens are regenerated every 28 days and inactive XenForo license validation tokens are purged from the servers automatically.</li>
+<li>Regenerating your XenForo license validation token using the XenForo customer UI will disable KnownBots API token regeneration unless you also update the license validation token in these settings.</li>
+</ul>

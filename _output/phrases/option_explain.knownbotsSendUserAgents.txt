@@ -1,0 +1,1 @@
+Enable to send detected user agents via API for further analysis. This option only has effect if the "Store user agents in database" option is also enabled.

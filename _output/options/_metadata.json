@@ -1,9 +1,12 @@
 {
     "knownbotsEmailUserAgents.json": {
-        "hash": "1c0f5349acf91b956cdcd18bd855f1f5"
+        "hash": "f93cb96c0ed30e3af3ef61c277949318"
     },
     "knownbotsFetchNewBots.json": {
         "hash": "45b075e0dbe4a666cb3d33341e82c828"
+    },
+    "knownbotsSendUserAgents.json": {
+        "hash": "dd38c3f2312dc0753c94cc3a69477c23"
     },
     "knownbotsShowBotStats.json": {
         "hash": "6dee651a89d6f615f2d2c7ca103865c4"

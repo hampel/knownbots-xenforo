@@ -1,5 +1,1 @@
-Enable this option to periodically email user agent strings that were stored in the database to the addon author for analysis to detect previously unidentified bots. This option only has effect if the "Store user agents in database" option is also enabled.<br />
-<br />
-By default the system sends emails directly to the addon author at knownbots@hampel.io - but you can have it send email to any address if you want to check what information the emails contain. You may manually forward the email to the above address, or else post user agent strings in the support thread for analysis.<br />
-<br />You may specify multiple email addresses separated by commas - all addresses after the first one are bcc'd a copy of the email, so specify knownbots@hampel.io first and then any other email addresses you want to receive the email at.<br />
-<br />Please read the privacy statement included in the addon instructions.
+Enable this option to periodically email user agent strings that were stored in the database to the specified email address. This option only has effect if the "Store user agents in database" option is also enabled. Leave blank to send emails to the admin email address.

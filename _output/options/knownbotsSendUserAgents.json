@@ -1,0 +1,17 @@
+{
+    "edit_format": "template",
+    "edit_format_params": "option_template_knownBotsApiToken",
+    "data_type": "array",
+    "sub_options": [
+        "enabled",
+        "validation_token",
+        "api_token"
+    ],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "{\"enabled\":false,\"validation_token\":false,\"api_token\":false}",
+    "relations": {
+        "knownbots": 220
+    }
+}

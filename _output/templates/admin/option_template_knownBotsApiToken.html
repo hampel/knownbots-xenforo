@@ -1,0 +1,19 @@
+<xf:formrow
+	label="{$option.title}"
+	hint="{$hintHtml}"
+	explain="{$explainHtml}"
+	rowclass="{$rowClass}">
+
+	<xf:if is="$option.option_value.enabled">
+		<dl class="pairs pairs--columns pairs--fixedSmall">
+			<dt>{{ phrase('hampel_knownbots_api_token') }}</dt>
+			<dd>{{ $option.option_value.api_token|substr(0, 8)|pad('*', 16, true) }}</dd>
+		</dl>		
+	</xf:if>
+
+	<div class="u-inputSpacer">
+		<xf:button href="{{ link('options/knownbots-api-setup', $option) }}" data-xf-click="overlay">
+			{{ $option.option_value.enabled ? phrase('change') : phrase('enable') }}
+		</xf:button>
+	</div>
+</xf:formrow>

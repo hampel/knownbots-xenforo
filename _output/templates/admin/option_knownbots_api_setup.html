@@ -1,0 +1,25 @@
+<xf:title>{{ phrase('hampel_knownbots_api_setup') }}</xf:title>
+
+<xf:form action="{{ link('options/knownbots-api-setup', $option) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:radiorow label="{$option.title}" name="action"
+				value="{{ $option.option_value.enabled ? 'unchanged' : 'disabled' }}">
+
+				<xf:option value="disabled">{{ phrase('disabled') }}</xf:option>
+				<xf:if is="$option.option_value.enabled">
+					<xf:set var="$unchangedHint">
+						<ul class="listInline listInline--bullet listInline--selfInline">
+							<li>{{ phrase('hampel_knownbots_api_token') }}: {{ $option.option_value.api_token|substr(0, 8)|pad('*', 16, true) }}</li>
+						</ul>
+					</xf:set>
+					<xf:option value="unchanged" label="{{ phrase('do_not_change') }}" hint="{$unchangedHint}" />
+					<xf:option value="update">{{ phrase('update') }}</xf:option>
+				<xf:else />
+					<xf:option value="enabled">{{ phrase('enabled') }}</xf:option>
+				</xf:if>
+			</xf:radiorow>
+		</div>
+		<xf:submitrow submit="{{ phrase('continue') }}" />
+	</div>
+</xf:form>

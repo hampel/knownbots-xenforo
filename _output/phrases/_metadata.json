@@ -47,6 +47,24 @@
         "version_string": "5.0.0 Beta 7",
         "hash": "a6503cc565afa0a7cba6d8dc4622cc1c"
     },
+    "hampel_knownbots_about_license_validation.txt": {
+        "global_cache": false,
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "2105d2c93d3e44201de1b3878d978579"
+    },
+    "hampel_knownbots_api_setup.txt": {
+        "global_cache": false,
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "f04f4263913ff196926c90c9c967ceef"
+    },
+    "hampel_knownbots_api_token.txt": {
+        "global_cache": false,
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "51408f1c75ab7bcc90f67b3ab1801733"
+    },
     "hampel_knownbots_bot_detected.txt": {
         "global_cache": false,
         "version_id": 5000034,
@@ -121,9 +139,9 @@
     },
     "hampel_knownbots_error_updating.txt": {
         "global_cache": false,
-        "version_id": 5000032,
-        "version_string": "5.0.0 Beta 2",
-        "hash": "0abc94bc41b4803e9aebcd4cbc6addb7"
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "f933e224b575d7014aed7bd26d621391"
     },
     "hampel_knownbots_fetch.txt": {
         "global_cache": false,
@@ -143,11 +161,23 @@
         "version_string": "2.6.0",
         "hash": "e6e3b9cea05d1457e28cd35076f7364c"
     },
+    "hampel_knownbots_knownbots_api_token.txt": {
+        "global_cache": false,
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "103ffd214d74af9202fca35105ef0ada"
+    },
     "hampel_knownbots_last_updated.txt": {
         "global_cache": false,
         "version_id": 5000033,
         "version_string": "5.0.0 Beta 3",
         "hash": "743d5c0c4d20be6a8e42664288dc26c4"
+    },
+    "hampel_knownbots_license_validation_token.txt": {
+        "global_cache": false,
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "23bcb7970107356dcbadf0de3b8b3d6f"
     },
     "hampel_knownbots_list.txt": {
         "global_cache": false,
@@ -215,6 +245,12 @@
         "version_string": "2.6.0",
         "hash": "56f5e3c0ba4b9f62aa41317c5346e371"
     },
+    "hampel_knownbots_validation_token.txt": {
+        "global_cache": false,
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "0c214ccaaad6e18efced70ef4f697a89"
+    },
     "option.knownbotsEmailUserAgents.txt": {
         "global_cache": false,
         "version_id": 5000037,
@@ -226,6 +262,12 @@
         "version_id": 5000032,
         "version_string": "5.0.0 Beta 2",
         "hash": "5593d0bf26949327367a4294d0d5432c"
+    },
+    "option.knownbotsSendUserAgents.txt": {
+        "global_cache": false,
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "259c0740ebde7947bdd450bad2448172"
     },
     "option.knownbotsShowBotStats.txt": {
         "global_cache": false,
@@ -241,15 +283,21 @@
     },
     "option_explain.knownbotsEmailUserAgents.txt": {
         "global_cache": false,
-        "version_id": 5000037,
-        "version_string": "5.0.0 Beta 7",
-        "hash": "35ef6d230bbd24ad704f4c8331603abc"
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "428fc473da111c4c0664628fd505fcaf"
     },
     "option_explain.knownbotsFetchNewBots.txt": {
         "global_cache": false,
         "version_id": 5000032,
         "version_string": "5.0.0 Beta 2",
         "hash": "9dcb0649c5e2e4086b96058e63491e6e"
+    },
+    "option_explain.knownbotsSendUserAgents.txt": {
+        "global_cache": false,
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "068943ae712998503eda9630cdb9ad9a"
     },
     "option_explain.knownbotsShowBotStats.txt": {
         "global_cache": false,

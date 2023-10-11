@@ -18,5 +18,20 @@
         "version_id": 5000070,
         "version_string": "5.0.0",
         "hash": "2548fdca1540b95e27d025a45acfce9c"
+    },
+    "admin/option_knownbots_api_configure.html": {
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "e8e6a6c84374fc594ae89ce86f3acf46"
+    },
+    "admin/option_knownbots_api_setup.html": {
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "610959acd05cf731cd93e3fd61507e2e"
+    },
+    "admin/option_template_knownBotsApiToken.html": {
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "3ad88322e6bfe118bf3a24dd03140e8d"
     }
 }

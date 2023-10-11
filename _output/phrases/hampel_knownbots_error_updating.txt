@@ -1,1 +1,1 @@
-Error updating bots - check XenForo logs
+{message}
