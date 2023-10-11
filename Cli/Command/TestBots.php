@@ -39,15 +39,19 @@ class TestBots extends Command
 
 	    if (empty($robot))
         {
-            $stripped = $robots->userAgentMatchesValidBrowser($userAgent);
-            if (empty($stripped))
+            if ($robots->userAgentMatchesIgnored($userAgent))
+            {
+                $output->writeln("<info>User agent matches ignored list</info>");
+                return 0;
+            }
+
+            if ($robots->userAgentMatchesValidBrowser($userAgent))
             {
                 $output->writeln("<info>User agent is a valid browser</info>");
                 return 0;
             }
 
-            $output->writeln("<info>Unknown user agent - remainder after stripping valid browser components:</info>");
-            $output->writeln("[{$stripped}]");
+            $output->writeln("<info>Unknown user agent - further analysis required</info>");
             return 0;
         }
 

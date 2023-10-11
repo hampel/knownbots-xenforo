@@ -16,6 +16,7 @@ class Robot extends XFCP_Robot
 
     public function userAgentMatchesRobot($userAgent, $save = true)
 	{
+        // 1. bot search key match
 		if ($robotName = $this->userAgentMatchesSimpleBot($userAgent))
 		{
 			// we found a robot
@@ -23,36 +24,41 @@ class Robot extends XFCP_Robot
 
 			return $robotName;
 		}
-        elseif ($robotName = $this->userAgentMatchesComplexBot($userAgent))
+
+        // 2. bot regex "complex" match
+        if ($robotName = $this->userAgentMatchesComplexBot($userAgent))
         {
             // we found a complex bot match
             $this->saveUserAgent($save, $userAgent, $robotName);
 
             return $robotName;
         }
-        elseif (!$save || !StoreUserAgents::isEnabled())
+
+        // 3. stop now if we aren't going to be storing user agents
+        if (!$save || !StoreUserAgents::isEnabled())
         {
             // if we're not going to store the user agents for further analysis, there's no point continuing
             return '';
         }
-        elseif (empty($this->userAgentMatchesValidBrowser($userAgent)))
+
+        // 4. stop if the user agent matches any of our ignored regex searches
+        if ($this->userAgentMatchesIgnored($userAgent))
+        {
+            // we found an ignored user agent, we don't know what these UA's belong to, so we won't explicitly
+            // categorise them and won't save them either
+            return '';
+        }
+
+        // 5. stop if we consider this to be a valid browser user agent
+        if (empty($this->userAgentMatchesValidBrowser($userAgent)))
         {
             // we found a valid user browser
             return '';
         }
-        elseif (in_array(strtolower($userAgent), $this->getIgnored()))
-        {
-            // we found an ignored user agent, we don't know what these UA's belong to, so we won't explicitly
-            // categorise them
-            return '';
-        }
-        else
-        {
-            // we don't know what we have, so add it to the database for later analysis
-            $this->saveUserAgent($save, $userAgent);
 
-            return '';
-        }
+        // 6. if we got this far, we don't know what this user agent is, so add it to the database for later analysis
+        $this->saveUserAgent($save, $userAgent);
+        return '';
 	}
 
 	public function getRobotList()
@@ -95,23 +101,11 @@ class Robot extends XFCP_Robot
         return $complex ?? [];
     }
 
-    protected function getGenericMaps()
-    {
-        $generic = $this->loadBotData('generic');
-
-        return $generic ?? [];
-    }
-
     public function getIgnored()
     {
         $ignored = $this->loadBotData('ignored');
 
-        if (!$ignored)
-        {
-            return [];
-        }
-
-        return array_map('strtolower', $ignored);
+        return $ignored ?? [];
     }
 
     protected function getBrowsers()
@@ -150,6 +144,19 @@ class Robot extends XFCP_Robot
         return null;
     }
 
+    public function userAgentMatchesIgnored($userAgent)
+    {
+        foreach ($this->getIgnored() as $regex)
+        {
+            if (preg_match('#' . $regex . '#i', $userAgent, $match))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function userAgentMatchesValidBrowser(string $userAgent)
     {
         $browsers = $this->getBrowsers();
@@ -163,7 +170,7 @@ class Robot extends XFCP_Robot
             return "#{$item}#i";
         }, $browsers);
 
-        return trim(trim(preg_replace($searches, '', $userAgent)), '()[]{};-"\'');
+        empty(trim(trim(trim(preg_replace($searches, '', $userAgent)), '()[]{};-"\'')));
     }
 
     protected function loadBotData($type)
@@ -176,7 +183,6 @@ class Robot extends XFCP_Robot
         $log = $this->getLog();
         $repo = $this->getAgentRepo();
         $agents = $repo->getUserAgentsForReprocessing($onlyNull);
-        $ignored = $this->getIgnored();
 
         if ($agents->count() > 0)
         {
@@ -202,17 +208,21 @@ class Robot extends XFCP_Robot
                         $log->debug("Skipped existing bot user agent", compact('user_agent', 'robot_key'));
                     }
                 }
+                elseif ($this->userAgentMatchesIgnored($user_agent))
+                {
+                    // delete ignored user agents
+                    $repo->deleteUserAgent($user_agent);
+                    $log->info("Deleted ignored user agent", compact('user_agent'));
+                }
                 elseif (empty($this->userAgentMatchesValidBrowser($user_agent)))
                 {
                     // we have a valid browser, delete the user agent
                     $repo->deleteUserAgent($user_agent);
                     $log->info("Deleted valid browser user agent", compact('user_agent'));
                 }
-                elseif (in_array(strtolower($user_agent), $ignored))
+                else
                 {
-                    // delete ignored user agents
-                    $repo->deleteUserAgent($user_agent);
-                    $log->info("Deleted ignored user agent", compact('user_agent'));
+                    $log->debug("Skipped unknown user agent", compact('user_agent'));
                 }
             }
         }

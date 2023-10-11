@@ -1,6 +1,6 @@
 <?php namespace Hampel\KnownBots\SubContainer;
 
-use Hampel\KnownBots\Api\BotFetcher;
+use Hampel\KnownBots\Api\KnownBots;
 use Hampel\KnownBots\Option\StoreUserAgents;
 use Hampel\KnownBots\XF\Data\Robot;
 use League\Flysystem\FilesystemInterface;
@@ -14,15 +14,17 @@ class Api extends AbstractSubContainer
 
         $container['bots'] = function($c)
         {
-            $fetcher = new BotFetcher($this->app);
-
+            // on our dev server we may want to over-ride the API url and disable "untrusted" mode, so we can connect to
+            // our dev API server running on localhost. This should never be used in production.
             $customApi = $this->app->config('knownBotsApi');
             if ($customApi)
             {
-                $fetcher->setUrl($customApi, true);
+                // dev mode over-ride
+                return new KnownBots($this->app, $customApi, true);
             }
 
-            return $fetcher;
+            // production version
+            return new KnownBots($this->app);
         };
 
         $container['local'] = function($c)
@@ -32,9 +34,9 @@ class Api extends AbstractSubContainer
     }
 
     /**
-     * @return BotFetcher
+     * @return KnownBots
      */
-    protected function botFetcher()
+    protected function api()
     {
         return $this->container['bots'];
     }
@@ -49,7 +51,7 @@ class Api extends AbstractSubContainer
         $log = $this->getLogger();
         $lastChecked = $this->getCache()->getLastChecked();
 
-        $bots = $this->botFetcher()->fetch($lastChecked, $force);
+        $bots = $this->api()->fetch($lastChecked, $force);
 
         if ($bots === false)
         {
@@ -117,7 +119,7 @@ class Api extends AbstractSubContainer
     {
         $test = isset($bots['version']) &&
             is_int($bots['version']) &&
-            $bots['version'] == 2 &&
+            $bots['version'] == 3 &&
             isset($bots['built']) &&
             isset($bots['maps']) &&
             isset($bots['bots']) &&

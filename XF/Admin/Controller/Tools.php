@@ -76,13 +76,13 @@ class Tools extends XFCP_Tools
                     $botInfo['link'] = '';
                 }
 			}
+            elseif ($robots->userAgentMatchesIgnored($useragent))
+            {
+                $status = 'ignored';
+            }
             elseif (empty($robots->userAgentMatchesValidBrowser($useragent)))
             {
                 $status = 'browser';
-            }
-            elseif (in_array(strtolower($useragent), $robots->getIgnored()))
-            {
-                $status = 'ignored';
             }
             else
             {

@@ -3,7 +3,7 @@
 use Hampel\KnownBots\SubContainer\Log;
 use XF\Util\File;
 
-class BotFetcher
+class KnownBots
 {
     /**
      * @var \XF\App
@@ -11,25 +11,16 @@ class BotFetcher
     protected $app;
 
     /** @var string */
-    protected $baseUrl = 'https://knownbots.hampel.io/api/v2';
+    protected $baseUrl;
 
     /** @var bool */
-    protected $trustedUrl = false;
+    protected $trustedUrl;
 
-    public function __construct(\XF\App $app)
+    public function __construct(\XF\App $app, $baseUrl = 'https://knownbots.hampel.io/api', $trustedUrl = false)
     {
         $this->app = $app;
-    }
-
-    /**
-     * @param $url string Base URL for API calls
-     * @param $trusted bool Should the base url be considered  trusted? Default is false, set to true only for testing environments
-     * @return void
-     */
-    public function setUrl($url, $trusted = false)
-    {
-        $this->baseUrl = rtrim($url, '/');
-        $this->trustedUrl = $trusted;
+        $this->baseUrl = $baseUrl;
+        $this->trustedUrl = $trustedUrl;
     }
 
     public function fetch($lastChecked, $force = false)
@@ -44,9 +35,10 @@ class BotFetcher
             $options = ['headers' => ['If-Modified-Since' => $since]];
         }
 
-        $log->info('Fetching updated bots', compact('since'));
+        $url = "{$this->baseUrl}/v3/bots";
 
-        $url = "{$this->baseUrl}/bots";
+        $log->info('Fetching updated bots', compact('since', 'url'));
+
         $destination = File::getNamedTempFile(sprintf("knownbots-%s.json", \XF::$time));
 
         if ($this->trustedUrl)
@@ -66,13 +58,36 @@ class BotFetcher
             \XF::logError($error);
             return false;
         }
-        elseif ($response->getStatusCode() == 304)
+
+        $status = $response->getStatusCode();
+
+        if ($status == 200)
         {
+            // we're all good
+            return json_decode(file_get_contents($destination), true);
+        }
+
+        $reason = $response->getReasonPhrase();
+
+        if ($status == 304)
+        {
+            // not modified, no further action required
             $log->info('Bots not modified');
             return null;
         }
-
-        return json_decode(file_get_contents($destination), true);
+        elseif ($status >= 500)
+        {
+            // service unavailable or similar - log it, but don't create an error message, it's hopefully only temporary
+            $log->warning('Server error fetching bots', compact('url', 'destination', 'since', 'reason'));
+            return null;
+        }
+        else
+        {
+            // some other more serious error - will log it and create error message for XF logs
+            \XF::logError("Could not fetch bots - request to [{$url}] returned status code [{$status}]: {$reason}");
+            $log->error('Could not fetch bots', compact('url', 'destination', 'since', 'reason'));
+            return false;
+        }
     }
 
     /**
