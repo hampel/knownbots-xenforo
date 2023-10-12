@@ -32,10 +32,10 @@ class Setup extends AbstractSetup
         }
 
         $this->randomizeFetchCron();
-        $this->randomizeEmailCron();
+        $this->randomizeSendCron();
     }
 
-    // ################################ UPGRADE TO 5.0.0b1 ##################
+    // ################################ UPGRADE ##################
 
     public function upgrade5000031Step1()
     {
@@ -46,14 +46,13 @@ class Setup extends AbstractSetup
     {
         $this->loadBots();
 
-        if ($previousVersion < 4000031)
-        {
-            $this->randomizeFetchCron();
-        }
+        $this->randomizeFetchCron();
+        $this->randomizeSendCron();
 
-        if ($previousVersion < 5000038)
+        // remove knownbots@hampel.io email addresses when upgrading to v6
+        if ($previousVersion < 6000030)
         {
-            $this->randomizeEmailCron();
+            $this->removeKnownBotsEmail();
         }
     }
 
@@ -122,7 +121,7 @@ class Setup extends AbstractSetup
         }
     }
 
-    protected function randomizeEmailCron()
+    protected function randomizeSendCron()
     {
         // randomize cron run time
         $cron = $this->app()->find('XF:CronEntry', 'hampelKnownBotsUserAgents');
@@ -136,6 +135,35 @@ class Setup extends AbstractSetup
             $rules['minutes'] = [$minutes];
             $cron->run_rules = $rules;
             $cron->save();
+        }
+    }
+
+    protected function removeKnownBotsEmail()
+    {
+        $emailOption = \XF::options()->knownbotsEmailUserAgents;
+
+        if (isset($emailOption['email']) && !empty($emailOption['email']))
+        {
+            $addresses = array_map('trim', explode(',', $emailOption['email'] ?? ''));
+
+            $initialCount = count($addresses);
+            foreach ($addresses as $key => $address)
+            {
+                if ($address == 'knownbots@hampel.io')
+                {
+                    unset($addresses[$key]);
+                }
+            }
+
+            if (count($addresses) < $initialCount)
+            {
+                if (count($addresses) == 0)
+                {
+                    $emailOption['enabled'] = 0;
+                }
+                $emailOption['email'] = implode(", ", $addresses);
+                \XF::repository('XF:Option')->updateOption('knownbotsEmailUserAgents', $emailOption);
+            }
         }
     }
 
