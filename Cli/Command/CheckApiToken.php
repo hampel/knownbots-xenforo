@@ -1,6 +1,5 @@
 <?php namespace Hampel\KnownBots\Cli\Command;
 
-use Hampel\KnownBots\Exception\KnownBotsException;
 use Hampel\KnownBots\Option\SendUserAgents;
 use Hampel\KnownBots\Service\ApiTokenChecker;
 use Hampel\KnownBots\SubContainer\Api;
