@@ -3,7 +3,7 @@
 use Hampel\KnownBots\Exception\KnownBotsException;
 use Hampel\KnownBots\Option\EmailUserAgents;
 use Hampel\KnownBots\Option\StoreUserAgents;
-use Hampel\KnownBots\Service\BotMailer;
+use Hampel\KnownBots\Service\UserAgentMailer;
 use Hampel\KnownBots\SubContainer\Api;
 use Hampel\KnownBots\SubContainer\Cache;
 use Hampel\KnownBots\SubContainer\Log;
@@ -147,7 +147,7 @@ class Tools extends XFCP_Tools
 		}
 
 		$repo = $this->getRepo();
-		$bots = $repo->getUserAgentsForEmail();
+		$bots = $repo->getUserAgentsForSending();
 
 		if (empty($bots))
 		{
@@ -159,8 +159,8 @@ class Tools extends XFCP_Tools
 		$service = $this->getBotMailerService();
 
 		$service->setToEmail($emailTo);
-		$service->setBots($bots);
-		if ($service->mailBots())
+		$service->setAgents($bots);
+		if ($service->mailAgents())
 		{
             $rows = $repo->markUserAgentsSent();
             $log->info('Marked user agents sent', compact('rows'));
@@ -220,7 +220,7 @@ class Tools extends XFCP_Tools
     }
 
 	/**
-	 * @return BotMailer
+	 * @return UserAgentMailer
 	 */
 	protected function getBotMailerService()
 	{

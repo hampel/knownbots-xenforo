@@ -12,6 +12,11 @@ class SendUserAgents extends AbstractOption
 		return \XF::options()->knownbotsSendUserAgents;
 	}
 
+    public static function set(array $optionValue)
+    {
+        return \XF::repository('XF:Option')->updateOption('knownbotsSendUserAgents', $optionValue);
+    }
+
 	/**
 	 * @return bool
 	 */

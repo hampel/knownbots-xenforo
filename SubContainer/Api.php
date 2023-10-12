@@ -1,6 +1,7 @@
 <?php namespace Hampel\KnownBots\SubContainer;
 
 use Hampel\KnownBots\Api\KnownBots;
+use Hampel\KnownBots\Option\SendUserAgents;
 use Hampel\KnownBots\Option\StoreUserAgents;
 use Hampel\KnownBots\XF\Data\Robot;
 use League\Flysystem\FilesystemInterface;
@@ -101,6 +102,20 @@ class Api extends AbstractSubContainer
     public function checkApiToken($api_token)
     {
         return $this->api()->checkApiToken($api_token);
+    }
+
+    public function sendUserAgents($api_token, array $agents)
+    {
+        return $this->api()->sendUserAgents($api_token, $agents);
+    }
+
+    public function updateApiToken($api_token)
+    {
+        $this->getLogger()->info("Saving new API token in options");
+
+        $option = SendUserAgents::get();
+        $option['api_token'] = $api_token;
+        SendUserAgents::set($option);
     }
 
     public function storeBots(array $bots)

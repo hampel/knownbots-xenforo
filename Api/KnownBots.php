@@ -3,6 +3,7 @@
 use Hampel\KnownBots\Exception\CustomerException;
 use Hampel\KnownBots\Exception\RequestException;
 use Hampel\KnownBots\Exception\ServerException;
+use Hampel\KnownBots\Exception\UnauthorizedException;
 use Hampel\KnownBots\SubContainer\Log;
 use XF\Util\File;
 
@@ -122,7 +123,7 @@ class KnownBots
 
         if(!$response)
         {
-            throw new RequestException('validating token', $error);
+            throw new RequestException('validating license token', $error);
         }
 
         $status = $response->getStatusCode();
@@ -139,12 +140,12 @@ class KnownBots
         if ($status >= 500)
         {
             // service unavailable or similar - hopefully a temporary error
-            throw new ServerException('validating token', $reason, $status);
+            throw new ServerException('validating license token', $reason, $status);
         }
         else
         {
             // some other more serious error - will log it and create error message for XF logs
-            throw new CustomerException('validating token', $reason, $status);
+            throw new CustomerException('validating license token', $reason, $status);
         }
     }
 
@@ -176,7 +177,7 @@ class KnownBots
 
         if(!$response)
         {
-            throw new RequestException('checking token', $error);
+            throw new RequestException('checking API token', $error);
         }
 
         $status = $response->getStatusCode();
@@ -193,12 +194,77 @@ class KnownBots
         if ($status >= 500)
         {
             // service unavailable or similar - hopefully a temporary error
-            throw new ServerException('checking token', $reason, $status);
+            throw new ServerException('checking API token', $reason, $status);
+        }
+        elseif ($status == 401)
+        {
+            // unauthorized - special case of Customer Exception - we may want to re-authorise
+            throw new UnauthorizedException('checking API token', $reason, $status);
         }
         else
         {
             // some other more serious error - will log it and create error message for XF logs
-            throw new CustomerException('checking token', $reason, $status);
+            throw new CustomerException('checking API token', $reason, $status);
+        }
+    }
+
+    public function sendUserAgents($api_token, array $agents)
+    {
+        $log = $this->getLogger();
+
+        $options = [
+            'json' => compact('agents'),
+            'headers' => [
+                'Authorization' => "Bearer {$api_token}",
+                'Accept' => "application/json",
+            ],
+        ];
+
+        $url = "{$this->baseUrl}/v3/user-agents";
+
+        $log->info('Sending user agents', compact('url'));
+
+        if ($this->trustedUrl)
+        {
+            // only used when we set a manual API url, used to bypass checks so we can use localhost for testing
+            $response = $this->app->http()->reader()->request('post', $url, [], null, $options, $error);
+        }
+        else
+        {
+            // treat URLs as untrusted by default, will run through proxy server if configured
+            $response = $this->app->http()->reader()->requestUntrusted('post', $url, [], null, $options, $error);
+        }
+
+        if(!$response)
+        {
+            throw new RequestException('sending user agents', $error);
+        }
+
+        $status = $response->getStatusCode();
+        $body = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+
+        if ($status == 200)
+        {
+            // we're all good
+            return $body;
+        }
+
+        $reason = $response->getReasonPhrase();
+
+        if ($status >= 500)
+        {
+            // service unavailable or similar - hopefully a temporary error
+            throw new ServerException('sending user agents', $reason, $status);
+        }
+        elseif ($status == 401)
+        {
+            // unauthorized - special case of Customer Exception - we may want to re-authorise
+            throw new UnauthorizedException('sending user agents', $reason, $status);
+        }
+        else
+        {
+            // some other more serious error - will log it and create error message for XF logs
+            throw new CustomerException('sending user agents', $reason, $status);
         }
     }
 

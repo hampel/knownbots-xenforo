@@ -25,6 +25,8 @@ class EmailUserAgents extends AbstractOption
 	{
 		$emailNewBots = self::get();
 
-        return array_map('trim', explode(',', $emailNewBots['email'] ?? ''));
+        $addresses = array_map('trim', explode(',', $emailNewBots['email'] ?? ''));
+        // return our array of addresses, or if empty, an array containing the board contact email address
+        return !empty($addresses) ? $addresses : [\XF::options()->contactEmailAddress];
 	}
 }

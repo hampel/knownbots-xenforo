@@ -49,7 +49,7 @@ class Agent extends Repository
         ", [$userAgent]);
     }
 
-    public function getUserAgentsForEmail()
+    public function getUserAgentsForSending()
     {
         return $this->agentFinder()
             ->where('sent', 0)
