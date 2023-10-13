@@ -28,7 +28,7 @@ There are several tools provided in the admin area Tools section to help manage 
 
 ### Change log
 
-Verion 5 is a complete rewrite from previous versions - with bot detection now up to 15x faster than the previous 
+Verion 6 is a complete rewrite from previous versions - with bot detection now up to 15x faster than the previous 
 method. Bot detection is also more sophisticated - with a secondary regex-based detection system to help identify
 complex bot strings that can't be matched using the simple text string matches used by default.
 
@@ -39,6 +39,9 @@ the information back to the addon author via email for further analysis.
 Previously, the system only sent back user agents which matched key words: bot|crawl|spider - this new detection method
 is significantly more comprehensive and allows much greater accuracy for detecting new bots that may not identify 
 themselves using the traditional keywords.
+
+Also new in this version is the deprecation of the email sending facility - new user agents are now sent directly via 
+API, with authentication facilitated by the XenForo license validation system and very easy to configure.
 
 ### Options
 
@@ -55,29 +58,40 @@ defnitions - see the Command Line Interface section for options to assist here.
 #### Store user agents in database and purge after
 
 Enable to store unknown and bot user agents in the database for further analysis. This should be used in conjunction
-with the "Email user agents" option to send unknown user agents back to the addon author for further analysis and
-identification of new bots. You may also manually send user agent information to the addon author via the addon 
-discussion thread - use the "List detected bots" tool to show unknown user agents.
+with the "Send user agent via API" and/or "Email user agents" option to send unknown user agents back to the addon 
+author for further analysis and identification of new bots. You may also manually send user agent information to the 
+addon author via the addon discussion thread - use the "List detected bots" tool to show unknown user agents.
 
-With this option enabled, you may also choose how long to retain user agent records before they are automatically
+With this option enabled, you may choose how long to retain user agent records before they are automatically
 purged from the database. This uses a "last seen" mechanism to maintain the list of recently seen bots - only bots not
 recently seen will be purged. For busy sites, consider lowering this value from the default 90 days, to reduce the size
 of data stored. Set days to zero to never purge user agent data (not recommended).
 
+#### Send user agents via API
+
+New in version 6, enabling this option will send unidentified user agents back to the addon author for further analysis
+and identification of new bots.
+
+To configure the API, enter the License validation token for your site, found in the 
+[XenForo customer](https://xenforo.com/customers/) interrface. The validation token will be sent to the 
+[XenForo customer validation API](https://xenforo.com/customer-api/) and if valid, an KnownBots API token will be 
+generated and returned back for subsequent authentication purposes.
+
+With a validated license, the authentication process is automatic. API tokens are regenerated every 28 days and are
+re-authenticated automatically. Customer details are automatically purged from the KnownBots database after 30 days of 
+inactivity (see privacy details below). Regenerating your license validation token will automatically cause API 
+revalidation to fail and customer details to be purged - unless you re-configure the addon options with the new license
+validation token.
+
 #### Email user agents
 
-Enable to periodically email user agent strings to the addon author for further analysis to detect previously 
-unidentified bots. This option only has effect if the "Store user agents in database" option is also enabled.
+**_Note:_ emailing user agents to the addon author is now deprecated**. The email interface will remain operational for a
+short period to allow time for addon users to upgrade to version 6, but will soon be deactivated at which point emails 
+sent to the `knownbots@hampel.io` address will start bouncing back as undeliverable. 
 
-By default, the system sends emails directly to the addon author at `knownbots@hampel.io` - but you may have it send 
-email to any address if you want to check what information the emails contain. You may manually forward the email to 
-the above address, or else post user agent strings in the support thread for analysis.
-
-You may specify multiple email addresses separated by commas - all addresses after the first one are bcc'd a copy of
-the email, so specify `knownbots@hampel.io` first and then any other email addresses you want to receive the email at, 
-the recipient list will not be visible to the addon author.
-
-Please read the privacy statement below.
+This option will remain available to allow users to periodically send emails to an address of their choosing for 
+monitoring newly detected user agents. This option only has effect if the "Store user agents in database" option is 
+also enabled. You may specify multiple email addresses separated by commas.
 
 ### Logging
 
@@ -137,6 +151,23 @@ Title: AhrefsBot
 
 Use the `-s` option to save your user agent strings to the database for further processing.
 
+#### Check API Token
+(New in v6) Test if the KnownBots API Token is valid. 
+
+```bash
+$ php cmd.php known-bots:check-token
+```
+Use the `-r` or `--revalidate` option to automatically attempt to revalidate and generate a new API token if 
+athentication fails.
+
+#### Send agents
+(New in v6) Send newly detected user agents to the KnownBots API. Does the same thing the cron job does - but can be run externally
+via a system cron or manually for testing purposes.
+
+```bash
+$ php cmd.php known-bots:send
+```
+
 #### Parse Log Files
 
 Reads web server log file information and lists all detected bots.
@@ -180,6 +211,8 @@ $ cat /var/log/nginx/xenforo/xenforo.access.log | php cmd.php known-bots:parse -
 
 $ php cmd.php known-bots:parse - < /var/log/nginx/xenforo/xenforo.access.log
 ...
+
+$ tail -f /var/log/nginx/xenforo/xenforo.access.log | php cmd.php known-bots:parse -
 ```
 
 ### Privacy
@@ -212,42 +245,18 @@ name as supplied in the user agent of the XenForo HTTP client. For example:
 HTTP server log information is used solely for analytics and troubleshooting purposes and is never made available to 
 third parties.
 
-By enabling the **"Store user agents in database"** and **"Email user agents"** options, the following will occur:
+Enabling the **"Send user agents via API"** setting requires the submission of a XenForo license validation token, 
+retrieved from your customer account on the XenForo website. This token is intended to be supplied to 3rd party addon
+authors for the purposes of validating XenForo licenses. In this case, it is being utilised as a simple authentication
+mechanism. You may regenerate your license validation token at any time via the XenForo customer interface, which will
+automatically cause authentication against the KnownBots API to fail once the existing API token expires.
 
-1. user agents that have not been detected as a bot or as a valid browser, will be stored in the database
-2. once per day an email will be sent to the email addresses defined in the options, containing a list of these user 
-   agents
-3. these user agent strings will be collated by the addon author and used to identify new bots, or to refine the valid
-   browser detection system
+API tokens expire every 28 days and are automatically regenerated, provided the XenForo license validation token remains
+valid. Customer details retrieved from the [XenForo license validation API](https://xenforo.com/customer-api/) are 
+automatically purged from the database after 30 days of inactivity.
 
-The emails sent contain only a list of user agent strings. There is no information contained which may allow the 
-recipient to fingerprint a specific user who has accessed your site - there is no IP address or user information
-contained in the data.
+When validating licenses, only the license validation token and forum URL are sent to the KnownBots API. Once validation
+is complete, only the generated API token and a list of new user agents are sent to the server. Web sever logs similar
+to those described above are generated for all API calls.
 
-Other than a list of user agent strings, the only information contained in the email will be those automatically added
-to the email header by the forum mailer and SMTP servers.
-
-Emails are sent to `knownbots@hampel.io` by default and any emails sent to this address will _only_ be used for the 
-purpose of identifying new bots to add to this addon. Email addresses will never be sold or added to any marketing 
-lists - not even ours.
-
-If there are issues detected from the emails you are sending us, we may email you establish communication - 
-but that will be on a case-by-case basis and only for the purposes of troubleshooting the operation of this addon.
-
-You may check the information contained in the emails by adding your own email address to the addon options - the text
-field accepts a comma-separated list of addresses. For example, set the email address to:
-
-`knownbots@hampel.io, me@example.com`
-
-Make sure the first email address is the addon-author (if specified) - all email addresses after the first entry will 
-be bcc'd - and so the addon author will not have any visibility of who else has received the emails.
-
-Note that emails received by the addon author at the `knownbots@hampel.io` address are automatically processed by [API
-injection](https://support.sparkpost.com/docs/tech-resources/inbound-email-relay-webhook) from our email service 
-provider (SparkPost) and are never stored in an inbox or read by a human.
-
-The email sender address is logged for troubleshooting purposes - but is never used for any other purpose.
-
-Do not email this address with questions about the addon or to communicate with the addon author - any emails not
-containing valid user agent information are silently discarded by the automated handler. Please contact the addon 
-author via the XenForo forum addon discussion thread or private message. 
+As of version 6, no information is sent to the addon author via email.
