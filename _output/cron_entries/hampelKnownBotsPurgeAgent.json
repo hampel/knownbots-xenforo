@@ -1,5 +1,5 @@
 {
-    "cron_class": "Hampel\\KnownBots\\Cron\\NewUserAgents",
+    "cron_class": "Hampel\\KnownBots\\Cron\\SendAgents",
     "cron_method": "purgeAgents",
     "run_rules": {
         "day_type": "dom",

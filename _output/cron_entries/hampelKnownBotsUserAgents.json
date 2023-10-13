@@ -1,6 +1,6 @@
 {
-    "cron_class": "Hampel\\KnownBots\\Cron\\NewUserAgents",
-    "cron_method": "sendEmail",
+    "cron_class": "Hampel\\KnownBots\\Cron\\SendAgents",
+    "cron_method": "send",
     "run_rules": {
         "day_type": "dow",
         "dow": [
