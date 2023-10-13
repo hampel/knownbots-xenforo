@@ -43,9 +43,9 @@
     },
     "cron_entry.hampelKnownBotsUserAgents.txt": {
         "global_cache": false,
-        "version_id": 5000037,
-        "version_string": "5.0.0 Beta 7",
-        "hash": "a6503cc565afa0a7cba6d8dc4622cc1c"
+        "version_id": 5010070,
+        "version_string": "5.1.0",
+        "hash": "0711d6ce5e786e6dcbb6f0f5f4d6ce5c"
     },
     "hampel_knownbots_about_license_validation.txt": {
         "global_cache": false,
