@@ -37,7 +37,7 @@ class UserAgentSender extends AbstractService
 		$this->agents = $agents;
 	}
 
-	public function sendAgents()
+	public function sendUserAgents()
 	{
         $api = $this->getApi();
         $log = $this->getLogger();

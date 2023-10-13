@@ -12,12 +12,12 @@ class UserAgentMailer extends AbstractService
 		$this->toEmail = $email;
 	}
 
-	public function setAgents(array $agents)
+	public function setUserAgents(array $agents)
 	{
 		$this->agents = $agents;
 	}
 
-	public function mailAgents()
+	public function mailUserAgents()
 	{
         $version = $this->app->finder('XF:AddOn')->whereId('Hampel/KnownBots')->fetchOne()->version_string;
 

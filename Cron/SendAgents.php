@@ -68,19 +68,19 @@ class SendAgents
         $count = count($agents);
         self::getLog()->info("Sending user agents via API", compact('count'));
 
-        return $sender->sendAgents();
+        return $sender->sendUserAgents();
 	}
 
     public static function sendEmail(array $agents)
     {
-        $mailer = self::getBotMailerService();
+        $mailer = self::getUserAgentMailerService();
         $mailer->setToEmail(EmailUserAgents::getAddresses());
-        $mailer->setAgents($agents);
+        $mailer->setUserAgents($agents);
 
         $count = count($agents);
         self::getLog()->info("Sending user agents via email", compact('count'));
 
-        return $mailer->mailAgents();
+        return $mailer->mailUserAgents();
     }
 
     public static function purgeAgents()
@@ -107,9 +107,9 @@ class SendAgents
     /**
      * @return UserAgentMailer
      */
-    protected static function getBotMailerService()
+    protected static function getUserAgentMailerService()
     {
-        return \XF::service('Hampel\KnownBots:BotMailer');
+        return \XF::service('Hampel\KnownBots:UserAgentMailer');
     }
 
 	/**

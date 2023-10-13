@@ -159,8 +159,8 @@ class Tools extends XFCP_Tools
 		$service = $this->getBotMailerService();
 
 		$service->setToEmail($emailTo);
-		$service->setAgents($bots);
-		if ($service->mailAgents())
+		$service->setUserAgents($bots);
+		if ($service->mailUserAgents())
 		{
             $rows = $repo->markUserAgentsSent();
             $log->info('Marked user agents sent', compact('rows'));
@@ -224,7 +224,7 @@ class Tools extends XFCP_Tools
 	 */
 	protected function getBotMailerService()
 	{
-		return $this->app->service('Hampel\KnownBots:BotMailer');
+		return $this->app->service('Hampel\KnownBots:UserAgentMailer');
 	}
 
 	/**

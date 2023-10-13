@@ -39,7 +39,7 @@ class SendAgents extends Command
         $sender->setApiToken(SendUserAgents::apiToken());
         $sender->setValidationToken(SendUserAgents::validationToken());
         $sender->setUserAgents($agents);
-        $response = $sender->sendAgents();
+        $response = $sender->sendUserAgents();
 
         if ($response === false)
         {
