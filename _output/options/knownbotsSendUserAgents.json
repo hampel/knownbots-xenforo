@@ -12,6 +12,6 @@
     "advanced": false,
     "default_value": "{\"enabled\":false,\"validation_token\":false,\"api_token\":false}",
     "relations": {
-        "knownbots": 220
+        "knownbots": 205
     }
 }
