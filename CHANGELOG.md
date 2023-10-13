@@ -1,10 +1,23 @@
 CHANGELOG
 =========
 
+6.0.0 (2023-10-12)
+------------------
+
+* major rewrite - now uses v3 API for fetching bots, which includes regex ignored bots
+* significantly improved error handling
+* instead of emailing new user agents to addon author, agents are sent via API with authentication facilitated using
+  XenForo license validation system
+* user agents may still optionally be emailed to user, but knownbots@hampel.io email address is deprecated and will be 
+  removed
+* new CLI tool: `known-bots:check-token` to validate the API token successfully authenticates - and optionally have the
+  system regenerate a new API token if it has expired.
+* new CLI tool: `known-bots:send` to send newly detected user agents to the KnownBots API for analysis
+
 5.1.0 (2023-09-21)
 ------------------
 
-* new CLI tool to parse web server log files and display detected bots
+* new CLI tool: `known-bots:parse` to parse web server log files and display detected bots
 
 5.0.0 (2023-09-19)
 ------------------
@@ -22,7 +35,7 @@ CHANGELOG
 * replace generic bots with complex (regex) based searches
 * add "Fetch new bots" button to Known Bots List in admin UI
 * automatically reprocess user agents after loading new bot data
-* new Cli command for reprocessing user agents, including the option to force all user agents to be reprocessed
+* new Cli tool: `known-bots:reprocess` for reprocessing user agents
 * improvements to user agent test in admin ui to be more descriptive
 * bcc additional email address to keep them private
 * bugfix: don't linkify known bot list when no links supplied
