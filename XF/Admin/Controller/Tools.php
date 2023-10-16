@@ -2,8 +2,10 @@
 
 use Hampel\KnownBots\Exception\KnownBotsException;
 use Hampel\KnownBots\Option\EmailUserAgents;
+use Hampel\KnownBots\Option\SendUserAgents;
 use Hampel\KnownBots\Option\StoreUserAgents;
 use Hampel\KnownBots\Service\UserAgentMailer;
+use Hampel\KnownBots\Service\UserAgentSender;
 use Hampel\KnownBots\SubContainer\Api;
 use Hampel\KnownBots\SubContainer\Cache;
 use Hampel\KnownBots\SubContainer\Log;
@@ -83,7 +85,7 @@ class Tools extends XFCP_Tools
             {
                 $status = 'ignored';
             }
-            elseif (empty($robots->userAgentMatchesValidBrowser($useragent)))
+            elseif ($robots->userAgentMatchesValidBrowser($useragent))
             {
                 $status = 'browser';
             }
@@ -102,7 +104,7 @@ class Tools extends XFCP_Tools
 		$this->setSectionContext('hampelKnownBotsNew');
 
         $data = $this->getRobot();
-		$newBots = $this->getRepo()->getUserAgentsForDisplay();
+		$newBots = $this->getAgentRepo()->getUserAgentsForDisplay();
 
         $bots = [];
         $unidentified = [];
@@ -134,39 +136,36 @@ class Tools extends XFCP_Tools
 		return $this->view('Hampel\KnownBots:Tools\KnownBotsNew', 'hampel_knownbots_new', $viewParams);
 	}
 
-	public function actionHampelKnownBotsEmail()
+	public function actionHampelKnownBotsSend()
 	{
-		$log = $this->getLogger();
 		$this->setSectionContext('hampelKnownBotsNew');
 
-		$emailTo = EmailUserAgents::getAddresses();
+		$repo = $this->getAgentRepo();
 
-		if (!EmailUserAgents::isEnabled() || empty($emailTo))
-		{
-			return $this->message(\XF::phrase('hampel_knownbots_email_not_configured'));
-		}
+        $agents = $repo->getUserAgentsForSending();
+        if (empty($agents))
+        {
+            return $this->message(\XF::phrase('hampel_knownbots_email_none_found'));
+        }
 
-		$repo = $this->getRepo();
-		$bots = $repo->getUserAgentsForSending();
+        if (SendUserAgents::isEnabled())
+        {
+            $response = $this->sendApi($agents);
 
-		if (empty($bots))
-		{
-			return $this->message(\XF::phrase('hampel_knownbots_email_none_found'));
-		}
+            if ($response === false)
+            {
+                return $this->message(\XF::phrase('hampel_knownbots_sending_api_failed'));
+            }
+        }
 
-		$log->info("Email new bots: manually sending detected bots", compact('emailTo', 'bots'));
+        if (EmailUserAgents::isEnabled())
+        {
+            $this->sendEmail($agents);
+        }
 
-		$service = $this->getBotMailerService();
+        $rows = $repo->markUserAgentsSent();
 
-		$service->setToEmail($emailTo);
-		$service->setUserAgents($bots);
-		if ($service->mailUserAgents())
-		{
-            $rows = $repo->markUserAgentsSent();
-            $log->info('Marked user agents sent', compact('rows'));
-		}
-
-		return $this->message(\XF::phrase('hampel_knownbots_email_sent', ['email' => implode(", ", $emailTo)]));
+		return $this->message(\XF::phrase('hampel_knownbots_agents_sent', compact('rows')));
 	}
 
     public function actionHampelKnownBotsPurge()
@@ -175,14 +174,14 @@ class Tools extends XFCP_Tools
 
         if ($days == 0) return; // stop if we're not automatically purging old agents
 
-        $rows = self::getRepo()->purgeUserAgents($days);
+        $rows = self::getAgentRepo()->purgeUserAgents($days);
 
         return $this->message(\XF::phrase('hampel_knownbots_deleted', compact('rows', 'days')));
     }
 
     public function actionHampelKnownBotsClear()
     {
-        $rows = self::getRepo()->clearAllUserAgents();
+        $rows = self::getAgentRepo()->clearAllUserAgents();
 
         return $this->message(\XF::phrase('hampel_knownbots_cleared', compact('rows')));
     }
@@ -209,7 +208,34 @@ class Tools extends XFCP_Tools
 	}
 
 
-	// -------------------------------------------------
+	// -----------------------------------------------------------------------
+
+    public function sendApi(array $agents)
+    {
+        $sender = $this->getUserAgentSenderService();
+        $sender->setApiToken(SendUserAgents::apiToken());
+        $sender->setValidationToken(SendUserAgents::validationToken());
+        $sender->setUserAgents($agents);
+
+        $count = count($agents);
+        $this->getLog()->info("Sending user agents via API", compact('count'));
+
+        return $sender->sendUserAgents();
+    }
+
+    public function sendEmail(array $agents)
+    {
+        $address = EmailUserAgents::getAddress();
+
+        $mailer = $this->getUserAgentMailerService();
+        $mailer->setToEmail($address);
+        $mailer->setUserAgents($agents);
+
+        $count = count($agents);
+        $this->getLog()->info("Sending user agents via email", compact('count', 'address'));
+
+        return $mailer->mailUserAgents();
+    }
 
     protected function formatTime($timestamp)
     {
@@ -219,18 +245,26 @@ class Tools extends XFCP_Tools
         return $dt->format(\DateTimeInterface::COOKIE);
     }
 
-	/**
-	 * @return UserAgentMailer
-	 */
-	protected function getBotMailerService()
-	{
-		return $this->app->service('Hampel\KnownBots:UserAgentMailer');
-	}
+    /**
+     * @return UserAgentSender
+     */
+    protected static function getUserAgentSenderService()
+    {
+        return \XF::service('Hampel\KnownBots:UserAgentSender');
+    }
+
+    /**
+     * @return UserAgentMailer
+     */
+    protected static function getUserAgentMailerService()
+    {
+        return \XF::service('Hampel\KnownBots:UserAgentMailer');
+    }
 
 	/**
 	 * @return Log
 	 */
-	protected function getLogger()
+	protected function getLog()
 	{
 		return $this->app['knownbots.log'];
 	}
@@ -262,7 +296,7 @@ class Tools extends XFCP_Tools
     /**
      * @return Agent
      */
-    protected function getRepo()
+    protected function getAgentRepo()
     {
         return $this->app->repository('Hampel\KnownBots:Agent');
     }

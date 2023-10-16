@@ -4,10 +4,10 @@ use XF\Service\AbstractService;
 
 class UserAgentMailer extends AbstractService
 {
-	protected $toEmail = [];
+	protected $toEmail;
 	protected $agents = [];
 
-	public function setToEmail(array $email)
+	public function setToEmail($email)
 	{
 		$this->toEmail = $email;
 	}

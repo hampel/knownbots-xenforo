@@ -17,14 +17,14 @@ class SendAgents
         if (!StoreUserAgents::isEnabled())
         {
             // we're not storing user agents, so nothing to send - silently abort
-            $log->info("Send Agents: storing user agents disabled - aborting");
+            $log->notice("Send Agents: storing user agents disabled - aborting");
             return;
         }
 
         if (!SendUserAgents::isEnabled() && !EmailUserAgents::isEnabled())
         {
             // we're not sending either, so abort
-            $log->info("Send Agents: not configured to send via API or email - aborting");
+            $log->notice("Send Agents: not configured to send via API or email - aborting");
             return;
         }
 
@@ -43,7 +43,7 @@ class SendAgents
 
             if ($response === false)
             {
-                $log->info("Send Agents: sending via API failed - aborting");
+                $log->notice("Send Agents: sending via API failed - aborting");
                 return;
             }
         }
@@ -73,12 +73,14 @@ class SendAgents
 
     public static function sendEmail(array $agents)
     {
+        $address = EmailUserAgents::getAddress();
+
         $mailer = self::getUserAgentMailerService();
-        $mailer->setToEmail(EmailUserAgents::getAddresses());
+        $mailer->setToEmail($address);
         $mailer->setUserAgents($agents);
 
         $count = count($agents);
-        self::getLog()->info("Sending user agents via email", compact('count'));
+        self::getLog()->info("Sending user agents via email", compact('count', 'address'));
 
         return $mailer->mailUserAgents();
     }
