@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+6.0.1 (2023-10-16)
+------------------
+
+* bugfix - cron and tools task were still invoking old class
+* bugfix - didn't finish converting userAgentMatchesValidBrowser to return a boolean value
+* rebuild SendAgents function and finish new email sending functionality
+* performance enhancement: don't do browser or ignored checks if the user is logged in - we'll assume they are using a 
+  valid browser
+
 6.0.0 (2023-10-12)
 ------------------
 
