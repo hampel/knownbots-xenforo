@@ -91,7 +91,7 @@ class ParseLogs extends Command
                         continue;
                     }
 
-                    $robotKey = $robots->userAgentMatchesRobot($userAgent, false);
+                    $robotKey = $robots->userAgentMatchesRobot($userAgent, false, false);
 
                     if ($robotKey)
                     {

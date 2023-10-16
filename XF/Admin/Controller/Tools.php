@@ -69,7 +69,7 @@ class Tools extends XFCP_Tools
 
 			$useragent = $this->filter('useragent', 'str');
 
-			$robot = $robots->userAgentMatchesRobot($useragent, false);
+			$robot = $robots->userAgentMatchesRobot($useragent, false, false);
 
 			if (!empty($robot))
 			{

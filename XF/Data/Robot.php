@@ -14,7 +14,7 @@ class Robot extends XFCP_Robot
 	    return $maps ?? parent::getRobotUserAgents();
 	}
 
-    public function userAgentMatchesRobot($userAgent, $save = true)
+    public function userAgentMatchesRobot($userAgent, $save = true, $stopIfLoggedIn = true)
 	{
         // 1. bot search key match
 		if ($robotName = $this->userAgentMatchesSimpleBot($userAgent))
@@ -34,14 +34,24 @@ class Robot extends XFCP_Robot
             return $robotName;
         }
 
-        // 3. stop now if we aren't going to be storing user agents
+        // 3. stop now if we have a valid user
+        if ($stopIfLoggedIn && \XF::visitor()->user_id)
+        {
+            // if they're logged in, they are almost certainly not a bot
+            // we'll still check for bots first, just in case - but we won't bother continuing looking for a valid
+            // browser or ignored user agent, etc. This will speed up processing for members, while visitors will still
+            // undergo the additional checks
+            return '';
+        }
+
+        // 4. stop now if we aren't going to be storing user agents
         if (!$save || !StoreUserAgents::isEnabled())
         {
             // if we're not going to store the user agents for further analysis, there's no point continuing
             return '';
         }
 
-        // 4. stop if the user agent matches any of our ignored regex searches
+        // 5. stop if the user agent matches any of our ignored regex searches
         if ($this->userAgentMatchesIgnored($userAgent))
         {
             // we found an ignored user agent, we don't know what these UA's belong to, so we won't explicitly
@@ -49,14 +59,14 @@ class Robot extends XFCP_Robot
             return '';
         }
 
-        // 5. stop if we consider this to be a valid browser user agent
+        // 6. stop if we consider this to be a valid browser user agent
         if ($this->userAgentMatchesValidBrowser($userAgent))
         {
             // we found a valid user browser
             return '';
         }
 
-        // 6. if we got this far, we don't know what this user agent is, so add it to the database for later analysis
+        // 7. if we got this far, we don't know what this user agent is, so add it to the database for later analysis
         $this->saveUserAgent($save, $userAgent);
         return '';
 	}
@@ -193,7 +203,7 @@ class Robot extends XFCP_Robot
             {
                 $user_agent = $agent->user_agent;
 
-                $robot_key = $this->userAgentMatchesRobot($user_agent, false);
+                $robot_key = $this->userAgentMatchesRobot($user_agent, false, false);
                 if (!empty($robot_key))
                 {
                     // add the robot info to the database if it has changed, but don't update the last_updated time

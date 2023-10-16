@@ -35,7 +35,7 @@ class TestBots extends Command
         $userAgent = $input->getArgument('agent');
         $save = $input->getOption('save');
 
-	    $robot = $robots->userAgentMatchesRobot($userAgent, $save);
+	    $robot = $robots->userAgentMatchesRobot($userAgent, $save, false);
 
 	    if (empty($robot))
         {
