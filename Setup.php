@@ -144,7 +144,7 @@ class Setup extends AbstractSetup
 
         if (isset($emailOption['email']) && !empty($emailOption['email']))
         {
-            $addresses = array_map('trim', explode(',', $emailOption['email'] ?? ''));
+            $addresses = array_map('trim', explode(',', $emailOption['email']));
 
             $initialCount = count($addresses);
             foreach ($addresses as $key => $address)
@@ -160,8 +160,13 @@ class Setup extends AbstractSetup
                 if (count($addresses) == 0)
                 {
                     $emailOption['enabled'] = 0;
+                    $emailOption['email'] = '';
                 }
-                $emailOption['email'] = implode(", ", $addresses);
+                else
+                {
+                    // just take the first email address remaining in the list
+                    $emailOption['email'] = array_shift($addresses);
+                }
                 \XF::repository('XF:Option')->updateOption('knownbotsEmailUserAgents', $emailOption);
             }
         }
