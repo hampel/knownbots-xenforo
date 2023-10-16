@@ -23,8 +23,6 @@ class SendAgents extends Command
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
-        $log = self::getLog();
-
         if (!StoreUserAgents::isEnabled())
         {
             // we're not storing user agents, so nothing to send - silently abort
