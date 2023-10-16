@@ -50,7 +50,7 @@ class Robot extends XFCP_Robot
         }
 
         // 5. stop if we consider this to be a valid browser user agent
-        if (empty($this->userAgentMatchesValidBrowser($userAgent)))
+        if ($this->userAgentMatchesValidBrowser($userAgent))
         {
             // we found a valid user browser
             return '';
@@ -163,14 +163,14 @@ class Robot extends XFCP_Robot
         if (empty($browsers))
         {
             // something went wrong with our browser list - just continue
-            return $userAgent;
+            return false;
         }
 
         $searches = array_map(function ($item) {
             return "#{$item}#i";
         }, $browsers);
 
-        empty(trim(trim(trim(preg_replace($searches, '', $userAgent)), '()[]{};-"\'')));
+        return empty(trim(trim(trim(preg_replace($searches, '', $userAgent)), '()[]{};-"\'')));
     }
 
     protected function loadBotData($type)
@@ -214,7 +214,7 @@ class Robot extends XFCP_Robot
                     $repo->deleteUserAgent($user_agent);
                     $log->info("Deleted ignored user agent", compact('user_agent'));
                 }
-                elseif (empty($this->userAgentMatchesValidBrowser($user_agent)))
+                elseif ($this->userAgentMatchesValidBrowser($user_agent))
                 {
                     // we have a valid browser, delete the user agent
                     $repo->deleteUserAgent($user_agent);
