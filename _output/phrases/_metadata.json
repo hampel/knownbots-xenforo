@@ -53,6 +53,12 @@
         "version_string": "5.1.0",
         "hash": "2105d2c93d3e44201de1b3878d978579"
     },
+    "hampel_knownbots_agents_sent.txt": {
+        "global_cache": false,
+        "version_id": 6000070,
+        "version_string": "6.0.0",
+        "hash": "593a737452c8dc6bbe64be38025de7e0"
+    },
     "hampel_knownbots_api_setup.txt": {
         "global_cache": false,
         "version_id": 5010070,
@@ -107,12 +113,6 @@
         "version_string": "2.6.0",
         "hash": "a7fee2892f568643fcd93ddf387ba6bf"
     },
-    "hampel_knownbots_email.txt": {
-        "global_cache": false,
-        "version_id": 2070070,
-        "version_string": "2.7.0",
-        "hash": "58f91b81300d1be07f42b154e1c8f0ff"
-    },
     "hampel_knownbots_email_none_found.txt": {
         "global_cache": false,
         "version_id": 3020070,
@@ -124,12 +124,6 @@
         "version_id": 2070070,
         "version_string": "2.7.0",
         "hash": "9ab7fd6068420c948304c8f9526b0eb0"
-    },
-    "hampel_knownbots_email_sent.txt": {
-        "global_cache": false,
-        "version_id": 2070070,
-        "version_string": "2.7.0",
-        "hash": "061f14b48d0efd480546e53c090be379"
     },
     "hampel_knownbots_email_subject.txt": {
         "global_cache": false,
@@ -220,6 +214,18 @@
         "version_id": 5000033,
         "version_string": "5.0.0 Beta 3",
         "hash": "2d4e9e18814fbb0ffa616ed70f2909bf"
+    },
+    "hampel_knownbots_send_agents.txt": {
+        "global_cache": false,
+        "version_id": 6000070,
+        "version_string": "6.0.0",
+        "hash": "5f9e784c4d8016a2ea62255e0db07f70"
+    },
+    "hampel_knownbots_sending_api_failed.txt": {
+        "global_cache": false,
+        "version_id": 6000070,
+        "version_string": "6.0.0",
+        "hash": "2e38bb4609685b436335c7e340dd78d6"
     },
     "hampel_knownbots_successfully_updated.txt": {
         "global_cache": false,

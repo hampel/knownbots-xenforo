@@ -1,9 +1,9 @@
 <xf:title>{{ phrase('hampel_knownbots_new') }}</xf:title>
 
 <xf:pageaction>
-	<xf:if is="$xf.options.knownbotsEmailUserAgents.enabled && $xf.options.knownbotsEmailUserAgents.email">
-		<xf:button href="{{ link('tools/hampel-knownbots-email') }}">
-			{{ phrase('hampel_knownbots_email') }}
+	<xf:if is="$xf.options.knownbotsStoreUserAgents.enabled && $xf.options.knownbotsSendUserAgents.api_token">
+		<xf:button href="{{ link('tools/hampel-knownbots-send') }}">
+			{{ phrase('hampel_knownbots_send_agents') }}
 		</xf:button>
 	</xf:if>
 	<xf:button href="{{ link('tools/hampel-knownbots-purge') }}">
@@ -45,9 +45,6 @@
 			{{ phrase('hampel_knownbots_unidentified_user_agents') }}
 		</h2>			
 		<div class="block-body block-row">
-			<p>
-
-			</p>
 			<xf:if is="$unidentified">		
 				<ul>
 					<xf:foreach loop="$unidentified" value="$bot">
@@ -56,8 +53,8 @@
 						</li>
 					</xf:foreach>
 				</ul>
-				<xf:else />
-				<div class="blockMessage">{{ phrase('hampel_knownbots_email_none_found') }}</div>
+			<xf:else />
+				<div class="blockMessage"></div>
 			</xf:if>			
 		</div>
 	</div>
