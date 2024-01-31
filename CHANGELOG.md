@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+6.0.2 (2024-01-31)
+------------------
+
+* change UserAgentMailer to send bots as an attached text file rather than in body of email
+* new CLI tool to send bots via email directly
+
 6.0.1 (2023-10-16)
 ------------------
 
