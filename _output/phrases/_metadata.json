@@ -215,6 +215,12 @@
         "version_string": "5.0.0 Beta 3",
         "hash": "2d4e9e18814fbb0ffa616ed70f2909bf"
     },
+    "hampel_knownbots_see_attachment.txt": {
+        "global_cache": false,
+        "version_id": 6000170,
+        "version_string": "6.0.1",
+        "hash": "a1e93a7e43f81510b53f91de19ec8fb2"
+    },
     "hampel_knownbots_send_agents.txt": {
         "global_cache": false,
         "version_id": 6000070,

@@ -1,6 +1,7 @@
 <?php namespace Hampel\KnownBots\Service;
 
 use XF\Service\AbstractService;
+use XF\Util\File;
 
 class UserAgentMailer extends AbstractService
 {
@@ -21,18 +22,30 @@ class UserAgentMailer extends AbstractService
 	{
         $version = $this->app->finder('XF:AddOn')->whereId('Hampel/KnownBots')->fetchOne()->version_string;
 
-        $botList = '';
-        foreach ($this->agents as $bot)
-        {
-            $botList .= "<li>{$bot}</li>" . PHP_EOL;
-        }
-
         $mail = $this->app->mailer()->newMail();
         $mail->setTo($this->toEmail);
         $mail->setContent(
             \XF::phrase('hampel_knownbots_email_subject', compact('version'))->render('raw'),
-            "<ul>" . PHP_EOL . $botList . PHP_EOL . "</ul>" . PHP_EOL
+            \XF::phrase('hampel_knownbots_see_attachment')->render('raw')
         );
-        return $mail->queue();
+
+        $attachment = $this->createBotFile();
+
+        $mail->getMessageObject()->attach(\Swift_Attachment::fromPath($attachment, "text/plain"));
+        return $mail->send();
 	}
+
+    protected function createBotFile()
+    {
+        $botList = '';
+        foreach ($this->agents as $bot)
+        {
+            $botList .= $bot . PHP_EOL;
+        }
+
+        $tmpFile = File::getNamedTempFile("knownbots-" . date("YmdHis") . ".txt");
+        file_put_contents($tmpFile, $botList);
+
+        return $tmpFile;
+    }
 }
