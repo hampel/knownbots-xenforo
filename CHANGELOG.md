@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+6.0.3 (2024-02-04)
+------------------
+
+* new tool for importing user agents from a text file
+* ignore invalid  UTF-8 strings, to prevent json_encode from choking on them
+
 6.0.2 (2024-01-31)
 ------------------
 
