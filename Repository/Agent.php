@@ -6,7 +6,13 @@ class Agent extends Repository
 {
     public function addUserAgent($userAgent, $robot_key, $touch = true)
     {
+        // stop if we have invalid UTF-8 characters
+        if (mb_convert_encoding($userAgent, 'UTF-8', 'UTF-8') != $userAgent) return 0;
+
         $userAgent = trim(substr($userAgent, 0, 512));
+
+        // stop if we have a zero length user agent after trimming
+        if (strlen($userAgent) == 0) return 0;
 
         $agent = \XF::db()->fetchRow("
             SELECT * FROM xf_knownbots_agent WHERE user_agent = ?

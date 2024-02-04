@@ -212,6 +212,16 @@ class KnownBots
     {
         $log = $this->getLogger();
 
+        // remove any invalidly encoded strings
+        foreach ($agents as $index => $agent)
+        {
+            $encoded = mb_convert_encoding($agent, 'UTF-8', 'UTF-8');
+            if ($encoded != $agent)
+            {
+                unset($agents[$index]);
+            }
+        }
+
         $options = [
             'json' => compact('agents'),
             'headers' => [
