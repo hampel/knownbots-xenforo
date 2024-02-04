@@ -5,12 +5,11 @@
     "version_id": 6000270,
     "version_string": "6.0.2",
     "dev": "Simon Hampel",
-    "dev_url": "https://bitbucket.org/hampel/",
+    "dev_url": "https://github.com/hampel",
     "faq_url": "https://xenforo.com/community/resources/known-bots.6489/field?field=faq",
-    "support_url": "https://bitbucket.org/hampel/knownbots-xenforo/issues",
+    "support_url": "https://xenforo.com/community/threads/known-bots.148723/",
     "extra_urls": {
-        "Git Repository": "https://bitbucket.org/hampel/knownbots-xenforo",
-        "Twitter": "https://twitter.com/SimonHampel"
+        "Git Repository": "https://github.com/hampel/knownbots-xenforo"
     },
     "require": {
         "php": [

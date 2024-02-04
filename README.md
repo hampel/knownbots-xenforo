@@ -3,7 +3,7 @@ Known Bots for XenForo 2.x
 
 This XenForo 2.x addon adds additional definitions for bot detection in sessions.
 
-By [Simon Hampel](mailto:simon@hampelgroup.com).
+By [Simon Hampel](https://xenforo.com/community/members/sim.4264/).
 
 ### Requirements
 
