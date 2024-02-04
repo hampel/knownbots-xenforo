@@ -215,6 +215,17 @@ $ php cmd.php known-bots:parse - < /var/log/nginx/xenforo/xenforo.access.log
 $ tail -f /var/log/nginx/xenforo/xenforo.access.log | php cmd.php known-bots:parse -
 ```
 
+#### Import User Agents
+
+Reads user agents from a text file or stdin
+
+```bash
+$ php cmd.php known-bots:import {file}
+```
+User agents should be listed one per line.
+
+Command will accept data from stdin if you specify a hyphen as the file name.
+
 ### Privacy
 
 #### Privacy Summary
