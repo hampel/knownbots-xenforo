@@ -15,6 +15,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 	 */
 	protected $_knownRobots = [
 		'7siters' => '7siters',
+        'accompanybot' => 'accompanybot',
 		'adbeat' => 'adbeat',
 		'adscanner' => 'adscanner',
 		'ahrefsbot' => 'ahrefs',
@@ -46,11 +47,13 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'garlikcrawler' => 'garlikcrawler',
 		'go-http-client' => 'go-http-client',
 		'googlebot' => 'google',
+        'google-read-aloud' => 'google-read-aloud',
         'gptbot' => 'gptbot',
 		'httrack' => 'httrack',
         'httprs' => 'httprs',
 		'ia_archiver' => 'alexa',
 		'indeedbot' => 'indeedbot',
+        'java/11.0.10' => 'java',
 		'just-crawling' => 'just-crawling',
 		'knowknot' => 'knowknot',
 		'linguee' => 'linguee',
@@ -68,17 +71,21 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'mj12bot' => 'mj12',
 		'msnbot' => 'msnbot',
 		'nlnz_iaharvester' => 'nlnz',
+        'node-fetch' => 'node-fetch',
 		'outclicksbot' => 'outclicksbot',
 		'panscient' => 'panscient',
+        'paracrawl' => 'paracrawl',
 		'pcore-http' => 'pcore-http',
 		'php' => 'php',
 		'pinterestbot' => 'pinterest',
 		'proximic' => 'proximic',
+        'punkspider' => 'punkspider',
 		'python-requests' => 'python-requests',
 		'quick-crawler' => 'scrapinghub',
 		're-re studio' => 're-re studio',
 		'scoutjet' => 'scoutjet',
 		'scrapy' => 'scrapy',
+        'seekportbot' => 'seekportbot',
 		'semanticscholarbot' => 'semanticscholarbot',
 		'semrushbot' => 'semrushbot',
 		'seokicks-robot' => 'seokicks-robot',
@@ -97,9 +104,11 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'v-bot' => 'voyager',
 		'vegi bot' => 'vegibot',
 		'wget' => 'wget',
+        'winhttp' => 'winhttp',
 		'wonderbot' => 'wonderbot',
 		'wotbox' => 'wotbox',
 		'xenu link sleuth' => 'xenu link sleuth',
+        'yahoo link preview' => 'yahoo',
 		'yahoo! slurp' => 'yahoo',
 		'yandex' => 'yandex',
 
@@ -118,6 +127,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => '7Siters',
 			'link' => 'https://7ooo.ru/siters/',
 		],
+        'accompanybot' => [
+            'title' => 'AccompanyBot',
+            'link' => '',
+        ],
 		'adbeat' => [
 			'title' => 'Adbeat',
 			'link' => 'http://adbeat.com/policy',
@@ -238,6 +251,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'Google AdSense',
 			'link' => 'https://support.google.com/webmasters/answer/182072'
 		],
+        'google-read-aloud' => [
+            'title' => 'Google Read Aloud',
+            'link' => 'https://support.google.com/webmasters/answer/1061943'
+        ],
         'gptbot' => [
             'title' => 'GPT Bot',
             'link' => 'https://openai.com/gptbot'
@@ -254,6 +271,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'IndeedBot',
 			'link' => 'http://indeedbot.com/'
 		],
+        'java' => [
+            'title' => 'Java',
+            'link' => ''
+        ],
 		'just-crawling' => [
 			'title' => 'Just-Crawling',
 			'link' => ''
@@ -314,6 +335,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'NLNZ_IAHarvester2017',
 			'link' => 'https://natlib.govt.nz/publishers-and-authors/web-harvesting/domain-harvest'
 		],
+        'node-fetch' => [
+            'title' => 'Node Fetch',
+            'link' => 'https://github.com/bitinn/node-fetch'
+        ],
 		'outclicksbot' => [
 			'title' => 'OutclicksBot',
 			'link' => 'https://www.outclicks.net/agent/fkn6dy'
@@ -322,6 +347,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'panscient.com',
 			'link' => 'http://panscient.com/'
 		],
+        'paracrawl' => [
+            'title' => 'Paracrawl',
+            'link' => ''
+        ],
 		'pcore-http' => [
 			'title' => 'Pcore-HTTP',
 			'link' => ''
@@ -338,6 +367,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'Proximic',
 			'link' => 'http://www.proximic.com/info/spider.php'
 		],
+        'punkspider' => [
+            'title' => 'Punkspider',
+            'link' => 'mailto:support@hyperiongray.com'
+        ],
 		're-re studio' => [
 			'title' => 'Re-re Studio',
 			'link' => 'http://re-re.ru/'
@@ -354,6 +387,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'Scrapy',
 			'link' => 'http://scrapy.org',
 		],
+        'seekportbot' => [
+            'title' => 'SeekportBot',
+            'link' => 'https://bot.seekport.com',
+        ],
 		'semanticscholarbot' => [
 			'title' => 'SemanticScholarBot',
 			'link' => 'https://www.semanticscholar.org/crawler',
@@ -426,6 +463,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'Linux Wget',
 			'link' => 'https://www.gnu.org/software/wget/'
 		],
+        'winhttp' => [
+            'title' => 'winHttp',
+            'link' => ''
+        ],
 		'wonderbot' => [
 			'title' => 'wonderbot',
 			'link' => 'https://wonder-bot.com/'
