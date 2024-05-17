@@ -29,6 +29,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'binglocalsearch' => 'bing',
 		'brandverity' => 'brandverity',
 		'brokenlinkcheck' => 'brokenlinkcheck',
+        'bytespider' => 'bytespider',
 		'companybook-crawler' => 'companybook',
 		'contacts-crawler' => 'scrapinghub',
 		'crawler4j' => 'crawler4j',
@@ -45,7 +46,9 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'garlikcrawler' => 'garlikcrawler',
 		'go-http-client' => 'go-http-client',
 		'googlebot' => 'google',
+        'gptbot' => 'gptbot',
 		'httrack' => 'httrack',
+        'httprs' => 'httprs',
 		'ia_archiver' => 'alexa',
 		'indeedbot' => 'indeedbot',
 		'just-crawling' => 'just-crawling',
@@ -54,6 +57,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'linkdexbot' => 'linkdexbot',
 		'linkpadbot' => 'linkpadbot',
 		'ltx71' => 'ltx71',
+        'lync/16.0' => 'lync',
 		'magpie-crawler' => 'brandwatch',
 		'mail.ru' => 'mail.ru',
 		'mediapartners-google' => 'google-adsense',
@@ -78,6 +82,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'semanticscholarbot' => 'semanticscholarbot',
 		'semrushbot' => 'semrushbot',
 		'seokicks-robot' => 'seokicks-robot',
+        'sidetrade indexer bot' => 'sidetrade-indexer-bot',
 		'sitesucker' => 'sitesucker',
 		'smtbot' => 'smtbot',
 		'sogou web spider' => 'sogou',
@@ -87,6 +92,7 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 		'symfony browserkit' => 'symfony browserkit',
 		'symfony2 browserkit' => 'symfony browserkit',
 		'tracemyfile' => 'tracemyfile',
+        'thesafexinternetsearch' => 'thesafexinternetsearch',
 		'um-ln' => 'ubermetrics-technologies',
 		'v-bot' => 'voyager',
 		'vegi bot' => 'vegibot',
@@ -168,6 +174,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'BrokenLinkCheck.com',
 			'link' => 'http://brokenlinkcheck.com/'
 		],
+        'bytespider' => [
+            'title' => 'Bytespider',
+            'link' => 'mailto:spider-feedback@bytedance.com'
+        ],
 		'companybook' => [
 			'title' => 'Companybook',
 			'link' => 'https://www.companybooknetworking.com/'
@@ -228,10 +238,18 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'Google AdSense',
 			'link' => 'https://support.google.com/webmasters/answer/182072'
 		],
+        'gptbot' => [
+            'title' => 'GPT Bot',
+            'link' => 'https://openai.com/gptbot'
+        ],
 		'httrack' => [
 			'title' => 'HTTrack',
 			'link' => 'http://www.httrack.com/'
 		],
+        'httprs' => [
+            'title' => 'httprs',
+            'link' => ''
+        ],
 		'indeedbot' => [
 			'title' => 'IndeedBot',
 			'link' => 'http://indeedbot.com/'
@@ -260,6 +278,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'LTX71',
 			'link' => 'http://ltx71.com/'
 		],
+        'lync' => [
+            'title' => 'Lync',
+            'link' => ''
+        ],
 		'mail.ru' => [
 			'title' => 'Mail.RU',
 			'link' => 'http://go.mail.ru/help/robots',
@@ -344,6 +366,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'SEOkicks-Robot',
 			'link' => 'http://www.seokicks.de/robot.html',
 		],
+        'sidetrade-indexer-bot' => [
+            'title' => 'Sidetrade indexer bot',
+            'link' => '',
+        ],
 		'sitesucker' => [
 			'title' => 'SiteSucker for OS X',
 			'link' => 'http://ricks-apps.com/osx/sitesucker/',
@@ -372,6 +398,10 @@ class KnownBots_Session extends XFCP_KnownBots_Session
 			'title' => 'Symfony BrowserKit',
 			'link' => 'https://symfony.com/doc/current/components/browser_kit.html'
 		],
+        'thesafexinternetsearch' => [
+            'title' => 'TheSafexInternetSearch',
+            'link' => ''
+        ],
 		'tracemyfile' => [
 			'title' => 'TraceMyFile',
 			'link' => 'https://www.tracemyfile.com/'
