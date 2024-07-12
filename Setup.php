@@ -26,9 +26,17 @@ class Setup extends AbstractSetup
         if (!$fs->has(self::BOTPATH))
         {
             $sourceFile = sprintf("%s/knownbots.json", $this->addOn->getAddOnDirectory());
-            File::copyFileToAbstractedPath($sourceFile, self::BOTPATH);
 
-            $this->loadBots();
+            if (file_exists($sourceFile))
+            {
+                File::copyFileToAbstractedPath($sourceFile, self::BOTPATH);
+
+                $this->loadBots();
+            }
+            else // we may be installing from _output rather than from the zip archive, so fetch the latest bots directly
+            {
+                $this->getApi()->fetchBots(true);
+            }
         }
 
         $this->randomizeFetchCron();
