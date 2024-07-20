@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+6.0.5 (2024-07-20)
+------------------
+
+* bugfix - XF2.3 compatibility for sending new bots via an email attachment
+
 6.0.4 (2024-07-12)
 ------------------
 
