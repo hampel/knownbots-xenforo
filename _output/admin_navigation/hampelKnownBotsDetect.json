@@ -3,7 +3,7 @@
     "display_order": 2,
     "link": "tools/hampel-knownbots-detect",
     "icon": "",
-    "admin_permission_id": "",
+    "admin_permission_id": "knownbots",
     "debug_only": false,
     "development_only": false,
     "hide_no_children": false

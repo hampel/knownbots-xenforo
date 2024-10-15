@@ -29,6 +29,12 @@
         "version_string": "3.18.0",
         "hash": "0ed8046c586b6cce0d52af138f631579"
     },
+    "admin_permission.knownbots.txt": {
+        "global_cache": false,
+        "version_id": 6000570,
+        "version_string": "6.0.5",
+        "hash": "36319a966ebe63e3b9266c0f6ba77ca0"
+    },
     "cron_entry.hampelKnownBotsFetchBots.txt": {
         "global_cache": false,
         "version_id": 4000031,
