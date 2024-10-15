@@ -5,6 +5,10 @@ This XenForo 2.x addon adds additional definitions for bot detection in sessions
 
 By [Simon Hampel](https://xenforo.com/community/members/sim.4264/).
 
+* [Addon: Known Bots](https://xenforo.com/community/resources/known-bots.6489/)
+* [Discussion and support: Known Bots](https://xenforo.com/community/threads/known-bots.148723/)
+
+
 ### Requirements
 
 This addon requires PHP 7.0 or higher and works on XenForo 2.x
