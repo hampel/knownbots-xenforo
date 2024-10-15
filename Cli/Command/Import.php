@@ -36,7 +36,7 @@ class Import extends Command
             if (!is_readable($file))
             {
                 $output->writeln("<error>Error: No such file or file unreadable</error>");
-                return 1;
+                return Command::INVALID;
             }
             $stream = fopen($file, "r");
         }
@@ -63,6 +63,6 @@ class Import extends Command
 
         $output->writeln("Processed {$count} user agents");
 
-		return 0;
+		return Command::SUCCESS;
 	}
 }
