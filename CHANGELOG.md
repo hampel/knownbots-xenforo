@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+6.1.0 (2024-10-16)
+------------------
+
+* now requires Manage known bots admin permission to see admin tools
+
 6.0.5 (2024-07-20)
 ------------------
 
