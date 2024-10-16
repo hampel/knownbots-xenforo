@@ -14,9 +14,12 @@ use Hampel\KnownBots\XF\Data\Robot;
 
 class Tools extends XFCP_Tools
 {
+    // TODO: move this to its own controller
+
 	public function actionHampelKnownBotsList()
 	{
 		$this->setSectionContext('hampelKnownBotsList');
+        $this->assertAdminPermission('knownbots');
 
 		$knownBots = $this->getRobot()->getRobotList();
 
@@ -32,6 +35,7 @@ class Tools extends XFCP_Tools
     public function actionHampelKnownBotsFetch()
     {
         $this->setSectionContext('hampelKnownBotsList');
+        $this->assertAdminPermission('knownbots');
 
         try
         {
@@ -58,6 +62,7 @@ class Tools extends XFCP_Tools
 	public function actionHampelKnownBotsDetect()
 	{
 		$this->setSectionContext('hampelKnownBotsDetect');
+        $this->assertAdminPermission('knownbots');
 
 		$useragent = '';
 		$botInfo = [];
@@ -102,6 +107,7 @@ class Tools extends XFCP_Tools
 	public function actionHampelKnownBotsNew()
 	{
 		$this->setSectionContext('hampelKnownBotsNew');
+        $this->assertAdminPermission('knownbots');
 
         $data = $this->getRobot();
 		$newBots = $this->getAgentRepo()->getUserAgentsForDisplay();
@@ -139,6 +145,7 @@ class Tools extends XFCP_Tools
 	public function actionHampelKnownBotsSend()
 	{
 		$this->setSectionContext('hampelKnownBotsNew');
+        $this->assertAdminPermission('knownbots');
 
 		$repo = $this->getAgentRepo();
 
@@ -170,6 +177,8 @@ class Tools extends XFCP_Tools
 
     public function actionHampelKnownBotsPurge()
     {
+        $this->assertAdminPermission('knownbots');
+
         $days = StoreUserAgents::daysUntilPurge();
 
         if ($days == 0) return; // stop if we're not automatically purging old agents
@@ -181,6 +190,8 @@ class Tools extends XFCP_Tools
 
     public function actionHampelKnownBotsClear()
     {
+        $this->assertAdminPermission('knownbots');
+
         $rows = self::getAgentRepo()->clearAllUserAgents();
 
         return $this->message(\XF::phrase('hampel_knownbots_cleared', compact('rows')));
@@ -188,6 +199,8 @@ class Tools extends XFCP_Tools
 
 	public function actionHampelKnownBotsMd()
 	{
+        $this->assertAdminPermission('knownbots');
+
 		$robot = $this->getRobot();
 
 		$agents = $robot->getRobotUserAgents();
