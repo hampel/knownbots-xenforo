@@ -9,6 +9,7 @@
     "faq_url": "https://xenforo.com/community/resources/known-bots.6489/field?field=faq",
     "support_url": "https://xenforo.com/community/threads/known-bots.148723/",
     "extra_urls": {
+        "Addon": "https://xenforo.com/community/resources/known-bots.6489/",
         "Git Repository": "https://github.com/hampel/knownbots-xenforo"
     },
     "require": {
