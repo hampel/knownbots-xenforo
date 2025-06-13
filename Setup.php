@@ -62,6 +62,8 @@ class Setup extends AbstractSetup
         {
             $this->removeKnownBotsEmail();
         }
+
+        $this->enqueuePostUpgradeCleanUp();
     }
 
     // ################################ UNINSTALL ##################
