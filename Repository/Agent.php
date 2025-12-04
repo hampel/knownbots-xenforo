@@ -14,7 +14,7 @@ class Agent extends Repository
         // stop if we have a zero length user agent after trimming
         if (strlen($userAgent) == 0) return 0;
 
-        $agent = \XF::db()->fetchRow("
+        $agent = $this->db()->fetchRow("
             SELECT * FROM xf_knownbots_agent WHERE user_agent = ?
         ", [$userAgent]);
 
@@ -26,7 +26,7 @@ class Agent extends Repository
 
             if ($agent['robot_key'] != $robot_key || ($touch && $agent['last_updated'] < $midnight))
             {
-                \XF::db()->query("
+                $this->db()->query("
                  UPDATE xf_knownbots_agent 
                  SET robot_key = ?,
                      last_updated = ?
@@ -39,7 +39,7 @@ class Agent extends Repository
             return 0;
         }
 
-        \XF::db()->query("
+        $this->db()->query("
             INSERT IGNORE INTO xf_knownbots_agent (user_agent, robot_key, last_updated)
             VALUES (?, ?, ?)
         ", [$userAgent, $robot_key, $midnight]);
@@ -49,7 +49,7 @@ class Agent extends Repository
 
     public function deleteUserAgent($userAgent)
     {
-        \XF::db()->query("
+        $this->db()->query("
             DELETE FROM xf_knownbots_agent
             WHERE user_agent = ?
         ", [$userAgent]);
@@ -85,7 +85,7 @@ class Agent extends Repository
 
     public function markUserAgentsSent()
     {
-        $query = \XF::db()->query("
+        $query = $this->db()->query("
             UPDATE xf_knownbots_agent
             SET sent = 1
             WHERE sent = 0
@@ -98,7 +98,7 @@ class Agent extends Repository
     {
         $offset = $days * 60 * 60 * 24;
 
-        $query = \XF::db()->query("
+        $query = $this->db()->query("
             DELETE FROM xf_knownbots_agent
             WHERE last_updated < ?
         ", [$offset]);
@@ -108,11 +108,7 @@ class Agent extends Repository
 
     public function clearAllUserAgents()
     {
-        $query = \XF::db()->query("
-            DELETE FROM xf_knownbots_agent
-        ");
-
-        return $query->rowsAffected();
+        return $this->db()->emptyTable('xf_knownbots_agent');
     }
 
     protected function agentFinder()
