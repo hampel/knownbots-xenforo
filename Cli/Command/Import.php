@@ -1,13 +1,13 @@
 <?php namespace Hampel\KnownBots\Cli\Command;
 
 use Hampel\KnownBots\XF\Data\Robot;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use XF\Cli\Command\AbstractCommand;
 
-class Import extends Command
+class Import extends AbstractCommand
 {
 	protected function configure()
 	{
@@ -36,7 +36,7 @@ class Import extends Command
             if (!is_readable($file))
             {
                 $output->writeln("<error>Error: No such file or file unreadable</error>");
-                return Command::INVALID;
+                return self::INVALID;
             }
             $stream = fopen($file, "r");
         }
@@ -63,6 +63,6 @@ class Import extends Command
 
         $output->writeln("Processed {$count} user agents");
 
-		return Command::SUCCESS;
+		return self::SUCCESS;
 	}
 }

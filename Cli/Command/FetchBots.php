@@ -2,12 +2,12 @@
 
 use Hampel\KnownBots\Exception\KnownBotsException;
 use Hampel\KnownBots\SubContainer\Api;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use XF\Cli\Command\AbstractCommand;
 
-class FetchBots extends Command
+class FetchBots extends AbstractCommand
 {
 	protected function configure()
 	{
@@ -34,7 +34,7 @@ class FetchBots extends Command
         {
             \XF::logException($e);
             $output->writeln($e->getMessage());
-            return 1;
+            return self::FAILURE;
         }
 
 		if (is_null($bots))
@@ -52,7 +52,7 @@ class FetchBots extends Command
         $output->writeln("Loaded browsers: " . count($bots['browsers']));
         $output->writeln("knownbots.json build date: {$checked}");
 
-		return 0;
+		return self::SUCCESS;
 	}
 
     protected function formatTime($timestamp)

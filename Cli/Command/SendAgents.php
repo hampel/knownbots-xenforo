@@ -7,12 +7,12 @@ use Hampel\KnownBots\Repository\Agent;
 use Hampel\KnownBots\Service\UserAgentMailer;
 use Hampel\KnownBots\Service\UserAgentSender;
 use Hampel\KnownBots\SubContainer\Log;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use XF\Cli\Command\AbstractCommand;
 
-class SendAgents extends Command
+class SendAgents extends AbstractCommand
 {
 	protected function configure()
 	{
@@ -27,14 +27,14 @@ class SendAgents extends Command
         {
             // we're not storing user agents, so nothing to send - silently abort
             $this->log('notice', "Send Agents: storing user agents disabled - aborting", $output);
-            return 1;
+            return self::FAILURE;
         }
 
         if (!SendUserAgents::isEnabled() && !EmailUserAgents::isEnabled())
         {
             // we're not sending either, so abort
             $this->log('notice', "Send Agents: not configured to send via API or email - aborting", $output);
-            return 1;
+            return self::FAILURE;
         }
 
         $repo = self::getAgentRepo();
@@ -43,7 +43,7 @@ class SendAgents extends Command
         if (empty($agents))
         {
             $this->log('info', "Send Agents: no user agents to send", $output);
-            return 0;
+            return self::SUCCESS;
         }
 
         if (SendUserAgents::isEnabled())
@@ -53,7 +53,7 @@ class SendAgents extends Command
             if ($response === false)
             {
                 $this->log('notice', "Send Agents: sending via API failed", $output);
-                return 1;
+                return self::FAILURE;
             }
         }
 
@@ -65,7 +65,7 @@ class SendAgents extends Command
         $rows = $repo->markUserAgentsSent();
 
         $this->log('info', "Marked {$rows} user agents as sent", $output);
-		return 0;
+		return self::SUCCESS;
 	}
 
     public function sendApi(array $agents)

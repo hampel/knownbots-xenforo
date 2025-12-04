@@ -3,12 +3,12 @@
 use Hampel\KnownBots\Option\SendUserAgents;
 use Hampel\KnownBots\Service\ApiTokenChecker;
 use Hampel\KnownBots\SubContainer\Api;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use XF\Cli\Command\AbstractCommand;
 
-class CheckApiToken extends Command
+class CheckApiToken extends AbstractCommand
 {
 	protected function configure()
 	{
@@ -28,7 +28,7 @@ class CheckApiToken extends Command
         if (!SendUserAgents::isEnabled())
         {
             $output->writeln("API is not configured - please update KnownBots options");
-            return 1;
+            return self::FAILURE;
         }
 
         $checker = $this->getApiTokenCheckerService();
@@ -40,11 +40,11 @@ class CheckApiToken extends Command
         if ($response === false)
         {
             $output->writeln($checker->getError());
-            return 1;
+            return self::FAILURE;
         }
 
         $output->writeln("Token is valid for domain {$response}");
-		return 0;
+		return self::SUCCESS;
 	}
 
     /**

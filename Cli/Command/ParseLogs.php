@@ -1,13 +1,13 @@
 <?php namespace Hampel\KnownBots\Cli\Command;
 
 use Hampel\KnownBots\XF\Data\Robot;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use XF\Cli\Command\AbstractCommand;
 
-class ParseLogs extends Command
+class ParseLogs extends AbstractCommand
 {
 	protected function configure()
 	{
@@ -48,7 +48,7 @@ class ParseLogs extends Command
             if (!is_readable($file))
             {
                 $output->writeln("<error>Error: No such file or file unreadable</error>");
-                return 1;
+                return self::FAILURE;
             }
             $stream = fopen($file, "r");
         }
@@ -119,6 +119,6 @@ class ParseLogs extends Command
             fclose($stream);
         }
 
-		return 0;
+		return self::SUCCESS;
 	}
 }

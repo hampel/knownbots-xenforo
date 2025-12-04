@@ -1,13 +1,13 @@
 <?php namespace Hampel\KnownBots\Cli\Command;
 
 use Hampel\KnownBots\XF\Data\Robot;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use XF\Cli\Command\AbstractCommand;
 
-class TestBots extends Command
+class TestBots extends AbstractCommand
 {
 	protected function configure()
 	{
@@ -42,17 +42,17 @@ class TestBots extends Command
             if ($robots->userAgentMatchesIgnored($userAgent))
             {
                 $output->writeln("<info>User agent matches ignored list</info>");
-                return 0;
+                return self::SUCCESS;
             }
 
             if ($robots->userAgentMatchesValidBrowser($userAgent))
             {
                 $output->writeln("<info>User agent is a valid browser</info>");
-                return 0;
+                return self::SUCCESS;
             }
 
             $output->writeln("<info>Unknown user agent - further analysis required</info>");
-            return 0;
+            return self::SUCCESS;
         }
 
         $output->writeln("<info>Found robot: [{$robot}]</info>");
@@ -63,6 +63,6 @@ class TestBots extends Command
             $output->writeln("Title: {$info['title']}");
         }
 
-		return 0;
+		return self::SUCCESS;
 	}
 }
