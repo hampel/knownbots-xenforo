@@ -68,16 +68,14 @@ class KnownBots
         }
 
         $status = $response->getStatusCode();
+        $reason = $response->getReasonPhrase();
 
         if ($status == 200)
         {
             // we're all good
             return json_decode(file_get_contents($destination), true);
         }
-
-        $reason = $response->getReasonPhrase();
-
-        if ($status == 304)
+        elseif ($status == 304)
         {
             // not modified, no further action required
             $log->info('Bots not modified');
@@ -127,17 +125,17 @@ class KnownBots
         }
 
         $status = $response->getStatusCode();
-        $body = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+        $reason = $response->getReasonPhrase();
 
         if ($status == 200)
         {
             // we're all good
+
+            $body = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+
             return $body['token'] ?? '';
         }
-
-        $reason = $body['message'] ?? $response->getReasonPhrase();
-
-        if ($status >= 500)
+        elseif ($status >= 500)
         {
             // service unavailable or similar - hopefully a temporary error
             throw new ServerException('validating license token', $reason, $status);
@@ -181,17 +179,14 @@ class KnownBots
         }
 
         $status = $response->getStatusCode();
-        $body = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+        $reason = $response->getReasonPhrase();
 
         if ($status == 200)
         {
             // we're all good
-            return $body;
+            return \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
         }
-
-        $reason = $response->getReasonPhrase();
-
-        if ($status >= 500)
+        elseif ($status >= 500)
         {
             // service unavailable or similar - hopefully a temporary error
             throw new ServerException('checking API token', $reason, $status);
@@ -251,17 +246,14 @@ class KnownBots
         }
 
         $status = $response->getStatusCode();
-        $body = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+        $reason = $response->getReasonPhrase();
 
         if ($status == 200)
         {
             // we're all good
-            return $body;
+            return \GuzzleHttp\json_decode($response->getBody()->getContents(), true);;
         }
-
-        $reason = $response->getReasonPhrase();
-
-        if ($status >= 500)
+        elseif ($status >= 500)
         {
             // service unavailable or similar - hopefully a temporary error
             throw new ServerException('sending user agents', $reason, $status);
