@@ -60,7 +60,7 @@ class Api extends AbstractSubContainer
         return $this->container['domain'];
     }
 
-    public function fetchBots($force = false)
+    public function fetchBots($force = false, $reprocess = true)
     {
         $log = $this->getLogger();
         $lastChecked = $this->getCache()->getLastChecked();
@@ -89,7 +89,10 @@ class Api extends AbstractSubContainer
         $this->storeBots($bots); // write to fs
         $this->updateBots($bots); // generate code cache
 
-        $this->reprocessUserAgents();
+        if ($reprocess)
+        {
+            $this->reprocessUserAgents();
+        }
 
         return $bots;
     }
