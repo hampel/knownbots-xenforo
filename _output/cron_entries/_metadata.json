@@ -1,11 +1,11 @@
 {
     "hampelKnownBotsFetchBots.json": {
-        "hash": "31f42c7bde0ea0f05333e16d320977af"
+        "hash": "771e0a7783aadaa1f2b95f7534b67754"
     },
     "hampelKnownBotsPurgeAgent.json": {
         "hash": "7d3a559170c9333f17553e3c6a281786"
     },
     "hampelKnownBotsUserAgents.json": {
-        "hash": "cc2deaaba37d6b8e8e5a6c70a37e17c2"
+        "hash": "c393c772b87cece59bdbd7c1ed216654"
     }
 }
