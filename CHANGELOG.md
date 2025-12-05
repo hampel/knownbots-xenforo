@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+6.1.1 (2025-12-05)
+------------------
+
+* call enqueuePostUpgradeCleanUp() in Setup
+* cleanup: CLI commands should be extending AbstractCommand - also use return constants instead of 0, 1, 2
+* cleanup: don't use \XF::db() when we can use $this->db()
+* bugfix: don't try and decode json if we aren't sure we have a 200 status code - it might not be valid json and so might fail
+
 6.1.0 (2024-10-16)
 ------------------
 
