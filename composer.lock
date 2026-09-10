@@ -64,16 +64,16 @@
         },
         {
             "name": "hampel/xenforo-test-framework",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hampel/xenforo-test-framework.git",
-                "reference": "bc6ff14b73d349bc3a4cddd8446cceefe0b57719"
+                "reference": "fd0a8e3b1350820d9af2a2a98e648d187c7b42ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hampel/xenforo-test-framework/zipball/bc6ff14b73d349bc3a4cddd8446cceefe0b57719",
-                "reference": "bc6ff14b73d349bc3a4cddd8446cceefe0b57719",
+                "url": "https://api.github.com/repos/hampel/xenforo-test-framework/zipball/fd0a8e3b1350820d9af2a2a98e648d187c7b42ca",
+                "reference": "fd0a8e3b1350820d9af2a2a98e648d187c7b42ca",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +124,7 @@
                 "issues": "https://github.com/hampel/xenforo-test-framework/issues",
                 "source": "https://github.com/hampel/xenforo-test-framework"
             },
-            "time": "2026-09-04T23:13:21+00:00"
+            "time": "2026-09-10T12:44:34+00:00"
         },
         {
             "name": "mockery/mockery",
