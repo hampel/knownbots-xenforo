@@ -148,7 +148,9 @@ class Api extends AbstractSubContainer
     public function loadBots()
     {
         $bots = json_decode($this->fs()->read($this->local()), true);
-        return $this->isValid($bots) ? $bots : [];
+
+        // a corrupt or empty file decodes to null or a scalar, which isValid() cannot take
+        return is_array($bots) && $this->isValid($bots) ? $bots : [];
     }
 
     public function removeBots()

@@ -21,6 +21,12 @@ class LoadBots extends AbstractCommand
 
 		$bots = $fetcher->loadBots();
 
+		if (empty($bots))
+		{
+			$output->writeln('<error>No valid bot data in internal_data/knownbots.json - nothing loaded</error>');
+			return self::FAILURE;
+		}
+
 		$fetcher->updateBots($bots);
 
         $checked = $this->formatTime($bots['built']);
