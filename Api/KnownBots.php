@@ -131,7 +131,7 @@ class KnownBots
         {
             // we're all good
 
-            $body = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+            $body = \GuzzleHttp\Utils::jsonDecode($response->getBody()->getContents(), true);
 
             return $body['token'] ?? '';
         }
@@ -184,7 +184,7 @@ class KnownBots
         if ($status == 200)
         {
             // we're all good
-            return \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+            return \GuzzleHttp\Utils::jsonDecode($response->getBody()->getContents(), true);
         }
         elseif ($status >= 500)
         {
@@ -251,7 +251,7 @@ class KnownBots
         if ($status == 200)
         {
             // we're all good
-            return \GuzzleHttp\json_decode($response->getBody()->getContents(), true);;
+            return \GuzzleHttp\Utils::jsonDecode($response->getBody()->getContents(), true);
         }
         elseif ($status >= 500)
         {
