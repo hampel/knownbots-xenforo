@@ -184,11 +184,11 @@ this on its own: `xf-addon:upgrade` sees `_output/` and imports from the working
 of the zip, so the upgrade completes without ever reading the release's data. A disposable
 install built from the release zip is the right target, but only with development mode **off**
 in its config. In development mode, any add-on-owned entity saved during install is written out
-to the installed add-on's `_output/` — this add-on's `Setup` saves two of its cron entries when
-it randomises their run times — and the upgrade then finds `_output/`, takes the
-`xf-dev:import` shortcut, and deletes anything `_output/` lacks, starting with the purge cron.
-Confirm the upgrade printed `Importing add-on data` and did **not** print `All data imported`;
-the second is the shortcut.
+to the installed add-on's `_output/` unless that save switches it off. This add-on's `Setup`
+does switch it off for the two cron entries it randomises, but a sandbox should not depend on
+every save doing so: once `_output/` exists, the upgrade takes the `xf-dev:import` shortcut and
+deletes anything `_output/` lacks. Confirm the upgrade printed `Importing add-on data` and did
+**not** print `All data imported`; the second is the shortcut.
 
 **After an upgrade, look for files the new version removed** — they will still be present.
 List what the release dropped, then grep the source and `_output/class_extensions/` and

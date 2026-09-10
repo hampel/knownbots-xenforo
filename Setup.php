@@ -5,6 +5,7 @@ namespace Hampel\KnownBots;
 use Hampel\KnownBots\SubContainer\Api;
 use XF\AddOn\AbstractSetup;
 use XF\AddOn\StepRunnerUpgradeTrait;
+use XF\Behavior\DevOutputWritable;
 use XF\Db\Schema\Alter;
 use XF\Db\Schema\Create;
 use XF\Util\File;
@@ -127,6 +128,10 @@ class Setup extends AbstractSetup
             $rules['hours'] = [$hours];
             $rules['minutes'] = [$minutes];
             $cron->run_rules = $rules;
+            // a per-site value, not the add-on's definition: in development mode the save would
+            // otherwise write _output/ into the installed add-on, and the next upgrade would then
+            // sync from that partial copy and delete the cron entry it lacks
+            $cron->getBehavior(DevOutputWritable::class)->setOption('write_dev_output', false);
             $cron->save();
         }
     }
@@ -144,6 +149,10 @@ class Setup extends AbstractSetup
             $rules['hours'] = [$hours];
             $rules['minutes'] = [$minutes];
             $cron->run_rules = $rules;
+            // a per-site value, not the add-on's definition: in development mode the save would
+            // otherwise write _output/ into the installed add-on, and the next upgrade would then
+            // sync from that partial copy and delete the cron entry it lacks
+            $cron->getBehavior(DevOutputWritable::class)->setOption('write_dev_output', false);
             $cron->save();
         }
     }
