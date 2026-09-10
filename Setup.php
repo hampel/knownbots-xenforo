@@ -63,9 +63,7 @@ class Setup extends AbstractSetup
             $this->removeKnownBotsEmail();
         }
 
-        if (\XF::$versionId >= 2030000) { // XF 2.3+
-            $this->enqueuePostUpgradeCleanUp();
-        }
+        $this->enqueuePostUpgradeCleanUp();
     }
 
     // ################################ UNINSTALL ##################

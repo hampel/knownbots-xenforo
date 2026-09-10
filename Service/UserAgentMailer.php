@@ -31,13 +31,8 @@ class UserAgentMailer extends AbstractService
 
         $attachment = $this->createBotFile();
 
-        if (\XF::$versionId >= 2030000) { // XF 2.3+
-            $mail->getEmailObject()->attachFromPath($attachment, null, "text/plain");
-        }
-        else // XF 2.2
-        {
-            $mail->getMessageObject()->attach(\Swift_Attachment::fromPath($attachment, "text/plain"));
-        }
+        $mail->getEmailObject()->attachFromPath($attachment, null, "text/plain");
+
         return $mail->send();
 	}
 
