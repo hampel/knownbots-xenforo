@@ -96,12 +96,12 @@ class Agent extends Repository
 
     public function purgeUserAgents($days)
     {
-        $offset = $days * 60 * 60 * 24;
+        $cutoff = \XF::$time - ($days * 60 * 60 * 24);
 
         $query = $this->db()->query("
             DELETE FROM xf_knownbots_agent
             WHERE last_updated < ?
-        ", [$offset]);
+        ", [$cutoff]);
 
         return $query->rowsAffected();
     }
