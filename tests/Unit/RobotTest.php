@@ -80,6 +80,9 @@ class RobotTest extends TestCase
 
     public function test_userAgentMatchesRobot_returns_robotName_on_match()
     {
+        // a match is only stored when storing is enabled - set it rather than inherit the install's value
+        $this->setOption('knownbotsStoreUserAgents', ['enabled' => true, 'days' => 90]);
+
         $this->cache->expects('loadBotData')->with('maps')->times(3)->andReturns(null);
         $this->repo->expects('addUserAgent')->times(3)->andReturns(0);
 
