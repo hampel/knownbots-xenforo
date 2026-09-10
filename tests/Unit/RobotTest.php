@@ -1,6 +1,7 @@
 <?php namespace Tests\Unit;
 
 use Hampel\KnownBots\SubContainer\Cache;
+use Hampel\KnownBots\SubContainer\Log;
 use Tests\TestCase;
 use XF\Data\Robot;
 
@@ -23,6 +24,13 @@ class RobotTest extends TestCase
 
 		$this->cache = $this->mock('knownbots.cache', Cache::class);
         $this->repo = $this->mockRepository('Hampel\KnownBots:Agent');
+
+        // detection logs as a side effect; the logger is an optional integration with
+        // Hampel/Monolog, so mock it rather than let the suite depend on that add-on
+        $this->mock('knownbots.log', Log::class, function ($mock)
+        {
+            $mock->shouldIgnoreMissing();
+        });
 	}
 
 	public function test_robotClass()
@@ -90,7 +98,7 @@ class RobotTest extends TestCase
 
     public function test_userAgentMatchesRobot_returns_empty_on_no_matches_and_store_not_enabled()
     {
-        \XF::options()->knownbotsStoreUserAgents['enabled'] = false;
+        $this->setOption('knownbotsStoreUserAgents', ['enabled' => false, 'days' => 90]);
 
         $this->cache->expects('loadBotData')->with('maps')->once()->andReturns(null);
         $this->cache->expects('loadBotData')->with('complex')->once()->andReturns(null);
@@ -100,7 +108,7 @@ class RobotTest extends TestCase
 
     public function test_userAgentMatchesRobot_returns_empty_on_no_matches()
     {
-        \XF::options()->knownbotsStoreUserAgents['enabled'] = true;
+        $this->setOption('knownbotsStoreUserAgents', ['enabled' => true, 'days' => 90]);
 
         $this->cache->expects('loadBotData')->with('maps')->once()->andReturns(null);
         $this->cache->expects('loadBotData')->with('complex')->once()->andReturns(null);
