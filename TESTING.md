@@ -179,11 +179,16 @@ licence validation token to the author's API and stores the returned token back 
 option value. It cannot be exercised without a real licence, and it writes to a live service.
 
 **The upgrade path from the last published release.** Install the previous release zip, then
-upgrade to the new one, and confirm `Setup.php`'s steps run. A development install will not
-do this on its own: `xf-addon:upgrade` sees `_output/` and imports from the working copy
-instead of the zip, so the upgrade completes without ever reading the release's data. A
-disposable install built from the release zip has no `_output/` and therefore takes the real
-path with nothing to configure.
+upgrade to the new one, and confirm `Setup.php`'s steps run. A development install will not do
+this on its own: `xf-addon:upgrade` sees `_output/` and imports from the working copy instead
+of the zip, so the upgrade completes without ever reading the release's data. A disposable
+install built from the release zip is the right target, but only with development mode **off**
+in its config. In development mode, any add-on-owned entity saved during install is written out
+to the installed add-on's `_output/` — this add-on's `Setup` saves two of its cron entries when
+it randomises their run times — and the upgrade then finds `_output/`, takes the
+`xf-dev:import` shortcut, and deletes anything `_output/` lacks, starting with the purge cron.
+Confirm the upgrade printed `Importing add-on data` and did **not** print `All data imported`;
+the second is the shortcut.
 
 **After an upgrade, look for files the new version removed** — they will still be present.
 List what the release dropped, then grep the source and `_output/class_extensions/` and
