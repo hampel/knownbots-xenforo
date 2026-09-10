@@ -169,11 +169,10 @@ class ApiClientTest extends TestCase
         $this->client()->sendUserAgents('api-token', ["Bad\xB1/1.0", 'Good/1.0']);
 
         [$request] = $this->getHttpRequests();
-        $agents = json_decode((string) $request->getBody(), true)['agents'];
 
-        // values only: removing an entry leaves a gap in the keys, so the agents currently
-        // arrive as a JSON object rather than a list whenever the dropped entry is not last
-        $this->assertSame(['Good/1.0'], array_values($agents));
+        // the invalid agent comes first: dropping it must not leave a gap in the keys, or the
+        // agents would go out as a JSON object ({"1":...}) rather than a list
+        $this->assertSame(['agents' => ['Good/1.0']], json_decode((string) $request->getBody(), true));
     }
 
     public function test_send_user_agents_raises_unauthorized_on_401()

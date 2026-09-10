@@ -217,6 +217,9 @@ class KnownBots
             }
         }
 
+        // re-index: the gaps unset() leaves would make the agents encode as a JSON object, not a list
+        $agents = array_values($agents);
+
         $options = [
             'json' => compact('agents'),
             'headers' => [
