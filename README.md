@@ -11,7 +11,8 @@ By [Simon Hampel](https://xenforo.com/community/members/sim.4264/).
 
 ### Requirements
 
-This addon requires PHP 7.0 or higher and works on XenForo 2.3+
+This addon requires XenForo 2.3.0 or higher. It has no PHP requirement of its own beyond
+XenForo's, which for 2.3 is PHP 7.2 or higher.
 
 ### Usage
 

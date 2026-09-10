@@ -13,10 +13,6 @@
         "Git Repository": "https://github.com/hampel/knownbots-xenforo"
     },
     "require": {
-        "php": [
-            "7.1.0",
-            "PHP 7.1.0+"
-        ],
         "XF": [
             "2030070",
             "XenForo 2.3.0+"

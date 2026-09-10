@@ -1,7 +1,4 @@
 {
-	"require": {
-		"php": ">=7.1.0"
-	},
 	"require-dev": {
 		"hampel/xenforo-test-framework": "^4.0"
 	},
