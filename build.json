@@ -2,12 +2,16 @@
 	"exec": [
 		"php ../../../../cmd.php known-bots:fetch -f",
 		"cp -v ../../../../internal_data/knownbots.json _build/upload/src/addons/{addon_id}/",
-		"rm -v _build/upload/src/addons/{addon_id}/composer.json",
-		"rm -v _build/upload/src/addons/{addon_id}/composer.lock",
-		"rm -v _build/upload/src/addons/{addon_id}/phpunit.xml",
-		"rm -v -r _build/upload/src/addons/{addon_id}/tests",
-		"rm -v -r _build/upload/src/addons/{addon_id}/vendor",
-		"rm -v _build/upload/src/addons/{addon_id}/TESTING.md",
+		"rm -fv _build/upload/src/addons/{addon_id}/composer.json",
+		"rm -fv _build/upload/src/addons/{addon_id}/composer.lock",
+		"rm -fv _build/upload/src/addons/{addon_id}/phpunit.xml",
+		"rm -frv _build/upload/src/addons/{addon_id}/tests",
+		"rm -frv _build/upload/src/addons/{addon_id}/vendor",
+		"rm -frv _build/upload/src/addons/{addon_id}/.phpunit.cache",
+		"rm -fv _build/upload/src/addons/{addon_id}/.phpunit.result.cache",
+		"rm -fv _build/upload/src/addons/{addon_id}/TESTING.md",
+		"rm -fv _build/upload/src/addons/{addon_id}/CLAUDE.md",
+		"rm -fv _build/upload/src/addons/{addon_id}/CLAUDE.local.md",
 		"mv -v _build/upload/src/addons/{addon_id}/*.md _build/"
 	]
 }

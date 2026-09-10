@@ -24,3 +24,15 @@
 *.ico  binary
 *.webp binary
 *.zip  binary
+
+# Keep development-only files out of `git archive` output - GitHub's "Download ZIP".
+# This is one of three separate exclusion surfaces and covers none of the others:
+#   the git repo        -> .gitignore
+#   git archive output  -> here
+#   the XenForo zip     -> build.json (rm the dev files, before the *.md mv)
+/CLAUDE.md              export-ignore
+/CLAUDE.local.md        export-ignore
+/TESTING.md             export-ignore
+/.gitattributes         export-ignore
+/.gitignore             export-ignore
+/.git-blame-ignore-revs export-ignore
