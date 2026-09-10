@@ -95,7 +95,7 @@ a removal matters, `Setup::upgrade()` has to do it.
 
 ```bash
 composer install                 # vendor/ is gitignored
-vendor/bin/phpunit               # 11 tests
+vendor/bin/phpunit               # whole suite
 vendor/bin/phpunit --testsuite Unit
 vendor/bin/phpunit --filter RobotTest
 ```
