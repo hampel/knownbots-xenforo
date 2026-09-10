@@ -14,6 +14,13 @@ abstract class TestCase extends BaseTestCase
      */
     protected $rootDir = '../../../..';
 
+    /*
+     * Load only this add-on. Without this, booting the app registers every active add-on
+     * that declares composer_autoload onto XF's class loader, and a sibling's vendor tree
+     * can supply PHPUnit itself - which kills the run before the first test.
+     */
+    protected $addonsToLoad = ['Hampel/KnownBots'];
+
 	protected function getMockData($file)
 	{
 		return file_get_contents(__DIR__ . '/mock/' . $file);
