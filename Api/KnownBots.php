@@ -106,7 +106,7 @@ class KnownBots
 
         $url = "{$this->baseUrl}/v3/validate-customer";
 
-        $log->info('Validating token', compact('validation_token', 'url'));
+        $log->info('Validating token', compact('url'));
 
         if ($this->trustedUrl)
         {
