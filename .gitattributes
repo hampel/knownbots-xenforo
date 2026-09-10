@@ -1,0 +1,26 @@
+# Normalise line endings to LF, in the repository and in the working tree.
+#
+# This checkout lives on the Linux filesystem and is read by PHP there, but is
+# also committed through SourceTree on Windows over \\wsl$\. Git for Windows
+# defaults to core.autocrlf=true, which is how CRLF was written into this
+# working tree while the repository held LF — 86 of the 88 tracked files showed
+# as modified with every line replaced by an identical line, and nothing
+# actually changed.
+#
+#   text=auto  store LF in the repository, whatever the committing platform does
+#   eol=lf     check LF back out, so core.autocrlf on the Windows side cannot
+#              reintroduce CRLF on disk
+#
+# Every tracked file here is text (PHP, JSON, Markdown, HTML templates, phrase
+# .txt files), so one blanket rule covers the repository.
+* text=auto eol=lf
+
+# Guard the binary types an add-on may later ship (icons, screenshots) against
+# being mangled by the rule above. None are tracked today.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.webp binary
+*.zip  binary
