@@ -123,5 +123,84 @@ class RobotTest extends TestCase
         $this->assertEmpty($this->robot->userAgentMatchesRobot('abc', true));
     }
 
-    // TODO: test complex, ignored, browser matches
+    // The tests below return a non-null 'maps' that matches nothing, so the simple match is
+    // decided by these tests rather than by XenForo's own robot list. Every loadBotData() call
+    // not expected here fails the test, so each also asserts how far detection got.
+
+    public function test_userAgentMatchesRobot_returns_robotName_on_complex_match()
+    {
+        $this->setOption('knownbotsStoreUserAgents', ['enabled' => true, 'days' => 90]);
+
+        $this->cache->expects('loadBotData')->with('maps')->once()->andReturns(['nomatch-xyz' => 'nomatch']);
+        $this->cache->expects('loadBotData')->with('complex')->once()->andReturns(['zzqx\w+crawler' => 'zzqx']);
+
+        $this->repo->expects('addUserAgent')->with('ZzqxFooCrawler/2.1', 'zzqx')->once()->andReturns(1);
+
+        $this->assertSame('zzqx', $this->robot->userAgentMatchesRobot('ZzqxFooCrawler/2.1'));
+    }
+
+    public function test_userAgentMatchesRobot_stops_for_a_logged_in_member_without_storing()
+    {
+        $this->setOption('knownbotsStoreUserAgents', ['enabled' => true, 'days' => 90]);
+        $this->actingAsMember();
+
+        // no 'ignored' or 'browsers' expectation: a member is assumed human after the bot checks
+        $this->cache->expects('loadBotData')->with('maps')->once()->andReturns(['nomatch-xyz' => 'nomatch']);
+        $this->cache->expects('loadBotData')->with('complex')->once()->andReturns([]);
+
+        $this->repo->expects('addUserAgent')->never();
+
+        $this->assertSame('', $this->robot->userAgentMatchesRobot('SomeUnknownAgent/1.0'));
+    }
+
+    public function test_userAgentMatchesRobot_does_not_store_an_ignored_agent()
+    {
+        $this->setOption('knownbotsStoreUserAgents', ['enabled' => true, 'days' => 90]);
+
+        $this->cache->expects('loadBotData')->with('maps')->once()->andReturns(['nomatch-xyz' => 'nomatch']);
+        $this->cache->expects('loadBotData')->with('complex')->once()->andReturns([]);
+        $this->cache->expects('loadBotData')->with('ignored')->once()->andReturns(['^Java/\d']);
+
+        $this->repo->expects('addUserAgent')->never();
+
+        $this->assertSame('', $this->robot->userAgentMatchesRobot('Java/1.8.0_292'));
+    }
+
+    public function test_userAgentMatchesRobot_does_not_store_a_valid_browser()
+    {
+        $this->setOption('knownbotsStoreUserAgents', ['enabled' => true, 'days' => 90]);
+        $this->expectBrowserChecks();
+
+        $this->repo->expects('addUserAgent')->never();
+
+        // every part of the string is accounted for by a browser pattern
+        $this->assertSame('', $this->robot->userAgentMatchesRobot('Mozilla/5.0 (X11; Linux x86_64) Firefox/120.0'));
+    }
+
+    public function test_userAgentMatchesRobot_stores_a_browser_like_agent_with_anything_left_over()
+    {
+        $this->setOption('knownbotsStoreUserAgents', ['enabled' => true, 'days' => 90]);
+        $this->expectBrowserChecks();
+
+        // browser detection is by subtraction: strip every browser pattern and require nothing to
+        // remain, so a real browser string with one unexplained token is NOT a browser
+        $userAgent = 'Mozilla/5.0 (X11; Linux x86_64) Firefox/120.0 SneakyScraper/1.0';
+        $this->repo->expects('addUserAgent')->with($userAgent, null)->once()->andReturns(1);
+
+        $this->assertSame('', $this->robot->userAgentMatchesRobot($userAgent));
+    }
+
+    // ------------------------------------------------------------------
+
+    private function expectBrowserChecks() : void
+    {
+        $this->cache->expects('loadBotData')->with('maps')->once()->andReturns(['nomatch-xyz' => 'nomatch']);
+        $this->cache->expects('loadBotData')->with('complex')->once()->andReturns([]);
+        $this->cache->expects('loadBotData')->with('ignored')->once()->andReturns([]);
+        $this->cache->expects('loadBotData')->with('browsers')->once()->andReturns([
+            'Mozilla/\d\.\d',
+            '\(X11; Linux x86_64\)',
+            'Firefox/[\d.]+',
+        ]);
+    }
 }
