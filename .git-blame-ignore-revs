@@ -1,0 +1,19 @@
+# Revisions to skip when running git blame - whitespace-only, no content changed.
+#
+# Use with:  git config blame.ignoreRevsFile .git-blame-ignore-revs
+# (per-clone; .git/config is not committed). Entries must be FULL 40-char SHAs;
+# git rejects an abbreviation with "fatal: invalid object name".
+#
+# NOTE for the line-ending commit below: this file does NOT hide it. git can only
+# reassign a line it can still match in the parent, and a CRLF->LF rewrite changes
+# every line, so blame keeps attributing them to the rewrite. Use `git blame -w`
+# instead, which ignores the trailing CR and finds the real author:
+#
+#     git blame -w CHANGELOG.md      # -> c71af746 (2018), the actual author
+#     git blame    CHANGELOG.md      # -> the renormalisation
+#
+# The entry is kept because it is correct in intent and will work for ordinary
+# reformatting commits added later, where lines remain matchable.
+
+# add .gitattributes and renormalise line endings to LF
+1fbebca91974f44e2bee502c6fb91faaccf292d4
