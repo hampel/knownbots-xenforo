@@ -44,11 +44,17 @@ class EmailAgents extends AbstractCommand
         $mailer = $this->getUserAgentMailerService();
         $mailer->setToEmail($email);
         $mailer->setUserAgents($agents);
-        $mailer->mailUserAgents();
+        $sent = $mailer->mailUserAgents();
 
         $count = count($agents);
 
-        $output->writeln("Sent {$count} agents via email to {$email}");
+        if (!$sent)
+        {
+            $output->writeln("Nothing sent to '{$email}' - see the error log");
+            return self::FAILURE;
+        }
+
+        $output->writeln("Sent {$count} agents via email to {$sent} address(es): {$email}");
 		return self::SUCCESS;
 	}
 

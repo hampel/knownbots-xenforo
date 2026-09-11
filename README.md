@@ -85,10 +85,11 @@ validation token.
 
 #### Email user agents
 
-Enable to periodically email the stored user agents to a single address of your choosing, for your own monitoring of
-newly detected user agents. This option only has effect if the "Store user agents in database" option is also
-enabled. Leave the address blank to use the board's contact email address. User agents reach the addon author through
-the API - see "Send user agents via API" above - not by email.
+Enable to periodically email the stored user agents to one or more addresses of your choosing - separate several with
+commas - for your own monitoring of newly detected user agents. An entry that is not a valid address is skipped and
+reported in the error log. This option only has effect if the "Store user agents in database" option is also enabled.
+Leave the address blank to use the board's contact email address. User agents reach the addon author through the API -
+see "Send user agents via API" above - not by email.
 
 ### Logging
 
@@ -166,9 +167,10 @@ $ php cmd.php known-bots:send
 ```
 
 #### Email agents
-Email the stored user agents that have not yet been sent, to a single address: the one given on the command line, or
-else the "Email user agents" option's address, or else the board's contact email address. Storing user agents must be
-enabled. Unlike the cron job it does not mark them as sent, so it can be run repeatedly for testing.
+Email the stored user agents that have not yet been sent to one or more addresses, separated by commas: those given on
+the command line (quote a list), or else the "Email user agents" option's, or else the board's contact email address.
+Storing user agents must be enabled. Unlike the cron job it does not mark them as sent, so it can be run repeatedly for
+testing.
 
 ```bash
 $ php cmd.php known-bots:email [address]

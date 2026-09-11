@@ -301,9 +301,9 @@
     },
     "option_explain.knownbotsEmailUserAgents.txt": {
         "global_cache": false,
-        "version_id": 5010070,
-        "version_string": "5.1.0",
-        "hash": "428fc473da111c4c0664628fd505fcaf"
+        "version_id": 6010311,
+        "version_string": "6.1.3a1",
+        "hash": "1cd409585169a470d33d69e3c66fa486"
     },
     "option_explain.knownbotsFetchNewBots.txt": {
         "global_cache": false,
