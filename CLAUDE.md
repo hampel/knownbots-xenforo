@@ -137,15 +137,16 @@ the API in the same minute. Do not "fix" the times in the JSON; they are seeds.
 
 ## Traps
 
-- **`build.json` calls the live API.** Its `exec` runs `known-bots:fetch -f` and copies the resulting
-  `internal_data/knownbots.json` into the zip, so a release build needs the API reachable and will
-  overwrite the install's own bot data. `Setup::postInstall()` loads that bundled snapshot when
-  present, and falls back to fetching when installing from `_output/` instead of a zip.
+- **`build.json` downloads the bot payload from the production API** straight into the build, so a
+  release build needs production reachable. It deliberately does not go through `known-bots:fetch`: the
+  add-on's client honours a `knownBotsApi` override, so a build on a development install pointed at
+  another API server would bundle that server's payload - and if that payload is dated after
+  production's, a fresh install never refreshes it, because the fetch cron's `If-Modified-Since` gets a
+  `304`. `Setup::postInstall()` loads the bundled snapshot when present, and falls back to fetching
+  when installing from `_output/` instead of a zip.
 - **The e-mail path is deprecated** (superseded by the API in v6) but still live: `Cron\SendAgents::sendEmail`,
   `Service/UserAgentMailer`, `Option\EmailUserAgents`, `known-bots:email`. It is kept for site owners
   mailing themselves; do not extend it.
-- `Service/UserAgentMailer` and `Setup.php` both branch on `\XF::$versionId >= 2030000`. The add-on
-  declares XF 2.3+ in `addon.json`, but these 2.2 paths have not been removed.
 - Detection changes need `known-bots:test` against real strings and the `RobotTest` suite; the test
   framework (`hampel/xenforo-test-framework`) mocks the sub-container directly —
   `$this->mock('knownbots.cache', Cache::class)`, `$this->mockRepository(...)`, `$this->fakesSimpleCache()`.

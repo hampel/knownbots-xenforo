@@ -1,7 +1,7 @@
 {
 	"exec": [
-		"php ../../../../cmd.php known-bots:fetch -f",
-		"cp -v ../../../../internal_data/knownbots.json _build/upload/src/addons/{addon_id}/",
+		"curl -sSf --max-time 60 -H 'Accept: application/json' -o _build/upload/src/addons/{addon_id}/knownbots.json https://knownbots.hampel.io/api/v3/bots",
+		"php -r '$d = json_decode((string) @file_get_contents($argv[1]), true); echo is_array($d) && ($d[\"version\"] ?? 0) === 3 ? sprintf(\"bundled knownbots.json: built %s UTC, %d bots, %d maps, %d browsers\", gmdate(\"Y-m-d H:i\", $d[\"built\"]), count($d[\"bots\"]), count($d[\"maps\"]), count($d[\"browsers\"])) : \"bundled knownbots.json: MISSING OR INVALID - do not ship this zip\", PHP_EOL;' _build/upload/src/addons/{addon_id}/knownbots.json",
 		"rm -fv _build/upload/src/addons/{addon_id}/composer.json",
 		"rm -fv _build/upload/src/addons/{addon_id}/composer.lock",
 		"rm -fv _build/upload/src/addons/{addon_id}/phpunit.xml",
