@@ -1,6 +1,18 @@
 CHANGELOG
 =========
 
+6.1.2 (2026-09-11)
+------------------
+
+* now requires XenForo 2.3.0 or higher (6.1.1 already did, without declaring it)
+* no longer declares a PHP requirement of its own; XenForo 2.3's applies (PHP 7.2 or higher)
+* security: the XenForo license validation token is no longer written to the log - lines already logged are not removed, so if your logs are shared or retained, consider regenerating the token
+* bugfix: purging old user agents deleted nothing - the purge cron and the admin purge action now remove agents older than the configured retention, and the first purge after upgrading may remove a large number at once
+* bugfix: a corrupt or empty `internal_data/knownbots.json` no longer causes a fatal error during an upgrade or in `known-bots:load`
+* bugfix: a malformed response from the KnownBots API no longer causes a fatal error in the fetch cron
+* bugfix: on a forum running in development mode, installing or upgrading no longer creates an `_output` directory inside the add-on, which made the next upgrade delete the purge cron - if `src/addons/Hampel/KnownBots/_output` exists on such a forum, delete it before upgrading
+* bugfix: user agents are always sent to the API as a list
+
 6.1.1 (2025-12-05)
 ------------------
 
