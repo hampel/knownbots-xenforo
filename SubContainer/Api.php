@@ -15,8 +15,9 @@ class Api extends AbstractSubContainer
 
         $container['bots'] = function($c)
         {
-            // on our dev server we may want to over-ride the API url and disable "untrusted" mode, so we can connect to
-            // our dev API server running on localhost. This should never be used in production.
+            // $config['knownBotsApi'] points the client at another API server - typically a development one on a
+            // local address - and switches to the trusted HTTP client, since the untrusted one refuses local
+            // addresses. For development installs only; never set it in production.
             $customApi = $this->app->config('knownBotsApi');
             if ($customApi)
             {
@@ -35,8 +36,8 @@ class Api extends AbstractSubContainer
 
         $container['domain'] = function($c)
         {
-            // on our dev server we may want to over-ride the customer domain so we can test against the real XenForo
-            // customer validation API
+            // $config['knownBotsDomain'] replaces the domain sent for licence validation, so that a development
+            // install can validate against the XenForo customer API using a licensed site's domain
             $domainOverride = $this->app->config('knownBotsDomain');
             return $domainOverride ?? $this->app->options()->boardUrl;
         };

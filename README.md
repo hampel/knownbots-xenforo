@@ -31,22 +31,17 @@ There are several tools provided in the admin area Tools section to help manage 
  * __Show list of Known Bots__ lists all the bots included in the definition file with links to more information where 
    available
 
-### Change log
+### How detection works
 
-Verion 6 is a complete rewrite from previous versions - with bot detection now up to 15x faster than the previous 
-method. Bot detection is also more sophisticated - with a secondary regex-based detection system to help identify
-complex bot strings that can't be matched using the simple text string matches used by default.
+A user agent is checked first against the known bot definitions with a fast plain-text match, then against a set of
+regular expressions for bot strings too complex for a plain match. Logged-in members are assumed to be human once
+those two checks have run.
 
-If no bots are detected, the addon will check the user agent against a list of valid browser regex strings - and if not
-considered to be a valid user-driven browser, it will store the information in the database temporarily before sending
-the information back to the addon author via email for further analysis.
-
-Previously, the system only sent back user agents which matched key words: bot|crawl|spider - this new detection method
-is significantly more comprehensive and allows much greater accuracy for detecting new bots that may not identify 
-themselves using the traditional keywords.
-
-Also new in this version is the deprecation of the email sending facility - new user agents are now sent directly via 
-API, with authentication facilitated by the XenForo license validation system and very easy to configure.
+For guests, if neither check finds a bot, the user agent is checked against a list of valid browser patterns. With
+"Store user agents in database" enabled, a user agent not recognised as a real browser is stored for further
+analysis, and with "Send user agents via API" enabled it is sent to the addon author, so that new bots can be
+identified - including bots that do not identify themselves with the traditional keywords such as bot, crawl or
+spider.
 
 ### Options
 
@@ -56,16 +51,16 @@ Enable to show robot statistics in the sidebar widgets
 
 #### Fetch new bots
 
-Enable to automatically fetch new bot identifiers from the [KnownBots API](https://knownbots.hampel.io/api/bots) 
+Enable to automatically fetch new bot identifiers from the [KnownBots API](https://knownbots.hampel.io/api/v3/bots) 
 maintained by the addon author. If you disable this option, you must set up your own system to update the known bots 
-defnitions - see the Command Line Interface section for options to assist here.
+definitions - see the Command Line Interface section for options to assist here.
 
 #### Store user agents in database and purge after
 
 Enable to store unknown and bot user agents in the database for further analysis. This should be used in conjunction
-with the "Send user agent via API" and/or "Email user agents" option to send unknown user agents back to the addon 
-author for further analysis and identification of new bots. You may also manually send user agent information to the 
-addon author via the addon discussion thread - use the "List detected bots" tool to show unknown user agents.
+with the "Send user agents via API" option, which sends unknown user agents back to the addon author for further
+analysis and identification of new bots. You may also manually send user agent information to the addon author via the
+addon discussion thread - use the "List detected bots" tool to show unknown user agents.
 
 With this option enabled, you may choose how long to retain user agent records before they are automatically
 purged from the database. This uses a "last seen" mechanism to maintain the list of recently seen bots - only bots not
@@ -74,12 +69,12 @@ of data stored. Set days to zero to never purge user agent data (not recommended
 
 #### Send user agents via API
 
-New in version 6, enabling this option will send unidentified user agents back to the addon author for further analysis
+Enabling this option will send unidentified user agents back to the addon author for further analysis
 and identification of new bots.
 
 To configure the API, enter the License validation token for your site, found in the 
-[XenForo customer](https://xenforo.com/customers/) interrface. The validation token will be sent to the 
-[XenForo customer validation API](https://xenforo.com/customer-api/) and if valid, an KnownBots API token will be 
+[XenForo customer](https://xenforo.com/customers/) interface. The validation token will be sent to the 
+[XenForo customer validation API](https://xenforo.com/customer-api/) and if valid, a KnownBots API token will be 
 generated and returned back for subsequent authentication purposes.
 
 With a validated license, the authentication process is automatic. API tokens are regenerated every 28 days and are
@@ -90,13 +85,10 @@ validation token.
 
 #### Email user agents
 
-**_Note:_ emailing user agents to the addon author is now deprecated**. The email interface will remain operational for a
-short period to allow time for addon users to upgrade to version 6, but will soon be deactivated at which point emails 
-sent to the `knownbots@hampel.io` address will start bouncing back as undeliverable. 
-
-This option will remain available to allow users to periodically send emails to an address of their choosing for 
-monitoring newly detected user agents. This option only has effect if the "Store user agents in database" option is 
-also enabled. You may specify multiple email addresses separated by commas.
+Enable to periodically email the stored user agents to a single address of your choosing, for your own monitoring of
+newly detected user agents. This option only has effect if the "Store user agents in database" option is also
+enabled. Leave the address blank to use the board's contact email address. User agents reach the addon author through
+the API - see "Send user agents via API" above - not by email.
 
 ### Logging
 
@@ -157,20 +149,29 @@ Title: AhrefsBot
 Use the `-s` option to save your user agent strings to the database for further processing.
 
 #### Check API Token
-(New in v6) Test if the KnownBots API Token is valid. 
+Test if the KnownBots API token is valid. 
 
 ```bash
 $ php cmd.php known-bots:check-token
 ```
 Use the `-r` or `--revalidate` option to automatically attempt to revalidate and generate a new API token if 
-athentication fails.
+authentication fails.
 
 #### Send agents
-(New in v6) Send newly detected user agents to the KnownBots API. Does the same thing the cron job does - but can be run externally
+Send newly detected user agents to the KnownBots API. Does the same thing the cron job does - but can be run externally
 via a system cron or manually for testing purposes.
 
 ```bash
 $ php cmd.php known-bots:send
+```
+
+#### Email agents
+Email the stored user agents that have not yet been sent, to a single address: the one given on the command line, or
+else the "Email user agents" option's address, or else the board's contact email address. Storing user agents must be
+enabled. Unlike the cron job it does not mark them as sent, so it can be run repeatedly for testing.
+
+```bash
+$ php cmd.php known-bots:email [address]
 ```
 
 #### Parse Log Files
@@ -245,7 +246,7 @@ designed.
 
 #### Details
 
-With the **"Fetch new bots"** option enabled, the addon will automatically, send a request to the [KnownBots API](https://knownbots.hampel.io/api/bots),
+With the **"Fetch new bots"** option enabled, the addon will automatically, send a request to the [KnownBots API](https://knownbots.hampel.io/api/v3/bots),
 downloading an updated list of bot definitions. You may query that API directly at any time to see what is contained in
 the data returned.
 
@@ -272,7 +273,7 @@ valid. Customer details retrieved from the [XenForo license validation API](http
 automatically purged from the database after 30 days of inactivity.
 
 When validating licenses, only the license validation token and forum URL are sent to the KnownBots API. Once validation
-is complete, only the generated API token and a list of new user agents are sent to the server. Web sever logs similar
+is complete, only the generated API token and a list of new user agents are sent to the server. Web server logs similar
 to those described above are generated for all API calls.
 
-As of version 6, no information is sent to the addon author via email.
+No information is sent to the addon author by email.

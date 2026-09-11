@@ -55,9 +55,9 @@
     },
     "hampel_knownbots_about_license_validation.txt": {
         "global_cache": false,
-        "version_id": 5010070,
-        "version_string": "5.1.0",
-        "hash": "2105d2c93d3e44201de1b3878d978579"
+        "version_id": 6010211,
+        "version_string": "6.1.2a1",
+        "hash": "9d519d15b7e354dd934a31b546c25c31"
     },
     "hampel_knownbots_agents_sent.txt": {
         "global_cache": false,
