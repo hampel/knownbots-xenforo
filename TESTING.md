@@ -107,11 +107,30 @@ Read the **count** from a per-suite run, not its exit code: `failOnEmptyTestSuit
 the whole run collects nothing, never when one suite does, so a Feature suite that collects
 nothing still exits 0 while Unit passes.
 
-The suite loads only this add-on (`$addonsToLoad` in `tests/TestCase.php`, plus the
-`xf-addons` option passed by `tests/CreatesApplication.php` — both are needed, either alone
-does nothing). Without it, booting the app registers every active add-on's Composer
+The suite loads only this add-on — `$addonsToLoad` in `tests/TestCase.php`, which is the whole
+of it: the framework boots the application itself and installs the filtered extension before
+`app_setup` fires, so listeners, class extensions and Composer autoloading are all isolated by
+that one property. Without it, booting the app registers every active add-on's Composer
 autoloader and a sibling's vendored PHPUnit can be loaded instead of this one's, which kills
 the run before the first test.
+
+**What the suite reaches.** Every admin action is dispatched or called directly, so each
+action's own `assertAdminPermission('knownbots')` runs; the agent repository's hand-written SQL
+and the session-activity count rewrite run against real rows inside a rolled-back transaction;
+both widget template modifications are rendered with the option on and off; the CLI commands run
+through Symfony's tester; and both cron entry points run with their services mocked.
+
+Two things to know before adding to it:
+
+- **Name the base controller, not this add-on's class.** `callAction('XF:Tools', …)` works
+  anywhere; `callAction('Hampel\KnownBots\XF\Admin\Controller\Tools', …)` needs XenForo to
+  have built the `XFCP_Tools` proxy already, which only an earlier dispatch in the same run does
+  — so it passes in a full run and fails with `Class "…XFCP_Tools" not found` when that test is
+  run on its own. Naming the base is also the stronger assertion: resolving this add-on's action
+  through it proves the extension applied.
+- **`Repository\Agent::addUserAgent()` dates its rows from the system clock**, with
+  `mktime(0, 0, 0)` rather than `\XF::$time`, so `setTestTime()` cannot move it. Seed a row
+  directly when a test needs a different day. `purgeUserAgents()` does use `\XF::$time`.
 
 **Detection, against real strings:**
 
@@ -187,15 +206,16 @@ install while skipping the missing entries it appears to address.
 
 ## Needs a human
 
-**The two widget template modifications actually applying.** The rendered markup could in
-principle be asserted, but there is no route-dispatching test harness here, so today this is
-a browser check: with "show robot statistics" enabled and at least one robot in
-`xf_session_activity`, the Members Online and Online Statistics widgets should show a robot
-count. Check after every XenForo upgrade — this is the surface most likely to have broken.
+**How the widgets look on a real page.** That both template modifications apply, and that the
+robot count appears only with "show robot statistics" enabled, is covered by
+`WidgetRobotStatsTest`. What it cannot settle is the rendered page around them — navigation,
+header and footer come from XenForo's own app classes rather than from these templates — so
+after a XenForo upgrade, still look at Members Online and Online Statistics in a browser.
 
-**The API setup flow**, at the `knownbotsSendUserAgents` option. It posts a real XenForo
-licence validation token to the author's API and stores the returned token back into the
-option value. It cannot be exercised without a real licence, and it writes to a live service.
+**The API setup flow against a real licence.** Its shape is covered by `AdminApiSetupTest` with
+the API mocked: the guard that stops another option being driven through it, each branch of the
+setup step, and the token being written back into the option value. What no test can do is post
+a genuine XenForo licence validation token to the author's API, which writes to a live service.
 
 **The upgrade path from the last published release.** Install the previous release zip, then
 upgrade to the new one, and confirm `Setup.php`'s steps run. A development install will not do
