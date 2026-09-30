@@ -125,12 +125,6 @@
         "version_string": "3.2.0",
         "hash": "4511f5a7df648fbe6841643290c29483"
     },
-    "hampel_knownbots_email_not_configured.txt": {
-        "global_cache": false,
-        "version_id": 2070070,
-        "version_string": "2.7.0",
-        "hash": "9ab7fd6068420c948304c8f9526b0eb0"
-    },
     "hampel_knownbots_email_subject.txt": {
         "global_cache": false,
         "version_id": 3030070,
@@ -160,12 +154,6 @@
         "version_id": 2060070,
         "version_string": "2.6.0",
         "hash": "e6e3b9cea05d1457e28cd35076f7364c"
-    },
-    "hampel_knownbots_knownbots_api_token.txt": {
-        "global_cache": false,
-        "version_id": 5010070,
-        "version_string": "5.1.0",
-        "hash": "103ffd214d74af9202fca35105ef0ada"
     },
     "hampel_knownbots_last_updated.txt": {
         "global_cache": false,
