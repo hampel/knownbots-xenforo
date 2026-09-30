@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+6.1.3 (2026-09-30)
+------------------
+
+* bugfix: the "Email user agents" option and `known-bots:email` now accept several email addresses separated by commas - each address gets its own email, and an entry which is not a valid email address is skipped and reported in the error log; previously nothing was sent at all
+* bugfix: with the user agent retention period set to zero, the "Purge user agents" tool reported an error instead of reporting that purging is disabled
+* `known-bots:email` now reports how many addresses it sent to, and fails if it reached none of them
+* `known-bots:test` is now listed by `cmd.php list` under its own name rather than with its usage text
+
 6.1.2 (2026-09-11)
 ------------------
 
