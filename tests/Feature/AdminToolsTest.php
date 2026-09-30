@@ -202,6 +202,22 @@ class AdminToolsTest extends TestCase
         $this->assertReplyIsMessage($this->callAction(self::CONTROLLER, 'HampelKnownBotsPurge', 'admin'));
     }
 
+    public function test_purging_says_so_when_the_retention_period_is_zero()
+    {
+        // zero days means "never purge", which the options offer and the README documents. The
+        // action used to return nothing at all here, leaving XenForo with no reply to render
+        $this->setOption('knownbotsStoreUserAgents', ['enabled' => true, 'days' => 0]);
+        $this->mockRepository('Hampel\KnownBots:Agent', function ($mock)
+        {
+            $mock->expects('purgeUserAgents')->never();
+        });
+
+        $reply = $this->callAction(self::CONTROLLER, 'HampelKnownBotsPurge', 'admin');
+
+        $this->assertReplyIsMessage($reply);
+        $this->assertStringContainsString('not automatically purged', (string) $reply->getMessage());
+    }
+
     public function test_sending_reports_when_there_is_nothing_to_send()
     {
         $this->mockRepository('Hampel\KnownBots:Agent', function ($mock)

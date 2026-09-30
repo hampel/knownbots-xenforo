@@ -215,6 +215,12 @@
         "version_string": "5.0.0 Beta 2",
         "hash": "3f3c24447ed46bbc9d040e4d6e0898ee"
     },
+    "hampel_knownbots_purge_disabled.txt": {
+        "global_cache": false,
+        "version_id": 6010311,
+        "version_string": "6.1.3a1",
+        "hash": "e95493d2e891f6f76210308de32bafcf"
+    },
     "hampel_knownbots_recently_seen_bots.txt": {
         "global_cache": false,
         "version_id": 5000033,

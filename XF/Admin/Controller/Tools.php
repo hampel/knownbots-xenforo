@@ -181,7 +181,12 @@ class Tools extends XFCP_Tools
 
         $days = StoreUserAgents::daysUntilPurge();
 
-        if ($days == 0) return; // stop if we're not automatically purging old agents
+        if ($days == 0)
+        {
+            // a retention of zero means never purge - say so, rather than returning no reply at
+            // all, which leaves XenForo with nothing to render
+            return $this->message(\XF::phrase('hampel_knownbots_purge_disabled'));
+        }
 
         $rows = self::getAgentRepo()->purgeUserAgents($days);
 
