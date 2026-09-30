@@ -103,6 +103,13 @@ vendor/bin/phpunit --testsuite Unit
 vendor/bin/phpunit --filter RobotTest
 ```
 
+`phpunit/phpunit` is pinned to `^12.0` in `require-dev`, and `phpunit.xml` keeps
+`failOnPhpunitDeprecation="true"` — which the test framework's own shipped config dropped, because
+that attribute arrived in PHPUnit 11 and fails schema validation on 10.5, where `failOnWarning`
+then turns it into a failed run with every test passing. The pin is what makes keeping the
+attribute safe: this add-on cannot land on 10.5. If the pin is ever loosened, drop the attribute
+in the same change.
+
 Read the **count** from a per-suite run, not its exit code: `failOnEmptyTestSuite` fires when
 the whole run collects nothing, never when one suite does, so a Feature suite that collects
 nothing still exits 0 while Unit passes.
@@ -122,12 +129,13 @@ through Symfony's tester; and both cron entry points run with their services moc
 
 Two things to know before adding to it:
 
-- **Name the base controller, not this add-on's class.** `callAction('XF:Tools', …)` works
-  anywhere; `callAction('Hampel\KnownBots\XF\Admin\Controller\Tools', …)` needs XenForo to
-  have built the `XFCP_Tools` proxy already, which only an earlier dispatch in the same run does
-  — so it passes in a full run and fails with `Class "…XFCP_Tools" not found` when that test is
-  run on its own. Naming the base is also the stronger assertion: resolving this add-on's action
-  through it proves the extension applied.
+- **Name the base controller, not this add-on's class.** `callAction('XF:Tools', …)` is correct;
+  naming `Hampel\KnownBots\XF\Admin\Controller\Tools` is refused from test framework 5.13.0
+  with a `LogicException` naming the class to pass instead. Before 5.13.0 it was worse than an
+  error: it needed XenForo to have built the `XFCP_Tools` proxy already, which only an earlier
+  dispatch in the same run does, so such a test passed in a full run and failed under `--filter`.
+  Naming the base is also the stronger assertion — XenForo resolves it to the most derived class,
+  so the action running at all proves the extension applied.
 - **`Repository\Agent::addUserAgent()` dates its rows from the system clock**, with
   `mktime(0, 0, 0)` rather than `\XF::$time`, so `setTestTime()` cannot move it. Seed a row
   directly when a test needs a different day. `purgeUserAgents()` does use `\XF::$time`.

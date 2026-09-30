@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2942d0108ebe7973f24d8dbea6ba1f9e",
+    "content-hash": "0eaf3d6f37785879a9c6345d0a70752d",
     "packages": [],
     "packages-dev": [
         {
@@ -64,29 +64,29 @@
         },
         {
             "name": "hampel/xenforo-test-framework",
-            "version": "5.12.0",
+            "version": "5.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hampel/xenforo-test-framework.git",
-                "reference": "bde55164c36ac8fbc206b94af1d9e37d6578489e"
+                "reference": "c745fa6712fd1e1e3fd44a0cd350283688245050"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hampel/xenforo-test-framework/zipball/bde55164c36ac8fbc206b94af1d9e37d6578489e",
-                "reference": "bde55164c36ac8fbc206b94af1d9e37d6578489e",
+                "url": "https://api.github.com/repos/hampel/xenforo-test-framework/zipball/c745fa6712fd1e1e3fd44a0cd350283688245050",
+                "reference": "c745fa6712fd1e1e3fd44a0cd350283688245050",
                 "shasum": ""
             },
             "require": {
                 "mockery/mockery": "^1.6",
                 "php": ">=8.3.0",
-                "phpunit/phpunit": "^10.0|^11.0|^12.0"
+                "phpunit/phpunit": "^10.5|^11.0|^12.0"
             },
             "conflict": {
                 "league/flysystem-memory": ">=2.0"
             },
             "require-dev": {
                 "league/flysystem-memory": "^1.0",
-                "nesbot/carbon": "^2.0|^3.0",
+                "nesbot/carbon": "^2.50|^3.0",
                 "phpstan/phpstan": "^2.1.22",
                 "phpstan/phpstan-mockery": "^2.0",
                 "xenforo-ltd/xf-cs-fixer": "^1.2"
@@ -124,7 +124,7 @@
                 "issues": "https://github.com/hampel/xenforo-test-framework/issues",
                 "source": "https://github.com/hampel/xenforo-test-framework"
             },
-            "time": "2026-09-29T14:23:18+00:00"
+            "time": "2026-09-30T03:20:21+00:00"
         },
         {
             "name": "mockery/mockery",
