@@ -4,7 +4,6 @@ use Hampel\KnownBots\SubContainer\Api;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use XF\Cli\Command\AbstractCommand;
 
 class LoadBots extends AbstractCommand
 {

@@ -10,7 +10,6 @@ use Hampel\KnownBots\SubContainer\Log;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use XF\Cli\Command\AbstractCommand;
 
 class SendAgents extends AbstractCommand
 {
