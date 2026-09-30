@@ -242,6 +242,21 @@ List what the release dropped, then grep the source and `_output/class_extension
 `_output/code_event_listeners/` for those class names. A hit is a live reference to a file the
 new version does not ship.
 
+**The upgrade from the XenForo 1 add-on, which no install on hand can present.** `addon.json`
+carries `legacy_addon_id`, so on a forum that came through XenForo's own 1.5 to 2.x upgrade with
+the old add-on still recorded, `AddOn::__construct()` matches that installed row and this add-on
+**upgrades** rather than installs. The XF1 add-on declared `version_id="1"`, so every version-gated
+step runs: `upgrade5000031Step1()` creates the agent table, and `postUpgrade()` sees a previous
+version of 1 and runs the v6 e-mail cleanup as well.
+
+Reasoning says the risk is low and says why: the XF1 add-on was a single `load_class` listener over
+`XenForo_Session` with no tables of its own, so the one schema step creates a table that cannot
+already exist, and the e-mail cleanup reads an option that exists with its default by then. What no
+test here can settle is the starting state itself — whether the core upgrade leaves that add-on row
+in place, and what it does to an option or a user field belonging to it. A snapshot of a real forum
+already upgraded to 2.x, with the add-on still at its 1.x state, restored into a disposable
+install, is the only honest test. Treat the path as untested rather than as low risk.
+
 **Interaction with other add-ons.** The suite loads only this add-on and the development
 install has one fixed set, so a conflict with another add-on first appears in production. A
 disposable install with both is the only way to test a specific pairing. Relevant here because
