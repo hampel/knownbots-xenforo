@@ -12,7 +12,7 @@ class TestBots extends AbstractCommand
 	protected function configure()
 	{
 		$this
-			->setName('known-bots:test {user-agent}')
+			->setName('known-bots:test')
 			->setDescription('Test the robot detection class')
             ->addArgument(
                 'agent',
