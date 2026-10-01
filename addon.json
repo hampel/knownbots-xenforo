@@ -14,8 +14,8 @@
     },
     "require": {
         "XF": [
-            "2030070",
-            "XenForo 2.3.0+"
+            "2020070",
+            "XenForo 2.2.0+"
         ]
     },
     "icon": "fa-robot"
