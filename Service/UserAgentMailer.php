@@ -39,7 +39,16 @@ class UserAgentMailer extends AbstractService
                 \XF::phrase('hampel_knownbots_email_subject', compact('version'))->render('raw'),
                 \XF::phrase('hampel_knownbots_see_attachment')->render('raw')
             );
-            $mail->getEmailObject()->attachFromPath($attachment, null, "text/plain");
+            // XenForo 2.3 builds mail with Symfony Mailer and exposes getEmailObject(); 2.2 uses
+            // SwiftMailer and exposes getMessageObject(). Neither method exists on the other line
+            if (\XF::$versionId >= 2030000)
+            {
+                $mail->getEmailObject()->attachFromPath($attachment, null, "text/plain");
+            }
+            else
+            {
+                $mail->getMessageObject()->attach(\Swift_Attachment::fromPath($attachment, "text/plain"));
+            }
 
             if ($mail->send())
             {
