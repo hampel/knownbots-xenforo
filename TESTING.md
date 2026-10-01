@@ -242,6 +242,25 @@ List what the release dropped, then grep the source and `_output/class_extension
 `_output/code_event_listeners/` for those class names. A hit is a live reference to a file the
 new version does not ship.
 
+**Anything on XenForo 2.2.** The suite proves 2.3 only, and structurally cannot do otherwise:
+the test framework needs PHP 8.3, and the tests lean on 2.3 behaviour - route dispatch resolving
+the controller names 2.3 renamed, and `$xf` inside a render. So every automated check here is a
+statement about 2.3.
+
+Three things in the add-on differ by version, and a 2.2 sandbox is what settles them:
+
+- **the CLI commands**, which extend the add-on's own `Cli\Command\AbstractCommand` because
+  XenForo's arrived in 2.3. Run all nine on 2.2 and check `cmd.php list` shows them;
+- **the e-mail attachment**, which branches on the mail stack - Symfony Mailer on 2.3,
+  SwiftMailer on 2.2. Only the 2.3 branch is reachable from the suite, since Swift is not
+  installed on a 2.3 forum at all, so the 2.2 branch has no automated cover anywhere;
+- **`Setup`**, where the upgrade clean-up is gated on the running version. Both sides of that
+  gate *are* covered by `SetupUpgradeCleanUpTest`, which moves `\XF::$versionId`, but a real 2.2
+  install is what proves the install and upgrade complete.
+
+Both dist archives are on this machine, so the sandbox is cheap; use PHP 8.2 or lower for a 2.2
+instance.
+
 **The upgrade from the XenForo 1 add-on, which no install on hand can present.** `addon.json`
 carries `legacy_addon_id`, so on a forum that came through XenForo's own 1.5 to 2.x upgrade with
 the old add-on still recorded, `AddOn::__construct()` matches that installed row and this add-on
