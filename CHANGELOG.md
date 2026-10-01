@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+6.2.0 (2026-10-01)
+------------------
+
+* support change: runs on XenForo 2.2 again, and states 2.2.0 as its minimum. 6.1.1 broke the command line tools on XenForo 2.2 by moving them onto a class XenForo only added in 2.3, and 6.1.2 then raised the stated minimum to 2.3 - so on a XenForo 2.2 forum, 6.1.0 was the last version that worked, and anything since either refused to install or had broken command line tools
+* if you run XenForo 2.2 and installed 6.1.1, upgrade through the admin control panel rather than the command line: on 2.2 that version's command line tools cannot load, which stops every command line tool on the forum from running - including the one that performs the upgrade - until this version's files are in place. Your forum itself is unaffected
+* installing, upgrading, emailing user agents and all nine command line tools are now exercised on XenForo 2.2 as well as 2.3
+
 6.1.3 (2026-09-30)
 ------------------
 
