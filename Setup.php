@@ -5,7 +5,6 @@ namespace Hampel\KnownBots;
 use Hampel\KnownBots\SubContainer\Api;
 use XF\AddOn\AbstractSetup;
 use XF\AddOn\StepRunnerUpgradeTrait;
-use XF\Behavior\DevOutputWritable;
 use XF\Db\Schema\Alter;
 use XF\Db\Schema\Create;
 use XF\Util\File;
@@ -64,7 +63,13 @@ class Setup extends AbstractSetup
             $this->removeKnownBotsEmail();
         }
 
-        $this->enqueuePostUpgradeCleanUp();
+        // AbstractSetup::enqueuePostUpgradeCleanUp() arrived in XenForo 2.3; on 2.2 there is
+        // nothing to call and no equivalent, so those installs simply keep the files a release
+        // dropped - which is what they did before 2.3 existed
+        if (\XF::$versionId >= 2030000)
+        {
+            $this->enqueuePostUpgradeCleanUp();
+        }
     }
 
     // ################################ UNINSTALL ##################
@@ -131,7 +136,7 @@ class Setup extends AbstractSetup
             // a per-site value, not the add-on's definition: in development mode the save would
             // otherwise write _output/ into the installed add-on, and the next upgrade would then
             // sync from that partial copy and delete the cron entry it lacks
-            $cron->getBehavior(DevOutputWritable::class)->setOption('write_dev_output', false);
+            $cron->getBehavior('XF:DevOutputWritable')->setOption('write_dev_output', false);
             $cron->save();
         }
     }
@@ -152,7 +157,7 @@ class Setup extends AbstractSetup
             // a per-site value, not the add-on's definition: in development mode the save would
             // otherwise write _output/ into the installed add-on, and the next upgrade would then
             // sync from that partial copy and delete the cron entry it lacks
-            $cron->getBehavior(DevOutputWritable::class)->setOption('write_dev_output', false);
+            $cron->getBehavior('XF:DevOutputWritable')->setOption('write_dev_output', false);
             $cron->save();
         }
     }
