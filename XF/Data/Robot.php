@@ -86,21 +86,16 @@ class Robot extends XFCP_Robot
         {
             $rowsAffected = $this->getAgentRepo()->addUserAgent($userAgent, $robot_key);
 
-            $message = '';
-            if ($rowsAffected == 0)
-            {
-                $message = 'Skipped existing';
-            }
-            elseif ($rowsAffected == 1)
-            {
-                $message = 'Added';
-            }
-            elseif ($rowsAffected == 2)
-            {
-                $message = 'Updated';
-            }
+            $actions = [0 => 'skipped', 1 => 'added', 2 => 'updated'];
 
-            $this->getLog()->debug("{$message} user agent", compact('userAgent', 'robot_key'));
+            // this runs on every unrecognised guest page view, so it stays at debug - and it
+            // carries a user agent, which is why the documentation says what this level logs.
+            // The message is a constant because that is what a log store groups and counts on
+            $this->getLog()->debug('Stored user agent', [
+                'action' => $actions[$rowsAffected] ?? 'unknown',
+                'user_agent' => $userAgent,
+                'robot_key' => $robot_key,
+            ]);
         }
     }
 
@@ -196,8 +191,8 @@ class Robot extends XFCP_Robot
 
         if ($agents->count() > 0)
         {
-            $nullOrAll = $onlyNull ? "unknown" : "all";
-            $log->info("Reprocessing {$nullOrAll} user agents");
+            $scope = $onlyNull ? 'unknown' : 'all';
+            $counts = ['updated' => 0, 'skipped' => 0, 'deleted_ignored' => 0, 'deleted_browser' => 0, 'unrecognised' => 0];
 
             foreach ($agents as $agent)
             {
@@ -211,30 +206,38 @@ class Robot extends XFCP_Robot
 
                     if ($rowsAffected == 2)
                     {
-                        $log->info("Updated bot user agent", compact('user_agent', 'robot_key'));
+                        $counts['updated']++;
+                        $log->debug('Reprocessed user agent', ['action' => 'updated'] + compact('user_agent', 'robot_key'));
                     }
                     elseif ($rowsAffected == 0)
                     {
-                        $log->debug("Skipped existing bot user agent", compact('user_agent', 'robot_key'));
+                        $counts['skipped']++;
+                        $log->debug('Reprocessed user agent', ['action' => 'skipped'] + compact('user_agent', 'robot_key'));
                     }
                 }
                 elseif ($this->userAgentMatchesIgnored($user_agent))
                 {
                     // delete ignored user agents
                     $repo->deleteUserAgent($user_agent);
-                    $log->info("Deleted ignored user agent", compact('user_agent'));
+                    $counts['deleted_ignored']++;
+                    $log->debug('Reprocessed user agent', ['action' => 'deleted_ignored'] + compact('user_agent'));
                 }
                 elseif ($this->userAgentMatchesValidBrowser($user_agent))
                 {
                     // we have a valid browser, delete the user agent
                     $repo->deleteUserAgent($user_agent);
-                    $log->info("Deleted valid browser user agent", compact('user_agent'));
+                    $counts['deleted_browser']++;
+                    $log->debug('Reprocessed user agent', ['action' => 'deleted_browser'] + compact('user_agent'));
                 }
                 else
                 {
-                    $log->debug("Skipped unknown user agent", compact('user_agent'));
+                    $counts['unrecognised']++;
+                    $log->debug('Reprocessed user agent', ['action' => 'unrecognised'] + compact('user_agent'));
                 }
             }
+
+            // the loop reports its summary; the lines inside it are the item-level trace
+            $log->info('Reprocessed user agents', ['scope' => $scope, 'total' => $agents->count()] + $counts);
         }
     }
 

@@ -49,7 +49,7 @@ class UserAgentSender extends AbstractService
         catch (UnauthorizedException $e)
         {
             // if authorisation fails, just log it and try again - no need to report an exception
-            $log->notice($e->getMessage());
+            $log->notice('Sending user agents: authorisation refused, revalidating', ['exception' => $e]);
 
             // we'll continue on from here and attempt to revalidate
         }
@@ -93,7 +93,7 @@ class UserAgentSender extends AbstractService
     {
         \XF::logException($e);
         $this->error = $e->getMessage();
-        $this->getLogger()->error($this->error);
+        $this->getLogger()->error('Sending user agents failed', ['exception' => $e]);
         return false;
     }
 

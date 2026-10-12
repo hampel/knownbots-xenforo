@@ -49,7 +49,7 @@ class ApiTokenChecker extends AbstractService
             }
 
             // if authorisation fails, just log it and try again - no need to report an exception
-            $log->notice($e->getMessage());
+            $log->notice('Checking API token: authorisation refused, revalidating', ['exception' => $e]);
 
             // we will continue on from here
         }
@@ -94,7 +94,7 @@ class ApiTokenChecker extends AbstractService
     {
         \XF::logException($e);
         $this->error = $e->getMessage();
-        $this->getLogger()->error($this->error);
+        $this->getLogger()->error('Checking API token failed', ['exception' => $e]);
         return false;
     }
 

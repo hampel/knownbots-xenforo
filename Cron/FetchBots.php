@@ -26,11 +26,11 @@ class FetchBots
         {
             if (get_class($e) == ServerException::class)
             {
-                $log->warning($e->getMessage());
+                $log->warning('Fetch new bots: the API was unavailable', ['exception' => $e]);
             }
             else
             {
-                $log->error($e->getMessage());
+                $log->error('Fetch new bots failed', ['exception' => $e]);
                 \XF::logException($e);
             }
         }

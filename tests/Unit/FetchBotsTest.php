@@ -39,7 +39,14 @@ class FetchBotsTest extends TestCase
     public function test_rejects_a_scalar_response_without_fatalling($decoded)
     {
         $this->clientReturns($decoded);
-        $this->log->expects('error')->with('Invalid bot data returned', ['payload' => $decoded])->once();
+        // the payload itself is deliberately not logged - only enough of its shape to say why it
+        // was refused, since a response body is where an unplanned value would end up
+        $this->log->expects('error')->with('Invalid bot data returned', [
+            'type' => gettype($decoded),
+            'entries' => null,
+            'keys' => null,
+            'version' => null,
+        ])->once();
 
         $this->assertFalse($this->app()['knownbots.api']->fetchBots(true, false));
         $this->assertErrorLogged('Invalid bot data returned from api call');
@@ -59,7 +66,12 @@ class FetchBotsTest extends TestCase
     {
         $payload = ['version' => 2];
         $this->clientReturns($payload);
-        $this->log->expects('error')->with('Invalid bot data returned', $payload)->once();
+        $this->log->expects('error')->with('Invalid bot data returned', [
+            'type' => 'array',
+            'entries' => 1,
+            'keys' => 'version',
+            'version' => 2,
+        ])->once();
 
         $this->assertFalse($this->app()['knownbots.api']->fetchBots(true, false));
         $this->assertErrorLogged('Invalid bot data returned from api call');

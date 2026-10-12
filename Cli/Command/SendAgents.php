@@ -63,7 +63,10 @@ class SendAgents extends AbstractCommand
 
         $rows = $repo->markUserAgentsSent();
 
-        $this->log('info', "Marked {$rows} user agents as sent", $output);
+        // the console line and the log record differ on purpose: a reader wants the number in
+        // the sentence, a log store wants it in a field it can sum
+        $this->getLog()->info('Marked user agents sent', compact('rows'));
+        $output->writeln("<info>Marked {$rows} user agents as sent</info>");
 		return self::SUCCESS;
 	}
 

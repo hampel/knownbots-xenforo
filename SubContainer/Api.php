@@ -83,8 +83,15 @@ class Api extends AbstractSubContainer
         // a JSON scalar ("ok", true, 123) gets past empty() above, and isValid() cannot take it
         if (!is_array($bots) || !$this->isValid($bots))
         {
-            // the log context must be an array
-            $log->error("Invalid bot data returned", is_array($bots) ? $bots : ['payload' => $bots]);
+            // the payload itself is not logged: a near miss is thousands of entries, and a
+            // response body is where a value nobody decided to log ends up. Its shape is enough
+            // to say why it was refused
+            $log->error('Invalid bot data returned', [
+                'type' => gettype($bots),
+                'entries' => is_array($bots) ? count($bots) : null,
+                'keys' => is_array($bots) ? implode(',', array_slice(array_keys($bots), 0, 10)) : null,
+                'version' => is_array($bots) ? ($bots['version'] ?? null) : null,
+            ]);
             \XF::logError("Invalid bot data returned from api call");
             return false;
         }
