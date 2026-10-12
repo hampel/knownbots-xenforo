@@ -70,6 +70,35 @@ class WidgetRobotStatsTest extends TestCase
         $this->assertNoTemplateErrors();
     }
 
+    public function test_the_robot_count_comes_from_the_modification_rather_than_the_core_template()
+    {
+        $this->setOption('knownbotsShowBotStats', true);
+
+        $with = $this->renderTemplate('public:widget_online_statistics', $this->statisticsParams());
+        $without = $this->renderTemplateWithoutModification(
+            'knownbots_widget_online_statistics', $this->statisticsParams()
+        );
+
+        // rendering the same template with this add-on's modification disabled is what proves the
+        // robot row is ours: the option being on is not enough to produce it
+        $this->assertSee($with, '4,242');
+        $this->assertDontSee($without, '4,242');
+        $this->assertSee($without, '8,000', true, 'the core template still renders without the modification');
+        $this->assertNoTemplateErrors();
+    }
+
+    public function test_the_members_online_robot_line_comes_from_the_modification()
+    {
+        $this->setOption('knownbotsShowBotStats', true);
+
+        $without = $this->renderTemplateWithoutModification(
+            'knownBots_widget_members_online', $this->membersOnlineParams()
+        );
+
+        $this->assertDontSeeText($without, '4,242');
+        $this->assertNoTemplateErrors();
+    }
+
     // ------------------------------------------------------------------
 
     private function statisticsParams() : array

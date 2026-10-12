@@ -34,6 +34,18 @@ class EmailAgentsTest extends TestCase
         $this->assertMailSentTimes(2);
     }
 
+    public function test_fails_when_the_mail_transport_itself_fails()
+    {
+        // the addresses are valid, so this is the other way the command reaches none of them
+        $this->getMailTransport()->failWith();
+
+        $tester = new CommandTester(new EmailAgents());
+
+        $this->assertSame(Command::FAILURE, $tester->execute(['address' => 'one@example.com, two@example.com']));
+        $this->assertStringContainsString('Nothing sent', $tester->getDisplay());
+        $this->assertMailNotSent();
+    }
+
     public function test_fails_when_no_address_is_valid()
     {
         $tester = new CommandTester(new EmailAgents());

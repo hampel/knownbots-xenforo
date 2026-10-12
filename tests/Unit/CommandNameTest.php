@@ -12,6 +12,18 @@ use Tests\TestCase;
  */
 class CommandNameTest extends TestCase
 {
+    public function test_every_command_class_this_add_on_ships_can_be_loaded()
+    {
+        // XenForo loads every add-on's command classes just to list them, so one that cannot load
+        // takes cmd.php down for the whole forum, not only for this add-on. That is what 6.1.1 did
+        // on XenForo 2.2, where the base class its commands extended did not exist - and the forum
+        // itself kept working, so nothing else would have caught it
+        $classes = $this->assertConsoleCommandsLoad();
+
+        // the abstract base they all extend is skipped, as XenForo's own runner skips it
+        $this->assertCount(9, $classes);
+    }
+
     #[DataProvider('commandClasses')]
     public function test_the_declared_name_is_a_plain_command_name(string $class, string $expected)
     {

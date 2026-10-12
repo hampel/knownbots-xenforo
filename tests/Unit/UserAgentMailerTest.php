@@ -78,6 +78,16 @@ class UserAgentMailerTest extends TestCase
         ];
     }
 
+    public function test_nothing_counts_as_sent_when_the_mail_transport_fails()
+    {
+        // a forum whose SMTP is down or misconfigured: XenForo's mailer records the failure and
+        // returns false rather than throwing, so the count is what tells the caller nothing went
+        $this->getMailTransport()->failWith();
+
+        $this->assertSame(0, $this->mailer('one@example.com, two@example.com')->mailUserAgents());
+        $this->assertMailNotSent();
+    }
+
     // ------------------------------------------------------------------
 
     private function mailer(string $address, array $agents = ['agent-one'])
