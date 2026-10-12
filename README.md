@@ -93,7 +93,22 @@ see "Send user agents via API" above - not by email.
 
 ### Logging
 
-Install the [Monolog Logging Service](https://xenforo.com/community/resources/monolog-logging-service.6080/) addon to log information about emails sent and API queries made. 
+Install the [Monolog Logging Service](https://xenforo.com/community/resources/monolog-logging-service.6080/)
+addon to log what this addon does. Without it, nothing is logged.
+
+At the `info` level, which is what a forum would normally run, each unit of work is recorded with its
+counts: bots fetched from the API, user agents sent to the API, emailed or marked as sent, and old user
+agents purged. A failure is recorded at `error`, and an API that is briefly unavailable at `warning`, so a
+temporary outage is not reported as a fault.
+
+**At the `debug` level this addon records an entry for every user agent it stores, including the user agent
+itself.** Two things follow from that. On a busy forum it is one entry for every page view by a visitor
+whose browser is not recognised, which is a large number. And a user agent is information about a visitor,
+as are the IP address and URL that the logging addon adds to every entry - so `debug` is for answering a
+particular question about detection, rather than a level to leave switched on.
+
+No entry at any level contains a credential: neither the License validation token you enter nor the
+KnownBots API token issued back to your site appears in the log.
 
 ### Command Line Interface
 
