@@ -28,4 +28,27 @@ class Listener
             return new $class($c, $app);
         };
 	}
+
+	/**
+	 * Declares which of this add-on's settings hold a credential, so that a reader of the forum's
+	 * configuration can be shown the rest of them. The event is only fired where an add-on
+	 * defines it, so this costs nothing on a forum that has none and adds no requirement.
+	 *
+	 * Both config keys are claimed with no secrets under them - one is an API base URL and the
+	 * other a board hostname - because claiming a key is what gets its value shown rather than
+	 * withheld. The e-mail option holds a recipient address, which is not a credential.
+	 */
+	public static function adminApiRedaction(array &$declarations)
+	{
+		$declarations['Hampel/KnownBots'] = [
+			'options' => [
+				'knownbotsSendUserAgents.validation_token',
+				'knownbotsSendUserAgents.api_token',
+			],
+			'config' => [
+				'knownBotsApi' => [],
+				'knownBotsDomain' => [],
+			],
+		];
+	}
 }
