@@ -121,7 +121,7 @@ or `\XF::app()->container('knownbots.cache')`:
 
 | Key | Class | Notes |
 |---|---|---|
-| `knownbots.log` | `SubContainer/Log.php` | PSR-3 shim over the optional Monolog Logging Service add-on. **Silently a no-op when that add-on is absent** — never rely on it for user-visible feedback. |
+| `knownbots.log` | `SubContainer/Log.php` | PSR-3 shim over the optional Monolog Logging Service add-on, asking it for a channel through `channel()` (its 5.x) or `newChannel()` (4.x), whichever it has. **Silently a no-op when that add-on is absent** — it resolves to a `NullLogger`, so callers never null-check and must never rely on it for user-visible feedback. |
 | `knownbots.cache` | `SubContainer/Cache.php` | Wraps `CodeCache` (bot data) and `SimpleCache` (`last-checked`). |
 | `knownbots.api` | `SubContainer/Api.php` | The orchestration layer: fetch → validate → store → rebuild cache → reprocess. |
 
