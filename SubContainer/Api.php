@@ -56,9 +56,22 @@ class Api extends AbstractSubContainer
         return $this->container['local'];
     }
 
-    protected function domain()
+    /**
+     * The domain presented for licence validation: the board URL, or $config['knownBotsDomain'].
+     * Public because known-bots:config reports it - validation failing against the wrong domain is
+     * the usual reason a development install cannot get a token.
+     */
+    public function domain()
     {
         return $this->container['domain'];
+    }
+
+    /**
+     * The API base URL in use, for known-bots:config and known-bots:validate to report.
+     */
+    public function getEndpoint()
+    {
+        return $this->api()->getBaseUrl();
     }
 
     public function fetchBots($force = false, $reprocess = true)

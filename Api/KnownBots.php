@@ -27,6 +27,16 @@ class KnownBots
         $this->trustedUrl = $trustedUrl;
     }
 
+    /**
+     * Where this client is pointed - the production API, or whatever $config['knownBotsApi'] names.
+     * known-bots:config prints it, so that "why is it not updating" can be answered without
+     * reading config.php.
+     */
+    public function getBaseUrl()
+    {
+        return $this->baseUrl;
+    }
+
     public function fetch($lastChecked, $force = false)
     {
         $log = $this->getLogger();

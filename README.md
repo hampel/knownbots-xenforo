@@ -117,6 +117,53 @@ KnownBots API token issued back to your site appears in the log.
 
 There are CLI tools provided which may be helpful for certain use-cases.
 
+#### Show the configuration
+
+Print every setting this addon uses, with where each one comes from - the options page or
+`config.php` - and the state that is not on any one screen in the admin control panel: the bot
+definitions on the filesystem, the code cache detection reads, the stored user agent counts and
+the three cron entries. It reads and prints only; it changes nothing and sends nothing.
+
+```bash
+$ php cmd.php known-bots:config
+```
+
+Settings that hold a credential are reported as set or not set, never printed, so the output is
+safe to paste into a support thread.
+
+#### Validate
+
+Check that bot detection actually works on this forum: the definitions are present and current,
+the code cache was built from them, a known bot is recognised and a real browser is not, the cron
+entries that keep all of it up to date exist and are active, the email addresses are valid, and
+the API token is accepted.
+
+```bash
+$ php cmd.php known-bots:validate
+```
+
+Each check reports one of four outcomes. `[ ok ]` was proved. `[warn]` works now and will bite
+later. `[fail]` cannot do what it is configured to. A blank `[    ]` did not apply - which is
+never the same as a pass.
+
+The API token check reaches the KnownBots API with your forum's token, because only the API's
+answer proves that the token works. Use the `--unattended` option to skip it, for a deployment or
+cron gate with nobody watching; every other check still runs. It never revalidates: writing a new
+token into your options is a change, and this command does not make changes. Use
+`known-bots:check-token --revalidate` for that.
+
+The exit code is the part a script reads:
+
+| | all fine | warnings only | any failure |
+|---|---|---|---|
+| `known-bots:validate` | 0 | 0 | 1 |
+| `known-bots:validate --strict` | 0 | 2 | 1 |
+
+A warning exits 0 by default, so `known-bots:validate && next-step` carries on past one. Use
+`--strict` for a monitor that should hear about a warning. Note that this is **not** the
+monitoring plugin convention, where 1 means warning and 2 means critical: here 1 always means a
+check failed, with the option and without it.
+
 #### Fetch Bots
 
 Fetch new bots via the API. Use this to run your own cron - does the same task that the supplied XenForo Cron job does.

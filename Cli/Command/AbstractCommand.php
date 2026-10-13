@@ -14,8 +14,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  * supplying both keeps one set of command classes running on either line.
  *
  * The constants carry Symfony's own values, so declaring them where the parent already has them
- * changes nothing. They are declared without a visibility modifier because that syntax is PHP
- * 7.1+, and XenForo 2.2 supports 7.0.
+ * changes nothing. They carry no visibility modifier, which was required while the add-on
+ * supported PHP 7.0; it now requires 7.4, so a modifier would be allowed - the form is left as it
+ * is because changing it would gain nothing.
  *
  * initialize() is what XF 2.3's AbstractCommand contributes - the six colour styles its commands
  * use in output - copied here so output reads the same on both lines.

@@ -38,9 +38,42 @@ php ../../../../cmd.php known-bots:test "Mozilla/5.0 (compatible; AhrefsBot/7.0;
 ```
 
 Classes in `Cli/Command/` are discovered automatically by XF; all are named `known-bots:*`
-(`fetch`, `load`, `reprocess`, `test`, `check-token`, `send`, `email`, `parse`, `import`). Each
-duplicates the logic of a cron method or admin action so it can be run by hand or from a system
-cron — a change to one usually needs the same change in the other. See `README.md` for options.
+(`fetch`, `load`, `reprocess`, `test`, `check-token`, `send`, `email`, `parse`, `import`, and the
+self-check pair `config` and `validate`). All but the last two duplicate the logic of a cron method
+or admin action so it can be run by hand or from a system cron — a change to one usually needs the
+same change in the other. See `README.md` for options.
+
+## Self-checks, and why they set the PHP floor
+
+`known-bots:config` prints every setting and where it comes from; `known-bots:validate` exercises
+the real thing. The `xenforo-addon-validate` skill is the authority on the pattern, the exit
+contract and how to test it, and `README.md` documents both commands for a site owner. What is
+specific to this add-on:
+
+- **It earns the pair on all three of the skill's counts.** Two opaque credentials (the licence
+  validation token a customer enters and the API token the add-on writes back), three cron entries
+  doing unattended work, and state spread across the options page, `config.php`,
+  `internal_data/knownbots.json` and the code cache. Nothing in the admin control panel puts that
+  on one screen.
+- **`Cli/RendersReport.php` is `Hampel/Monolog`'s file, verbatim apart from the namespace.** Do not
+  improve the copy here - fix Monolog's and take it again, which is the whole reason it is copied
+  rather than written. `tests/Feature/CommandsTest.php` is the test its own comments refer to.
+- **That copy is why `addon.json` requires PHP 7.4**, which is above XenForo 2.2's own floor of
+  7.0. The trait uses a typed static property and eight `void` return types. Decided by Simon on
+  2026-10-13, following `Hampel/Monolog`, which declares exactly XenForo 2.2.0+ with PHP 7.4+ and
+  is the add-on that supplies this one's logging. The cost is real and was accepted knowingly: a
+  2.2 forum on PHP 7.3 or older can no longer install the add-on, and 6.2.0 - the release that
+  restored 2.2 support eleven days earlier - stays as the last one that runs there.
+- **`Config::CRON_ENTRIES` is a hard-coded list of the three entries**, because both commands
+  report an entry that has gone missing and a list read from the forum cannot say that something is
+  absent. `tests/Unit/CronEntriesTest.php` keeps it in step with `_output/cron_entries/`.
+- **`validate` checks the API token without revalidating.** Revalidation writes a new token into
+  the option value, and a command that reports on the configuration must not change it.
+  `known-bots:check-token --revalidate` is the command that repairs a token.
+- **The definitions-are-stale warning is set at two years, deliberately generously.** The API
+  publishes a new payload rarely - production's payload was built in October 2025 and was still
+  the newest a year later - so a threshold of weeks or months would warn on every healthy forum,
+  and an alert that always fires is one nobody reads.
 
 ## Architecture
 

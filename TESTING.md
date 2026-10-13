@@ -250,7 +250,12 @@ statement about 2.3.
 Three things in the add-on differ by version, and a 2.2 sandbox is what settles them:
 
 - **the CLI commands**, which extend the add-on's own `Cli\Command\AbstractCommand` because
-  XenForo's arrived in 2.3. Run all nine on 2.2 and check `cmd.php list` shows them;
+  XenForo's arrived in 2.3. Run all eleven on 2.2 and check `cmd.php list` shows them;
+- **`known-bots:config` and `known-bots:validate` on 2.2 specifically.** Both render a report
+  through `Cli/RendersReport.php`, and 2.2 ships its own fork of `symfony/console` that knows only
+  the eight basic colours and throws on `gray` - which took `monolog:config` down on every 2.2
+  forum for three betas, because it had only ever been run on 2.3. The trait falls back through
+  `muted()`, and reading 2.2's source is not what proves it: a sandbox run is;
 - **the e-mail attachment**, which branches on the mail stack - Symfony Mailer on 2.3,
   SwiftMailer on 2.2. Only the 2.3 branch is reachable from the suite, since Swift is not
   installed on a 2.3 forum at all, so the 2.2 branch has no automated cover anywhere;

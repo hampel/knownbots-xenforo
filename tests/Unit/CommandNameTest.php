@@ -21,7 +21,7 @@ class CommandNameTest extends TestCase
         $classes = $this->assertConsoleCommandsLoad();
 
         // the abstract base they all extend is skipped, as XenForo's own runner skips it
-        $this->assertCount(9, $classes);
+        $this->assertCount(11, $classes);
     }
 
     #[DataProvider('commandClasses')]
@@ -42,6 +42,18 @@ class CommandNameTest extends TestCase
         $this->assertInstanceOf(AbstractCommand::class, new $class());
     }
 
+    /**
+     * Command::run() is public, so a helper named run() on a command class silently overrides the
+     * method Symfony calls to run it - and the command then does nothing, or something else.
+     */
+    #[DataProvider('commandClasses')]
+    public function test_the_command_does_not_redefine_run(string $class, string $expected)
+    {
+        $declaring = (new \ReflectionMethod($class, 'run'))->getDeclaringClass()->getName();
+
+        $this->assertSame(\Symfony\Component\Console\Command\Command::class, $declaring);
+    }
+
     #[DataProvider('commandClasses')]
     public function test_the_status_constants_a_command_returns_resolve(string $class, string $expected)
     {
@@ -54,6 +66,7 @@ class CommandNameTest extends TestCase
     {
         return [
             'check-token' => ['Hampel\KnownBots\Cli\Command\CheckApiToken', 'known-bots:check-token'],
+            'config' => ['Hampel\KnownBots\Cli\Command\Config', 'known-bots:config'],
             'email' => ['Hampel\KnownBots\Cli\Command\EmailAgents', 'known-bots:email'],
             'fetch' => ['Hampel\KnownBots\Cli\Command\FetchBots', 'known-bots:fetch'],
             'import' => ['Hampel\KnownBots\Cli\Command\Import', 'known-bots:import'],
@@ -62,6 +75,7 @@ class CommandNameTest extends TestCase
             'reprocess' => ['Hampel\KnownBots\Cli\Command\ReprocessUserAgents', 'known-bots:reprocess'],
             'send' => ['Hampel\KnownBots\Cli\Command\SendAgents', 'known-bots:send'],
             'test' => ['Hampel\KnownBots\Cli\Command\TestBots', 'known-bots:test'],
+            'validate' => ['Hampel\KnownBots\Cli\Command\Validate', 'known-bots:validate'],
         ];
     }
 }
