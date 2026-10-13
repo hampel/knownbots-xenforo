@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+6.3.0 (2026-10-13)
+------------------
+
+* new: `known-bots:config` prints every setting this addon uses and where each one comes from, including the state that is not on any one screen in the admin control panel - the bot definitions on disk, the code cache detection reads, the stored user agent counts and the three cron entries. Settings which hold a credential are reported as set or not set, never printed
+* new: `known-bots:validate` checks that bot detection actually works on this forum - the definitions are present and current, the code cache was built from them, a known bot is recognised and a real browser is not, the cron entries exist and are active, the email addresses are valid, and the API token is accepted. It changes nothing, and `--unattended` skips the one check which reaches the API. See the README for the four outcomes and the exit codes
+* support change: now requires PHP 7.4 or higher. XenForo 2.2 itself runs on PHP 7.0 or higher, so a 2.2 forum on an older PHP can no longer install this addon - 6.2.0 remains the last version which runs there
+* entries this addon writes to the XenForo server error log now begin with the addon's name, so they can be told apart from every other addon's
+* log entries now carry a constant message with the counts, the user agent and the exception details in the entry's context rather than written into the message text, so a log store can group and count them - if you match on log message text, those patterns will need updating. Reprocessing user agents now logs one summary entry with its counts at `info` and the per-agent detail at `debug`, and a refused API response no longer logs the whole response body (only applies if you have the Monolog addon installed - otherwise nothing is logged)
+* this addon now declares which of its settings hold a credential, so that an addon which reports the forum's configuration can show the rest of them rather than withholding every one; the License validation token and the API token are still withheld
+
 6.2.0 (2026-10-01)
 ------------------
 
