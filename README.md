@@ -251,6 +251,8 @@ $ php cmd.php known-bots:parse {file}
 
 Use the `-a` or `--agents` option to simply list all user agents found in the supplied log file - no bot detection occurs
 
+Use the `-l` or `--limit` option to stop after a given number of results. The command remembers every distinct user agent it has already reported so it can skip repeats, and on a large log file that list is what consumes memory - the limit caps it. It counts what is actually printed, so with `--agents` that is distinct user agents and otherwise it is distinct user agents identified as bots. Reaching the limit stops reading, so you get results from the start of the file rather than a sample spread across all of it.
+
 Command will also accept data from stdin if you specify a hyphen as the file name.
 
 Note that this tool assumes you are using standard "Apache" log file format, which is used by most web servers.
@@ -275,6 +277,16 @@ $ php cmd.php known-bots:parse /var/log/nginx/xenforo/xenforo.access.log
 [postman                  ] PostmanRuntime/7.29.0
 [curl                     ] curl/7.68.0
 ...
+```
+
+Stop after the first 5 bots found:
+```bash
+$ php cmd.php known-bots:parse --limit 5 /var/log/nginx/xenforo/xenforo.access.log
+[postman                  ] PostmanRuntime/7.28.4
+[guzzlehttp               ] GuzzleHttp/7
+[postman                  ] PostmanRuntime/7.29.0
+[curl                     ] curl/7.68.0
+[ahrefs                   ] Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)
 ```
 
 Examples of reading data from stdin:
