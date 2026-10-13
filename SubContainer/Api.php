@@ -92,7 +92,7 @@ class Api extends AbstractSubContainer
                 'keys' => is_array($bots) ? implode(',', array_slice(array_keys($bots), 0, 10)) : null,
                 'version' => is_array($bots) ? ($bots['version'] ?? null) : null,
             ]);
-            \XF::logError("Invalid bot data returned from api call");
+            \XF::logError("Known Bots: invalid bot data returned from api call");
             return false;
         }
 

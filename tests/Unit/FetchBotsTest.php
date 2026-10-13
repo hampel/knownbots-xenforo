@@ -49,7 +49,7 @@ class FetchBotsTest extends TestCase
         ])->once();
 
         $this->assertFalse($this->app()['knownbots.api']->fetchBots(true, false));
-        $this->assertErrorLogged('Invalid bot data returned from api call');
+        $this->assertErrorLogged('Known Bots: invalid bot data returned from api call');
     }
 
     public static function scalarBodies() : array
@@ -74,7 +74,7 @@ class FetchBotsTest extends TestCase
         ])->once();
 
         $this->assertFalse($this->app()['knownbots.api']->fetchBots(true, false));
-        $this->assertErrorLogged('Invalid bot data returned from api call');
+        $this->assertErrorLogged('Known Bots: invalid bot data returned from api call');
     }
 
     // ------------------------------------------------------------------

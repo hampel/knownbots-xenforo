@@ -92,7 +92,7 @@ class ApiTokenChecker extends AbstractService
 
     protected function error(\Throwable $e)
     {
-        \XF::logException($e);
+        \XF::logException($e, false, 'Known Bots: ');
         $this->error = $e->getMessage();
         $this->getLogger()->error('Checking API token failed', ['exception' => $e]);
         return false;

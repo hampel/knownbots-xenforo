@@ -31,7 +31,7 @@ class FetchBots
             else
             {
                 $log->error('Fetch new bots failed', ['exception' => $e]);
-                \XF::logException($e);
+                \XF::logException($e, false, 'Known Bots: ');
             }
         }
     }

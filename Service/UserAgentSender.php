@@ -91,7 +91,7 @@ class UserAgentSender extends AbstractService
 
     protected function error(\Throwable $e)
     {
-        \XF::logException($e);
+        \XF::logException($e, false, 'Known Bots: ');
         $this->error = $e->getMessage();
         $this->getLogger()->error('Sending user agents failed', ['exception' => $e]);
         return false;

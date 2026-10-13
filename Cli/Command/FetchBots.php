@@ -31,7 +31,7 @@ class FetchBots extends AbstractCommand
         }
         catch (KnownBotsException $e)
         {
-            \XF::logException($e);
+            \XF::logException($e, false, 'Known Bots: ');
             $output->writeln($e->getMessage());
             return self::FAILURE;
         }
