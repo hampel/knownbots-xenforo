@@ -247,7 +247,7 @@ the test framework needs PHP 8.3, and the tests lean on 2.3 behaviour - route di
 the controller names 2.3 renamed, and `$xf` inside a render. So every automated check here is a
 statement about 2.3.
 
-Three things in the add-on differ by version, and a 2.2 sandbox is what settles them:
+Four things in the add-on differ by version, and a 2.2 sandbox is what settles them:
 
 - **the CLI commands**, which extend the add-on's own `Cli\Command\AbstractCommand` because
   XenForo's arrived in 2.3. Run all eleven on 2.2 and check `cmd.php list` shows them;
@@ -255,7 +255,10 @@ Three things in the add-on differ by version, and a 2.2 sandbox is what settles 
   through `Cli/RendersReport.php`, and 2.2 ships its own fork of `symfony/console` that knows only
   the eight basic colours and throws on `gray` - which took `monolog:config` down on every 2.2
   forum for three betas, because it had only ever been run on 2.3. The trait falls back through
-  `muted()`, and reading 2.2's source is not what proves it: a sandbox run is;
+  `muted()`, and reading 2.2's source is not what proves it: a sandbox run is. Run at the 6.3.0
+  release on 2.2.19 Patch 2 with PHP 7.4.33: both commands printed their whole report and exited
+  0, 2 under `--strict`, and 1 with a check failed. That settles the trap for the trait as it
+  stands and not for the next change to it, so the run is still owed each release;
 - **the e-mail attachment**, which branches on the mail stack - Symfony Mailer on 2.3,
   SwiftMailer on 2.2. Only the 2.3 branch is reachable from the suite, since Swift is not
   installed on a 2.3 forum at all, so the 2.2 branch has no automated cover anywhere;
@@ -263,8 +266,27 @@ Three things in the add-on differ by version, and a 2.2 sandbox is what settles 
   gate *are* covered by `SetupUpgradeCleanUpTest`, which moves `\XF::$versionId`, but a real 2.2
   install is what proves the install and upgrade complete.
 
-Both dist archives are on this machine, so the sandbox is cheap; use PHP 8.2 or lower for a 2.2
-instance.
+**And the PHP floor, which only a 7.4 instance can check.** `addon.json` requires PHP 7.4 because
+`Cli/RendersReport.php` is 7.4 code, and nothing else on this machine runs PHP below 8.3 - so every
+other check here is a statement about a PHP the add-on does not declare as its minimum. A 2.2
+sandbox built with `PHP_VERSION=7.4` (pin `PHP_VERSION_XDEBUG=3.1.6` too, or the image will not
+build) answers both questions at once:
+
+```bash
+docker exec --user 1000:1000 <instance>-xf-1 sh -c \
+  'find /var/www/html/src/addons/Hampel/KnownBots -name "*.php" -not -path "*/vendor/*" \
+     -exec php -l {} \; | grep -v "^No syntax errors"'      # want no output
+```
+
+At 6.3.0 all 43 shipped files parsed on 7.4.33 and both self-checks ran there. **The refusal is the
+other half**, and it needs no second instance: doctor a copy of the release zip so its `require.php`
+names a version the sandbox cannot satisfy, and offer that as an upgrade. XenForo answers *"The
+following requirements for Known Bots were not met: Known Bots requires PHP x.y+."* and extracts
+nothing - the installed version and the files on disk are untouched - which is how a 2.2 forum on
+PHP 7.3 meets this release.
+
+Both dist archives are on this machine, so the sandbox is cheap; a 2.2 instance takes PHP 7.4 for
+the floor check, or 8.2 when the question is about 2.2 rather than about PHP.
 
 **The upgrade from the XenForo 1 add-on, which no install on hand can present.** `addon.json`
 carries `legacy_addon_id`, so on a forum that came through XenForo's own 1.5 to 2.x upgrade with
