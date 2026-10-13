@@ -1,7 +1,7 @@
 {
 	"license": "MIT",
 	"require-dev": {
-		"hampel/xenforo-test-framework": "^5.13",
+		"hampel/xenforo-test-framework": "^5.25",
 		"phpunit/phpunit": "^12.0"
 	},
     "autoload-dev": {
