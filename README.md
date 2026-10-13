@@ -11,8 +11,11 @@ By [Simon Hampel](https://xenforo.com/community/members/sim.4264/).
 
 ### Requirements
 
-This addon requires XenForo 2.2.0 or higher. It has no PHP requirement of its own beyond
-XenForo's own: PHP 7.0 or higher on XenForo 2.2, and 7.2 or higher on 2.3.
+This addon requires XenForo 2.2.0 or higher, and PHP 7.4 or higher.
+
+XenForo 2.2 itself runs on PHP 7.0, so a 2.2 forum on an older PHP cannot install this version;
+6.2.0 is the last release that runs there. PHP 7.3 has been end of life since December 2021, so
+upgrading PHP is worth doing on its own account.
 
 ### Usage
 
