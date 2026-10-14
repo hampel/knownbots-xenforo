@@ -20,7 +20,7 @@ upgrading PHP is worth doing on its own account.
 ### Usage
 
 When you look at Current Visitors, you'll see additional robots identified - also look at the "Robots" list on that page
- http://www.example.com/community/online/?type=robot
+ https://www.example.com/community/online/?type=robot
 
 A count of robots online is added to the Members online and Online statistics widgets. This can be disabled using the
 options.
