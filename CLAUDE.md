@@ -16,8 +16,10 @@ that is repeated here.
   privacy statement covering what the add-on sends to the author's API. Change it when behaviour
   visible to a site owner changes.
 - `CHANGELOG.md` is hand-maintained, one section per release.
-- `BOTS.md` is **generated**, not written — the *Known Bots markdown* admin tool renders the
-  current bot list as markdown for pasting in. That is an admin control panel route
+- `BOTS.md` is **generated**, not written, and since 2026-10-14 is **not shipped in the release
+  zip** — `build.json` removes it, so it is documentation for anyone reading the repository and
+  nothing more. The *Known Bots markdown* admin tool renders the current bot list as markdown for
+  pasting in. That is an admin control panel route
   (`admin.php?tools/hampel-knownbots-md`, `XF\Admin\Controller\Tools::actionHampelKnownBotsMd`),
   not a path in this repository. Do not hand-edit the file. Three traps if you regenerate it: the
   entry count is the number of **distinct robot keys in `maps`**, not any count the payload
