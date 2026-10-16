@@ -291,20 +291,39 @@ PHP 7.3 meets this release.
 Both dist archives are on this machine, so the sandbox is cheap; a 2.2 instance takes PHP 7.4 for
 the floor check, or 8.2 when the question is about 2.2 rather than about PHP.
 
-**The upgrade from the XenForo 1 add-on, which no install on hand can present.** `addon.json`
+**The upgrade from the XenForo 1 add-on, which needs a snapshot of a real forum.** `addon.json`
 carries `legacy_addon_id`, so on a forum that came through XenForo's own 1.5 to 2.x upgrade with
 the old add-on still recorded, `AddOn::__construct()` matches that installed row and this add-on
-**upgrades** rather than installs. The XF1 add-on declared `version_id="1"`, so every version-gated
-step runs: `upgrade5000031Step1()` creates the agent table, and `postUpgrade()` sees a previous
-version of 1 and runs the v6 e-mail cleanup as well.
+**upgrades** rather than installs — `install()` and `postInstall()` never run at all. The XF1
+add-on declared `version_id="1"`, so every version-gated step runs: `upgrade5000031Step1()` creates
+the agent table, and `postUpgrade()` sees a previous version of 1 and runs the v6 e-mail cleanup
+as well.
 
-Reasoning says the risk is low and says why: the XF1 add-on was a single `load_class` listener over
-`XenForo_Session` with no tables of its own, so the one schema step creates a table that cannot
-already exist, and the e-mail cleanup reads an option that exists with its default by then. What no
-test here can settle is the starting state itself — whether the core upgrade leaves that add-on row
-in place, and what it does to an option or a user field belonging to it. A snapshot of a real forum
-already upgraded to 2.x, with the add-on still at its 1.x state, restored into a disposable
-install, is the only honest test. Treat the path as untested rather than as low risk.
+**This section used to argue the risk was low, and that argument missed a real defect.** It named
+the two things it had checked — the schema step creating a table that cannot already exist, and
+the e-mail cleanup reading an option that exists with its default by then — and both were right.
+It never asked what `postInstall()` does that `postUpgrade()` does not, which is exactly where the
+defect lived: only `postInstall()` seeded the bot list, so an XF1 takeover installed the add-on
+with no definitions at all and detection fell back to the much smaller list XenForo ships with.
+Found on 2026-10-16, after it had survived three releases, by an upgrade harness running the 6.3.0
+zip over a snapshot of a production forum — not by anyone re-reading this paragraph. Fixed in
+6.3.1. A reasoned risk assessment over an untestable path is worth writing down and worth
+distrusting.
+
+**So the check is a harness, and it does not live in this repository.** It restores a real XF1 to
+XF2 snapshot into a disposable install and runs the release zip over it, which is the only honest
+form this test has. Ask for it to be re-run against the release zip whenever `Setup.php` changes.
+Two things learnt from the first round are worth repeating to whoever runs it: assert the bot
+definitions, not a row count in `xf_knownbots_agent`, which is the log of user agents observed in
+traffic and is empty after any install on a harness that issues no requests; and show the probe
+failing on the unfixed version before trusting it passing on the fixed one.
+
+**What a sandbox here can prove, and did at 6.3.1:** that an upgrade onto a forum whose fetched
+payload is *newer* than the one in the zip leaves that payload alone. `seedBots()` is guarded on
+the file already existing, and `updateBots()` takes `last-checked` from the payload's own `built`,
+so re-seeding an older list would wind the forum's definitions clock backwards. Doctor
+`internal_data/knownbots.json` to a later `built` with a sentinel bot, run `known-bots:load`,
+upgrade, and check the file's hash, `last-checked` and the sentinel are all unchanged.
 
 **Interaction with other add-ons.** The suite loads only this add-on and the development
 install has one fixed set, so a conflict with another add-on first appears in production. A
