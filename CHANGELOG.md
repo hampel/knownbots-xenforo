@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+6.3.1 (2026-10-16)
+------------------
+
+* bugfix: on a forum upgraded from XenForo 1 rather than freshly installed, the addon never loaded its bot definitions until the fetch cron next ran. Detection fell back to the much smaller list XenForo ships with, and because the browser and ignored rules were empty too, every ordinary visitor was stored as an unidentified user agent. The bundled definitions are now loaded on that upgrade path, as they always were on a fresh install
+* if your forum was upgraded from XenForo 1 while running 6.3.0 or earlier, the ordinary visitors stored as unidentified user agents are still in the database after this upgrade - run `known-bots:reprocess` from the command line once to clear them and identify any real bots among them. There is no admin control panel equivalent; left alone, the stored entries age out under the user agent retention period
+* the server error log now records when there is no bot list to load, instead of passing over it silently
+* the list of known bots is no longer included in the download as `BOTS.md` - use the "Show list of Known Bots" tool in the admin control panel, which lists the definitions currently on your forum rather than those current when the release was built
+
 6.3.0 (2026-10-13)
 ------------------
 
