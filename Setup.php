@@ -22,22 +22,7 @@ class Setup extends AbstractSetup
 
     public function postInstall(array &$stateChanges)
     {
-        $fs = $this->app->fs();
-        if (!$fs->has(self::BOTPATH))
-        {
-            $sourceFile = sprintf("%s/knownbots.json", $this->addOn->getAddOnDirectory());
-
-            if (file_exists($sourceFile))
-            {
-                File::copyFileToAbstractedPath($sourceFile, self::BOTPATH);
-
-                $this->loadBots();
-            }
-            else // we may be installing from _output rather than from the zip archive, so fetch the latest bots directly
-            {
-                $this->getApi()->fetchBots(true);
-            }
-        }
+        $this->seedBots();
 
         $this->randomizeFetchCron();
         $this->randomizeSendCron();
@@ -52,6 +37,14 @@ class Setup extends AbstractSetup
 
     public function postUpgrade($previousVersion, array &$stateChanges)
     {
+        // A forum that came through the XenForo 1 to 2 upgrade has a legacy_addon_id, so XenForo
+        // renames the legacy row and runs the UPGRADE steps - install() and postInstall() never
+        // execute, and nothing has ever written the bot list file. Seeding here is what makes
+        // that path work; on an XF2 to XF2 upgrade the file is already present and this returns
+        // immediately. The redundant second load it causes on a takeover is one cache rebuild,
+        // which is cheaper than making the two paths differ again.
+        $this->seedBots();
+
         $this->loadBots();
 
         $this->randomizeFetchCron();
@@ -111,12 +104,47 @@ class Setup extends AbstractSetup
         });
     }
 
+    /**
+     * Put the bundled bot list where the add-on reads it, if nothing is there yet.
+     *
+     * Idempotent, and deliberately so: an install and an upgrade both call it, and a forum that
+     * already holds a list keeps it. Extracted from postInstall() in 2026-10 after an XF1
+     * takeover was found to leave the list empty - see postUpgrade().
+     */
+    protected function seedBots()
+    {
+        $fs = $this->app->fs();
+        if ($fs->has(self::BOTPATH))
+        {
+            return;
+        }
+
+        $sourceFile = sprintf("%s/knownbots.json", $this->addOn->getAddOnDirectory());
+
+        if (file_exists($sourceFile))
+        {
+            File::copyFileToAbstractedPath($sourceFile, self::BOTPATH);
+
+            $this->loadBots();
+        }
+        else // we may be installing from _output rather than from the zip archive, so fetch the latest bots directly
+        {
+            $this->getApi()->fetchBots(true);
+        }
+    }
+
     protected function loadBots()
     {
         if ($this->app->fs()->has(self::BOTPATH))
         {
             $fetcher = $this->getApi();
             $fetcher->updateBots($fetcher->loadBots());
+        }
+        else
+        {
+            // Silence here is what hid the XF1 takeover defect for three releases: no file, no
+            // bots, no error, and a forum that quietly detects nothing until the fetch cron runs
+            \XF::logError("Known Bots: no bot list to load - detection will not work until the fetch cron runs");
         }
     }
 
